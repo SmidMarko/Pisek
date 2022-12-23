@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Tekmovanje</title>
+     <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-marble/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Kristof Spenko, Aleš Poklukar",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Tekmovanje</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+               <p class="easy">
+                  Pred Piškom so še zadnji preizkusi. Ker se je v šoli izkazal, je bil povabljen na tekmovanje najpametnejših piščančkov. Navodilo prve naloge je šlo takole: na polju so razporejena zrna, ki jih mora Pišek vrniti v gnezda. 
+               </p>   
+               <p class = "easy"> 
+                  Na voljo imaš nov programski blok, ki izraža pogojnost če izvedi. To pomeni, da lahko Pišku zapoveš: če prideš do gnezda, spusti zrna.
+               </p>
+               <p class="medium">
+                     Piška v drugi nalogi čaka podoben izziv kot v prvi, le da so zrna in gnezda tokrat drugače oziroma zahtevnejše razporejena. 
+               </p>
+               <p class="medium">
+                     Tako kot prej, bo v nalogi potrebno uporabiti blok za pogojni stavek. Pišek mora namreč preveriti, ali se na danem polju nahaja zrno ali gnezdo. 
+               </p>
+               
+               
+               <p class="hard">
+                  Po dveh uspešno rešenih nalogah, je Pišek zelo blizu zmagi. Da bi na tekmovanju zasedel prvo mesto, mora pravilno rešiti še zadnjo nalogo oziroma zadnji izziv. 
+               </p>
+               <p class="hard">
+                     Tako kot prej, bo v nalogi potrebno uporabiti blok za pogojni stavek. Pišek mora namreč preveriti, ali se na danem polju nahaja zrno ali gnezdo. Pazi, saj pogojni stavek za odlaganje zrna velja samo takrat, ko Pišek že ima zrno. 
+               </p>
+               
+               
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

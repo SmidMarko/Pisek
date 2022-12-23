@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-AL-07</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/randomGenerator-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/randomGenerator-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simpleKeyboard-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simpleKeyboard-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelButton-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelButton-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script>
+         var stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/alkindi_2016/2016-AL-07-antidote/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "license": "CC BY-SA 3.0",
+          "translators": [],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+        var taskStrings = {
+           success: "Bravo, vous avez réussi !",
+           error: "Votre animal n'a pas repris sa forme initiale",
+           retry: "Réessayer",
+           drink: "Faire boire l'antidote" 
+        };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #anim_container {
+            text-align: center;
+         }
+         #anim {
+            display: inline-block;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Antidote</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+	      Votre animal de compagnie préféré a été empoisonné.
+	    </p>
+	    <p>
+	      <b>Saurez-vous lui donner la bonne dose d'antidote pour qu'il reprenne sa forme initiale ?</b>
+            </p>
+	    <p>
+	      N'ayez pas peur, quelle que soit la dose que vous administrez, vous pourrez revenir en arrière.
+	    </p>
+	    <p class="hard" style="background-color:#F6CED8; padding:3pt">
+         Dans cette version, votre animal ne change pas d'état sauf lorsqu'il reçoit exactement le bon antidote.<br/><br/>
+	      <u>Indice :</u> Les fioles ne sont pas pleines : d'autres personnes ont fabriqué le même antidote avant vous !
+      </p>
+            <div id="anim_container">
+               <div id="anim"></div>
+            </div>
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+         <h2>Solution</h2>
+<span class="easy">
+<p>
+En essayant, on remarque que la potion blueue modifie la taille du le cou et que la potion jaune change le nombre de taches de l'animal. On trouve alors les bonnes proportions.
+<center><img src="solution_easy.png" width=400>  </center>
+</p>
+</span>
+<span class="medium">
+<p>
+On étudie l'effet de chaque potion :
+<ul>
+<li> la bleue modifie la taille des jambes et change le nombre de taches;
+<li> la jaune change uniquement le nombre de taches;
+<li> la verte modifie la taille du cou ainsi que la longueur des jambes.
+</ul>
+Pour soigner le cou, on ne peut utiliser que la potion verte, même si celle-ci raccoursit encore plus les jambes. Ensuite il faut soigner les jambes à l'aide de la potion bleue. Finalement on enlève les taches qui restent à l'aide de la potion jaune :
+<center><img src="solution_medium.png" width=400>  </center>
+</p>
+</span>
+<span class="hard">
+<p>
+Ici, on n'observe aucun effet des potions sur l'animal. Il faut chercher une idée différente. L'indice indique que d'autres personnes ont composé la même potion, donc la plus fiole la plus vide est celle qui a été la plus utilisée. Observons combien les potions ont été utilisées :
+<ul>
+<li> 15 unités de la potion bleue ont été consommées;
+<li> 05 unités de la potion jaune ont été consommées;
+<li> 20 unités de la potion verte ont été consommées.
+</ul>
+Il faut donc donner des quantités proportionnels à celles-ci : (3,1,4) ou (6,2,8), (9,3,12)  etc. Dans la fiole verte il ne reste que 10 unités donc on a seulement deux posiblités à tester, et on trouve :
+<center><img src="solution_hard.png">  </center>
+</p>
+</span>
+<h3>C'est de la crypto</h3>
+Quand on construit un système de chiffrement il faut prévoir l"imprévu. Par exemple <a href="http://www.lemondeinformatique.fr/actualites/lire-des-chercheurs-volent-des-donnees-en-utilisant-le-bruit-des-ventilateurs-d-un-pc-65263.html">les chercheurs</a> ont récupéré des clés secrètes en enrégistrant le bruit fait pas le ventilateur de l'ordinateur.</p>
+
+<p class="easy medium"> Le problème que les concepteurs de cadenas à chiffre n'ont pas anticipé est que le cadenas s'affaiblit au fur et à mesure qu'on s'approche de la <a href="https://www.youtube.com/watch?v=p2RY08QKNtw">solution</a>. De la même manière l'animal de l'exercice s'approche de sa forme iniale au fur et à mesure qu'on s'approche de la solution. Les chercheurs ont créé un domaine entier consacré à ses problèmes imprévus, appelé <a href="https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire">canaux auxiliaires</a>.</p>
+
+<p class="hard"> le problème avec les digicodes n'est pas leur conception mais le fait que d'autres personnes ont compsé le code avant vous. Si le code n'est pas changé régulièrement alors les touches utilisées pour faire le code s'usent beaucoup plus que les autres. Ainsi il ne faut plus essayer tous les codes possibles mais seulement ceux formés avec les touches usées. De la même manière dans cet exercice il faut utilisé le fait que d'autres personnes ont composé le même antidote. Les chercheurs ont créé un domaine entier consacré à ses problèmes imprévus, appelé <a href="https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire">canaux auxiliaires</a>.</div> <!-- task-solution -->
+   </body>
+</html>

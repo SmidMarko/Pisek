@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>2018-FR-AL-03</title>
+   <script>
+      window.stringsLanguage = 'fr';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'randomGenerator-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1']);
+   </script>
+   <script class="remove" type="text/javascript">
+        var json = {
+           "id": "",
+           "language": "fr",
+           "version": "fr.01",
+           "authors": "Animath, France-ioi, Arnaud Le Grand, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+           "license": "CC BY-SA 3.0",
+           "translators": [],
+           "taskPathPrefix": "",
+           "modulesPathPrefix": "",
+           "browserSupport": [],
+           "fullFeedback": true,
+           "acceptedAnswers": [],
+           "usesRandomSeed": false
+        };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Bravo, vous avez réussi !",
+         error: "Ce n'est pas le bon résultat.",
+         noLineSelected: "Aucune ligne n'est sélectionnée",
+         noPassword: "Aucun mot de passe n'est sélectionné",
+         maxStep: function(val) {
+            return "Vous avez déjà effectué "+val+" étapes."
+         },
+         line: "ligne ",
+         selectLine: "Cliquez sur une ligne de la grille"
+      };
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      body * {
+         -moz-box-sizing: border-box; /* FF3.6 fix */
+         box-sizing: border-box;
+      }
+
+      /*** Top Frame ***/
+
+      #topFrame {
+         border: 1px solid black;
+         width: 80%;
+         margin: 20px auto;
+         padding: 10px;
+         background-color: rgb(225, 225, 225);
+      }
+      #topFrame table {
+         border-collapse: collapse;
+      }
+      #topFrame td {
+         padding: 0 10px;
+         background-color: rgb(225, 225, 225);  /* FF3.6 fix */
+      }
+      #topFrame input[type="button"] {
+         display: block;
+         margin: 10px auto;
+         width: 100px;
+      }
+      #clients input {
+         margin-left: 10px;
+      }
+
+      /*** data table ***/
+
+      #data {
+         width: 60%;
+         padding: 10px;
+         float: left;
+         overflow: auto;
+         font-size: 14px;
+      }
+      #data table {
+         width: 100%;
+         border-collapse: collapse;
+         font-family: monospace;
+      }
+      #data table td {
+         border: 1px solid black;
+         padding: 2px 5px;
+      }
+      #data table tr td:nth-child(1) {
+         font-weight: bold;
+      }
+      .unclickableRow {
+         background-color: #C0C0C0;
+      }
+      .clickableRow {
+         cursor: pointer;
+         background-color: white;
+      }
+      .clickableRow:hover {
+         background: #DDFFDD;
+      }
+      #data table tr.lineSelected {
+         background: lightgreen;
+      }
+      #data table tr.mod {
+         font-style: italic;
+         color: blue;
+      }
+
+      /*** steps ***/
+
+      #steps {
+         width: 40%;
+         float: right;
+         padding: 5px;
+         padding-bottom: 0;
+         border: 1px solid black;
+         overflow: auto;
+         font-size: 0.75em;
+      }
+      
+      #stepsTitle {
+         font-weight: bold;
+      }
+
+      /*** result ***/
+
+      #result {
+         clear: both;
+         padding: 10px;
+      }
+      #result > div {
+         width: 70%;
+         margin: 10px auto;
+      }
+      #result > div > * {
+         margin: 0 10px;
+      }
+
+      #feedback {
+         text-align: center;
+         color: red;
+         font-weight: bold;
+      }
+      
+      #line {
+         width: 300px;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Données d'élèves</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <div id="zone_1">
+            <div class="consigne">
+               <p>Des élèves ont chacun un mot de passe différent.
+		 Une grille contient des informations sur ces élèves.
+		 <b>Chaque ligne a été chiffrée avec le mot de passe de l'élève correspondant.</b></p>
+               
+               <p><span class="hard">Vous connaissez les mots de passe des élèves 1 et 2, et de trois autres élèves non identifiés, notés X, Y et Z.</span></p>
+         
+               <p>La machine peut chiffrer ou déchiffrer une ligne avec le mot de passe de l'élève <span class="easy medium">1 ou 2</span><span class="hard">1, 2, X, Y ou Z</span> mais pas les autres.</p>
+
+               <p><b>Retrouvez <span class="medium hard">le nom et </span>le mois <span class="easy">et l'année</span> de naissance des élèves <span class="easy">2 et 3</span><span class="medium">3 et 4</span><span class="hard">X, Y et Z</span></b>.</p>
+               <p>Vous avez le droit d'utiliser au plus <span class="easy medium">4</span><span class="hard">12</span> fois la machine<span class="hard">, et uniquement sur les 6 premières lignes de la grille</span>.</p>
+            </div>
+         </div>
+         
+         <div id="zone_2">
+            <div id="topFrame">
+	      <u><b>MACHINE DE CHIFFREMENT</b></u>
+	      <table>
+                  <tr>
+                     <td>Ligne concernée :</td>
+                     <td id="line"></td>
+                     <td rowspan="2">
+                        <input type="button" value="Chiffrer" id="encode">
+                        <input type="button" value="Déchiffrer" id="decode">
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Mot de passe utilisé : </td>
+                     <td id="clients">
+                        <input type="radio" name="client" value="1" id="client1" checked><label for="client1">Élève 1</label>
+                        <input type="radio" name="client" value="X" id="clientX" class="hard"><label for="clientX" class="hard">Élève X<br/></label>
+                        <input type="radio" name="client" value="2" id="client2"><label for="client2">Élève 2</label>
+                        <input type="radio" name="client" value="Y" id="clientY" class="hard"><label for="clientY" class="hard">Élève Y</label>
+                        <input type="radio" name="client" value="Z" id="clientZ" class="hard"><label for="clientZ" class="hard">Élève Z</label>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+	    <div id="data"></div>
+            <p id="stepsTitle">Étapes effectuées : <span id="nbSteps"></span> / </span><span id="totalSteps"></span></p>
+            <div id="steps"></div>
+            <div id="result"></div>
+         </div>
+         
+         <div id="feedback"></div>
+         <img src="icon.png" style="display:none">
+      </div>
+   </div>
+   <div id="solution">
+      <h2>Solution</h2>
+   </div>
+</body>
+</html>

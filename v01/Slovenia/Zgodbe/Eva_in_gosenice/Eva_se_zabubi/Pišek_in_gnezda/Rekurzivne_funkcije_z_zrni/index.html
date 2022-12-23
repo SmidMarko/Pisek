@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>pisek-recursion-marbles</title>
+     <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-marble/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Kristof Spenko",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+	  
+	  <img src="green_robot.png" style="display:none" />
+	  <img src="hole.png" style="display:none" />
+     <img src="marble.png" style="display:none" />
+	  
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Rekurzivne funkcije z zrni</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+				<div>
+				<p>
+				 Napiši navodilo, po katerem bo Pišek pobral vsa zrna in jih pospravil v gnezdo.
+				</p>
+				<p>
+				Število blokov je omejeno, zato uporabi rekurzivno funkcijo. Ustvarjanje rekurzivne funkcije je podobno ustvarjanju navadne funkcije. Rekurzivni funkciji moraš dodati parameter in v navodilo vstaviti klic iste rekurzivne funkcije.
+				Navodilo rekurzivne funkcije se bo pri vsakem klicu ponovilo.
+				</p>
+               </div>
+			   <div class="easy">
+			    <p>
+			     V vrstici s Piškom so pred njim nanizane 3 skupine zrn in gnezd. Prva skupina je sestavljena iz 3 zrn in 3 gnezd, druga skupina iz 2 zrn in 2 gnezd, in zadnja iz zrna ter gnezda. Skupine ločujejo bela polja.
+				 Tvoja naloga je, da z uporabo rekurzivne funkcije Pišek pospravi vsa zrna v gnezda. Predlagamo, da sestaviš rekurzivno funkcijo, po kateri bo Pišek skupino zrn pospravil v skupino gnezd takoj za zrni. 
+			    </p>
+				<p>
+				 Rekurzivno funkcijo sestaviš z uporabo bloka <i>funkcija</i>. S klikom na kolešček imenuješ parameter v bloku ime parametra, ki ga pripneš pod blok parametri. Ime parametra funkcije je lahko na primer <var>stZrn</var>. Novo spremenljivko <var>stZrn</var> uporabi v rekurzivni funkciji.
+				 V funkciji uporabi zanko <i>ponavljaj</i> za pospravljanje zrn v gnezda. Ponavljal boš tolikokrat, kolikor je vrednost shranjena v spremenljivki <var>stZrn</var>. Nato bo funkcija premaknila Piška do naslednje skupine semen in spremenila vrednost spremenljivke <var>stZrn</var> na število zrn v naslednji skupini.
+				 V navodilu rekurzivne funkcije sledi klic iste funkcije, to je tiste funkcije, ki nosi isto ime, z argumentom <var>stZrn</var>. Pred ponovnim klicem iste rekurzivne funkcije boš moral postaviti pogoj, ki bo preveril, kdaj naj se rekurzivno klicanje iste funkcije konča.
+				 </p>
+			   </div>
+			   <div class="medium">
+			     <p>
+					V vsaki vrsti je eno zrno in eno gnezdo. Pišek mora pospraviti vsako zrno v gnezdo na koncu vrste. Za reševanje naloge uporabi rekurzivno funkcijo. 
+				 </p>
+				 <p>
+					Rekurzivna funkcija pokliče sama sebe, s spremenjenim argumentom. Tokrat boš spremenljivko <var>stZrn</var>, ki bo parameter funkcije, spreminjal tako, da ji boš prištel število 1. 
+				 </p>
+				 
+				 <p>
+				   Zapomni si: V vsaki vrstici je med zrnom in gnezdom eno belo polje več kot v nižji vrstici. V spodnji vrstici med zrnom in gnezdom ni belih polj.
+				 </p>
+               </div>
+               <div class="hard">
+			     <p>
+				   Pišek mora v vsaki vrstici pospraviti vsa zrna v gnezda. V spodnji vrsti je eno zrno in eno gnezdo, v vrsti dve višje sta dva zrna in dve gnezdi, in tako naprej. 
+				 </p>
+				 <p>
+				   Tvoja rekurzivna funkcija mora vsebovati pogoj, ki preveri, kdaj se ponovni klic rekurzivne funkcije konča. V pogoju lahko uporabiš število zrn v najvišji vrstici, saj se takrat klicanje funkcije ustavi.
+				 </p>
+               </div>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2017-FR-AL-01</title>
+    <script>
+        window.stringsLanguage = 'fr';
+    </script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+    <script class="remove" type="text/javascript">
+        var modulesPath = '../../../_common/modules';
+        importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+    </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/alkindi_2017/2017-FR-AL-01-word-in-grid/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "license": "CC BY-SA 3.0",
+          "translators": [],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+      var taskStrings = {
+            success: "Bravo, vous avez réussi !",
+            empty: "Cliquez sur la colonne de gauche pour sélectionner une lettre.",                  
+            missing: "Il faut choisir une lettre sur chaque colonne.",                  
+            tooMany: "Vous avec sélectionné plusieurs lettres sur la même colonne.",                  
+            wrong: "Le mot est incorrect",                  
+            invalid: "Chaque lettre sélectionnée doit toucher la précédente.",
+            fixedFirstCol: "On ne peut pas changer la première colonne.", 
+            badCell: "On ne peut sélectionner que des cases rouges." 
+         };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         .grid {
+            border-collapse: collapse;
+         }
+         .grid td {
+            border: 1px solid black;
+            text-align: center;
+            cursor: default;
+         }
+         .selected {
+            background: #FF0000 !important;
+            font-weight: bold;
+         }
+         .highlighted {
+            background: #FFA07A;     //#F6CECE;
+         }
+         .mainGrid {
+            margin: auto;
+         }
+         .mainGrid td {
+            width: 20px;
+            font-size: 16px;
+         }
+         .mainGrid tr {
+            height: 20px;
+         }
+         .exampleGrid td {
+            width: 14px;
+            font-size: 12px;
+         }
+         .exampleGrid tr {
+            height: 16px;
+         }
+         #examplesDiv {
+            text-align: center;
+            margin: 20px;
+         }
+         #examplesDiv div {
+            margin-left: 10px;
+            margin-right: 10px;
+            display: inline-block;
+            *zoom: 1; /*IE6/7*/
+            *display: inline; /*IE6/7*/
+         }
+         #feedback {
+            height: 2em;
+            margin-top: 0.5em;
+            margin-bottom: 0.1em;
+            text-align: center;
+            font-weight: bold;
+            color: red; 
+         }
+      </style>
+   </head>
+
+
+<body>
+<div id="task">
+         <h1>Mots cachés</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>Pour chiffrer un message on procède comme suit :
+<ul>
+<li> On écrit le message dans la grille avec une lettre par colonne. Pour chaque lettre on peut rester sur la même ligne ou monter ou descendre d'une ligne, comme le mot CONCOURS ci-dessous. </li><BR>
+<li> Sur chaque colonne on complète l'alphabet autour de la lettre comme sur l'exemple.</li>
+</ul>
+</p>
+            <div id="examplesDiv">
+               <div id="example1Div"></div>
+               <div id="example2Div"></div>
+               <div id="example3Div"></div>
+            </div>
+            <p><b>Cliquez sur les lettres pour trouver le message caché</b> en sélectionnant les lettres une par une.</p>
+            <p><u>Indice<span class="easy medium">s</span></u> : <span class="easy medium">On connait déjà la première lettre. </span>On cherche <span class="easy">un mot</span><span class="medium">quatre mots</span><span class="hard">deux mots</span>.</p>
+            <div id="mainDiv">
+               <!-- To be filled with:
+                  <table class="mainGrid">
+                     <tr>
+                        <td class="mainGridLetter" id="mainGridLetter_0_0">A</td>
+                     </tr>
+                  etc.
+               -->
+               </table>
+            </div>
+            <div id="feedback"></div>
+            <img src="icon.png" style="display:none">
+         </div>
+</div><!-- task -->
+
+
+<div id="solution">
+<h2>Solution</h2>
+<div class="easy">
+  <center> 
+         <table><tr>
+<td><img src="H.png" width="150"></td>
+<td><img src="HE.png" width="150"></td>
+<td><img src="HER.png" width="150"></td>
+<td width="30" align="center"><span>  ...  </span></td>
+<td><img src="HERISSON.png" width="140"></td>
+</tr></table>   
+</center>
+<ul>
+<li>Nous cherchons un mot qui commence par H et pour la deuxième lettre on doit choisir parmi D, E et F. Il n'y a pas de mots qui commencent par HD ou HF donc on sélectionne <b>E</b>.
+<li> Après E on essai une à une les trois possibilités, R, S et T, car les trois diigrammes ER, ES et ET sont <a href="http://www.bibmath.net/crypto/index.php?action=affiche&quoi=chasseur/frequences_francais">fréquents</a>. Prenons d'abord le cas de <b>R</b> 
+<li> Après <b>HER</b> on doit choisir parmi I, J et K. Il n'y a pas de mots qui commencent par HERJ ou HERK donc on doit choisir <b>HERI</b>.
+<li> Ensuite on doit choisir entre les digrammes IS, IR et IQ. Le choix IS est considérablement plus fréquent que les autres donc on sélectionne <b>S</b>. 
+<li>Les seuls mot français qui commencent par <b>HERIS</b> sont dans la famille du mot <b>HERISSON</b>, qui est le mot recherché !
+</ul>
+</div>
+<div class="medium">
+Pour mieux suivre, sélectionnez les lettres au fur et à mesure que vous lisez la solution.
+<ul>
+<li>Le premier mot commence par <b>J</b> et a comme 2e lettre E, F ou G. Il n'existe pas de mots qui commencent par JF ou JG donc le bon choix est <b>E</b>.
+<li> Ensuite on a le choix entre les digrammes EU, EV ou EW. Le premier est considérablement plus <a href="http://www.bibmath.net/crypto/index.php?action=affiche&quoi=chasseur/frequences_francais">fréquent</a> donc on choisit <b>U</b>.
+<li>Le premier mot commence par JEUB, JEUC ou JEUD, ce qui nous donne le premier mot : <b>JEUDI</b>.
+<li> Le deuxième mot commence par SO, SP, SQ, TP, TQ, TR, UQ, UR ou US. Comme SO est considérablement plus fréquent que les autres on commence par tester celui-ci : <b>SO</b>.
+<li> La lettre suivante est I, J ou K et le trigramme SOI est beaucoup plus fréquent que SOJ ou SOK, on sélectionne <b>I</b>. 
+<li> Étant donnés les choix SOIP, SOIQ ou SOIR on sélectionne <b>R</b>.
+<li> Le 3e mot commence par BE, BF, BG, CF, CG, CH, DG, DH ou DI. Le plus fréquent est <b>CH</b>.
+<li>Il n'existe pas de mots qui commencent par CHF ou CHG donc la lettre suivante est <b>E</b>.
+<li> On reconnait le mot <b>CHEZ</b>.
+<li>Le dernier mot a 3 lettres et on choisit rapidement <b>MOI</b> parmi les 27 possiblités. 
+</ul>
+</div>
+<div class="hard">
+<p>La première lettre n'est pas donnée donc il faut la chercher. On doit regarder tout les débuts possibles et éliminer rapidement ceux qui ne correspond pas à des mots du dictionnaire. Mais on a aussi la possibilité de commencer par la fin, ce qui est plus intéressant car dans les langues naturelles les mots finissent souvent de la même manière, par exemple par ...tion, ...ment, ...ette, ...ble ou ...er. Notez que les langages informatiques ou les messages chiffrés n'ont pas forcément de règle pour finir les mots, mais les langues naturelles si.</p> 
+Pour mieux suivre, sélectionnez les lettres au fur et à mesure que vous lisez la solution.
+<ul>
+<li>On identifie le digramme <b>LE</b> comme la fin de mot la plus <a href="http://www.bibmath.net/crypto/index.php?action=affiche&quoi=chasseur/frequences_francais">fréquente</a> parmi celles qui sont possibles ici. 
+<li>Parmi ALE, BLE et CLE, le groupe le plus fréquent est <b>BLE</b>.
+<li>Parmi IBLE, JBLE et KBLE on sélectionne <b>IBLE</b>.
+<li>Les deux lettres prcédentes sont RS, SS, RS, ST, TT, UT, TU, UU et VU, les plus fréquentes avant IBLE étant SS, donc le 2e mot finit par <b>SSIBLE</b>. 
+<li>On découvre alors entièrement le 2e mot : <b>IMPOSSIBLE</b>.
+<li>Le premier mot a 7 lettres et, parmi les fins de mot possibles, la plus fréquente est <b>QUE</b>.
+<li>Parmi QQUE, RQUE, SQUE, le groupe le plus fréquent est <b>SQUE</b>.
+<li>On découvre entièrement le premier mot PRESQUE, la solution est alors <b>PRESQUE IMPOSSIBLE</b>. 
+</ul>
+</div>
+         <h2>C'est de la crypto !</h2>
+    <p>Cet exercice est une variation autour de la méthode de <a href="http://www.bibmath.net/crypto/index.php?action=affiche&quoi=chasseur/frequences_francais">chiffrement par substitution</a>, qui a été cassée par Al Kindi. Si le message transmis est un mot de passe alors la méthode est sûre. Par contre, si le message est formé de mots français alors les propriétés de la langue nous permettent de décrypter en prenant à chaque fois la lettre la plus probable, tout comme l'<a href="http://www.bibmath.net/crypto/index.php?action=affiche&quoi=chasseur/frequences_francais">analyse de fréquence</a> d'Al Kindi consiste à compter les lettres et à choisir les plus probables.</p>
+
+	  </div> <!-- task-solution -->
+   </body>
+</html>

@@ -1,0 +1,352 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Avto</title>
+     <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyAvto_lib.js" id="blocklyAvto_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-marble/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+	  
+   </head>
+   <style>
+       #program {
+           font-family: 'Roboto Mono';
+           font-size: 13pt;
+           font-weight: normal
+       }
+       #loop {
+           background-color:  #f4b083;
+           padding-left: 2em;
+           width: 20em;
+       }
+       #condition {
+           background-color: #a8d08d;
+           padding-left: 2em;
+           width: 20em;
+       }
+   </style>
+   <script>
+       function checkAnwser(num) {
+           var exampleA = {blockly:
+                   '<xml id="workspace2" style="display: none">\n' +
+                   '  <block type="controls_repeat_ext" id="101">\n' +
+                   '    <value name="TIMES">\n' +
+                   '      <block type="math_number" id="102">\n' +
+                   '        <field name="NUM">4</field>\n' +
+                   '      </block>\n' +
+                   '    </value>\n' +
+                   '    <statement name="DO">\n' +
+                   '      <block type="turnLeft" id="103">\n' +
+                   '        <next>\n' +
+                   '          <block type="forwardAmount" id="104">\n' +
+                   '            <value name="PARAM_0">\n' +
+                   '              <block type="math_number" id="105">\n' +
+                   '                <field name="NUM">1</field>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '            <next>\n' +
+                   '              <block type="turnRight" id="107">\n' +
+                   '                <next>\n' +
+                   '                  <block type="forwardAmount" id="108">\n' +
+                   '                    <value name="PARAM_0">\n' +
+                   '                      <block type="math_number" id="109">\n' +
+                   '                        <field name="NUM">3</field>\n' +
+                   '                      </block>\n' +
+                   '                    </value>\n' +
+                   '                  </block>\n' +
+                   '                </next>\n' +
+                   '              </block>\n' +
+                   '            </next>\n' +
+                   '          </block>\n' +
+                   '        </next>\n' +
+                   '      </block>\n' +
+                   '    </statement>\n' +
+                   '    <next>\n' +
+                   '      <block type="writeToScreen" id="110">\n' +
+                   '        <value name="PARAM_0">\n' +
+                   '          <block type="text" id="111">\n' +
+                   '            <field name="TEXT">Konec poti</field>\n' +
+                   '          </block>\n' +
+                   '        </value>\n' +
+                   '      </block>\n' +
+                   '    </next>\n' +
+                   '  </block>\n' +
+                   '</xml>\n'};
+           var exampleB = {blockly:
+                   '<xml id="workspace2" style="display: none;">\n' +
+                   '  <block type="controls_whileUntil" id="101">\n' +
+                   '    <field name="MODE">WHILE</field>\n' +
+                   '    <value name="BOOL">\n' +
+                   '      <block type="logic_boolean" id="102">\n' +
+                   '        <field name="BOOL">TRUE</field>\n' +
+                   '      </block>\n' +
+                   '    </value>\n' +
+                   '    <statement name="DO">\n' +
+                   '      <block type="controls_if" id="103">\n' +
+                   '        <value name="IF0">\n' +
+                   '          <block type="logic_compare" id="104">\n' +
+                   '            <field name="OP">EQ</field>\n' +
+                   '            <value name="A">\n' +
+                   '              <block type="col" id="105"></block>\n' +
+                   '            </value>\n' +
+                   '            <value name="B">\n' +
+                   '              <block type="math_number" id="106">\n' +
+                   '                <field name="NUM">4</field>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '          </block>\n' +
+                   '        </value>\n' +
+                   '        <statement name="DO0">\n' +
+                   '          <block type="writeToScreen" id="107">\n' +
+                   '            <value name="PARAM_0">\n' +
+                   '              <block type="text" id="108">\n' +
+                   '                <field name="TEXT">Konec poti</field>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '            <next>\n' +
+                   '              <block type="controls_flow_statements" id="109">\n' +
+                   '                <field name="FLOW">BREAK</field>\n' +
+                   '              </block>\n' +
+                   '            </next>\n' +
+                   '          </block>\n' +
+                   '        </statement>\n' +
+                   '        <next>\n' +
+                   '          <block type="turnLeft" id="110">\n' +
+                   '            <next>\n' +
+                   '              <block type="forwardAmount" id="111">\n' +
+                   '                <value name="PARAM_0">\n' +
+                   '                  <block type="math_number" id="112">\n' +
+                   '                    <field name="NUM">1</field>\n' +
+                   '                  </block>\n' +
+                   '                </value>\n' +
+                   '                <next>\n' +
+                   '                  <block type="turnRight" id="113">\n' +
+                   '                    <next>\n' +
+                   '                      <block type="forwardAmount" id="114">\n' +
+                   '                        <value name="PARAM_0">\n' +
+                   '                          <block type="math_number" id="115">\n' +
+                   '                            <field name="NUM">3</field>\n' +
+                   '                          </block>\n' +
+                   '                        </value>\n' +
+                   '                      </block>\n' +
+                   '                    </next>\n' +
+                   '                  </block>\n' +
+                   '                </next>\n' +
+                   '              </block>\n' +
+                   '            </next>\n' +
+                   '          </block>\n' +
+                   '        </next>\n' +
+                   '      </block>\n' +
+                   '    </statement>\n' +
+                   '  </block>\n' +
+                   '</xml>\n'};
+           var exampleC = {blockly:
+               '<xml id="workspace2" style="display: none;">\n' +
+               '  <block type="controls_whileUntil" id="101">\n' +
+               '    <field name="MODE">WHILE</field>\n' +
+               '    <value name="BOOL">\n' +
+               '      <block type="logic_boolean" id="102">\n' +
+               '        <field name="BOOL">TRUE</field>\n' +
+               '      </block>\n' +
+               '    </value>\n' +
+               '    <statement name="DO">\n' +
+               '      <block type="turnLeft" id="103">\n' +
+               '        <next>\n' +
+               '          <block type="forwardAmount" id="104">\n' +
+               '            <value name="PARAM_0">\n' +
+               '              <block type="math_number" id="105">\n' +
+               '                <field name="NUM">1</field>\n' +
+               '              </block>\n' +
+               '            </value>\n' +
+               '            <next>\n' +
+               '              <block type="turnRight" id="106">\n' +
+               '                <next>\n' +
+               '                  <block type="forwardAmount" id="107">\n' +
+               '                    <value name="PARAM_0">\n' +
+               '                      <block type="math_number" id="108">\n' +
+               '                        <field name="NUM">3</field>\n' +
+               '                      </block>\n' +
+               '                    </value>\n' +
+               '                    <next>\n' +
+               '                      <block type="controls_if" id="109">\n' +
+               '                        <value name="IF0">\n' +
+               '                          <block type="logic_compare" id="110">\n' +
+               '                            <field name="OP">EQ</field>\n' +
+               '                            <value name="A">\n' +
+               '                              <block type="col" id="111"></block>\n' +
+               '                            </value>\n' +
+               '                            <value name="B">\n' +
+               '                              <block type="math_number" id="112">\n' +
+               '                                <field name="NUM">4</field>\n' +
+               '                              </block>\n' +
+               '                            </value>\n' +
+               '                          </block>\n' +
+               '                        </value>\n' +
+               '                        <statement name="DO0">\n' +
+               '                          <block type="writeToScreen" id="113">\n' +
+               '                            <value name="PARAM_0">\n' +
+               '                              <block type="text" id="114">\n' +
+               '                                <field name="TEXT">Konec poti</field>\n' +
+               '                              </block>\n' +
+               '                            </value>\n' +
+               '                            <next>\n' +
+               '                              <block type="controls_flow_statements" id="115">\n' +
+               '                                <field name="FLOW">BREAK</field>\n' +
+               '                              </block>\n' +
+               '                            </next>\n' +
+               '                          </block>\n' +
+               '                        </statement>\n' +
+               '                      </block>\n' +
+               '                    </next>\n' +
+               '                  </block>\n' +
+               '                </next>\n' +
+               '              </block>\n' +
+               '            </next>\n' +
+               '          </block>\n' +
+               '        </next>\n' +
+               '      </block>\n' +
+               '    </statement>\n' +
+               '  </block>\n' +
+               '</xml>\n'};
+           var exampleD = {blockly:
+               '<xml id="workspace2" style="display: none;">\n' +
+               '  <block type="controls_whileUntil" id="101">\n' +
+               '    <field name="MODE">UNTIL</field>\n' +
+               '    <value name="BOOL">\n' +
+               '      <block type="logic_compare" id="102">\n' +
+               '        <field name="OP">EQ</field>\n' +
+               '        <value name="A">\n' +
+               '          <block type="col" id="103"></block>\n' +
+               '        </value>\n' +
+               '        <value name="B">\n' +
+               '          <block type="math_number" id="104">\n' +
+               '            <field name="NUM">4</field>\n' +
+               '          </block>\n' +
+               '        </value>\n' +
+               '      </block>\n' +
+               '    </value>\n' +
+               '    <statement name="DO">\n' +
+               '      <block type="turnLeft" id="105">\n' +
+               '        <next>\n' +
+               '          <block type="forwardAmount" id="106">\n' +
+               '            <value name="PARAM_0">\n' +
+               '              <block type="math_number" id="107">\n' +
+               '                <field name="NUM">1</field>\n' +
+               '              </block>\n' +
+               '            </value>\n' +
+               '            <next>\n' +
+               '              <block type="turnRight" id="109">\n' +
+               '                <next>\n' +
+               '                  <block type="forwardAmount" id="111">\n' +
+               '                    <value name="PARAM_0">\n' +
+               '                      <block type="math_number" id="112">\n' +
+               '                        <field name="NUM">3</field>\n' +
+               '                      </block>\n' +
+               '                    </value>\n' +
+               '                  </block>\n' +
+               '                </next>\n' +
+               '              </block>\n' +
+               '            </next>\n' +
+               '          </block>\n' +
+               '        </next>\n' +
+               '      </block>\n' +
+               '    </statement>\n' +
+               '    <next>\n' +
+               '      <block type="writeToScreen" id="113">\n' +
+               '        <value name="PARAM_0">\n' +
+               '          <block type="text" id="114">\n' +
+               '            <field name="TEXT">Konec poti</field>\n' +
+               '          </block>\n' +
+               '        </value>\n' +
+               '      </block>\n' +
+               '    </next>\n' +
+               '  </block>\n' +
+               '</xml>\n'};
+
+           if (num==0)
+               task.displayedSubTask.loadExample(exampleA);
+           if (num==1)
+               task.displayedSubTask.loadExample(exampleB);
+           if (num==2)
+               task.displayedSubTask.loadExample(exampleC);
+           if (num==3)
+               task.displayedSubTask.loadExample(exampleD);
+       }
+   </script>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Dolžina poti</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+				<p class="easy">
+                    Izriši pot.
+                    <pre class="easy" id="program">program prepotovanaPot
+    <b><i>a</i></b> = 1<div id="loop" style="width: 20em; left: 1em; position: relative">ponavljaj, dokler ne bo <b><i>a</i></b> == 3<div style="background-color: #ffffff"><b><i>a</i></b> += 1<br>pojdi naprej za <b><i>a</i></b> polj</div><br></div></pre>
+                </p>
+                <p class="medium">
+                    Izriši pot in izpiši obvestila na zaslon.
+                <pre class="medium" id="program">program prepotovanaPot
+    <b><i>štPonovitev</i></b> = 3<div id="loop" style="width: 20em; left: 1em; position: relative">ponavljaj, dokler ne bo <b><i>štPonovitev</i></b> == 0<div style="background-color: #ffffff">pojdi naprej za <b><i>štPonovitev</i></b> polj<br><b><i>štPonovitev</i></b></i></b> -= 1</div><br></div>    izpiši <b><i>štPonovitev</i></b></pre>
+                </p>
+                <p class="hard">
+                Podan je končni položaj avta. Izberi program (obkroži črko), ki pravilno opisuje prepotovano pot. Možnih je več odgovorov.
+                    <br>Izberi:
+                    <br>
+                <table class="hard">
+                <tr>
+                <p class="hard">
+                    <button class="btn btn-info" onclick="checkAnwser(0)" style="margin: 15px; text-align: center;">A</button></p>
+                <pre class="hard" id="program">program prepotovanaPot    <div id="loop" style="width: 22em; left: 1em; position: relative">ponovi 4-krat<div style="background-color: #ffffff">obrni se levo<br>pojdi naprej za 1 polje<br>obrni se desno<br>pojdi naprej za 3 polja</div><br></div>    izpiši ‘<i>Konec poti</i>’</pre>
+                </tr>
+                <tr><p class="hard">
+                    <button class="btn btn-info" onclick="checkAnwser(1)" style="margin: 15px; text-align: center;">B</button></p>
+                    <pre class="hard" id="program">program prepotovanaPot    <div id="loop" style="width: 22em; left: 1em; position: relative">ponavljaj<div id="condition" style="width: 20em;">če se nahajaš v stolpcu št. 4<div style="background-color: #ffffff">izpiši ‘<i>Konec poti</i>’<br>ustavi potovanje</div><br></div><div style="background-color: #ffffff;">obrni se levo<br>pojdi naprej za 1 polje<br>obrni se desno<br>pojdi naprej za 3 polja</div><br></div></pre>
+                </tr>
+                <tr><p class="hard">
+                    <button class="btn btn-info" onclick="checkAnwser(2)" style="margin: 15px; text-align: center;">C</button></p>
+                    <pre class="hard" id="program">program prepotovanaPot    <div id="loop" style="width: 22em; left: 1em; position: relative">ponavljaj<div style="background-color: #ffffff;">obrni se levo<br>pojdi naprej za 1 polje<br>obrni se desno<br>pojdi naprej za 3 polja</div><div id="condition" style="width: 20em;">če se nahajaš v stolpcu št. 4<div style="background-color: #ffffff">izpiši ‘<i>Konec poti</i>’<br>ustavi potovanje</div><br></div><br></div></pre>
+                </tr>
+                <tr><p class="hard">
+                    <button class="btn btn-info" onclick="checkAnwser(3)" style="margin: 15px; text-align: center;">D</button></p>
+                    <pre class="hard" id="program">program prepotovanaPot    <div id="loop" style="width: 22em; left: 1em; position: relative">ponavljaj, dokler se ne nahajaš v stolpcu št. 4<div style="background-color: #ffffff">obrni se levo<br>pojdi naprej za 1 polje<br>obrni se desno<br>pojdi naprej za 3 polja</div><br></div>    izpiši ‘<i>Konec poti</i>’</pre>
+                </tr>
+                </table>
+                </p>
+			  </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

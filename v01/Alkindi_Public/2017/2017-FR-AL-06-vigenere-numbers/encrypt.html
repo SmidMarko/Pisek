@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2017-FR-AL-06</title>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+    function encrypt() {
+       var plain = $("#plain").val().toUpperCase();
+       var plainNoSpaces = "";
+       var keyDigits = [];
+       var nbDigits = 0;
+       var keyLength = parseInt($("#key_length").val());
+       for (var iDigit = 0; iDigit < keyLength; iDigit++) {
+          var keyDigit = $("#key_" + iDigit).val();
+          if (keyDigit == "") {
+             break;
+          }
+          keyDigits[iDigit] = parseInt(keyDigit);
+          nbDigits++;
+       }
+       var lines = plain.split("\n");
+       var cipher = "[\n";
+       var curPos = 0;
+       for (var iLine = 0; iLine < lines.length; iLine++) {
+          var line = $.trim(lines[iLine]);
+          if (line.length == 0) {
+             break;
+          }
+          cipher += "[[";
+          var words = line.split(" ");
+          for (var iWord = 0; iWord < words.length; iWord++) {
+             var word = $.trim(words[iWord]);
+             if (word.length == 0) {
+                break;
+             }
+             if (iWord != 0) {
+                //curPos++;
+                cipher += "], [";
+             }
+             for (var iLetter = 0; iLetter < word.length; iLetter++) {
+                if (iLetter != 0) {
+                   cipher += ", ";
+                }
+                plainNoSpaces += word.charAt(iLetter);
+
+                var letterRank = word.charCodeAt(iLetter) - "A".charCodeAt(0);
+                letterRank += keyDigits[curPos % keyDigits.length];
+                cipher += letterRank;
+                curPos++;
+             }
+          }
+          cipher += "]]\n";
+       }
+       cipher += "]";
+       $("#cipher").val(cipher);
+       $("#hash").val(hashString(plainNoSpaces));
+    }
+
+    function changeLength() {
+       $(".key_digit").hide();
+       var keyLength = parseInt($("#key_length").val());
+       for (var iDigit = 0; iDigit < keyLength; iDigit++) {
+          $("#key_" + iDigit).show();
+       }
+    }
+
+    function hashString(text) {
+      var value = 0;
+      for(var iLetter = 0; iLetter < text.length; iLetter++) {
+         var code = text.charCodeAt(iLetter);
+         value += code;
+         value = (value * 19) % 79197;
+      }
+      return value;
+    }
+
+    </script>
+    <style>
+      .key_digit {
+         width: 40px;
+         text-align: right;
+         display: none;
+      }
+      .key_length {
+         width: 60px;
+         text-align: right;
+      }
+      #key_0 {
+         display: inline;
+      }
+    </style>
+   </head>
+   <body>
+      <table>
+         <tr><td>Clair :</td><td><textarea id="plain" cols=40 rows=10></textarea></td></tr>
+         <tr><td>Longueur de la clé : </td>
+            <td><input id="key_length" class="key_length" type="number" min="1" max="10" step="1" value="1" onchange="changeLength()"/></td>
+         </tr>
+         <tr>
+            <td>Clé :</td>
+            <td>
+               <input id="key_0" class="key_digit" type="number" min="-13" max="13" step="1" value="0"/>
+               <input id="key_1" class="key_digit" type="number" min="-13" max="13" step="1" value="0" />
+               <input id="key_2" class="key_digit" type="number" min="-13" max="13" step="1" value="0" />
+               <input id="key_3" class="key_digit" type="number" min="-13" max="13" step="1" value="0" />
+               <input id="key_4" class="key_digit" type="number" min="-13" max="13" step="1" value="0" />
+               <input id="key_5" class="key_digit" type="number" min="-13" max="13" step="1" value="0" />
+               <input id="key_6" class="key_digit" type="number" min="-13" max="13" step="1" value="0" />
+               <input id="key_7" class="key_digit" type="number" min="-13" max="13" step="1" value="0" />
+               <input id="key_8" class="key_digit" type="number" min="-13" max="13" step="1" value="0" />
+               <input id="key_9" class="key_digit" type="number" min="-13" max="13" step="1" value="0" />
+            </td>
+         </tr>
+         <tr><td>Chiffré :</td><td><textarea id="cipher" cols=100 rows=12></textarea></td></tr>
+         <tr><td>Hash :</td><td><input id="hash" /></td></tr>
+      </table>
+      <p>
+      <input type="button" value="Chiffrer" onclick="encrypt()" />
+      </p>
+   </body>
+</html>

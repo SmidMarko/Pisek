@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>2019-FR-AL-02-shuffle-image</title>
+   <script>
+      window.stringsLanguage = 'fr';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'randomGenerator-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1', 'raphaelButton-1.0', 'shape-paths', 'drag_lib-2.0' ]);
+   </script>
+   <script class="remove" type="text/javascript">
+         var json = {
+            "id": "",
+            "language": "fr",
+            "version": "fr.01",
+            "authors": "",
+            "translators": [],
+            "license": "",
+            "taskPathPrefix": "",
+            "modulesPathPrefix": "",
+            "browserSupport": [],
+            "fullFeedback": true,
+            "acceptedAnswers": [],
+            "usesRandomSeed": false
+         };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Félicitations, vous avez réussi !",
+         error: "Ce n'est pas la bonne largeur.",
+         wrongOrder: "L'ordre des lignes dans chaque bloc n'est pas correct.",
+         tooManyAttempts: "Vous avez réussi, mais il est possible de trouver la largeur en moins de tentatives. Recommencez pour améliorer votre score.",
+         encryptedImage: "IMAGE MÉLANGÉE",
+         imageWidth: "LARGEUR DE L'IMAGE",
+         blocksOrder: "BLOCS DE 5 LIGNES",
+         orderOfRows: "Modifier l'ordre des\nlignes de chaque bloc :",
+         K: "Nombre de lignes pqr bloc \n(K) :",
+         insertVisualSpace: "Séparer les blocs :",
+         yes: "OUI",
+         no: "NON",
+         increment: "Augmenter ou \ndiminuer de :",
+         attempts: "Nombre de valeurs \nessayées :",
+         before: "avant",
+         after: "après" 
+      }
+   </script>
+
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      .consigne {
+         background: #F5F5F5;
+         border-radius: 5px;
+         font-size: 14px;
+         color: #30242B;
+         padding: 0;
+         margin: 20px;
+         margin-bottom: 0;
+      }
+      .consigne h3 {
+         display: block;
+         background: #88BB88;
+         font-size: 14px;
+         color: white;
+         border-radius: 5px 5px 0 0;
+         text-align: center;
+         margin: 0;
+         padding: 13px;
+      }
+      .consigne #text {
+         padding: 20px;
+         padding-bottom: 10px;
+      }
+      .consigne p {
+         margin-top: 0;
+      }
+      .consigne img {
+         display: block;
+         margin: 0 auto 1em auto;
+      }
+      #zone_2{
+         padding-top: 1px;
+      }
+      #paper {
+         margin: 20px auto;
+         width: 730px;
+         position: relative;
+      }
+      #error {
+         text-align: center;
+      }
+      #displayHelper_validate > input, #displayHelper_cancel > input {
+         border: none;
+         background-color: #88BB88;
+         color: white;
+         font-weight: bold;
+         font-size: 12px;
+         padding: 8px;
+         min-width: 180px;
+         margin: 0px 8px;
+      }
+      #displayHelper_cancel > input {
+         background-color: #30242B;
+      }
+      select {
+         background-color: white
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Image mélangée</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <div id="zone_1">
+            <div class="consigne">
+               <h3>VOTRE MISSION</h3>
+               <div id="text">
+                  <p>Vous avez intercepté les pixels d'une image, mais vous ne connaissez pas la largeur de celle-ci.</p>
+                  <p class="easy"><b>Trouvez la largeur de l'image</b> pour qu'elle s'affiche correctement.</p>
+                  <p class="medium hard">De plus, dans chaque bloc de 5 lignes de l'image, l'ordre des lignes dans le bloc a été mélangé, toujours de la même manière.</p>
+                  <p class="medium hard"><b>Trouvez la largeur de l'image, puis modifiez l'ordre des lignes</b> pour que l'image s'affiche correctement.</p>
+                  <p class="medium hard">Vous disposez d'une loupe que vous pouvez déplacer.</p>
+                  <p class="medium hard">Vous pouvez aussi séparer visuellement les blocs de 5 lignes pour bien les identifier.</p>
+                  <p class="hard"><b>Pour obtenir tous les points, réussissez en testant moins de 10 largeurs.</b></p>
+               </div>
+            </div>
+         </div>
+         
+         <div id="zone_2">
+            <div id="paper"></div>
+         </div>
+ 
+         <div id="error"></div>
+         <img src="icon.png" style="display:none">
+      </div>
+   </div>
+   <div id="solution">
+      <h2>Solution</h2>
+   </div>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-AL-05</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/randomGenerator-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/randomGenerator-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simpleKeyboard-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simpleKeyboard-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script>
+         var stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/alkindi_2016/2016-AL-05-substitution-cipher/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "license": "CC BY-SA 3.0",
+          "translators": [],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+        var taskStrings = {
+           success: "Bravo, vous avez réussi !",
+           error: "Le positionnement proposé est impossible.", 
+           incomplete: "Certaines lettres ne sont pas déchiffrées.",
+           outOfBoundsBeginning: "Un des mots dépasse la limite.",
+           outOfBoundsEnd: "One of the words is out of bounds.",  
+           overlap: "Deux mots se superposent.", 
+           deleteWord: "retirer"
+        };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #mainContainer {
+            cursor: default;
+            font-size: 24px;
+            margin: 30px;
+            display: inline-block;
+         }
+         .mouse {
+            font-family: Courier New, Courier, monospace;
+         }
+         #wordsContainer {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-align: center;
+            padding: 10px;
+         }
+         #wordsContainer table tr td {
+            padding-bottom: 2px;
+         }
+         #charContainer {
+            display: inline-block;
+            padding: 10px;
+         }
+         .cipherContainer {
+            margin-top: 20px;
+         }
+         .plainContainer {
+            background-color: lightgray;
+         }
+         .word {
+            border: 1px solid black;
+            padding: 4px;
+            margin-right: 12px
+         }
+         .selectedWord {
+            border: 2px solid blue;
+
+         }
+         .letterFromWord {
+            background-color: #EEE;
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+         }
+         .selectedWordLetters {
+            background-color: yellow;
+            border-top: 3px solid gray;
+            border-bottom: 3px solid gray;
+         }
+         .letterError {
+            background-color: #ffaaaa;
+         }
+         .deducedLetter {
+            color: #555555;
+         }
+         .deleteWord {
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: underline;
+            color: blue;
+            visibility: hidden;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Météo</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+	      Vous devez déchiffrer le texte suivant, où chaque lettre a été remplacée par une autre lettre, en <span class="easy">conservant</span><span class="medium">enlevant</span><span class="hard">enlevant</span> les espaces. Par exemple si on a choisi de remplacer A par R et B par U, ABABA devient RURUR. 
+            </p>
+            <p>
+	      <b>Placez les mots suivants à la bonne position pour déchiffrer le texte.</b> 
+	    </p>
+      	    <table style="margin: auto;">
+	      <tr>
+		<td>
+		  <b>Attention :</b> un mot ne peut pas être placé n'importe où. Par exemple, le mot "METEO" ne peut pas être codé en "POZLV" car le E ne peut par être rempacé par O et L à la fois ! De telles incohérences sont marquées en rouge.
+		</td>
+		<td class="easy" style="text-align:center;"><img src="meteo3.png"  width=70><small>impossible</small></td>
+		<td style="text-align:center;"><img src="meteo2.png" style="margin-left:10pt;margin-right:10pt"  width=70><small>possible</small></td>
+		<td style="text-align:center;"><img src="meteo1.png"  width=70><small>impossible</small></td>
+	      </tr>
+	    </table>
+	    <div id="mainContainer" unselectable="on">
+               <div id="wordsContainer">
+                  <span class="word mouse">ab</span>
+                  <span class="word mouse">cd</span>
+               </div>
+               <div id="charContainer">
+                  <div class="cipherContainer mouse" unselectable="on">
+                     ab
+                  </div>
+                  <div class="plainContainer mouse">
+                     <span id="cipher_0" unselectable="on">c</span><span id="cipher_0" unselectable="on">d</span>
+                  </div>
+                  <div class="cipherContainer" unselectable="on">
+                     ab
+                  </div>
+                  <div class="plainContainer">
+                     <span id="cipher_2" unselectable="on">c</span><span id="cipher_3" unselectable="on">d</span>
+                  </div>
+               </div>               
+               <p style='font-size:16px' display='hidden' id='allDecyrpted'>
+                   Toutes lettres ont été déchiffrées, vous pouvez valider.
+               </p>
+            </div>
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+         <h2>Solution</h2>
+<span class="easy">
+<p>
+Nous trouvons la positions des mots à l'aide de leur longueur :
+<ul>
+<li>"DECHIFFRER" a 10 lettres et correspond à "TSJQDKKGSG";
+<li>"SECRET" a 6 lettres et correspond à "OSJGSW";
+<li>"ALICE" a 5 lettres et correspond à "FZDJS".
+</ul>
+Et on voit apparaître le message clair : 
+<center><img src="solution_easy.png"> </center>
+</p>
+</span>
+<span class="medium">
+<p>Nous devons placer les mots connus un par un, mais il est important de bien choisir l'ordre dans lequel on essaie de les placer. Si on commence par essayer de placer "LE", on pourra le placer n'importe où sauf sur les lettres doubles, donc il est probable qu'on ne va pas le placer au bon endroit. Si au contraire on commence par le mot "SCIENTIFIQUE", qui est le plus long, on réduit rapidement le nombre de possibilités, donc il faut commencer par les mots longs car ils ont plus de contraintes (par exemple "SCIENTIFIQUE" a trois "I").</p>
+
+<p> On fait glisser le mot "SCIENTIFIQUE" jusqu'à ne plus avoir d'erreurs rouges, puis on fait de même avec "PROGRAMME". On reconnait alors rapidement les mots "UNE", "PAR" et "LE" : 
+<center><img src="solution_medium.png"> </center>
+</p>
+</span>
+<span class="hard">
+<p>
+Nous devons placer les mots connus un par un et il est important de bien choisir le premier. Le mot "EFFORT" impose une contrainte : la 2e et 3e lettres sont identiques, Le mot "TEXTE" quant à lui impose deux contraintes : d'une part la 2e et 5e lettre sont égales, d'autre part la 1ère et la 4e lettre sont égales. Il est donc plus avantageux de commencer par "TEXTE", même s'il est un peu plus court.</p>
+
+<p>On fait glisser et on place le mot "TEXTE" puis "EFFORT". Parmi les mots restants celui qui impose le plus de contraintes est "MOTS" qui impose deux contraintes : la 2e lettre est un "O" et la 3e est un "T". On le place et maintenant c'est le mot "MAIS" qui a deux contraintes : "M" et "S", ce qui ne lui laisse qu'une possibilité. Le mot "PLUS" a une seule position possible. On finit par les mots "AVEC", "ON" et "DE" :
+<center><img src="solution_hard.png"> </center>
+</p>
+</span>
+<h3>C'est de la crypto</h3>
+ Nous venons d'apprendre le chiffrement par <a href="https://fr.wikipedia.org/wiki/Chiffrement_par_substitution">substitution</a> : chaque lettre de l'alphabet est remplacée par une autre. L'exercice montre pourquoi la connaissance de quelques mots probables est un grand avantage lors du décryptage. D'autres méthodes de chiffrement sont aussi vulnérables au fait de deviner des mots. Le mathématicien Alain Turing a cryptanalysé la machine Enigma à l'aide de mots probables, appelés <a href="https://fr.wikipedia.org/wiki/Cryptanalyse_d'Enigma"=>cribs</a>. 
+	  </div> <!-- task-solution -->
+   </body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Pospravljanje šotorov</title>
+      <script>
+        window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/';
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'jwinf_css']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPrinter_lib.js" id="blocklyPrinter_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "naloge-ucbenik-stran67-1",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Luka Čušin",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+
+      window.stringsLanguage = 'sl';
+      var strings = {
+         moreThan100Moves: "Naredil/-a si več kot 100 potez.",
+         notAllCellsPainted: "Vsa polja nisi pobarval/-a pravilno. Poskusi še enkrat!",
+         allCellsPainted: "Čestitamo! Vsa polja si pravilno pobarval/-a!"
+      };
+      </script>
+      <script type="text/javascript" src="printer_task.js"></script>
+       <script>
+           function hint(id){
+               var hint = document.getElementById(id);
+               if (hint.style.display == "none") {
+                   hint.style.display = "block";
+               }
+               else {
+                   hint.style.display = "none";
+               }
+           };
+       </script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+        <h1>Pospravljanje šotorov</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+             <div id="taskIntro">
+                 <p>
+				 Taborniška noč je bila zelo pestra, 
+				 saj so taborniki prepevali in klepetali dolgo v noč. 
+				 Naslednje jutro je napočil čas za pospravljanje šotorov. 
+				 Vsi taborniški šotori so bili v zemljo pritrjeni s klini, 
+				 da jih ponoči ne bi odpihnilo. Ker se ponavadi klini zelo hitro izgubijo, 
+				 se je Tine odločil, da bo na koncu preštel, ali je bilo v vrečke pospravljenih 
+				 dovolj klinov, da bodo lahko naslednjič brez težav šotorili. Šotorov je bilo 10, 
+				 a so bili različno veliki, zato se je število klinov v vsaki vrečki razlikovalo. 
+				 Tine je tabornikom naročil, naj po tem, ko bo šotor pospravljen, na list zapišejo 
+				 koliko klinov so pospravil v vrečko. Tine je na koncu seštel število klinov 
+				 posameznih šotorov, da je ugotovil, ali je bilo v vrečke pospravljenih dovolj 
+				 klinov za naslednje šotorjenje. Če so taborniki v vrečko pospravili vsaj 75 klinov, 
+				 naj program izpiše besedo »DA«, če pa nekaj klinov manjka, naj izpiše »NE«.
+				
+                 </p>
+                 <p>
+                 <button type="button" class="btn btn-info" onclick="hint('hint1')">Namig</button>
+                 <div id="hint1" class="modal-content" style="display: none;" align="justify">
+                    <p>
+				<img src="index.html.png" height="20%" width="60%">
+                    </p>
+                 </div>
+                 </p>
+             </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+      </div><!-- task -->
+   </body>
+</html>

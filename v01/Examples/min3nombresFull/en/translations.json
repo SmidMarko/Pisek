@@ -1,0 +1,4 @@
+{
+    "not_an_int": "Solution answered `%s` which isn't an int.",
+    "wrong_answer": "Solution answered `%d`, expected answer was `%d`."
+}

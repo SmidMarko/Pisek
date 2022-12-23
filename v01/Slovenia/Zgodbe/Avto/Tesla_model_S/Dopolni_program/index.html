@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Avto</title>
+     <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyAvto_lib.js" id="blocklyAvto_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-marble/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+	  
+   </head>
+   <style>
+       #program {
+           font-family: 'Roboto Mono';
+           font-size: 13pt;
+           font-weight: normal
+       }
+       #loop {
+           background-color:  #f4b083;
+           width: 20em;
+           padding-left: 2em;
+       }
+       #condition {
+           background-color: #a8d08d;
+           width: 20em;
+           padding-left: 2em;
+       }
+   </style>
+   <script>
+       function checkAnwser1(num) {
+           var example = {blockly: '<xml id="workspace2" style="display: none">\n' +
+                        '  <block type="math_number" id="12" x="20" y="10">\n' +
+                        '    <field name="NUM">' + num + '</field>\n' +
+                        '  </block>\n' +
+                        '</xml>\n'};
+           task.displayedSubTask.loadExample(example);
+       }
+
+   </script
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Dopolni program</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+                <p class="easy">
+                    Izrisana je pot avtomobila. Želim nazaj na začetni položaj (U8). Dopolni (ali izberi ponujeno dopolnitev) program in izpiši obvestila na zaslon.
+                <pre class="easy" id="program">program prepotovanaPot
+    pojdi naprej za 12 polj
+    izpiši ‘<i>Želim nazaj</i>’
+    <b><i>štPolj</i></b> =
+    pojdi naprej za <b><i>štPolj</i></b> polj
+    pojdi naprej za <b><i>štPolj</i></b> polj
+    pojdi naprej za <b><i>štPolj</i></b> polj
+                </pre>
+                </p>
+                <p class="easy">
+                    Izberi:
+                    <br>
+                    <button id="A" type="button" class="btn btn-info" style="margin: 15px; text-align: center;" onclick="checkAnwser1(-12)">A) -12</button>
+                    <button id="B" type="button" class="btn btn-info" style="margin: 15px; text-align: center;" onclick="checkAnwser1(-6)">B) -6</button>
+                    <button id="C" type="button" class="btn btn-info" style="margin: 15px; text-align: center;" onclick="checkAnwser1(-4)">C) -4</button>
+                </p>
+                <p class="medium">
+                    Izriši pot.
+                <pre class="medium" id="program">program prepotovanaPot    <div id="loop" style="width: 20em; left: 1em; position: relative;">ponovi 7-krat<div style="background-color: #ffffff">pojdi naprej za 2 polji<br>obrni se desno<br>pojdi naprej za 1 polje<br>obrni se levo</div><br></div>
+                </pre>
+                </p>
+                <p class="hard">
+                    Podan je končni položaj avta. Izberi prepotovano (izrisano) pot, ki je določena v programu.
+                <pre class="hard" id="program">program prepotovanaPot    <div id="loop" style="width: 20em; left: 1em; position: relative;">ponovi 3-krat<div style="background-color: #ffffff">pojdi naprej za 4 polja<br>obrni se levo<br>pojdi naprej za 2 polji<br>obrni se desno</div><br></div>
+                </pre>
+                </p>
+                <p class="hard">
+                    Izberi:
+                    <br>
+                    <button id="A" type="button" class="btn btn-info" style="margin: 15px; text-align: center;" onclick="checkAnwser2(0)">A) pot izrisana s sivo barvo</button>
+                    <button id="B" type="button" class="btn btn-info" style="margin: 15px; text-align: center;" onclick="checkAnwser2(1)">B) pot izrisana z modro barvo</button>
+                    <button id="C" type="button" class="btn btn-info" style="margin: 15px; text-align: center;" onclick="checkAnwser2(2)">C) pot izrisana z rumeno barvo</button>
+                </p>
+			  </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

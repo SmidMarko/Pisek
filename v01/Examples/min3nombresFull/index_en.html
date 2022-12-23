@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Min3numbers Full</title>
+    <link class="task" type="text/css" rel="stylesheet" href="../../_common/modules/pemFioi/progTask.css">
+    <link class="task" type="text/css" rel="stylesheet" href="../../_common/modules/ext/bootstrap/css/bootstrap.min.css">
+    <script class="remove" src="../../_common/modules/ext/requirejs/require.js"></script>
+    <script type="text/javascript">
+      var modulesPath ='../../_common/modules';
+      var taskPlatformPath ='../../_common/task-platform';
+    </script>
+    <script type="text/javascript" src="../../_common/modules/pemFioi/progTaskConfig-1.0.js"></script>
+    <script type="text/javascript" class="remove">
+      // general metadata conforming the PEM API Documentation for getMetaData
+      var PEMTaskMetaData = {
+        // title is automatically fetched from the <title> markup
+        id : 'Examples/min3nombresFull',
+        license : 'MIT',
+        authors : ["France IOI"],
+        language : "en",
+        version: "0.1",
+        baseUrl : "",
+        supportedLanguages: ['*'],
+        hasUserTests: false, // can user build tests
+        testMode: false,
+        limits : {
+          "*": {time: 2000, memory: 16000},
+          "cpp": {time: 2000, memory: 20000}
+        }
+      }
+
+      // Metadata specific to the FranceIOI tasks
+      var FIOITaskMetaData = {
+        evalOutputScript: '',
+        // This lists all possible languages
+        // file extensions must follow the following conventions so that language is recognized automatically.
+        // Additionally, a .txt file is recognized as 'pseudo' language
+        solutionSources : {
+//          "firstSource" : [ "sol.cpp",  "sol.c",  "sol.java",  "sol.jvs",  "sol.pas",  "sol.py" , "sol.ml"]
+        },
+        taskSamples : ['sample0'],
+        graderSamples: ['test1','test2']
+      }
+    </script>
+  </head>
+<body ng-controller="taskController">
+    <h1>Min 3 numbers</h1>
+
+    <div id="task">
+      <p>
+      Choose your programming language :
+      <div select-lang-selector></div>
+      </p>
+      <!-- L'énoncé de la tâche est défini dans ce div. -->
+      <h3 id="statement">Statement</h3>
+      <p>The aim of this exercise is to read 3 numbers on the input, and to output the minimum of these 3 numbers.</p>
+
+      <h3 id="constraints">Limits</h3>
+      <div data-task-limits=""></div><!-- Affiche automatiquement les limites, définies dans PEMTaskMetaData. -->
+      <p>There are no other limits.</p>
+
+      <h3 id="input">Input</h3>
+      <p>Three numbers are given on the input, one per line, as the following example :</p>
+      <pre>72
+10
+25</pre>
+
+      <h3 id="output">Ouput</h3>
+      <p>The program must display on its output the smallest number, for exemple :</p>
+      <pre>10</pre>
+
+<h3>Program example</h3>
+
+<p>To help you, here's an example of program displaying reading the three numbers and displaying the second one :</p>
+<div select-lang="c" data-lang="c" data-show-source data-code='
+#include <stdio.h>
+
+int main() {
+    int nombre1;
+    int nombre2;
+    int nombre3;
+    scanf("%d", &nombre1);
+    scanf("%d", &nombre2);
+    scanf("%d", &nombre3);
+    printf("%d", nombre2);
+}
+'></div>
+<div select-lang="cpp" data-lang="cpp" data-show-source data-code='
+#include <iostream>
+
+int main() {
+    int nombre1;
+    int nombre2;
+    int nombre3;
+    std::cin >> nombre1;
+    std::cin >> nombre2;
+    std::cin >> nombre3;
+    std::cout << nombre2;
+}
+'></div>
+<div select-lang="python" data-lang="python" data-show-source data-code='
+nombre1 = int(input())
+nombre2 = int(input())
+nombre3 = int(input())
+print(nombre2)
+'></div>
+<img select-lang="blockly" src="example_blockly.png" style="height:180px">
+<img select-lang="scratch" src="example_scratch.png" style="height:250px">
+    
+    </div>
+
+<script type="text/javascript" class="task" id="animation">
+// Ici on peut définir différents paramètres côté utilisateur de la tâche.
+// Dans cet exemple, c'est utilisé seulement pour définir quels blocs sont
+// disponibles.
+
+// Note : actuellement désactivé pendant que le support d'includeBlocks dans
+// Scratch est finalisé, afin de pouvoir tester en attendant. À réactiver plus
+// tard...
+/*
+var taskSettings = {
+    blocklyOpts: {
+        includeBlocks: {
+            groupByCategory: true,
+            standardBlocks: {
+                includeAll: false,
+                wholeCategories: ["logic", "loops", "math", "lists", "dicts", "variables", "functions"],
+                singleBlocks: ['input_num', 'text', 'text_print']
+            }
+        }
+    }
+};*/
+</script>
+  </body>
+</html>

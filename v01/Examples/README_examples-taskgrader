@@ -1,0 +1,8 @@
+Ces exemples sont des exemples de tâches destinés à l'utilisation avec le
+taskgrader. Pour installer le taskgrader, utilisez le script
+'install-taskgrader.sh' présent dans le dossier _common; ou récupérez le
+taskgrader dans son repository GitHub:
+https://github.com/France-ioi/taskgrader
+
+La documentation du taskgrader et de ces exemples est présente dans le fichier
+README.md du taskgrader, ou alors sur la page GitHub référencée ci-dessus.

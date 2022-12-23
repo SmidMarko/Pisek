@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8"></meta>
+   <title>FR-2019-08-patterns</title>
+   <script>
+      window.stringsLanguage = 'sv';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js', 'grid-1.0',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0', 'graph-1.0'
+      ]);
+   </script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/visual-graph-1.1.js"></script>
+   <script class="remove" type="text/javascript">
+      var json = {
+         "id": "http://castor-informatique.fr/tasks/2019/FR-2019-08-patterns/",
+         "language": "sv",
+         "version": "sv.01",
+         "authors": "Arthur Charguéraud, Mathias Hiron, Marielle Léonard, France-ioi",
+         "translators": [],
+         "license": "CC BY-SA 3.0",
+         "taskPathPrefix": "",
+         "modulesPathPrefix": "",
+         "browserSupport": [],
+         "fullFeedback": true,
+         "acceptedAnswers": [],
+         "usesRandomSeed": false
+       };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Bravo, du klarade det!",
+         missingPattern: function(n) {
+            return "Du ska placera "+n+" blå formar på bakgrundsmönstret."
+         },
+         almost: function(n) {
+            return "Du har klarat att placera "+(n - 1)+" formar. Försök få dit också den sista."
+         },
+         errorMismatch: "De två rödmarkerade cellerna har olika innehåll.",
+         rotationText: "Vrid formarna.",
+         spotOccupied: "Formarna får inte överlappa."
+      };
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      #paper {
+         margin-top: 1em;
+         touch-action: none;
+      }
+      #error {
+         text-align: center;
+      }
+
+   </style>
+</head>
+
+<body>
+   <div id="task">   
+      <h1>Samma mönster</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <div id="zone_1">
+            <div class="consigne">This
+               <p>Placera de <strong><span class="nbPatterns"></span></strong> blå formarna på bakgrundsmönstret.</p>
+               <p>Varje form ska sedan innehålla samma mönster.</p>
+               <p class="hard" style="font-weight:bold">Du kan vrida på formarna mellan varje steg. Tänk på att innehållet i formarna inte får vara spegelvänt.</p>
+         </div>
+         </div>
+         <div id="zone_2">
+            <div id="paper"></div>
+         </div>
+         <div id="error"></div>
+      </div>
+      <img src="icon.png" style="display:none">
+      <img src="trash.png" style="display:none" id="trash">
+      <img src="wifi.png" style="display:none" id="wifi">
+      <img src="usb.png" style="display:none" id="usb">
+      <img src="bluetooth.png" style="display:none" id="bluetooth">
+   </div>
+
+   <!-- task -->
+
+   <div id="solution">
+      <h2>Lösning</h2>
+          <p>
+            Man kan använda en kombination av två olika tillvägagångssätt för att lösa problemet :
+            <ol>
+               <li>Prova på måfå några olika placeringar för den första formen, och sök sedan igenom bakgrundsmönstret för att hitta samma mönster på fler ställen.</li>
+               <li>Analysera bakgrundmönstrets egenskaper för att kunna begränsa mönstersökningarna till sådana som det är möjligt att erhålla begärt antal gånger.</li>
+            </ol>
+          </p>
+
+          <div class="easy">
+           <p>Det första sättet är enkelt i dett fall. Det räcker att prova med formen i någon av de första positionerna, så finner man lätt 3 ytterligare upprepningar av samma mönster.</p>
+           <img src="sol_easy.png">
+           <p>Det andra sättet består i att lägga märke till att bara den gula symbolen finns minst fyra gånger i den undre raden av bakgrundsmönstret, så att ramen alltså måste placeras med gul symbol nere till höger. Ovanför de gula symbolerna på undre raden finns i två fall en grön symbol, och i fyra fall en rosa. Enda möjligheten är alltså att placera ramen med rosa symboler ovanför de gula.</p>
+          </div>
+
+         <div class="medium">
+           <p>Här vinner man på att börja med lite analys. De två rutorna nertill i varje form måste tvunget täcka ett par av rutorna i det rödmarkerade området.</p>
+         <img src="sol_medium_1.png">
+           <p>I detta område är det bara paret "gul symbol följd av rosa symbol" som uppträder minst 5 gånger. Man behöver inte bry sig om de andra, men upplysningsvis är här antalen för övriga kombinationer.</p>
+           <img src="sol_medium_2.png">
+           <p>När man nu vet att de två nedersta rutorna i formen ska ligga över gula och violetta symboler är det ganska lätt att placera ut formarna utan överlappning över bakgrundsmönstret, med början uppifrån.</p>
+           <img src="sol_medium.png">
+         </div>
+
+         <div class="hard">
+           <p>Vi börjar igen med det andra sättet. Den blå formen har fyra rutor, men det finns bara tre symboler : gul, grön och rosa. Det är alltså en av symbolerna som måste finnas två gånger i varje blå ram. Eftersom det bara finns 7 rosa och 8 gula symboler men 10 gröna vet vi alltså att det är den gröna som vi ska ha två av.</p>
+           <p>Sen kan man fråga sig vilken symbol som ska ligga mitt på långsidan i formen.</p>
+           <ul>
+           <li>Den kan inte vara gul, eftersom det utom hörnrutorna i bakgrundmönstret (som inte kan komma ifråga) bara finns fem gula symboler, varav tre ligger i rad och inte kan ingå i tre olika former.</li>
+           <li>Den kan inte heller vara grön, eftersom den andra gröna symbolen då måste ligga som granne och det bara finns 3 sådana par i bakgrundmönstret fast man behöver fem.</li>
+           </ul>
+           <p>Efter denna utredning vet vi alltså att vi i varje blå form ska ha en rosa symbol mitt på långsidan, plus en gul och två gröna, men det räcker ännu inte för att vi ska finna lösningen.</p>
+           <p>Man kan råka placera den första formen så oturligt att det inte går att hitta samma mönster någon annanstans hur man än vrider formen.</p>
+           <img src="sol_hard_1.png">
+           <p>Man kan också komma längre, men råka placera en form (den nere till vänster) så blockerande att man inte kan få in en femte.</p>
+           <img src="sol_hard_2.png">
+           <p>Genom att passa in formarna bättre kan man dock till sist finna lösningen.</p>
+           <img src="sol_hard.png">
+         </div>
+
+         <h2>Det är datavetenskap!</h2>
+           <p>I datavetenskapen liksom i detta lilla spel är det viktigt att utnyttja <b>begränsningar</b>, dvs villkor som nödvändigtvis måste vara uppfyllda. På detta sätt kan man mycket signifikant begränsa antalet lösningsförsök.</p>
+   </div>
+   <!-- task-solution -->
+</body>
+
+</html>

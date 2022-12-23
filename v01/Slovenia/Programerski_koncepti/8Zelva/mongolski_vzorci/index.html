@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Želva</title>
+	<!-- source: https://wettbewerb.jwinf.de/contents/4207%252F1683038308836975982%252F15109297755723127 -->
+      <script>
+        window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../_common/modules/';
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'jwinf_css']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+	  <script class="remove" type="text/javascript" src="blocklyTurtle_lib.js" id="blocklyTurtle_lib">
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "training-turtle-geometry",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="turtle_task.js"></script>
+      
+
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Mongolski vzorci</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+                <p class="easy">
+                    Vzorec šotora mongolov je sestavljen iz večjega in manjšega kvadrata. Večji kvadrat ima dolžino stranice, ki jo določa parameter, manjši kvadrat pa ima dolžino stranice enako polovici dolžine stranice večjega kvadrata. Pomagaj mongolom in nariši vzorec šotora.
+                </p>
+                <p class="easy">
+                    <img src="tepee.png" height="100px">
+                </p>
+                <p class="medium">
+                    Mongoli bodo postavili nov šotor, kjer bodo lahko hranili konje. Pomagaj mongolom in nariši vzorec, kot ga prikazuje slika
+                </p>
+                <p class="medium">
+                    <img src="vzorec1.png" height="200px">
+                </p>
+                <p class="hard">
+                    Mongoli so pridobili večje število konj, zato potrebujejo nove šotore. Pomagaj mongolom in nariši celotni vzorec, kot ga prikazuje slika
+                </p>
+                <p class="hard">
+                    <img src="vzorec2.png" height="200px">
+                </p>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+      </div><!-- task -->
+   </body>
+</html>
+ 

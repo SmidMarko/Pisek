@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Zimsko seštevanje</title>
+      <script>
+        window.stringsLanguage = 'sl';
+      </script>
+       <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/';
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'jwinf_css']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPrinter_lib.js" id="blocklyPrinter_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "zimska avantura zimsko sestevanje",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Luka Čušin",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+
+      window.stringsLanguage = 'sl';
+      var strings = {
+         moreThan100Moves: "Naredil/-a si več kot 100 potez.",
+         notAllCellsPainted: "Vsa polja nisi pobarval/-a pravilno. Poskusi še enkrat!",
+         allCellsPainted: "Čestitamo! Vsa polja si pravilno pobarval/-a!"
+      };
+      </script>
+      <script type="text/javascript" src="printer_task.js"></script>
+       <script>
+           function hint(id){
+               var hint = document.getElementById(id);
+               if (hint.style.display == "none") {
+                   hint.style.display = "block";
+               }
+               else {
+                   hint.style.display = "none";
+               }
+           };
+       </script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+        <h1>Zimsko seštevanje</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+             <div id="taskIntro">
+                 <p class="easy">
+					 Igranja skrivalnic je konec in čas je za novo zimsko preizkušnjo. 
+					 Tabornik Tine bo moral pokazati, kako dober je v seštevanju. 
+					 Od svojega vodnika je dobil dve številki a in b, pri čemer je b 
+					 vedno manjši od a. Dobil je nalogo, da izračuna vsoto vseh številk, 
+					 ki ležijo med številkama a in b, vključno z njima. Pri računanju se 
+					 je zmotil, zato potrebuje tvojo pomoč. Pomagaj popraviti program tako, 
+					 da bo pravilno izračunal vsoto.
+					 Do rezultata lahko prideš na tri različne načine, najdi jih!
+                 </p>
+                 <p class="easy">
+                     <button type="button" class="btn btn-info" onclick="hint('hint1')">Izziv!</button>
+                     <div id="hint1" class="modal-content" style="display: none;" align="justify">
+                        <p align="justify">Program lahko popravimo tako, da:
+                        <ol align="justify">
+                            <li>inicializiramo vsoto na <code>b</code> namesto na <code>a</code>;</li>
+                            <li>inicializiramo vsoto na 0 in popravimo pogoj v <code>dokler</code> na <code>a &le; b</code>;</li>
+                            <li>zamenjamo vrstni red stavkov v zanki.
+                        </ol>
+                        </p>
+                     </div>
+                 </p>
+                 <p class="medium">
+					Čestitke, Tine je prvo nalogo odlično opravil. 
+					Sedaj je dobil novi dve številki a in b. Tokrat je številka a večja od številke b. 
+					Pomagaj popraviti program tako, 
+					da bo tabornik pravilno izračunal vsoto vseh številk, ki ležijo med a in b.
+                 </p>
+                 <p class="hard">
+                    Številka a je ponovno večja od b, vendar je tokrat število kock omejeno. 
+					Pomagaj Tinetu popraviti program in pravilno izračunati vsoto, 
+					saj se bo po opravljeni nalogi lahko odšel sankati!
+                 </p>
+             </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+      </div><!-- task -->
+   </body>
+</html>

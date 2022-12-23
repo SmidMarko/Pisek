@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Plesni par</title>
+     <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPles_lib.js" id="blocklyPles_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-marble/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+	  
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Ples parov v ledeni dvorani</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+				<p class="easy">
+                    Plesalke in plesalci so se zbrali v ledeni dvorani, da bodo zaplesali v parih. Plesalec naj pripleše do plesalke, jo dvigne in z njo pripleše do oranžnega polja. Tam naj plesalko odloži in sam pripleše do rumenega polja.
+                    Enak ples naj zapleše drugi plesni par. Pomagaj plesnima paroma sestaviti koreografijo!
+                </p>
+                <p class="medium">
+                    Plesalke in plesalci bodo zaplesali do sredine ledene dvorane. Plesalec naj pripleše do plesalke, jo dvigne in z njo pripleše do oranžnega polja. Tam naj plesalko odloži in sam pripleše do rumenega polja.
+                    Enak ples naj zapleše drugi plesni par. Pri sestavljanju koreografije uporabi pogojni stavek s sestavljenim pogojem. Pomagaj plesnima paroma sestaviti koreografijo!
+                </p>
+                <p class="hard">
+                    V ledeno dvorano je priplesal nov plesni par. Plesalec naj pripleše do plesalke, jo dvigne in z njo pripleše do oranžnega polja. Tam naj plesalko odloži in sam pripleše do rumenega polja.
+                    Enak ples naj zaplešejo vsi plesni pari. Pri sestavljanju koreografije uporabi pogojni stavek s sestavljenim pogojem. Pomagaj plesnim parom sestaviti koreografijo!
+                </p>
+                <p class="medium hard">
+                    <img src="logic_operation.png" width="350px">
+                </p>
+			  </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

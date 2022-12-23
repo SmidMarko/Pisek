@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Pot do tabora</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-repeat-nested-marbles -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-nested-marbles/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Luka Čušin",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+		 
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Pot do tabora</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div class="easy">
+			<p>
+				Tinetova pot do tabora je še dolga. 
+				Kolo je skril za bližje drevo in se peš odpravil skozi gozd.
+			</p>
+            </div>
+			<div class="medium">
+			<p>
+				Ojoj, Tine se je v gozdu izgubil. Poti do jase se ne spomni več dobro, ker ga je lani tja vodila tabornica Lana.
+				K sreči je po nekaj minutah iskanja zagledal markacijo.
+			</p>
+            </div>
+			<div class="hard">
+			<p>
+				Po dobri uri hoje je Tine končno zagledal tabor.
+			</p>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

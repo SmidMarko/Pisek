@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+
+<head>
+   <meta charset="utf-8"></meta>
+   <title>2019-FR-02-registers</title>
+   <script>
+      window.stringsLanguage = 'sv';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js', //'grid-1.0',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1', 'randomGenerator-1.0', 'drag_lib-2.0',
+         'graph-1.0','visual-graph-1.0','graph-mouse-1.0', "shape-paths"
+      ]);
+   </script>
+   <script class="remove" type="text/javascript">
+      var json = {
+         "id": "http://castor-informatique.fr/tasks/2019/FR-2019-02-registers/",
+         "language": "sv",
+         "version": "sv.01",
+         "authors": "Arthur Charguéraud, Mathias Hiron, France-ioi",
+         "translators": [],
+         "license": "CC BY-SA 3.0",
+         "taskPathPrefix": "",
+         "modulesPathPrefix": "",
+         "browserSupport": [],
+         "fullFeedback": true,
+         "acceptedAnswers": [],
+         "usesRandomSeed": false
+       };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Bravo, du klarade det!",
+         tooManyMarkers: function(max) {
+            return "Du har slut på stenar i förrådet. Klicka på stenarna för att ta tillbaka dem till förrådet.";
+         },
+         sumGreaterThan: function(max) { 
+            return "Du har slut på stenar i förrådet. Klicka på stenarna för att ta tillbaka dem till förrådet.";
+         },
+         // REVIEW[ARNAUD]: factoriser les messages ?
+         noMarkerBelow: "För att lägga en sten i den röda cirkeln krävs att det ligger stenar i alla cirklar på nivån närmast under.",
+         placed: "Lagda stenar",
+         failure: "Den översta cirkeln innehåller ingen sten.",
+         reserve: "Förråd av stenar:",
+         empty: "Tomt...",
+         takeBack: "Klicka på stenarna för att ta tillbaks dem till förrådet.",
+         validateNow: "Du klarade uppgiften, klicka på knappen Kontrollera svaret.",
+         undo: "Ångra senaste draget"
+
+      };
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      #paper {
+         margin: 1em auto;
+      }
+      #error {
+         text-align: center;
+      }
+      .task-rules li {
+         margin-top: 1em;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Sten till toppen</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <div id="zone_1">
+            <div class="consigne">
+               <p>
+                  Uppgiften är att placera en sten i den allra översta cirkeln.
+               </p>
+               <p>Klicka på en cirkel för att lägga dit eller ta bort<span class="easy medium"> en sten</span><span class="hard"><span style="font-weight:bold"> så många stenar som talet i cirkeln anger</span></span>.</p>
+
+               <p>För att placera <span class="easy medium"> en sten</span><span class="hard"> stenar</span> i en cirkel så måste det ligga stenar i alla cirklar en nivå ner. Sedan kan dessa läggas tillbaka i förrådet.
+               </p>
+         </div>
+         </div>
+         <div id="zone_2">
+             <div id="paper"></div>
+         </div>
+         <div id="error"></div>
+      </div>
+      <img src="icon.png" style="display:none">
+   </div>
+
+   <!-- task -->
+
+   <div id="solution">
+      <h2>Lösning</h2>
+          <div class="easy">
+           <p>Man börjar att lägga stenar i vänstra delen, med början nerifrån.</p>
+           <img src="sol_easy_1.png">
+           <p>Nu kan man ta tillbaka de två nedre stenarna, vilka man behöver för att på samma sätt fylla höga delen.</p>
+           <img src="sol_easy_2.png">
+           <p>Nu kan man igen ta tillbaka de undre stenarna för att till sist placera en av dem på toppen.</p>
+           <img src="sol_easy_3.png">
+          </div>
+
+         <div class="medium">
+           <p>Man måste börja med att fylla de tre cirklarna som pekar mot samma övre cirkel. Det finns bara fyra stenar totalt, och om man inte börjar här kan man aldrig fullfölja detta steg senare.</p>
+           <img src="sol_medium_1.png">
+           <p>Sedan måste man försöka fylla den cirkel som är rakt under den översta, eftersom även den har tre pilar som pekar mot sig. Man koncentrerar sig alltså på centralpartiet, och måste angripa från vänster, eftersom man där behöver alla de tre stenar man nu har kvar.</p>
+           <img src="sol_medium_2.png">
+           <p>Med hjälp av två återtagna stenar kan man nu lätt fullborda centralpartiet.</p>
+           <img src="sol_medium_3.png">
+           <p>Sedan, med tre återtagna stenar, kan man först ta vänsterkanten och sedan, med två stenar, högerkanten. Så har man en sista sten att lägga på toppen.</p>
+           <img src="sol_medium_4.png">
+         </div>
+
+         <div class="hard">
+           <p>För att kunna placera en sten på den gula cirkeln med nummer <b>1</b>, behöver man som synes av cirklarna under den 3+4+1=8 stenar. Eftersom man bara har 8 stenar totalt måste man alltså börja här.</p>
+           <img src="sol_hard_1.png">
+           <p>Man kan ta tillbaka 7 stenar, och måste nu gå till det gula området nedan till höger där man behöver alla dessa 7.</p>
+           <img src="sol_hard_2.png">
+           <p>Även på nivån ovanför behövs 7 stenar.</p>
+           <img src="sol_hard_3.png">
+           <p>Nu kan man ta tillbaka 6 stenar, och utnyttja dem där de alla behövs.</p>
+           <img src="sol_hard_4.png">
+           <p>Man tar tillbaka 5 stenar, och utnyttjar dem där återigen alla 5 behövs.</p>
+           <img src="sol_hard_5.png">
+           <p>Man tar nu tillbaka 4 stenar, vilka behövs till höger i mitten.</p>
+           <img src="sol_hard_6.png">
+           <p>Med tre stenar klarar man mittersta vänstra området, och med de kvarvarande 2 kan man avsluta!.</p>
+           <img src="sol_hard_7.png">
+
+         </div>
+
+      <h2>Det är datavetenskap !</h2>
+
+         <p>Detta problem visar en en struktur organiserad som ett <b>träd</b>, som man får föreställa sig uppochnervänt. <b>Roten</b> är överst, och <b>löven</b> nederst, medan det däremellan finns <b>noder</b> med förgreningar representerade av pilar. Trädstrukturer är extremt användbara inom datavetenskapen.</p>
+         
+         <p>Stenflyttningsträdet är inspirerat av problemet att effektivt utnyttja registren i en mikroprocessor, t.ex. vid beräkningen av 
+         ett aritmetiskt uttryck. Uttrycket (3 - 4) &times; (1 + 2) kan representeras av ett träd som detta :
+         
+         </p>
+         <img src="sol_expression_tree.png" style="width:300px">
+         <p>
+         Under en beräkning måste man lagra mellanresultat, så att man t.ex. börjar med att beräkna 3 - 4 och lagrar resultatet -1. Sedan kan man beräkna 1+2 och lagra 3 som mellanresultat.
+         </p>
+         <p>
+         Problemets stenar motsvarar <i>registren</i> i en mikroprocessor : speciella minnesplatser som snabbt kan utnyttjas för tillfälliga mellanresultat. Om man behöver lagra fler värden än man har plats för i registren tvingas man använda normala minnesceller som det går mycket långsammare att skriva till eller läsa från.
+        
+       
+         Liksom med stenarna i detta problem går det att välja en ordning för beräkningarna som minimerar antalet register som behövs, vilket reducerar antalet läs/skriv-operationer till minnet, och i slutänden snabbar upp beräkningen. En vanlig algoritm för detta ändmål kallas <a href="https://en.wikipedia.org/wiki/Sethi%E2%80%93Ullman_algorithm" target="_blank">Sethi-Ullman</a>.
+         </p>
+
+   </div>
+   <!-- task-solution -->
+</body>
+
+</html>

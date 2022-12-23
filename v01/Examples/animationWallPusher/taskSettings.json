@@ -1,0 +1,14 @@
+{"checker": "tests/gen/newcheck.cpp",
+"checkerDeps": [
+    {"name": "jsonxx.cc",
+     "path": "$ROOT_PATH/_common/jsonxx/jsonxx.cc"},
+    {"name": "jsonxx.h",
+     "path": "$ROOT_PATH/_common/jsonxx/jsonxx.h"},
+    {"name": "common.h",
+     "path": "$ROOT_PATH/_common/checkers/common.h"},
+    {"name": "checker_commands.h",
+     "path": "$ROOT_PATH/_common/checkers/checker_commands.h"},
+    {"name": "checker_robot.h",
+     "path": "$ROOT_PATH/_common/checkers/checker_robot.h"}
+    ],
+"correctSolutions": [{"path": "$TASK_PATH/tests/gen/sol-ismael-opt.c", "grade": 100, "language": "c"}]}

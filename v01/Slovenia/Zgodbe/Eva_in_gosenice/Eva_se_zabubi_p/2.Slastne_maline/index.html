@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Pišek priskoči na pomoč</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-while-marbles -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+            var json = {
+                "id": "http://castor-informatique.fr/questions/algorea_training/training-while-marbles/",
+				"language": "sl",
+				"version": "sl.01",
+				"authors": "KSpenko",
+				"translators": [],
+				"license": "",
+				"taskPathPrefix": "",
+				"modulesPathPrefix": "",
+				"browserSupport": [],
+				"fullFeedback": true,
+				"minWidth": "auto"
+			};
+        </script>
+	  
+        <img src="green_robot.png" style="display:none" />
+		
+        <img src="obstacle.png" style="display:none" />
+        <img src="green.png" style="display:none" />
+		
+        <img src="marble.png" style="display:none" />
+        <img src="hole.png" style="display:none" />
+        <img src="pill.png" style="display:none" />
+		
+		<!-- manjkajo se Pill in Platform -->
+		 
+        <script type="text/javascript" src="task.js"></script>
+    </head>
+   
+    <body onresize="task.displayedSubTask.updateScale()">
+        <div id="taskIntro" style="width: 100%">
+            <h1>Pišek priskoči na pomoč</h1>
+			<div id="taskIntro">
+					Na domačiji, kjer živi Pišek poteka selitev gnezd. Nekatera gnezda so že preseljena, vendar so pri selitvah pozabili na jajca. Pišek se odloči pomagati in vrniti jajca v svoja gnezda. 
+			</div>
+			<p class="easy">
+			Pišek se najprej loti jajc, ki pripadajo goskam. S pomočjo programskih blokov napiši program, ki bo vodil Piška. Pišku boš lahko pomagal z ukaznimi bloki, ki jih najdeš poleg naloge. Zraven običajnih ukazov za premikanje in pobiranje jajc, imaš na voljo tudi nov sklop programskih blokov, ki se imenujejo zanke. Slednje bloke uporabljaš, če želiš, da se neko dejanje ponovi večkrat. Primer: namesto, da štirikrat uporabiš blok premakni se desno, uporabiš zanko ponavljaj 4x (število lahko poljubno spremeniš). 
+			</p>
+			
+			<p class="medium">
+			Goske so bile nad Piškovo pomočjo več kot navdušene, Pišek se je odločil pomagati še račkam. S pomočjo programskih blokov napiši program, ki bo vodil Piška. Tako kot na prvi stopnji imaš na voljo zanke, ki zmanjšajo število uporabljenih blokov. 
+            </p>
+			
+			<p class="hard">
+			Tako, preostala so le še gnezda kokoši. Teh je nekoliko več, zato bo moral biti Pišek pri pospravljanju previden, da jajc ponesreči ne pomeša med seboj. S pomočjo programskih blokov napiši program, ki bo vodil Piška. Tako kot na prvi in drugi stopnji imaš na voljo zanke, ki zmanjšajo število uporabljenih blokov. Namig: včasih ni slabo začeti na koncu!
+            </p>
+			<div id="tabsContainer"></div>
+          
+                <div id="gridContainer"></div>
+                <div id="blocklyLibContent"></div>
+            </div>
+
+        </div><!-- task -->
+    </body>
+</html>
+ 

@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2015-FR-AL-02-secret-sharing</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2015/2015-AL-02-sharing-secret/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "translators": [],
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": true
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #anim_container {
+            text-align: center;
+         }
+         #anim {
+            display: inline-block;
+            margin-bottom: 20px;
+         }
+         #nb_optimal {
+            font-weight: bold;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Partage de mot de passe</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <img class="easy" src="exemple2.png" style="float:right;margin:10px;height:75px">
+            <img class="medium hard" src="exemple3.png" style="float:right;margin:10px;height:75px">
+            <div class="easy">
+               <p>
+                  Aïcha et Boris ont écrit un mot de passe sur un bout de papier et veulent le <b>découper de façon à avoir chacun une moitié de l'information</b>.
+               </p>
+			
+		   <p>
+			  Dans l'exemple ci-contre, chacun connaît une lettre et un chiffre, soit 26  &centerdot;10 = 260 possibilités.
+		   </p>
+            </div>
+			
+            <div class="medium">
+               <p>
+                  Aïcha, Boris et Céline ont écrit un mot de passe sur un bout de papier et veulent le <b>découper de façon à avoir chacun un tiers de l'information</b>.
+               </p>
+			
+		   <p>
+			  Dans l'exemple ci-contre, chacun connait une lettre et un chiffre binaire, soit 26 &centerdot; 10 = 260 possibilités.
+		   </p>
+            </div>
+			
+			
+			
+            <div class="hard">
+               <p>
+                  Aïcha, Boris et Céline ont écrit un mot de passe sur un bout de papier et veulent le découper en trois. Il n'est pas possible de faire en sorte que chaque partie contienne autant d'information.
+               </p>
+               <p>
+                  Ils souhaitent donc le <b>découper de sorte que, si une personne malveillante trouve deux des trois morceaux, il lui reste un maximum de mots de passe à tester.</b>
+               </p>
+
+			   <p>
+				  Dans l'exemple ci-contre, une personne qui trouve deux morceaux doit encore trouver une lettre et un chiffre, soit 26&centerdot;10 = 260 choix de mots de passe. C'est le mieux qu'on peut faire.
+			   </p>
+			   
+            </div>
+            <p>
+              Ci-dessous, le format du mot de passe (connu de tous) est 
+              <span class="easy">CLCLLL</span>
+              <span class="medium">LBBLLBBBBBBBBBB</span>
+              <span class="hard">CLCCLCLCCL</span>, où :
+               <ul>
+                  <li> L est une lettre : 26 possibilités</li>
+                  <li class="easy hard"> C est un chiffre : 10 possibilités.</li>  
+                  <li class="medium"> B est un chiffre binaire (bit) : 2 possibilités.</li> 
+               </ul>
+            </p>
+            <p>
+               Formez <span class="nbColors"></span> morceaux colorés comme dans l'exemple. Sélectionnez une couleur, puis cliquez sur des cases pour les colorier de cette couleur ou les remettre en blanc.
+            </p>
+            <div id="anim_container">
+               <div id="anim"></div>
+            </div>
+         </div>
+         <img src="icon.png" style="display:none">
+      </div><!-- task -->
+      <div id="solution">
+
+         <h2>Solution</h2>
+         <div class="easy">
+            <p>
+               Voici un exemple de solution pour cette version :
+            </p>
+            <p style="text-align:center">
+              <img src="2etoiles.png"  style="width:300px"/>
+            </p>
+            <p>
+               Le mot de passe contient 4 lettres et 2 chiffres. On peut le découper en deux morceaux de 2 lettres et 1 chiffre chacun.
+            </p>
+          <p>
+          <b>Pourquoi ça c'est une solution ?</b> Parce qu'elle protège le mieux dans le cas où soit Aïcha soit Boris décident de tricher ou si un ennemi potentiel se procure un des deux morceaux. Si Boris veut tricher il a  26<sup>2</sup>
+&centerdot;10 = 6760 possibilités à tester pour trouver le secret qui lui manque. Si Aïcha décide de tricher elle a tout autant de possibilités. Au contraire, si on avait donné la moitié de gauche à Aïcha (de format CLC) et la moitié de droite à Boris (de format LLL) on aurait encouragé Boris à tricher. En effet, il aurait eu seulement 26&centerdot;10<sup>2</sup>=2600 possibilités à tester.  
+          </p>
+         </div>
+
+         <div class="medium">
+            <p>
+               Voici un exemple de solution pour cette version :
+            </p>
+            <p style="text-align:center">
+               <img src="3etoiles.png" style="width:600px" />
+            </p>
+            <p>
+              Le mot de passe contient 3 lettres et 12 chiffres binaires. On peut le découper en trois morceaux de 1 lettre et 4 chiffres chacun.
+            </p>
+            <p>
+          <b>Pourquoi ça c'est une solution ?</b> Parce qu'elle protège le mieux dans le cas où deux des trois personnes décident de tricher ou si un ennemi potentiel se procure deux des trois morceaux. Si Aïcha et Boris décident de tricher ils doivent deviner le secret gardé par Céline, qui comprend une lettre et quatre chiffres binaires, soit 26&centerdot;2<sup>4</sup> = 416 possibilités à tester. Si Aïcha et Céline s'allient contre Boris elles ont tout autant de possibilités à tester, et rien ne change pour un accord de Boris et Céline contre Aïcha. Au contraire, si on avait donné le tiers de gauche à Aïcha (de format LBBLL), le tiers du milieu à Boris (de format BBBBB) et le tiers de droite à Céline (de format BBBBB) on aurait encouragé Aïcha à collaborer avec Boris contre Céline ou avec Céline contre Boris. En effet, si Aïcha et Boris collaboraient ils auraient pu tester toutes les combinaisons possibles pour le secret de Céline, soit 2<sup>5</sup>=32 possibilités.  
+            </p>
+         </div>
+         <div class="hard">
+            <p>
+               Dans cette version, le mot de passe contient 4 lettres et 6 chiffres. On ne peut pas simplement répartir le même nombre de lettres dans chaque morceau. Il faut envisager plusieurs répartitions possibles des lettres et trouver celle qui donne la répartition la plus équilibrée.
+            </p>
+            <p>
+               Si l'on met 3 lettres dans un morceau, cela correspond déjà à 26<sup>3</sup> = 17576 possibilités. Les autres morceaux doivent alors se répartir le reste, ce qui si on pouvait équilibrer parfaitement donnerait la&nbsp;racine&nbsp;carrée&nbsp;de&nbsp;26&nbsp;&centerdot;&nbsp;10<sup>6</sup>&nbsp;soit&nbsp;5099 possibilités pour chacun de ces deux morceaux, beaucoup moins que le premier morceau.
+            </p>
+            <p>
+               Mettre 4 lettres dans un morceau donnerait une répartition encore plus déséquilibrée, donc il est inutile d'essayer.
+            </p>
+            <p>
+               Avec 2 lettres maximum dans un même morceau, nous avons deux possibilités de répartition des lettres en 3 morceaux :
+            </p>
+            <p>
+               1) En mettant respectivement 2, 1 et 1 lettre dans les morceaux, les nombres de possibilités correspondants sont déjà de 676, 26 et 26. On distribue les chiffres ce qui revient à rajouter des 0 aux nombres de possibilités respectives. La distribution la plus équilibrée donne 6760, 26000 et 2600.
+            </p>
+            <p>
+               2) En mettant respectivement 2, 2 et 0 lettre dans les morceaux, les nombres de possibilités correspondants sont déjà de 676, 676 et 1. Distribuer les chiffres donne 6760, 6760 et 10000.
+            </p>
+            <p>
+            <p>On choisit cette dernière répartition, car c'est celle pour laquelle le nombre minimum de possibilités est le plus grand possible. Cela donne :
+            <ul>
+               <li>2 lettres et 1 chiffre pour 6760 possibilités.</li>
+               <li>2 lettres et 1 chiffre pour 6760 possibilités.</li>
+               <li>0 lettre et 4 chiffres pour 10000 possibilités.</li>
+            </ul>
+            <p>
+               Voici deux des manières de découper le mot de passe selon cette répartition :
+            </p>
+            <p style="text-align:center">
+               <img src="4etoilesA.png" style="width:400px" /><br/>
+               et<br/>
+               <img src="4etoilesB.png" style="width:400px" />
+            </p>
+         <p> <b>Pourquoi ça c'est une solution ?</b> Parce qu'elle protège le mieux dans le cas où deux des trois personnes décident de tricher ou si un ennemi potentiel se procure deux des trois morceaux. </p>
+
+</div>
+
+         <h2>C'est de la crypto !</h2>
+         <p>
+            Le partage de secret est utilisé lorsque l'on souhaite qu'une action soit possible seulement si tous les participants ont donné leur accord. Si tous les participants sauf un se mettent d'accord et essayent de casser le secret du dernier, il faut qu'ils aient un nombre aussi grand que possible de combinaisons à tester.
+         </p>
+         <p>
+            <strong>Exemple :</strong> Pour les élections présidentielles de 2012, les Français de l'étranger ont pu <a href="http://www.assemblee-nationale.fr/14/rapports/r2235.asp">voter par internet</a>. Chaque candidat aux élections avait reçu une clé secrète. Pour ouvrir « l'urne numérique » et accéder aux résultats, il fallait que tous les candidats mettent en commun leur secret respectif.
+         </p>
+
+	  </div> <!-- task-solution -->
+   </body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>dragon-recursion</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Rekurzija</h1>
+         <img src="green_dragon.png" style="display:none" />
+         <img src="paint2.png" style="display:none" />
+         <img src="marker.png" style="display:none" />
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+				<div>
+				<p>
+					Napiši zmajčku navodilo, po katerem bo pobarval vsa označena polja.
+				</p>
+				<p>
+					Ker nočeš prekoračiti dovoljenega števila blokov, uporabi rekurzivno funkcijo.
+					Rekurzivno funkcijo ustvariš podobno kot navadno funkcijo. V rekurzivni funkciji pokličemo isto funkcijo, ki jo ustvarjamo. V navadni funkciji ne pokličemo funkcije, ki jo ustvarjamo.
+					Navodilo funkcije se pri rekurzivni funkciji ponavlja.
+				</p>
+               </div>
+			   <div class="easy">
+				   Polja z oznako pred zmajčkom so v skupinah, ločenimi z belimi polji. V prvi skupini je 5 označenih polj, v naslednji jih je 4 in tako naprej. Zmajček naj pobarva polja v skupinah tako, da uporabiš rekurzivno funkcijo.
+				   </p>
+				 <p>
+					 Rekurzivno funkcijo ustvari s parametrom. Ime parametra je lahko na primer stPolj. V programu pokličemo funkcijo s parametrom tako, da ji pripnemo število ali spremenljivko, ki bo parameter funkcije. Primer klicanja funkcije s parametrom je prikazan na spodni sliki:
+				 </p>
+				 <img data-lang="blockly" src="example_use_parameter.png" style="height:100px"/>
+				 
+				 <p>
+					 V tej verziji naloge bo parameter funkcije število označenih polj, ki so pred zmajčkom v skupini. Prva skupina polj je dolga 5 polj, zato bo prvič rekurzivna funkcija poklicana s parametrom, enakim 5, naslednjič s parametrom, enakim 4, in tako naprej.
+					 Namesto da pri vsakem klicu funkcije uporabimo nov parameter, ustvarimo spremenljivko 'stPolj', ki ji odštejemo število 1 pred vsakim klicem funkcije.
+					 Taka rekurzivna funkcija je prikazana spodaj:
+				 </p>
+				 <img data-lang="blockly" src="example_function_recursion.png" style="height:200px"/>
+				 
+				 <p>
+					 V rekurzivni funkciji moramo sestaviti pogoj, zato da se klicanje funkcije enkrat ustavi. Najmanjše število označenih polj v skupini je zmeraj večje od nič, zato bo naš pogoj preveril, ali je spremenljivka 'stPolj' večja od nič. Ko pogoju ne bo več zadoščeno (to je takrat, ko bo spremenljivka 'stPolj' manjša kot 1), ne bomo več ponovili koraka rekurzivnega klica funkcije. Primer klica funkcije s tem pogojem je na sliki:
+				 </p>
+				 <img data-lang="blockly" src="example_function_recursion_if.png" style="height:120px"/>
+				 <p>
+					 Namig: Med zaporednima skupinama označenih polj je 1 belo polje.
+				 </p>
+			   </div>
+			   <div class="hard">
+			    <p>
+					Zmajček naj nariše smreko z uporabo rekurzivne funkcije.
+				</p>
+				<p>
+					Za parameter funkcije si izberemo spremenljivko, na primer 'dolzinaVeje'. Veja dve vrstice nad prejšnjo ima dolžino, manjšo za 1.
+				</p>
+				<p>
+					Uporabi pogoj s katerim preveriš, kdaj se klicanje funkcije znotraj navodila funkcije konča.
+				<p>
+				   Namig: Dolžina veje na eni strani od polja na sredini vrstice je v spodnji vrstici enaka 6 polj.
+			   </p>
+				
+               </div>
+               <div class="medium">
+			   <p>
+				   Zmajček naj nariše vzorec kvadratov z uporabo rekurzivne funkcije.
+			   </p>
+			   <p>
+				   Uporabi preverjanje pogoja, da se ponovni klic funkcije ne bo nadaljeval v neskončnost. Preveri, ali je spremenljivka 'dolzinaStranice' večja ali enaka najmanjši dolžini stranice kvadrata.
+			   </p>
+			   <p>
+				   Namig: Največji kvadrat ima dožino stranice enako 11 polj, najmanjši kvadrat pa ima dolžino stranice enako 3 polja.
+			   </p>
+               </div>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

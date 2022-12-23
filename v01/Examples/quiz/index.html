@@ -1,0 +1,134 @@
+<!DOCTYPE html><html><head>
+        <meta charset="utf-8">
+        <title>Quiz task title</title>
+        <script>
+            var stringsLanguage = 'en';
+            var quiz_settings = {"graderUrl":"https://bebras.mblockelet.info/quiz","shuffle_questions":true,"mathjax":true};
+            var task_data_info = {"markdown":false};
+            var quiz_question_types = {"single":true,"multiple":true,"input":true,"fill_gaps":true};
+        </script>
+        <script class="remove" type="text/javascript" src="../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script>
+        <script class="remove" type="text/javascript" src="../../_common/modules/pemFioi/quiz/loader.js"></script>
+        <script class="remove" type="text/javascript">
+            var json = {"id":"test-quiz-task-editor","authors":["mobydimk"],"language":"en"};
+            var modulesPath = '../../_common/modules/';
+            loadQuizModules();
+        </script>
+        <script class="remove" type="text/javascript" src="grader_data.js"></script>
+        <style>
+            * {
+                unicode-bidi: plaintext;
+            }
+        </style>
+    </head>
+    <body dir="ltr">
+        <div dir="auto" id="task" style="display: none">
+            <div dir="auto" class="intro"><p>test</p>
+<p><img src="images/Firefly_class_ship.jpg" alt="Firefly_class_ship.jpg" width="700" height="431"></p>
+<p>test</p></div>
+            <div dir="auto" class="taskContent">
+
+    
+
+    
+        <question type="single">
+            <statement><p>Single choice question testtest 22222</p></statement>
+
+            
+                <answer><p>answer 0</p></answer>
+            
+                <answer><p>answer 1</p></answer>
+            
+
+            
+        </question>
+    
+
+    
+
+
+    
+
+    
+        <question type="multiple">
+            <statement><p>Miltiple choice question</p></statement>
+
+            
+                <answer><p>Answer #0</p></answer>
+            
+                <answer><p>Answer #1</p></answer>
+            
+                <answer><p>Answer #2</p></answer>
+            
+
+            
+        </question>
+    
+
+    
+
+
+    
+
+    
+        <question type="input">
+            <statement><p>Qustion with number input</p></statement>
+
+            
+                <answer format="number" validator></answer>
+            
+
+            
+        </question>
+    
+
+    
+
+
+    
+
+    
+        <question type="input">
+            <statement><p>Qustion with regexp input</p></statement>
+
+            
+                <answer format="regexp" validator="\S"></answer>
+            
+
+            
+        </question>
+    
+
+    
+
+
+    
+
+    
+        <question type="fill_gaps">
+            <statement><p>Fill gaps</p></statement>
+
+            
+                
+                
+                    <answer>amet</answer>
+                
+                    <answer>ipsum</answer>
+                
+                    <answer>incorrect</answer>
+                
+                <div class="fill-gaps-text"><p>Lorem&#xA0;<span class="placeholder noneditable">&#xA0;</span> dolor sit <span class="placeholder noneditable">&#xA0;</span>, consectetur adipiscing elit. Aliquam ac fringilla dolor. Nullam odio nisi, ornare in dapibus a, eleifend non dolor. Nullam pretium augue ut quam convallis suscipit. Etiam in ultricies justo. Ut vel risus a augue porttitor sagittis. Donec nec consequat dolor. Morbi imperdiet est nec dui porttitor, vel tristique arcu iaculis. Mauris vehicula nibh et lectus elementum, non ultricies mauris congue. Praesent consectetur tristique nisi quis commodo. Curabitur a elit rutrum, mattis purus non, rutrum orci. Cras at congue ligula.</p></div>
+            
+
+            
+        </question>
+    
+
+    
+
+</div>
+        </div>
+        <div dir="auto" id="solution" class="remove" style="display: none"><p>Task solution</p></div>
+   
+
+</body></html>

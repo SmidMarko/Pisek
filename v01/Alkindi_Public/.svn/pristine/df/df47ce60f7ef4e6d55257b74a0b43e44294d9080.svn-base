@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2015-FR-AL-11-decryption-program</title>
+      <link class="module" rel="stylesheet" type="text/css" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://castor-informatique.fr/tasks/modules/styles.css">
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+      <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+      <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2015/2015-FR-AL-11-decryption-program/",
+          "language": "fr",
+          "version": "",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "license": "CC BY-SA 3.0",
+          "translators": [
+          ],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [
+          ],
+          "acceptedAnswers": [
+          ],
+          "difficulty": {"1": "medium", "2": "medium", "3": "easy", "4": "easy"},
+          "categories": {},
+          "answerType": "Interactive, drag and drop",
+          "fullFeedback": true,
+          "status": "test"
+      };
+      </script>
+      <script type="text/javascript" src="es5-shim.min.js"></script>
+      <script type="text/javascript" src="es5-sham.min.js"></script>
+      <script type="text/javascript" src="skulpt.min.js"></script>
+      <script type="text/javascript" src="worker.js"></script>
+      <script type="text/javascript" src="codemirror-5.8/lib/codemirror.js"></script>
+      <script type="text/javascript" src="codemirror-5.8/mode/python/python.js"></script>
+      <link rel="stylesheet" href="codemirror-5.8/lib/codemirror.css">
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #main_container {
+            width: 100%;
+            margin: 0px auto;
+         }
+         #main_container tr td table {
+            margin: 5px auto;
+         }
+         #main_container tr td table p {
+            text-align: center;
+         }
+         #ciphertext_container {
+            padding: 10px 0px 10px 0px;
+         }
+         #program_table tr td {
+            padding: 10px 0px 10px 0px;
+         }
+         #program_table_container, #text_table_container {
+            width: 50%;
+         }
+         #program_table_container {
+            border-right: solid #bbbbbb 1px;
+         }
+         .CodeMirror {
+            border: 1px solid black;
+            height: 200px;
+         }
+      </style>
+ 
+  </head>
+  <body>
+      <div id="task">
+          <h1>Déchiffrement</h1>
+          <div id="tabsContainer"></div>
+          <div id="taskContent">
+            <p>
+               Dans ce sujet, votre but est d'écrire un programme qui déchiffre un texte, ce texte ayant été chiffré par un programme
+               que l'on vous donne.
+            </p>
+            <p>
+                Étudiez ce que fait le programme de chiffrement, pour pouvoir vous en inspirer pour écrire le programme de déchiffrement.
+            </p>
+            <p class="easy">
+               Dans cette version, le chiffrage est un chiffrage de césar : chaque lettre du texte d'origine est substituée par une
+            lettre 10 rangs plus loin dans l'alphabet (en repartant au début de l'alphabet une fois que l'on dépasse z).
+            </p>
+            <table id="main_container">
+               <tr>
+                  <td id="program_table_container">
+                     <table id="program_table">
+                        <tr>
+                           <td id="encryption_program_container">
+                              <p>
+                                 Programme de chiffrement en python :
+                              </p>
+                              <textarea name="encryption_program" id="encryption_program" rows="8" cols="40"></textarea>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td id="decryption_program_container">
+                              <p>
+                                 Votre programme de déchiffrement en python :
+                              </p>
+                              <textarea name="decryption_program" id="decryption_program" rows="8" cols="40"></textarea>
+                              <br/>
+                              <div align="center">
+                                 <input type="button" id="execute" value="Essayer" />
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+                  <td id="text_table_container">
+                     <table id="text_table">
+                        <tr>
+                           <td id="plaintext_container">
+                              <p>
+                                 Texte d'origine :
+                              </p>
+                              <textarea name="plaintext" id="plaintext" rows="8" cols="40"></textarea>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td id="ciphertext_container">
+                              <p>
+                                 Texte chiffré :
+                              </p>
+                              <textarea name="ciphertext" id="ciphertext" rows="8" cols="40"></textarea>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td id="output_container">
+                              <p>
+                                 Résultat de votre programmme :
+                              </p>
+                              <textarea name="output" id="output" rows="8" cols="40"></textarea>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+          </div>
+      </div>
+      
+      <div id="solution">
+          <h2>Solution</h2>
+      </div>
+  </body>
+</html>

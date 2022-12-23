@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Naloge-ucbenik-71 2</title>
+      <script>
+        window.stringsLanguage = 'sl';
+      </script>
+       <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/';
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'jwinf_css']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPrinter_lib.js" id="blocklyPrinter_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "naloge-ucbenik-stran53-2",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+
+      window.stringsLanguage = 'sl';
+      var strings = {
+         moreThan100Moves: "Naredil/-a si več kot 100 potez.",
+         notAllCellsPainted: "Vsa polja nisi pobarval/-a pravilno. Poskusi še enkrat!",
+         allCellsPainted: "Čestitamo! Vsa polja si pravilno pobarval/-a!"
+      };
+      </script>
+      <script type="text/javascript" src="printer_task.js"></script>
+
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+        <h1>Naloge učbenik: Tabele</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+             <div id="taskIntro">
+                 <p>
+                     Napiši funkcijo <code>KolikokratNajmanjsi(t)</code>, ki dobi kot parameter tabelo <i>t</i> in vrne število, ki pove, kolikokrat se v tabeli <i>t</i> pojavi najmanjši element te tabele.<br />
+                     Primer: <code>KolikokratNajmanjsi([10, 15, 8, 13, 15, 8, 15, 17])</code> mora vrniti 2 (najmanjši element dane tabele je 8, ki se v njej pojavi 2-krat).
+                 </p>
+                 <p>
+                     Tvoj program naj uporabi funcijo <code>KolikokrtNajmanjsi(t)</code> na tabeli <code>[11, 17, 6, 8, 6, 13, 11, 17, 6, 8]</code> in nato izpiše rezultat.
+                 </p>
+             </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+      </div><!-- task -->
+   </body>
+</html>

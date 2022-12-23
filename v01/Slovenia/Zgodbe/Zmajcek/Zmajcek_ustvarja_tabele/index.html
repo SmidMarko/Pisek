@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>zmajcek: ustvari tabele</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-array-1D -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-array-1D",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "KSpenko",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Zmajcek ustvarja tabele</h1>
+         <img src="green_dragon.png" style="display:none" />
+         <img src="paint.png" style="display:none" />
+         <img src="marker.png" style="display:none" />
+         <img src="paint2.png" style="display:none" />
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent" style="text-align:left;position:relative">
+            <div id="taskIntro">
+               <p>
+                   Napiši zmajčku navodilo, po katerem bo pobarval vsa označena polja.
+                  <span class="easy"> Oznake se nahajajo na vseh poljih, ki ležijo pod sivo pobarvanimi polji.</span>
+                  <span class="medium">Spodnja vrstica je podobno nastavljena kot zgornja, vendar v obrnjenem vrstnem redu: na polju 2 spodajje oznaka, če je polje 15 zgoraj pobarvano, na polju 3 spodaj je oznaka, če je pobarvano polje 14 zgoraj in tako naprej.</span>
+                  <span class="hard">Polje v spodnji vrstici vsebuje oznako, če je nad njim več pobarvanih polj kot belih polj.</span>
+               </p>
+               <p>
+                   Ko se zmajček premakne preko druge vrstice, se ne more več vrniti.
+               </p>
+               <div class="easy">
+                  <p>
+                      Zmajček si mora zapomniti, katera polja imajo oznake v prvi vrstici, da pobarva pripadajoča polja v drugi vrstici.
+                  </p>
+                  <p>
+                      Ustvariš lahko spremnljivko za vsako polje, v katero nato shraniš prebrano vrednost:
+                  </p>
+                  <img data-lang="blockly" src="nolist_write_blockly.png" style="height:160px"/>
+                  <img data-lang="scratch" src="nolist_write_scratch.png" style="height:220px"/>
+<pre data-lang="python">
+desno()
+barvaPolja2 = barvaPolja()
+desno()
+barvaPolja3 = barvaPolja()
+desno()
+barvaPolja4 = barvaPolja()
+...
+</pre>
+                  <p>
+                      Potem za vsako polje v drugi vrstici prebereš pripadajočo vrednost in določiš, ali mora zmajček pobarvati to polje:
+                  </p>
+<pre data-lang="python">
+desno()
+if (barvaPolja2):
+   pobarvaj()
+desno()
+if (barvaPolja3):
+   pobarvaj()
+...
+</pre>
+                  <img data-lang="blockly" src="nolist_read_blockly.png" style="height:180px"/>
+                  <img data-lang="scratch" src="nolist_read_scratch.png" style="height:200px"/>
+                  <p>
+                      Vendar namesto da nastaviš 15 različnih spremeljivk za vsako izmed 15 razičnih vrednosti, uporabi seznam. Seznam je vrsta spremenljivke, ki lahko shrani več vrednosti. Seznam, ki je prazen, ustvarimo tako, da spremenljivki 'vsiStolpci' priredimo:
+                  </p>
+<pre data-lang="python">
+vsiStolpci=[0]*17
+</pre>
+                  <img data-lang="blockly" src="list_init_blockly.png" style="height:35px"/>
+                  <img data-lang="scratch" src="list_init_scratch.png" style="height:55px"/>
+                  <p>
+                      Vrednosti lahko potem shranimo v elemente seznama z uporabo števila elementa in vrednosti tega elementa in to naredimo tako, da spremenimo vrednost elementa, ki je označen s številom elementa.
+                  </p>
+                  <p>
+                      V tem primeru želimo shraniti vrednosti za vsako od 15 polj pred zmajčkom. Za ta namen uporabimo senzor, ki sporoči število stolpca zmajčka (to bo število elementa v seznamu). V ta element seznama bomo shranili odziv senzorja, ko bo zmajček na polju v tem stolpcu:
+                  </p>
+<pre data-lang="python">
+for loop in range(15):
+    desno()
+    barvaPolj[stolpec()] = barvaPolja()
+</pre>
+                  <img data-lang="blockly" src="list_write_blockly.png" style="height:110px"/>
+                  <img data-lang="scratch" src="list_write_scratch.png" style="height:140px"/>
+                  <p>
+                      V drugi vrstici lahko preberemo vrednost elementa seznama, ki je določen s številom stolpca, v katerem je zmajček. To naredimo tako:
+                  </p>
+<pre data-lang="python">
+if (barvaPolj[stolpec()]):
+    pobarvaj()
+</pre>       
+                  <img data-lang="blockly" src="list_read_blockly.png" style="height:80px"/>
+                  <img data-lang="scratch" src="list_read_scratch.png" style="height:110px"/>
+               </div>
+               <div class="medium">
+                  <p>
+                      V programu moraš obrniti seznam.
+                  </p>
+               </div>
+               <p>
+                   Namig: naloga ima dva različna testa.
+               </p>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

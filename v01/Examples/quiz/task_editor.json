@@ -1,0 +1,91 @@
+{
+  "type": "quiz",
+  "version": "1",
+  "data": {
+    "taskMetaData": {
+      "id": "test-quiz-task-editor",
+      "authors": [
+        "mobydimk"
+      ],
+      "language": "en"
+    },
+    "quiz_settings": {
+      "graderUrl": "https://bebras.mblockelet.info/quiz",
+      "shuffle_questions": true,
+      "mathjax": true
+    },
+    "title": "Quiz task title",
+    "intro": {
+      "__type": "html",
+      "__value": "<p>test</p>\n<p><img src=\"images/Firefly_class_ship.jpg\" alt=\"Firefly_class_ship.jpg\" width=\"700\" height=\"431\" /></p>\n<p>test</p>"
+    },
+    "questions": [
+      {
+        "text": "<p>Single choice question testtest 22222</p>",
+        "answers": [
+          {
+            "text": "<p>answer 0</p>"
+          },
+          {
+            "text": "<p>answer 1</p>"
+          }
+        ],
+        "correct_answer": "0",
+        "type": "single"
+      },
+      {
+        "text": "<p>Miltiple choice question</p>",
+        "answers": [
+          {
+            "text": "<p>Answer #0</p>",
+            "correct": false
+          },
+          {
+            "text": "<p>Answer #1</p>",
+            "correct": true
+          },
+          {
+            "text": "<p>Answer #2</p>",
+            "correct": true
+          }
+        ],
+        "type": "multiple"
+      },
+      {
+        "text": "<p>Qustion with number input</p>",
+        "format": "number",
+        "validator": "",
+        "correct_answer": {
+          "type": "function",
+          "value": "function(val) { return val == '2' || val == \"2\" }"
+        },
+        "type": "input"
+      },
+      {
+        "text": "<p>Qustion with regexp input</p>",
+        "format": "regexp",
+        "validator": "\\S",
+        "correct_answer": {
+          "type": "value",
+          "value": "2"
+        },
+        "type": "input"
+      },
+      {
+        "text": "<p>Fill gaps</p>",
+        "fill_gaps_text": "<p>Lorem&nbsp;<span class=\"placeholder noneditable\">&nbsp;</span> dolor sit <span class=\"placeholder noneditable\">&nbsp;</span>, consectetur adipiscing elit. Aliquam ac fringilla dolor. Nullam odio nisi, ornare in dapibus a, eleifend non dolor. Nullam pretium augue ut quam convallis suscipit. Etiam in ultricies justo. Ut vel risus a augue porttitor sagittis. Donec nec consequat dolor. Morbi imperdiet est nec dui porttitor, vel tristique arcu iaculis. Mauris vehicula nibh et lectus elementum, non ultricies mauris congue. Praesent consectetur tristique nisi quis commodo. Curabitur a elit rutrum, mattis purus non, rutrum orci. Cras at congue ligula.</p>",
+        "answers": [
+          "ipsum",
+          "amet"
+        ],
+        "non_answers": [
+          "incorrect"
+        ],
+        "type": "fill_gaps"
+      }
+    ],
+    "solution": "<p>Task solution</p>"
+  },
+  "translations": {},
+  "files": []
+}

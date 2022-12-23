@@ -1,0 +1,15 @@
+span[data-title]:hover:after {
+  content: attr(data-title);
+  background-color: #222;
+  color: white;
+  font-size: 16px;
+  font-family: 'alien';
+  padding: 10px;
+  margin-top: 20px;
+  position: absolute;
+  white-space: nowrap;
+  z-index: 20px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}

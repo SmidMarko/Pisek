@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Divje jagode</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-repeat-nested-marbles -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-nested-marbles/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+         <img src="hole.png" style="display:none" />
+         <img src="icon.png" style="display:none" />
+		 
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Divje jagode</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+               <p class ="easy">
+                  Kot verjetno že veš, imajo gosenice dokler se ne zabubijo, samo eno nalogo: zaužiti čim več hrane. Gosenica Eva ni prav nobena izjema, tudi lubenica ni trajala več kot dan in Eva je primorana poiskati novo hrano. Tokrat se odpravi v gozd, z ostrim pogledom je v goščavju zaznala divje jagode. 
+				  Preden se je lotila nabiranja jagod, si je pripravila skrivališča, v katera jih bo shranila. 
+				  </p>  
+				  
+				  <p class ="easy">
+				  Pomagaj Evi nabrati jagode, ob tem imej v mislih to, da lahko Eva naenkrat nosi samo eno jagodo. V vsakem skrivališču je lahko največ ena divja jagoda. S pomočjo programskih blokov, ki jih imaš na razpolago pravilno popravi že izdelan program. </p>  
+					
+			   <p class = "medium"> 
+                  Tri jagode ne zadostujejo, so sicer sočne in sladke, a zelo majhne. Pomagaj Evi nabrati še več jagod. S pomočjo programskih blokov, ki jih imaš na razpolago pravilno popravi že izdelan program. </p>
+			   
+               <p class = "hard">
+                     Čeprav je Eva pobrala že kar nekaj jagod, zaloga ne izgleda tako velika. Eva se odloči, da bo nabrala še preostale zrele jagode. 
+					 Pomagaj Evi nabrati še zadnje jagode, s pomočjo programskih blokov, ki jih imaš na razpolago sestavi program, ki bo vodil Evo do jagod in skrivališč, kamor jih bo pospravila. </p>
+               <div class="hard">
+                  <p>
+                     Moral/a boš gnezditi
+                     <span data-lang="blockly scratch">bloke <i>ponavljaj</i>,</span>
+                     <span data-lang="python">zanke for,</span>
+                     kot je ilustrirano na primeru spodaj.
+                  </p>
+                  <p data-lang="blockly">
+                     <img src="example_nested_repeat.png" style="width:250px">
+                  </p>
+                  <p data-lang="scratch">
+                     <img src="example_nested_repeat_scratch.png" style="width:150px">
+                  </p>
+<code data-lang="python">
+for loop in range(5):
+   desno()
+   for loop in range(3):
+      gor()
+   desno()
+</code>
+               </div>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

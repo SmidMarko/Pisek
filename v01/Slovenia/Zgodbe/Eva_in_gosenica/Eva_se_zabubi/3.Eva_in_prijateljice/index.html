@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Eva in prijateljice</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-while-marbles -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+            var json = {
+                "id": "http://castor-informatique.fr/questions/algorea_training/training-while-marbles/",
+				"language": "sl",
+				"version": "sl.01",
+				"authors": "KSpenko",
+				"translators": [],
+				"license": "",
+				"taskPathPrefix": "",
+				"modulesPathPrefix": "",
+				"browserSupport": [],
+				"fullFeedback": true,
+				"minWidth": "auto"
+			};
+        </script>
+	  
+        <img src="green_robot.png" style="display:none" />
+		
+        <img src="obstacle.png" style="display:none" />
+        <img src="green.png" style="display:none" />
+		
+        <img src="marble.png" style="display:none" />
+        <img src="hole.png" style="display:none" />
+        <img src="pill.png" style="display:none" />
+		
+		<!-- manjkajo se Pill in Platform -->
+		 
+        <script type="text/javascript" src="task.js"></script>
+    </head>
+   
+    <body onresize="task.displayedSubTask.updateScale()">
+        <div id="taskIntro" style="width: 100%">
+            <h1>Eva in prijateljice</h1>
+					<p>
+						Eva se pred zadnjim korakom odloči, da bo svojim prijateljicam podarila po eno borovnico, ki jih je nabrala med potjo do skrivališča. S pomočjo programskih blokov napiši program, ki bo vodil Evo. Poleg osnovnih programskih blokov za premikanje in blokov zanke, imaš v tokratni nalogi na voljo tudi sklop blokov senzor – tega uporabiš, da lahko Eva zazna ali se je ustavil na borovnici ali  na skrivališču.  </p>
+					<p>
+						Naloga ima 3 teste, to pomeni, da bo moral en sam program pravilno delovati na vseh treh testih. V ta namen imaš nov sklop blokov logika, teh se poslužuješ za tvorjenje pogojnih stavkov. Primer: če na borovnici izvedi poberi sicer premakni se dol. 
+						</p>
+						<p>
+						<img src="blocks.png" width="500px">
+						</p>
+						<p>
+						Pogojne stavke uporabljaj v kombinaciji z zankami. Tako bo program bolj pregleden in učinkovit.
+					</p>
+                
+                <div id="gridContainer"></div>
+                <div id="blocklyLibContent"></div>
+            </div>
+
+        </div><!-- task -->
+    </body>
+</html>
+ 

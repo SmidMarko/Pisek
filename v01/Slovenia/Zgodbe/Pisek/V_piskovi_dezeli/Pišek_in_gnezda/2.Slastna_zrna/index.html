@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+	<img src="hole.png" style="display:none" />
+	<img src="marble.png" style="display:none" />
+    <img src="pisek.png" style="display:none" />
+		 
+   <head>
+    <meta charset="utf-8">
+    <title>Slastna zrna</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-repeat-marble -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-marble/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Kristof Spenko, Aleš Poklukar",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Slastna zrna</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+			 
+			 <div class = "easy">
+			 <p>
+                  Pišek se je veselo potikal po vrtu, ko je zadel ob zrno pšenice. Izgledalo je nadvse slastno, vendar se je odločil, da ga prihrani za kasneje. Pomagaj pišku prinesti zrno v gnezdo.
+					</p>
+					<p>
+					Na voljo imaš kocko 'ponavljaj', s katerim večkrat ponoviš isto navodilo. Lahko petkrat uporabiš isto kocko tako: 
+					</p><img src = "example_repeat_1.png" width="200"> 
+					<p>
+					Vendar gre tudi s kocko 'ponavljaj 5-krat tako: 
+             </p><img src="example_repeat_2.png" width="300">
+			 </div>
+			 
+			 <p class ="medium">
+                  Pišek se je po uspehu odločil, da natančneje preišče vrt. Našel je še eno zrno. Tudi to si bo shranil v gnezdo. Za rešitev naloge uporabi kocko ‘ponavljaj’.
+			 </p>
+			 <p class ="hard">
+                  Pišek na robu vrta opazi prijatelja konja Tobija. Tobi z smrčkom dreza v silos ovsenih zrn in jih je verjetno raztrosil po vrtu. In res; Pišek zraven Tobija odkrije še eno seme! Pomagaj Pišku shraniti tudi to zrno. Za rešitev naloge uporabi kocko ‘ponavljaj’.
+             </p>
+
+               </div>
+               <div data-lang="python">
+                  <p>Namesto, da petkrat napišeš isto navodilo:</p>
+<code>
+desno()
+desno()
+desno()
+desno()
+desno()
+</code>
+                  <p>uporabi zanko:</p>
+<code>
+for loop in range(5):
+   desno()
+</code>
+               </div>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+			<div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+      </div><!-- task -->
+   </body>
+</html>
+ 

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>2019-FR-AL-05-logger</title>
+   <script>
+      window.stringsLanguage = 'fr';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'randomGenerator-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1', 'raphaelButton-1.0', 'shape-paths' ]);
+   </script>
+   <script class="remove" type="text/javascript">
+         var json = {
+            "id": "",
+            "language": "fr",
+            "version": "fr.01",
+            "authors": "",
+            "translators": [],
+            "license": "",
+            "taskPathPrefix": "",
+            "modulesPathPrefix": "",
+            "browserSupport": [],
+            "fullFeedback": true,
+            "acceptedAnswers": [],
+            "usesRandomSeed": false
+         };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Bravo, vous avez réussi !",
+         error: "Ce n'est pas la bonne réponse",
+         pickNew: "ENTREZ VOTRE MOT DE PASSE",
+         hackingTool: "AFFICHAGE DE L'OUTIL DU HACKER",
+         logging: "Touches enregistrées :",
+         computing: "Essais de mots de passe :",
+         pswdGuessed: "Mot de passe trouvé !",
+         userHacked: "L'utilisateur a été hacké !",
+         pswdNotGuessed: "Le mot de passe n'a pas été trouvé.",
+         userNotHacked: "L'utilisateur est protégé pour cette fois.",
+         tooShort: "Le mot de passe doit contenir 4 chiffres.",
+         tryAgain: "Vous avez été hacké. Essayez encore.",
+         wrongPassword: "Ce n'est pas le bon mot de passe."
+      }
+   </script>
+
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      .consigne {
+         background: #F5F5F5;
+         border-radius: 5px;
+         font-size: 14px;
+         color: #30242B;
+         padding: 0;
+         margin: 20px;
+      }
+      .consigne h3 {
+         display: block;
+         background: #88BB88;
+         font-size: 14px;
+         color: white;
+         border-radius: 5px 5px 0 0;
+         text-align: center;
+         margin: 0;
+         padding: 13px;
+      }
+      .consigne #text {
+         padding: 20px;
+         padding-bottom: 10px;
+      }
+      .consigne p {
+         margin-top: 0;
+      }
+
+      #paper {
+         margin: 20px auto;
+         width: 730px;
+         position: relative;
+      }
+      #error {
+         text-align: center;
+      }
+      #target {
+         background: white;
+         border-radius: 20px;
+         font-size: 24px;
+         font-weight: bold;
+         letter-spacing: 0.2em;
+         font-family: monospace;
+         color: #508850;
+         text-align: center;
+         padding: 8px;
+         width: 203px;
+         margin: 34px auto;
+      }
+      #displayHelper_validate > input, #displayHelper_cancel > input {
+         border: none;
+         background-color: #88BB88;
+         color: white;
+         font-weight: bold;
+         font-size: 12px;
+         padding: 8px;
+         min-width: 180px;
+         margin: 0px 8px;
+      }
+      #displayHelper_cancel > input {
+         background-color: #30242B;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Contrer le hacker</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <div id="zone_1">
+            <div class="consigne">
+               <h3>VOTRE MISSION</h3>
+               <div id="text">
+                  <p>Un hacker a installé un outil espion sur votre téléphone, pour voler votre mot de passe.</p>
+                  <p>Mais l'outil a des failles que vous pouvez utiliser pour vous protéger.</p>
+                  <p><b>Entrez le mot de passe suivant sans que le hacker réussisse à le deviner.</b></p>
+		  <div id="target">1234</div>
+               </div>
+            </div>
+         </div>
+         
+         <div id="zone_2">
+            <div id="paper">
+               <div id="error"></div>
+            </div>
+         </div>
+         
+         <img src="icon.png" style="display:none">
+      </div>
+   </div>
+   <div id="solution">
+      <h2>Solution</h2>
+   </div>
+</body>
+</html>

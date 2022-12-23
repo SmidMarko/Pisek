@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>training-turtle-circle-2</title>
+	<!-- source: https://wettbewerb.jwinf.de/contents/4207%252F1683038308836975982%252F15109297755723127 -->
+      <script>
+        window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../_common/modules/';
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'jwinf_css']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+	  <script class="remove" type="text/javascript" src="blocklyTurtle_lib.js" id="blocklyTurtle_lib">
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "training-turtle-square",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="turtle_task.js"></script>
+      
+
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Krogi z barvami 2</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+                <p>Nariši vzorec, ki je prikazan na sliki. <b>Pozor:</b> uporabiti moraš iste barve, sicer rešitev ne bo sprejeta.</p>
+         <p class="easy">
+           Krog je narisan z izseki dveh barv, izseki modre barve in izseki rdeče barve so oboji dolgi 9 dolžin. Skupaj je 20 izsekov, ki sestavljajo krog.
+         </p>
+        <p class="medium">
+           Polkrog in daljica sta dolga 180 dolžin. Oba sestavljajo izseki zelene in rdeče barve, ki so dolgi 6 dolžin. Začni z risajem vzorca tako, da želvo premakneš za 120 dolžin nazaj, ko je pisalo dvignjeno.
+        </p>
+        <p class="hard">
+           Sonce je narisano z rumeno barvo, njegovi žarki so narisani z oranžno. Žarki so dolgi 30 dolžin, ločijo jih izseki kroga dolgi 20 dolžin. Celotna dolžina kroga je 360 dolžin, zato najdemo na krogu skupno 18 žarkov.
+        </p>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+      </div><!-- task -->
+   </body>
+</html>
+ 

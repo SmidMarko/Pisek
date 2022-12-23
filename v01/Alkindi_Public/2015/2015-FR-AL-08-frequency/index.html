@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>2015-FR-AL-08-frequency-analysis</title>
+   <link class="module" rel="stylesheet" type="text/css" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://castor-informatique.fr/tasks/modules/styles.css">
+   <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+   <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+   <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+   <script class="remove" type="text/javascript">
+      var json = {
+         "id": "http://castor-informatique.fr/tasks/2015/2015-FR-AL-08-frequency-analysis/",
+         "language": "fr",
+         "version": "",
+         "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+         "license": "CC BY-SA 3.0",
+         "translators": [],
+         "taskPathPrefix": "",
+         "modulesPathPrefix": "",
+         "browserSupport": [],
+         "acceptedAnswers": [],
+         "difficulty": {
+            "1": "medium",
+            "2": "medium",
+            "3": "easy",
+            "4": "easy"
+         },
+         "categories": {},
+         "answerType": "Interactive, drag and drop",
+         "fullFeedback": true,
+         "status": "test"
+      };
+   </script>
+   <link type="text/css" rel="stylesheet" href="fonts.css" />
+   <link type="text/css" rel="stylesheet" href="css/style.css" />
+   <link type="text/css" rel="stylesheet" href="css/style3.css" />
+   <script type="text/javascript" src="bower_components/highstock-release/highstock.js"></script>
+   <script type="text/javascript" src="js/raphael.js"></script>
+   <script type="text/javascript" src="js/component.js"></script>
+   <script type="text/javascript" src="js/container.js"></script>
+   <script type="text/javascript" src="js/draggable_element.js"></script>
+   <script type="text/javascript" src="js/action.js"></script>
+   <script type="text/javascript" src="js/dragAndDropSystem.js"></script>
+   <script type="text/javascript" src="js/frequency-analyzer.js"></script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      #main_container {
+         margin: 0px auto;
+      }
+      
+      #main_container p {
+         text-align: center;
+      }
+            
+      #ciphertext,
+      #textarea-input {
+         font-family: alien;
+         word-wrap: break-word;
+      }
+      
+      .minify input, .section-output {
+         display: none;
+         word-wrap: break-word;
+      }
+      .sampleText {
+         padding-left: 20px;
+         font-family: monospace;
+         word-wrap: break-word;
+      }
+   </style>
+
+</head>
+
+<body>
+   <div id="task">
+      <h1>Alphabet en désordre</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <p>
+            Dans le texte ci-dessous, chaque lettre de l'alphabet français est chiffrée par un signe différent, après retrait des accents. Pouvez vous <b>retrouver le début du texte initial ?</b>
+         </p>
+         <p class="hard">
+            <b>Dans cette version, les espaces ont été supprimés.</b>
+         </p>
+         <p>
+            Pour vous aider, on vous fournit un outil d'analyse de fréquence. Cliquez sur "Analyser" pour lancer l'analyse.
+         </p>
+         <div id="tool">
+            <div id="root" class="container">
+               <div class="wrapper">
+
+                  <div id="section-input" class="section section-input">
+                     <div>
+                        <span id="section-button-input" class="section-button"></span>
+                        <span class="section-title">Texte à analyser: </span>
+                     </div>
+                     <div style="display:none">
+                        <div class="options-wrapper">
+                           <div class="options-title">Options :</div>
+                           <div>
+                              <div class="checkbox-option">
+                                 <input id="optionWithSpace" type="checkbox">inclure les espaces</input>
+                              </div>
+
+                              <div class="checkbox-option">
+                                 <input id="optionWithPunctuation" type="checkbox">inclure la ponctuation</input>
+                              </div>
+
+                              <div class="checkbox-option">
+                                 <input id="optionWithAccent" type="checkbox">inclure les accents</input>
+                              </div>
+
+                              <div class="checkbox-option">
+                                 <input id="optionWithDigit" type="checkbox">inclure les chiffres</input>
+                              </div>
+
+                              <div class="checkbox-option">
+                                 <input id="optionWithUpperCase" type="checkbox">différencier les majuscules</input>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="textarea-wrapper">
+                        <div id="textarea-container">
+                           <div id="textarea-input" class="textarea-input output-content"></div>
+                        </div>
+                        <div class="apply-wrapper-input">
+                           <button class="apply-button" id="apply-input">Analyser</button>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div id="section-frq" class="section section-frq">
+                     <div>
+                        <span id="section-button-frq" class="section-button"></span>
+                        <span class="section-title">Taux d'apparition des symboles dans le texte par ordre décroissant : </span>
+                     </div>
+                     <div>
+                        <div class="chart-wrapper">
+                           <div id="chart-text" class="chart-text"></div>
+                        </div>
+                        <div id="frq-min" class="frq-min">
+                        </div>
+                     </div>
+                  </div>
+
+                  <div id="section-ref" class="section section-ref">
+                     <div>
+                        <span id="section-button-ref" class="section-button"></span>
+                        <span class="section-title">Taux d'apparition des lettres en français par ordre décroissant : </span>
+                     </div>
+                     <div>
+<!--                        <select class="frq-ref-language" id="frq-ref-language">
+                           <option value="fr">fr</option>
+                           <option value="en">en</option>
+                        </select>
+-->
+                        <div class="chart-wrapper">
+                           <div id="chart-ref" class="chart-ref"></div>
+                        </div>
+                     </div>
+                     <div id="ref-min" class="ref-min">
+                     </div>
+<!--                     <div class="generate-wrapper-sub">
+                        <button class="generate-button" id="sub-generate">Générer la substitution</button>
+                     </div>-->
+                  </div>
+
+                  <div id="section-sum" class="section section-sum">
+                     <div>
+                        <span id="section-button-sum" class="section-button"></span>
+                        <span class="section-title">Histogramme combiné : </span>
+                     </div>
+                     <div>
+                        <div class="chart-wrapper">
+                           <div id="chart-sum" class="chart-sum"></div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div id="section-sub" class="section section-sub">
+                     <div>
+                        <span id="section-button-sub" class="section-button"></span>
+                        <span class="section-title">Substitution générée : faites glisser les lettres pour la modifier !</span>
+                     </div>
+                     <div>
+                        <div class="sub-wrapper">
+                           <div id="sub" class="sub-content">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="section-output" class="section section-output">
+                     <div>
+                        <span id="section-button-output" class="section-button"></span>
+                        <span class="section-title">Texte après substitution : validez quand la première ligne est bonne.</span>
+                     </div>
+
+                     <div class="output-wrapper">
+                        <div id="output-content" class="output-content">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <img src="icon.png" style="display:none">
+      <div style="display:none">"alien.eot" "alien.ttf" "alien.woff"</div>
+   </div>
+   <div id="solution">
+      <h2>Solution</h2>
+      <p>
+         L'outil d'analyse de fréquence génère une substitution permettant d'obtenir un premier déchiffrement approximatif :
+      </p>
+         
+      <div class="easy">
+         <p class="sampleText">Les macfites Etiqma de l'armee en de l'abianiot allematdes enaietn eguipees de nrois ronors, pour les premieres bersiots...</p>
+         <p>
+            Certains mots sont déjà correctement déchiffrés. On en reconnaît d'autres, comme le mot « allemandes ». Il faut mettre le 'n' à la place du 't'. On obtient :
+         <p class="sampleText">Les macfines Eniqma de l'armee et de l'abiation allemandes etaient eguipees de trois rotors, pour les premieres bersions...</p>
+         <p>
+            On reconnaît le mot « machines » donc il faut mettre le 'h' à la place du 'f'.
+         </p>
+         <p>
+            On reconnaît aussi « equipees », il faut mettre le 'q' à la place du 'g'.
+         </p>
+         <p>
+            Finalement on reconnaît « versions », il faut mettre le 'v' à la place du 'b'.
+         </p>
+         <p>
+            Après ces modifications de la substitution, on obtient :
+         </p>
+         <p class="sampleText"><strong>Les machines Enigma de l'armee et de l'aviation allemandes etaient equipees de trois rotors, pour les premieres versions</strong></p>
+      </div>
+      <div class="medium">
+         <p class="sampleText">
+            L'titlhse vrefueianelle, ou titlhse pe vrefueices, esa uie meaqope pe crhdatitlhse poia lt pescrndanoi lt dlusticneiie esa retlnsee dtr Tl-Znipn tu NXe snecle. Elle coisnsae t extmnier lt vrefuence pes leaares...
+         </p>
+         <p>
+            Dans l'expression « elle coisnsae t extmnier » on devine que 't' est un 'a'. Il est souvent utile de noter que les seuls mots français d'une lettre (non suivis d'une apostrophe) sont « a » et « y ». Le texte devient :
+         </p>
+         <p class="sampleText">
+            L'aialhse vrefueitnelle, ou aialhse vrefueitnelle, ou aialhse pe vrefueices, est uie metqope pe crhdtaialhse poit la pescrndtnoi la dlus aicneiie est realnsee dar Al-Znipn au NXe snecle. Elle coisnste a examnier la vrefueice pes lettres emdlohees pas ui message cqnvvre.
+         </p>
+         <p>On reconnaît le mot « examiner » donc il faut échanger 'n' et 'i'. On obtient :</p>
+         
+         <p class="sampleText">
+            L'analhse vrefuentielle, ou analhse pe vrefuences, est une metqope pe crhdtanalhse pont la pescridtion la dlus ancienne est realisee dar Al-Zinpi au IXe siecle. Elle consiste a examiner la vrefuences pes lettres emdlohees pans un message cqivvre...
+         </p>
+         <p>
+            On observe que l'expression « la dlus ancienne » est un brouillage de « la plus ancienne » donc il faut mettre 'p' à la place de 'd'.  
+         </p>
+         <p>
+            On lit « L'analhse vrefuencielle, ... » et on reconnaît le mot « analyse » donc il faut mettre 'y' à la place de 'h'. Le texte devient :
+         </p>
+         <p class="sampleText">
+            L'analyse vrefuentielle, ou analyse de vrefuences, est une metqode de cryptanalyse...
+         </p>
+         <p>
+            On reconnaît le mot « methode » donc il faut mettre 'h' à la place de 'q'.
+         </p>
+         <p>
+            On commence à comprendre le texte, il s'agit d'une méthode de cryptanalyse et on lit « message chivvre » qui doit être « message chiffré », donc on met 'f' à la place de 'f'.
+         </p>
+         <p>
+            Finalement le mot « frevuences » est le brouillage de « frequences » et le début du texte est clair :
+         </p>
+         <p class="sampleText">
+            <strong>L'analyse fréquentiele, ou analyse de fréquence, est une méthode de cryptanalyse dont la description la plus ancienne est réalisée par Al-Kindi au IXe siècle.</strong>
+         </p>
+      </div>
+      <div class="hard">
+         <p class="sampleText">
+            OesGisdlas,frtpisseanplruoesmltasutdhes,slanaeiamltasoesserosfrt,ceprtsdeanias,iteanerpiunirglrveuaemeaneaQuiade.Ensiasiooeudheudheuoesc’Epeuala,oesOirwra,ceo’iadteanemps,fr’tovlrsslrvteaaefr’eadeort-dt,oidlaveantla,o’emptueenoiulzirnea’lanvrfrecesGisdlasirntmlacesiqqitues,nemlta,eaceuateuoter:MM.Oitae,Uivew,Cedises,Vtooeoe,Miuntgaid.
+         </p>
+         <p>
+            Sans les espaces pour nous aider, il est difficile de reconnaître des mots. Il faut donc faire certaines observations et envisager diverses possibilités jusqu'à-ce que l'on commence à reconnaître certains mots. On peut supposer que les fréquences sont à peu près bonnes, donc ne faire des échanges qu'entre lettres qui ont une fréquence proche, donc sont côte à côte dans la substitution.
+         </p>
+         <p>
+            La majuscule en 3ème position nous permet de repérer que « Oes » est probablement un article. La lettre 'o' a une fréquence très proche de 'd' et 'd', donc on peut supposer que le mot est « Les » ou  « Des ». « Les » semble plus probable pour commencer une phrase, donc on échange 'o' et 'l'.
+         </p>
+         <p>On peut continuer à s'aider de la ponctuation et des mots courts. Sur la deuxième ligne du texte obtenu on observe :
+         <p class="sampleText">
+            cel'iadoeanemps,fr'olvtrsstrvoeaafr'eadelro
+         </p>
+         <p>
+            On repère « ,fr' », qui est un mot de trois lettres dont la dernière a été éludée. En termes de fréquences, 'f' est proche de 'q' et 'b' tandis que 'r' est proche de 'n' et 'u'. On en déduit qu'il s'agit de « qu' », et place le 'q' à la place de 'f' et 'u' à la place de 'r'.
+         </p>
+         <p>
+            Dans le texte obtenu, on repère l'extrait suivant :
+         </p>
+         <p class="sampleText">
+            iteaneupirniugouveraemeaneaFriade
+         </p>
+         <p>
+            On reconnaît le début du mot « gouvernement » donc on met 'n' à la place de 'a' puis 't' à la place de 'n'.
+         </p>
+         <p class="sampleText">
+            LesGisdons,quapissentpourlesmoansradhes,sontneinmoanslesseulsqua,cepuasdentins,iaenteupirtiugouvernementenFrinde.
+         </p>
+         <p>
+            À ce niveau, on commence à reconnaître des mots. « ,quapissentpour » devient « ,quipassentpour » si on échange 'a' et 'i', puis « lesmoinsridhes » devient « lesmoinsriches » si l'on échange 'c' et 'd'. Et le texte devient alors beaucoup plus lisible :
+         </p>
+         <p class="sampleText">
+            <strong>Les Gascons, qui passent pour les moins riches, sont néanmoins les seuls qui, depuis cent ans, aient eu part au gouvernement en France.</strong>
+         </p>
+      </div>
+   <h2> C'est de la crypto ! </h2>
+
+   <p>
+	  La méthode de chiffrement, qui consiste à remplacer chaque lettre de l'alphabet par une autre, est appelée <a href="http://fr.wikipedia.org/wiki/Chiffrement_par_substitution">chiffrement par substitution</a>. C'est l'une des méthodes de chiffrement les plus classiques.
+  </p>
+  <p>
+     Pour la déchiffrer, on se base sur la fréquence d'apparition des lettres : en français, la lettre la plus fréquente est le 'E', qui correspond en moyenne à 17% des lettres. Si lors d'une substitution, le 'E' est remplacé par 'X', il y aura beaucoup de 'X' dans le texte chiffré et l'analyse des fréquences permettra de déduire que les 'X' représentent des 'E'.
+  </p>
+  <p>
+     On fait de même avec la deuxième lettre la plus fréquente, la troisième, etc. Si le texte est très long, la technique permet de le déchiffrer. Si le texte est court on retrouve seulement une partie des lettres mais on peut finir le déchiffrement en reconnaîssant des mots.
+   </p>  
+   <!--
+   L'exemple ne me semble pas convaincant, on a déjà pas mal de texte.
+   <p>
+	  <strong>Exemple :</strong> Entre l'an 150 av J.-C. et l'an 800 ap. J.-C. la substitution était la méthode la plus sûre pour transmettre des secrets, alors que l'Ordre des Templiers l'utilisait encore au XIIe siècle. 
+   </p>
+   -->
+   <p>
+      L'idée de calculer la fréquence des lettres pour retrouver le message a été trouvée pour la première fois au IXe siècle par un mathématicien qui s'appelait ... <a href="http://fr.wikipedia.org/wiki/Al-Kindi">Al-Kindi</a>. L'analyse de fréquence est très efficace. Pour éviter que l'analyse de fréquence s'applique aussi facilement on peut utiliser les chiffrements polyalphabétiques comme la <a href="http://www.bibmath.net/crypto/index.php?action=affiche&quoi=ancienne/homophone"> substitution homophonique</a> et le <a href="https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re">chiffre de Vigenère</a>.
+   </p>
+<!-- TODO: ce qu'on fait en cryptanalyse moderne pour éviter ce genre de pbs ? -->   
+   </div>
+   
+   
+</body>
+</html>

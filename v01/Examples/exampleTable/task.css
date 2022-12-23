@@ -1,0 +1,28 @@
+body {
+    min-height: 800px;
+}
+
+body > * {
+    width: auto;
+}
+
+input {
+    width: 20px;
+    font-family: courrier;
+    font-size : 16px;
+    padding: 1px;
+}
+
+th > input, td:first-child > input {
+    font-weight: bold;
+    font-size: bold;
+    border: 2px solid black;
+}
+
+td:first-child > input {
+    width: 150px;
+}
+
+input.cellError {
+    background-color: red;
+}

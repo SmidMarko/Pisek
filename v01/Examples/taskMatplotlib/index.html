@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Task Matplotlib</title>
+    <link class="task" type="text/css" rel="stylesheet" href="../../_common/modules/pemFioi/progTask.css">
+    <link class="task" type="text/css" rel="stylesheet" href="../../_common/modules/ext/bootstrap/css/bootstrap.min.css">
+    <script class="remove" src="../../_common/modules/ext/requirejs/require.js"></script>
+    <script type="text/javascript">
+      var modulesPath ='../../_common/modules';
+      var taskPlatformPath ='../../_common/task-platform';
+    </script>
+    <script type="text/javascript" src="../../_common/modules/pemFioi/progTaskConfig-1.0.js"></script>
+    <script type="text/javascript" class="remove">
+      // general metadata conforming the PEM API Documentation for getMetaData
+      var PEMTaskMetaData = {
+        // title is automatically fetched from the <title> markup
+        id : 'Examples/taskMatplotlib',
+        license : 'MIT',
+        authors : ["France IOI"],
+        language : "en",
+        version: "0.1",
+        baseUrl : "https://github.com/France-ioi/fioi-tasks-template",
+        // This lists all possible languages
+        supportedLanguages: ['python'],
+        evalOutputScript: "image-1.0", // Show image in output
+        limits : {
+          "*": {time: 60000, memory: 256000},
+        }
+      }
+
+      // Metadata specific to the FranceIOI tasks
+      var FIOITaskMetaData = {
+        // file extensions must follow the following conventions so that language is recognized automatically.
+        // Additionally, a .txt file is recognized as 'pseudo' language
+        solutionSources : {
+          "firstSource" : []
+        },
+        // can user build tests?
+        hasUserTests: false,
+        /* 
+           source for hint 1 would be
+           hintsSources: {
+              1: {
+                 "firstHintSource" : [ "hint.cpp", "hint.py", etc. ]
+              }
+           }
+        */
+        taskSamples : [],
+        graderSamples: []
+      }
+    </script>
+  </head>
+  <body ng-controller="taskController">
+
+    <h1>Matplotlib</h1>
+
+    <div id="task">
+
+      <h3 id="statement">Statement</h3>
+      <p>This task is an example of matplotlib output visualization. There is no objective.</p>
+      <p>You can test here Python programs using matplotlib; you only need to use the command <b>returnFig(fig)</b> to return the figure you want to have displayed.</p>
+
+      <h3>Example</h3>
+      <div data-lang="python" data-show-source data-code="
+import matplotlib
+import matplotlib.pyplot as plt
+
+# Make a figure
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot([1,2,3])
+
+# Return the figure
+returnFig(fig)
+      "></div>
+    </div>
+
+    <div id="solution">
+    </div>
+  </body>
+</html>  

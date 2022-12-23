@@ -1,0 +1,39 @@
+Sujet:
+
+On a une grille avec certaines cases contenant des boites. On peut se deplacer avec 
+haut(d), bas(d), gauche(d), droite(d). On a une case initiale et l'on veut atteindre
+jusqu'à 4 bonus répartis dans la grille. Lorsque l'on se déplace, on peut "pousser" 
+les boites lorsque cela les amene sur une case vide. Le but est de récolter un maximum
+de bonus.
+
+
+Contraintes:
+
+Une seule instance à déterminer.
+
+
+Libs:
+
++haut(d)
++bas(d)
++gauche(d)
++droite(d). 
+
+Évaluation:
+
+Score partiel à déterminer en fonction du nombre de bonus obtenus.
+
+Commandes de l'évaluation:
+
+{"initGrid", args=[nbLines,nbCols,iLineDep, iColDep]}: spécifie la taille du terrain, et la pos de départ.
+{"setBox", args=[iLine,iCol]} : met une caisse à la position (iLine,iCol)
+{"setBonus", args=[iLine,iCol]} : met un bonus à la position (iLine,iCol)
+{"startSimu", args=[]} : lance l'animation
+{"move", args=[dL,dC,dep]} : le robot tente de se déplacer de dep cases dans la direction (dL,dC)
+
+
+
+
+
+
+

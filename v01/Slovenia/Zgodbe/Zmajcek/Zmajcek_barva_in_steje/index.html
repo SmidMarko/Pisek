@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>dragon-var</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-var -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "pisek-var",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "KSpenko",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Pobarvaj s številko</h1>
+         <img src="green_dragon.png" style="display:none" />
+         <img src="paint2.png" style="display:none" />
+         <img src="marker.png" style="display:none" />
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent" style="text-align:left;position:relative">
+            <div id="taskIntro">
+               <p>
+                  Napiši zmajčku navodilo, po katerem bo pobarval označena polja.
+               </p>
+               <div class="easy">
+                  <p>
+                     Številka pred zmajčkom namiguje, koliko kvadratov je označenih dve polji naprej. Seveda se mora številko prebrati, jo shraniti v spomin določene spremenljivke in potem uporabiti vsebino spremenljivke v programu.
+                  </p>
+                  <p>
+                     Številko prebereš in shraniš v spremenljivko 'steviloOznacenih' tako, da nadaljuješ za en kvadrat in potem sestaviš naslednje navodilo:            </p>
+                  <img data-lang="blockly" src="read_number_blockly.png" style="height:35px"/>
+                  <img data-lang="scratch" src="read_number_scratch.png" style="height:50px"/>
+                  <p>
+                     Spremenljivko lahko uporabiš tam, kjer potrebuješ njeno vrednost, na primer:
+                  </p>
+                  <img data-lang="blockly" src="use_number_blockly.png" style="height:80px" />
+                  <img data-lang="scratch" src="use_number_scratch.png" style="height:100px" />
+               </div>
+               <div class="medium">
+                  <p>
+                     Pred zmajčkom se nahajata dve številki: število vrstic in število stolpcev pravokotnega področja polj, ki jih zmajček mora pobarvati.             </p>
+                  <p>
+                     Za reševanje te naloge potrebuješ dve spremenljivki, da lahko shraniš tisti dve številki. Imenuj jih na primer 'stVrstic' in 'stStolpcev'.
+V tej različici so bloki razdeljeni po kategorijah v meniju. S klikom na meni lahko dostopaš do blokov v izbrani kategoriji.
+              </p>
+                  </div>
+               <div class="hard">
+                  <p>
+                     Pred zmajčkom najdeš številko, ki ti pove, koliko vrstic in stolpcev ima trikotno območje, ki ga zmajček mora pobarvati.                  </p>
+                  <p>
+                     Pravilne številke naslikaj v kvadrate vsake vrstice tako, da ustvariš spremenljivko, ki mora za vsako vrstico vsebovati število označenih polj. Ko zmajček vsako vrstico pobarva, se vsebini te spremenljivke prišteje 1. Lahko si ogledaš naslednji primer:
+                  </p>
+                  <img data-lang="blockly" src="use_variable_blockly.png" style="height:200px" />
+                  <img data-lang="scratch" src="use_variable_scratch.png" style="height:250px" />
+               </div>
+               <p>
+                  Namig: Naloga ima dva testa. Program mora delovati na obeh testih.
+               </p>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

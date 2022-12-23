@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Raziskovalci tropskega gozda</title>
+      <script>
+        window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/';
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'jwinf_css']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPrinter_lib.js" id="blocklyPrinter_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "naloge-ucbenik-stran67-1",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Luka Čušin",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+
+      window.stringsLanguage = 'sl';
+      var strings = {
+         moreThan100Moves: "Naredil/-a si več kot 100 potez.",
+         notAllCellsPainted: "Vsa polja nisi pobarval/-a pravilno. Poskusi še enkrat!",
+         allCellsPainted: "Čestitamo! Vsa polja si pravilno pobarval/-a!"
+      };
+      </script>
+      <script type="text/javascript" src="printer_task.js"></script>
+       <script>
+           function hint(id){
+               var hint = document.getElementById(id);
+               if (hint.style.display == "none") {
+                   hint.style.display = "block";
+               }
+               else {
+                   hint.style.display = "none";
+               }
+           };
+       </script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+        <h1>Raziskovalci tropskega gozda</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+             <div id="taskIntro">
+                 <p>
+				Tabornikom se je pridružila skupina mladih raziskovalcev, ki si želijo preučevati rastlinske vrste v tropskem deževnem gozdu. 
+				Tine je dobil nalogo, da nekaj raziskovalcev pelje na daljši pohod po gozdu. 
+				Pohod je zelo zahteven, zato se ga lahko udeležijo le raziskovalci, ki so nujno starejši od določene starosti <code>x</code>. Tine ima v tabeli <code>a</code> zapisane starosti raziskovalcev, zdaj pa mora ugotoviti, 
+				koliko raziskovalcev se lahko udeleži njegovega pohoda. 
+				Tine se je štetja že lotil, a je imel pri tem težave. Pomagaj mu!
+                 </p>
+                 <p>
+                 <button type="button" class="btn btn-info" onclick="hint('hint1')">Namig</button>
+                 <div id="hint1" class="modal-content" style="display: none;" align="justify">
+                    <p>
+					Pogoj nujno starejši pomeni, da raziskovalci ne smejo biti stari enako, kot je določena starost <code>x</code>, ampak vsaj leto starejši. 
+                    </p>
+                 </div>
+                 </p>
+             </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+      </div><!-- task -->
+   </body>
+</html>

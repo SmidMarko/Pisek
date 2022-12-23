@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>robot-var</title>
+	<!-- https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.0.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-var",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Ziga Flajs",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Prepleskaj s številko</h1>
+         <img src="green_robot.png" style="display:none" />
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent" style="text-align:left;position:relative">
+            <div id="taskIntro">
+               <div class="easy">
+                  <p>
+					Robotku je uspelo popraviti raketo! Raketa pa ima še skrivno geslo za prižig v treh sobah, zato, da je ne ukradejo vesoljski fakini. Robotek ima skrivno geslo zapisano na lističih, ki so še vedno
+razmetani po tleh od strmoglavljenja rakete. Pomagaj robotku sestaviti skrivno geslo!
+To narediš tako, da premakneš robotka na polje z listkom in ga prosiš, da številko prebere in jo shrani v spomin. Nato mora robotek iti do računalnika in vanj vnesti številko iz svojega spomina. 
+				  </p> 
+				<p>
+			Številko, zapisano na listku, shraniš v spremenljivko "spomin robotka" tako: [slika: nastavi spomin robota na številka listka].
+				  </p>
+				   <p>
+					Številko, shranjeno v spremenljivki "spomin robotka", nato napišeš v polje tako: [nastavi številko računalnika na spomin robota]
+				  </p>
+               </div>
+               <div class="medium">
+                  <p>
+				  Robotek še vedno išče skrivna gesla. Tokrat mora prebrati številko na prvem listku, nato še prebrati in prišteti številko na drugem listku in vsoto zapisati na računalnik. 
+				  </p>
+				  <p>
+				  Pomagaj si s primerom spodaj: [slika] nastavi spomin robota na spomin robota + številka listka]
+				  </p>
+               </div>
+               <div class="hard">
+                  <p>
+				 Robotek še vedno išče skrivna gesla. Tokrat mora prebrati številko na prvem listku, nato še prebrati in prišteti številko na drugem in tretjem listku ter vsoto zapisati na računalnik.  
+					</p>
+					<p>
+				 Pomagaj si s primerom spodaj: [slika] nastavi spomin robota na spomin robota + številka listka]
+					</p>
+               </div>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Računanje s števili</title>
+      <script>
+        window.stringsLanguage = 'sl';
+      </script>
+       <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+       <script class="remove" type="text/javascript">
+           var modulesPath = '../../../../../_common/modules/';
+           importModules([
+               'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+               'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+               'taskStyles-0.1', 'jwinf_css']);
+           // set Blockly as default language when none is specified through ?language=
+           importLanguageModules('blockly');
+       </script>
+       <script class="remove" type="text/javascript" src="blocklyPrinter_lib.js" id="blocklyPrinter_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "test-printer-copy",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Ziga Flajs",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+
+      window.stringsLanguage = 'sl';
+      var strings = {
+         moreThan100Moves: "Naredil/-a si več kot 100 potez.",
+         notAllCellsPainted: "Vsa polja nisi pobarval/-a pravilno. Poskusi še enkrat!",
+         allCellsPainted: "Čestitamo! Vsa polja si pravilno pobarval/-a!"
+      };
+      </script>
+      <script type="text/javascript" src="printer_task.js"></script>
+      
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+        <h1>Trikotniki</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+               <p class="easy">
+                   Sestavi program, ki prebere dva notranja kota trikotnika na vhodu, ju predela in izpiše tretji notranji kot trikotnika na izhod.
+               </p>
+               <p class="hard">
+                   Sestavi program, ki prebere vse notranje kote trikotnika na vhodu in izpiše na izhod ali je trikotnik pravokoten.
+               </p>
+               <p class="medium">
+                   Sestavi program, ki prebere vse notranje kote trikotnika na vhodu in izpiše na izhod za vsakega ali je kot oster ali top.
+               </p>
+               <p class="easy">
+                   Na vhodu se nahajata dve števili v dveh vrsticah. V prvi vrstici je napisan prvi notranji kot trikotnika in v drugi vrstici drugi notranji kot trikotnika. Oba kota sta napisana v stopinjah.
+               </p>
+               <p class="medium hard">
+                   Na vhodu se nahajajo tri števila v treh vrsticah. V vsaki vrstici je napisan en notranji kot trikotnika v stopinjah.
+               </p>
+               <p class="easy medium hard">
+                   Na voljo imaš spremenljivke '1. kot', '2. kot' in '3. kot', kamor lahko shraniš vse notranje kote trikotnika.
+               </p>
+               <p class="easy">
+                   Vsota notranjih kotov trikotnika je 180 stopinj. Program naj izračuna tretji notranji kot in ga izpiše na izhod.
+               </p>
+               <p class="easy">
+                   Primer pravilnega izpisa na izhodu:
+               </p>
+<table class="easy"><tr><td style="padding: 0px 30px;vertical-align: top;">
+Vhod:
+<pre>
+30
+60
+</pre>
+</td><td style="padding: 0px 30px;vertical-align: top;">Izhod:
+<pre>
+90
+</pre>
+</td></tr></table>
+               <p class="medium">
+                   V tej nalogi ni noben notranji kot trikotnika enak 90 stopinj. Kot je oster, če je manjši od 90 stopinj, in topi, če je večji od 90 stopinj.
+               </p>
+               <p class="medium">
+                   V program vključi pogoj (blok 'če'), ki preveri vsak notranji kot trikotnika in naj izpiše na izhod, kakšen je ta notranji kot. Najprej naj izpiše, kakšen kot je prvi notranji kot, nato drugi notranji kot in na koncu tretji notranji kot trikotnika. Če je kot oster, potem napiši "Kot je oster." Če je kot top, potem napiši "Kot je top."
+               </p>
+               <p class="medium">
+                   Primer pravilnega izpisa na izhodu:
+               </p>
+<table class="medium"><tr><td style="padding: 0px 30px;vertical-align: top;">
+Vhod:
+<pre>
+57
+103
+20
+</pre>
+</td><td style="padding: 0px 30px;vertical-align: top;">Izhod:
+<pre>
+Kot je oster.
+Kot je top.
+Kot je oster.
+</pre>
+</td></tr></table>
+               <p class="hard">
+                   Trikotnik je pravokoten, če je eden izmed njegovih notranjih kotov enak 90 stopinj.
+               </p>
+               <p class="hard">
+                   V program vključi pogoj (blok 'če'), ki preveri vse notranje kote trikotnika. Na izhod naj izpiše "Trikotnik je pravokoten.", če je trikotnik pravokoten, sicer naj izpiše "Trikotnik ni pravokoten."
+                   Primer pravilnega izpisa na izhodu:
+               </p>
+<table class="hard"><tr><td style="padding: 0px 30px;vertical-align: top;">
+Vhod:
+<pre>
+40
+45
+95
+</pre>
+</td><td style="padding: 0px 30px;vertical-align: top;">Izhod:
+<pre>
+Trikotnik ni pravokoten.
+</pre>
+</td></tr></table>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+      </div><!-- task -->
+   </body>
+</html>

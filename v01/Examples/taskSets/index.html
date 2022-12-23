@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Afficher de l'ASCII Art</title>
+		<link class="task" type="text/css" rel="stylesheet" href="../../_common/modules/pemFioi/progTask.css">
+		<link class="task" type="text/css" rel="stylesheet" href="../../_common/modules/ext/bootstrap/css/bootstrap.min.css">
+		<script class="remove" src="../../_common/modules/ext/requirejs/require.js"></script>
+		<script type="text/javascript">
+            var modulesPath ='../../_common/modules';
+            var taskPlatformPath ='../../_common/task-platform';
+		</script>
+		<script type="text/javascript" src="../../_common/modules/pemFioi/progTaskConfig-1.0.js"></script>
+		<script type="text/javascript" class="remove">
+// general metadata conforming the PEM API Documentation for getMetaData
+var PEMTaskMetaData = {
+	// title is automatically fetched from the <title> markup
+	id : 'Examples/taskSets',
+	license : 'MIT',
+	authors : ["MOOCC"],
+	language : "fr",
+	version: "0.1",
+	baseUrl : "https://github.com/France-ioi/fioi-tasks-template",
+	limits : {
+		"*": {time: 1000, memory: 64000},
+	},
+    subtasks: [
+        {"name": "test-positive", "comments": "Tests sur des entiers positifs.", "gradeMax": 30},
+        {"name": "test-negative", "comments": "Tests sur des entiers négatifs.", "gradeMax": 30},
+        {"name": "test-all", "comments": "Tests sur des entiers relatifs.", "gradeMax": 40},
+    ]
+}
+// Metadata specific to the FranceIOI tasks
+var FIOITaskMetaData = {
+	// This lists all possible languages
+	supportedLanguages: ['c'],
+	// file extensions must follow the following conventions so that language is recognized automatically.
+	// Additionally, a .txt file is recognized as 'pseudo' language
+	solutionSources : {
+		"firstSource" : []
+	},
+	// can user build tests?
+	hasUserTests: false,
+	/* 
+	   source for hint 1 would be
+	   hintsSources: {
+	   1: {
+	   "firstHintSource" : [ "hint.cpp", "hint.py", etc. ]
+	   }
+	   }
+	 */
+	taskSamples : [],
+	graderSamples: [],
+}
+		</script>
+	</head>
+	<body ng-controller="taskController">
+
+		<div id="task">
+
+			<h3>Votre mission</h3>
+            Tester
+		</div>
+
+		<div class="hint">
+            hint!
+		</div>
+
+		<div id="solution">
+			<pre>
+            abc
+			</pre>
+		</div>
+	</body>
+</html>  

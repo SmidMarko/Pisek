@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-AL-08</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/randomGenerator-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/randomGenerator-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script>
+         var stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/alkindi_2016/2016-AL-08-aliceflix/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "license": "CC BY-SA 3.0",
+          "translators": [],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+        var taskStrings = {
+           success: "Bravo, vous avez réussi !",
+           error: "L'auteur du message sélectionné ne correspond pas à l'identifiant d'utilisateur choisi.",
+           dataMissing: "Sélectionnez un message à gauche et une ligne dans le résultat de recherche à droite."
+        };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #reviews {
+            background-color: #EEE;
+            font-size: 12px;
+            text-align: center;
+         }
+         .resultsTable {
+            width: 100%;
+            margin-top: 10px;
+         }
+         .resultsTable tr:first-child {
+            font-weight: bold;
+         }
+         .resultsTable tr td {
+            border: solid black 1px;
+            padding: 2px 5px 2px 5px;
+            font-size: 13px;
+         }
+         .messageContainer {
+            border:solid black 1px;
+            width:100%;
+            margin:4px 0 0 0;
+         }
+         .messageHeader {
+            background-color:lightblue;
+            border: solid 1px black;
+            padding: 0 3px 0 3px;
+         }
+         .messageDate {
+            float:right;
+            font-size:10px;
+            margin-top:4px;
+         }
+         .messageContent {
+            clear:both;
+            border-top:solid black 1px;
+            padding:3px;
+            font-size:14px;
+         }
+         .selectedMessage, .selectedResult {
+            background-color: lightgreen;
+         }
+         #selectedAuthor, #selectedUserID {
+            font-weight: bold;
+         }
+         #startDateError, #endDateError {
+            font-weight: bold;
+            color: red;
+            font-size: 12px;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Aliceflix</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+               Le service Aliceflix permet de voir des films en ligne et de leur attribuer des notes de 0 à 10.
+            </p>
+            <p>
+               Les données d'Aliceflix de 2015 ont été anonymisées puis publiées : les informations personnelles ont été retirées, on conserve seulement un numero d'utilisateur. Malgré cette anonymisation, à l'aide d'Alicebook, on peut identifier certains clients.
+            </p>
+            <p>
+              <b>Pourrez-vous identifier l'un des utilisateurs ? Sélectionnez le message d'un utilisateur d'Alicebook que vous aurez identifié à gauche et son identifiant d'utilisateur dans la base de données Aliceflix à droite.</b>
+            </p>
+            <p class="hard" style="background-color:#F6CED8; padding:3pt">
+               Dans cette version, pour éviter que l'on puisse retrouver un utilisateur en se servant de la date, <b>toutes les dates ont été décalées d'une même durée</b> dans la base de donnée Aliceflix.
+            </p>
+            <table>
+               <tr>
+                  <td style="width:300px;vertical-align: top;padding-right:10px">
+                     <div style='background-color:#EEE;border:solid black 1px;width:100%;text-align:center'>
+                        Messages Alicebook
+                     </div>
+                     <div id="messages">
+                     </div>
+                  </td>
+                  <td style="border-left: solid black 1px;vertical-align: top;padding-left:10px;width:460px;">
+                     <div style='background-color:#EEE;border:solid black 1px;width:100%;text-align:center'>
+                        Recherche Aliceflix
+                     </div>
+                     <p>
+                        Film :
+                        <select id='movie'>
+                        </select>
+                     </p>
+                     <p class="medium hard">
+                        Date minimum :
+                        <select id='startDate_day' class='calDay'>
+                        </select>
+                        <select id='startDate_month' class='calMonth'>
+                        </select>
+                        <span id='startDateError'></span>
+                     </p>
+                     <p class="medium hard">
+                        Date maximum :
+                        <select id='endDate_day' class='calDay'>
+                        </select>
+                        <select id='endDate_month' class='calMonth'>
+                        </select>
+                        <span id='endDateError'></span>
+                     </div>
+                     <p>
+                        Note minimum :
+                        <select id='minRating'>
+                        </select>
+                     </p>
+                     <p>
+                        Note maximum :
+                        <select id='maxRating'>
+                        </select>
+                     </p>
+                     <p>
+                     Trier par :
+                     <select id='orderBy'>
+                        <option value=''>Ordre de tri</option>
+                        <option value='userID'>ID d'utilisateur croissant</option>
+                        <option value='rating'>Note croissante</option>
+                        <option value='date'>Date croissante</option>
+                     </select>
+                     </p>
+                     <div id="reviews" style='min-height:100px'></div>
+                     <span style="font-size:14px">Seuls les 10 premiers enregistrements sont affichés.</span>
+                  </td>
+               </tr>
+            </table>
+            <p>
+            Utilisateur sélectionné : <span id='selectedAuthor'></span><br/>
+            Identifiant retrouvé dans la base Aliceflix : <span id='selectedUserID'></span>
+            </p>
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+         <h2>Solution</h2>
+        <span class="easy">
+      <p> Nous devons choisir un message Alicebook qui contient beaucoup d'informations. Comparons les deux messages :
+<ul>
+<li> Igor n'a pas encore regardé Zodiac. Cela n'est pas une information utile car beaucoup de personnes sont comme lui.
+<li>Roxane a regardé "Un homme d'exception" et lui a mis la note 4. Cela est très précis car seule une partie des utilisateurs ont vu ce film et il est peu probable que tout le monde l'ait noté pareil.
+</ul>
+Nous cherchons dans la base de données d'Aliceflix tous les utilisateurs qui ont regardé "Un homme d'exception" et qui lui ont mis la note 4. Il n'y a qu'une personne, c'est sûrement Roxane !
+ <center>  <img src="solution_easy.png" width="600">  </center></p>
+        </span>
+         <span class="medium">
+    <p>
+      Parmi les messages Alicebook il faut choisir ceux qui contiennet beaucoup d'informations. Étudions les messages un à un :
+<ul>
+<li> Grégoire et Geoffrey ne donnent pas d'informations sur les films qu'ils ont vu en tant qu'utilisateurs Aliceflix.
+<li> Ingrid indique un film qu'elle a vu sans donner la date. 
+<li> Damien donne quant à lui beaucoup d'informations : il a regardé "U-571" le weed-end qui a précédé le mardi 12 mai 2015, donc le samedi 9 ou dimanche 10, et il lui a mis une très mauvaise note.
+</ul>
+ Nous cherchons donc les utilisateurs qui ont regardé ce film le week-end du 9 et 10 mai 2015 et qui lui ont mis des notes inférieures ou égales à 3. Cela permet d'identifier Damien ! 
+  <center>  <img src="solution_medium.png" width="600">  </center>  </p> 
+        </span>
+        </span>
+         <span class="hard">
+    <p>
+    Analysons quel message Alicebook donne le plus d'informations :
+<ul>
+<li> Antoine et Philippe ne donnent aucune information ;
+<li> Giancarlo a vu "Imitation Game" et lui a mis 7, c'est une information précise ; 
+<li> Kim nous donne beaucoup d'informations sur Julie : elle a regardé 3 fois "Breaking the code" et c'est son film préféré, donc elle lui a probablement mis une très bonne note. 
+</ul>
+<p>Si on cherche dans la base de données les utilisateurs qui ont regardé "Imitation Game" et lui ont mis 7 alors on trouve trop de personnes. Comme la date a été changé en ajoutant un retard secret, nous ne pouvons pas affiner notre recherche pour identifier Giancarlo. </p>
+<p> Si on cherche qui a regardé "Breaking the code" en lui mettant une très bonne note (10/10) on trouve 6 visualisations dont 3 par la même personne, c'est surement Julie ! Seulement que Julie n'a mis aucun message sur Alicebook, donc l'exercice n'est pas fini !</p>
+<p> Comme nous avons identifié Julie, nous savons la vraie date de sa dernière visualisation du film "Breaking the code" : le jeudi 14 juillet 2015. Dans la base de données la date est celle du 13 juin, donc le décalage secret est de 1 jour et 1 mois. Ainsi Giancarlo qui a vu le film "Imitation Game" le 10 décembre a été enrégistré dans la base de données comme étant le 9 novembre. Nous cherchons qui a regardé le film ce jour là en lui mettant 7 et nous identifions Giancarlo !</p> 
+<center>  <img src="solution_hard.png" width="600">  </center>  </p> 
+        </span>
+
+<h3>C'est de la crypto</h3>
+<p>La protection des données personnelles est <a href="http://www.ls-avocats.com/article-presse/53-donnee-perso">exigée par la loi</a>. Toutefois il est nécessaire que des données soient mises à la disposition du publique, par exemple le poucentage de réussite d'un traitement médical rapporté par un hopital est utile aux médecins d'autres unités médicales et il peut permettre de trouver de nouveaux remèdes. On peut croire que la solution est de rendre publiques les données tout en les anonymisant.</p>
+
+<p> Malheureusement les chercheurs ont trouvé des failles dans toutes les techniques d'anonymisation connues actuellement. Lors de son <a href="http://www.senat.fr/rap/r13-469/r13-4697.html">audition par le sénat</a> Claude Kirchner, chercheur Inria, a déclaré  qu'aucune technique d'anonymisation n'est en théorie infaillilible.  
+
+	  </div> <!-- task-solution -->
+   </body>
+</html>

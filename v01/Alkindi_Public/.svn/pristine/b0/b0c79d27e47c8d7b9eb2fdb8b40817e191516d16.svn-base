@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>2018-FR-AL-05</title>
+   <script>
+      window.stringsLanguage = 'fr';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'randomGenerator-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1' ]);
+   </script>
+   <script class="remove" type="text/javascript">
+        var json = {
+           "id": "",
+           "language": "fr",
+           "version": "fr.01",
+           "authors": "Animath, France-ioi, Arnaud Le Grand, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+           "license": "CC BY-SA 3.0",
+           "translators": [],
+           "taskPathPrefix": "",
+           "modulesPathPrefix": "",
+           "browserSupport": [],
+           "fullFeedback": true,
+           "acceptedAnswers": [],
+           "usesRandomSeed": false
+        };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Bravo, vous avez réussi !",
+         error: "Vous avez utilisé toutes les billes mais n'avez pas réussi à ouvrir le coffre. Réessayez.",
+         trigger: "Déclencher",
+         dontForget: "N'oubliez pas que vous pouvez glisser sur la roue pour la faire tourner plus rapidement",
+         partialScore: function(attempts) {
+            return ("Vous avez réussi à ouvrir le coffre, mais en utilisant " + attempts + " billes. Vous pouvez faire mieux.");
+         }
+      };
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      body * {
+         box-sizing: border-box;
+      }
+
+      #feedback {
+         text-align: center;
+         color: red;
+         font-weight: bold;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Coffre-fort</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <div id="zone_1">
+            <div class="consigne">
+              <p id="difficultyWarning" class="hard"></p>
+              <p class="medium hard" id="enemyWarning"></p>
+
+              <p>Cliquer sur "DÉCLENCHER" fait tomber une bille à un endroit qui dépend de la position <span class="easy medium">de la
+	      roue</span><span class="hard">des roues</span>.
+         
+              <p>Faites <span class="easy medium">la</span><span class="hard">les</span> tourner en glissant dessus ou en cliquant sur les flèches, et atteignez le trou pour ouvrir le coffre.</p>
+
+               <p class="easy medium">Vous disposez de <span id="nbMarbles">X</span> billes.</p>
+               
+               <p class="hard">Pour obtenir tous les points, utilisez moins de 30 billes.</p>
+               
+               <p class="hard">Billes utilisées : <span id="attempts">0</span></p>
+               
+               <p class="easy">Si vous recommencez l'exercice, le mécanisme interne du coffre sera modifié.</p>
+
+
+          </div>
+         </div>
+         
+         <div id="zone_2">
+            <div id="vault"></div>
+         </div>
+         
+         <div id="feedback"></div>
+         <img src="icon.png" style="display:none">
+         <img src="ball.png" id="ball" style="display:none">
+         <img src="back.png" id="back" style="display:none">
+         <img src="locker.png" id="locker" style="display:none">
+         <img src="front.png" id="front" style="display:none">
+         <img src="handle_shadow.png" id="handle_shadow" style="display:none">
+         <img src="handle.png" id="handle" style="display:none">
+         <img src="wheel.png" id="wheel" style="display:none">
+         <img src="number_support.png" id="number_support" style="display:none">
+         <img src="pointer.png" id="pointer" style="display:none">
+      </div>
+   </div>
+   <div id="solution">
+      <h2>Solution</h2>
+   </div>
+</body>
+</html>

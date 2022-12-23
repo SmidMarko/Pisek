@@ -1,0 +1,314 @@
+<!doctype html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>2017-AL-04</title>
+   <script>
+      window.stringsLanguage = 'fr';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.1', 'JSON-js',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'simpleKeyboard-1.0', 'randomGenerator-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1']);
+   </script>
+   <script class="remove" type="text/javascript">
+        var json = {
+           "id": "http://castor-informatique.fr/tasks/alkindi_2017/2017-FR-AL-04-x-ray-vault/",
+           "language": "fr",
+           "version": "fr.01",
+           "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+           "license": "CC BY-SA 3.0",
+           "translators": [],
+           "taskPathPrefix": "",
+           "modulesPathPrefix": "",
+           "browserSupport": [],
+           "fullFeedback": true,
+           "acceptedAnswers": [],
+           "usesRandomSeed": true
+        };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Bravo, vous avez réussi !",
+         error: "Combinaison incorrecte.", 
+         openVault: "Ouvrir",
+         backspace: "Effacer"
+       };
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      @keyframes safeOpening {
+         0% {
+            -webkit-transform: translateX(0px);
+               -moz-transform: translateX(0px);
+                 -o-transform: translateX(0px);
+                    transform: translateX(0px);
+            transform-origin: 50% 100%;
+         }
+         100% {
+            -webkit-transform: translateY(100px) rotateZ(-100deg);
+               -moz-transform: translateY(100px) rotateZ(-100deg);
+                 -o-transform: translateY(100px) rotateZ(-100deg);
+                    transform: translateY(100px) rotateZ(-100deg);
+            transform-origin: 0% 100%;
+         }
+         /*
+         60% {
+            -webkit-transform: rotateX(90deg) rotateZ(-45deg) translateX(-120px) translateY(20px);
+               -moz-transform: rotateX(90deg) rotateZ(-45deg) translateX(-120px) translateY(20px);
+                 -o-transform: rotateX(90deg) rotateZ(-45deg) translateX(-120px) translateY(20px);
+                    transform: rotateX(90deg) rotateZ(-45deg) translateX(-120px) translateY(20px);
+            transform-origin: 0% 100%;
+         }
+         100% {
+            -webkit-transform: rotateX(100deg) rotateZ(-90deg) translateX(-220px) translateY(-90px);
+               -moz-transform: rotateX(100deg) rotateZ(-90deg) translateX(-220px) translateY(-90px);
+                 -o-transform: rotateX(100deg) rotateZ(-90deg) translateX(-220px) translateY(-90px);
+                    transform: rotateX(95deg) rotateZ(-90deg) translateX(-220px) translateY(-90px);
+            transform-origin: 0% 100%;
+         }
+         */
+      }
+      @keyframes hatchetMoving {
+         0% {
+            -webkit-transform: translateX(0px);
+               -moz-transform: translateX(0px);
+                 -o-transform: translateX(0px);
+                    transform: translateX(0px);
+            transform-origin: 100% 100%;
+         }
+         25% {
+            -webkit-transform: rotateZ(30deg);
+               -moz-transform: rotateZ(30deg);
+                 -o-transform: rotateZ(30deg);
+                    transform: rotateZ(30deg);
+            transform-origin: 100% 100%;
+         }
+         50% {
+            -webkit-transform: rotateZ(-45deg);
+               -moz-transform: rotateZ(-45deg);
+                 -o-transform: rotateZ(-45deg);
+                    transform: rotateZ(-45deg);
+            transform-origin: 100% 100%;
+         }/*
+         75% {
+            -webkit-transform: rotateZ(30deg);
+               -moz-transform: rotateZ(30deg);
+                 -o-transform: rotateZ(30deg);
+                    transform: rotateZ(30deg);
+            transform-origin: 100% 100%;
+         }
+         100% {
+            -webkit-transform: rotateZ(-45deg);
+               -moz-transform: rotateZ(-45deg);
+                 -o-transform: rotateZ(-45deg);
+                    transform: rotateZ(-45deg);
+            transform-origin: 100% 100%;
+         }*/
+      }
+      #feedback {
+         height: 2em;
+         margin-top: 0.5em;
+         margin-bottom: 0.1em;
+         text-align: center;
+         font-weight: bold;
+         color: red;
+      }
+      #animContainer {
+         position: relative;
+      }
+      #mainDiv {
+         margin: auto;
+         text-align: center;
+      }
+      #keysDiv {
+         position: absolute;
+         padding-top: 70px;
+         top: 30px;
+         left: 10px;
+         width: 200px;
+         height: 150px;
+         background: #debead;
+         border: 2px solid black;
+         box-sizing: border-box;
+         -moz-box-sizing: border-box;
+         -webkit-box-sizing: border-box;
+      }
+      #keysDiv.destroyProcess {
+         box-shadow: none;
+         -webkit-animation: safeOpening 1s linear;
+            -moz-animation: safeOpening 1s linear;
+              -o-animation: safeOpening 1s linear;
+                 animation: safeOpening 1s linear;
+         -webkit-animation-delay: 500ms;
+            -moz-animation-delay: 500ms;
+              -o-animation-delay: 500ms;
+                 animation-delay: 500ms;
+      }
+      #hatchet {
+         position: absolute;
+         top: -50px;
+         left: 50%;
+         z-index: 1;
+         display: none;
+      }
+      #hatchet.destroyProcess {
+         display: block;
+         -webkit-animation: hatchetMoving 500ms linear;
+            -moz-animation: hatchetMoving 500ms linear;
+              -o-animation: hatchetMoving 500ms linear;
+                 animation: hatchetMoving 500ms linear;
+      }
+      .password {
+         font-family: Courier New, Ubuntu Mono;
+         letter-spacing: 4px;
+      }
+      .passwordBox {
+         background: white;
+         border: 1px solid black;
+         padding-top: 2px;
+         padding-bottom: 2px;
+         padding-left: 8px;
+         padding-right: 8px;
+         display: inline-block;
+      }
+      #userPassword {
+         margin: 2px;
+         margin-top: 6px;
+      }
+      .keyboard_row {
+         margin-top: 2px;
+      }
+      .keyboard_button {
+         margin-left: 4px;
+         margin-right: 3px;
+         margin-bottom: 2px;
+         padding: 0px;
+         width: 26px;
+         height: 24px;
+      }
+      /* Backspace */
+      .keyboard_button_8 {
+         margin-left: 0px !important;
+         width: 64px !important;
+      }
+      /* Try button */
+      .keyboard_button_126 {
+         width: 64px !important;
+      }
+      #validation {
+         display: none;
+         margin-top: 1em;
+         text-align: center;
+      }
+      #validation input {
+         padding: 2px 10px 2px 10px;
+         width: 150px;
+      }
+      #vaultControl {
+         text-align: center;
+      }
+      #keysDivInner {
+         width: 180px;
+         height: 120px;
+         background: #e0e0e0;
+         border: 1px solid black;
+         margin: auto;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Rayons X</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+	
+         <p>La serrure du coffre ci-dessous est constituée de <span class="easy">trois</span><span class="medium hard">quatre</span> pièces métalliques dont la position varie.</p>
+
+         <p>À l'aide de rayons X, on peut mesurer l'épaisseur totale de métal sur chaque rangée, indiquée sur la droite. </p>
+
+      <p><b>Détruisez autant de coffres que vous voulez pour comprendre le mecanisme interne</b></p>
+      <p><b>Puis, essayez de trouver la combinaison d'un coffre sans le détruire.</b></p>
+
+         <div id="vaultControl">
+            <input type="button" value="Détruire le coffre" id="destroyVault" />
+            <input type="button" value="Essayer avec un nouveau coffre" id="newVault" />
+         </div>
+         </br>
+         <div id="mainDiv">
+            <div id="animContainer">
+               <div id="anim"></div>
+               <div id="hatchet"><img src="hatchet.png" alt=""/></div>
+               <div id="keysDiv">
+                  <div id="keysDivInner">
+                     <span class="passwordBox password" id="userPassword">ABC__</span>
+                     <br>
+                     <div id="keyboard"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div id="feedback"></div>
+         <div id="validation"><input type="button" value="Valider" id="execute" /></div>
+         <img src="hatchet.png" style="display:none">
+         <img src="emitter.png" style="display:none">
+         <img src="icon.png" style="display:none">
+      </div>
+   </div>
+   <!-- task -->
+<div id="solution">
+<h2>Solution</h2>
+<div class="easy">
+<p>Avant de chercher le code d'un coffre on doit comprendre comment on peut se servir des rayons X. On commence par détruire le coffre et analyser le résultat des mesures.</p>
+<center>
+<img src="easy-example.png" width="500">.
+</center>
+<p>Quand on lit l'épaisseur ligne par ligne de haut en bas on remarque qu'elle vaut initialement 8 et qu'elle baisse plusieurs fois. Au passage de la 2e à la 3e ligne l'épaisseur totale baisse de 3, ce qui indique qu'une pièce d'épaisseur 3 s'est arrêtée. Comme les pièces dépassent vers le haut, on sait que la pièce d'épaisseur 3 est celle de droite, donc le code est de la forme * * 2. <p>
+<p> Au passage de la 4e à la 5e ligne, l'épaisseur totale baisse de 4 donc la pièce d'épaisseur 4 s'est arrêtée, donc sa profondeur est 4. Finalement, l'épaisseur totale passe de 1 à 0 au niveau de la 7e ligne, donc la pièce de milieu a profondeur 7. Cela correspond bien à ce qu'on voit dans le coffre cassé à la hache : le code était 4 7 2. Maintenant qu'on a compris, on essaie un nouveau coffre :</p>
+<center>
+<img src="easy-solution.png" width="500">.
+</center>
+L'épaisseur totale diminue de 1 au passage de la 1ère à la 2e ligne, donc la pièce d'épaisseur 1 (celle du milieu) a profondeur <b>1</b>. L'épaisseur totale baisse encore de 3 au passage de la 4e à la 5e ligne, donc la profondeur de la pièce d'épaisseur 3 (celle de gauche) vaut <b>4</b>. Finalement, l'épaisseur totale baisse de 4 au niveau de la 7e ligne, donc la pièce d'épaisseur 4 (celle de droite) a une profondeur de <b>7</b>. Le combinaison est ainsi <b>4 1 7</b>. 
+
+</div>
+<div class="medium">
+<p>Avant de résoudre un coffre on détruit un pour comprendre. On voit que chaque colonne a une pièce en haut et une en bas de façon que la somme des profondeurs est toujours 9. .</p>
+<center>
+<img src="medium-example.png" width="600">
+</center>
+<p>L'épaisseur totale baisse de 3 au passage de la 2e à la 3e ligne, ce qui montre que la pièce en haut de la colonne d'épaisseur 3 (celle de droite) a une profondeur de 2. L'épaisseur totale baisse ensuite de 2 au niveau 3, donc la pièce d'épaisseur 2 a une profondeur de 3. De la même manière, la pièce en haut de la colonne d'épaisseur 1 a une profondeur de 4. Comme l'épaisseur totale commence à augmenter il faut changer de méthode, donc on regarde la profondeur de bas en haut. Ainsi, en montant, l'épaisseur totale baisse de 4 au passage de la 3e à la 4 ligne de bas en haut, donc la pièce de bas de la colonne d'épaisseur 4 a une profondeur de 3. Comme la somme des profondeurs des pièces en haut et en bas est toujours 9, la piève en haut a une proonfeur de 9-3=6. Passons maintenant à la résolution proprement dite :</p>
+<center>
+<img src="medium-split.png" width="600">
+</center>
+<ul>
+<li>Lépaisseur totale baisse de 3 à la profondeur 3 donc la pièce de haut de la colonne d'épaisseur 3 a une profondeur de <b>3</b>. 
+<li>L'épaisseur totale baisse une deuxième fois à la profondeur 4 donc la pièce en haut de la colonne d'épaisseur 2 a une profondeur de <b>4</b>, 
+<li>Le même raisonnement s'applique de bas en haut : le niveau le plus bas où l'épaisseur totale augmente correspond à l'endroit où la partie basse d'une pièce commence. Ainsi, la pièce en bas de la colonne d'épaisseur 4 a une profondeur de 3, de la pièce correspondante en haut a une profondeur de 9-3=<b>6</b>. 
+<li>En allant toujours de bas en haut, l'épaisseur totale augmente de 1 au niveau 4, donc la pièce en bas d'épaisseur 1 a une profondeur de 4 et alors sa pièce en haut a une profondeur de <b>5</b>. On aurait trouvé la même résultat si on avait continué à analyser les baisses de niveau en allant de haut en bas. 
+</ul>
+Le code est donc <b>5 4 3 6</b>.
+</div>
+<div class="hard">
+<p>En cassant plusieurs coffres, on remarque que la fermeture du coffre est formée de 4 colonnes ayant chacune une pièce en haut et une en bas de façon que la somme des profondeurs vaut 9.</p>
+Voici la figure des épasseurs totales, dont ont a caché le milieu avec une bande noire pour se concentrer sur la partie haute et basse. On a colorié les rectangles comme suit :
+<center>
+<img src="hard-split.png" width="200">
+</center>
+<p>Chaque baisse de l'épaisseur totale en allant de haut en bas indique qu'une pièce s'arrête. Les rectangles bleu et rouge (en haut) indiquent que deux pièces d'épaisseur 3 s'arrêtent à une profondeur de <b>4</b> et <b>5</b>, respectivement.</p>
+<p> Chaque augmentation d'épaisseur en allant de bas en haut montre que la partie basse d'une pièce commence, donc les rectangles vert et violet (en bas) indiquent qu'on a deux colonnes d'épaisseur 2 dont les parties basses ont comme profondeur 2 et 3, respectivement. Comme la somme des profondeurs est 9, les pièces correspondantes en haut ont comme profondeur 6 et 7, respectivement.</p>
+<p>
+Pour finir on doit essayer chacun des codes possibles en permutant les pièces de même épaisseur : 4675, 4765, 5674, 5764. Celui qui ouvre le coffre est <b>5764</b>.
+</p>
+</div>
+<h2>C'est de la crypto</h2>
+<p>Certains systèmes cryptologiques sont cassés en utilisant des données apparamment peu importantes. Par exemple la consommation électrique des premières cartes bancaires variait lors du paiement, en alternant des moments de haute consommation avec des moments de basse consommation. En mesurant la consommation d'électricité en temps réel on pouvait lire la clé secrète. On dit que les attaques sont faite par des <a href="https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire">canaux auxiliaires</a>.</p>
+</div>
+</body>
+</html>

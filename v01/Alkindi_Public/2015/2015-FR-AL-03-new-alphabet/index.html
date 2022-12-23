@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2015-FR-AL-03-new-alphabet</title>
+      <link class="module" rel="stylesheet" type="text/css" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://castor-informatique.fr/tasks/modules/styles.css">
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael-min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+      <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+      <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib-2.0js"></script>
+
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2015/2015-FR-AL-03-new-alphabet/",
+          "language": "fr",
+          "version": "",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "license": "CC BY-SA 3.0",
+          "translators": [
+          ],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [
+          ],
+          "acceptedAnswers": [
+          ],
+          "difficulty": {"1": "medium", "2": "medium", "3": "easy", "4": "easy"},
+          "categories": {},
+          "answerType": "Interactive, drag and drop",
+          "fullFeedback": true,
+          "status": "test"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         @font-face {
+             font-family: alien;
+             src: url('alien.eot');
+             src: url('alien.eot?#iefix') format('embedded-opentype'),
+                  url('alien.woff') format('woff'),
+                  url('alien.ttf') format('truetype');
+         }
+      </style>
+ 
+  </head>
+  <body>
+      <div id="task">
+          <h1>Nouvel alphabet</h1>
+          <div id="tabsContainer"></div>
+          <div id="taskContent">
+             <p>
+               Aymeric code ses messages en remplaçant chaque lettre par un symbole.
+             </p>
+             <p>
+               <b>Glissez les étiquettes pour que chaque mot codé soit en face du nom d'objet correspondant.</b>
+             </p>
+             <p>
+                 Quand vous êtes sûrs d'une ligne, vous pouvez la bloquer avec la case du milieu.
+             </p>
+             <p>
+                 Attention : les trois versions de ce sujet n'utilisent pas les mêmes symboles pour les mêmes lettres.
+             </p>
+            <div id="anim" class="touch" style="text-align:center"></div>
+          </div>
+         <img src="icon.png" style="display:none">
+         <div style="display:none">"alien.eot" "alien.ttf" "alien.woff"</div>
+      </div>
+      
+      <div id="solution">
+         <h2>Solution</h2>
+         <div class="easy">
+            <p>
+               Voici deux exemples d'approches possibles :
+            <ul>
+               <li><p>Trier les mots par longueur croissante de chaque côté. Tous les mots sont identifiés sauf « pomme » et « nuage » que l'on distingue car « pomme » contient une lettre double.</p></li>
+               <li><p>Commencer par regarder la position des lettres doubles, et repérer le mot « arrosoir », seul mot qui a une lettre double aux positions 2 et 3. On sait alors reconnaître les symboles correspondant à chacune des lettres de ce mot, ce qui nous aide à reconnaître facilement les autres mots.</p></li>
+            </ul>
+            <p style="text-align:center">
+               <img src="2etoiles.png" style="width:400px" />
+            </p>
+         </div>
+         <div class="medium">
+            <p>
+               On peut repérer que quatre mots commencent par la lettre « c », et y associer les quatre mots chiffrés commençant par le même symbole. Parmi ces mots, « couleur » est le seul qui ne finit pa par « n », donc on l'identifie, ce qui nous permet de reconnaître les symboles correspondant à c, o, u, l, e et r.
+            </p>
+            <p style="text-align:center">
+               <img src="3etoiles.png" style="width:400px" />
+            </p>
+         </div>
+         <div class="hard">
+            <p>
+               Une approche efficace consiste à se concentrer sur la lettre « i », présente la plupart des mots à différentes positions.
+            </p>
+            <p>
+               On repère notamment que le « i » est la seulle lettre qui apparaît deux fois dans l'avant dernière colonne. On en déduit le symbole correspondant au « i », celui en forme d'ancre.
+            </p>
+            <p>
+               On peut alors par exemple identifier le seul mot qui finit par un « i », « emploi », et en déduire les symboles correspondant à chacune de ses lettres.
+            </p>
+            <p style="text-align:center">
+               <img src="4etoiles.png" style="width:400px" />
+            </p>
+         </div>
+         <h2>C'est de la crypto !</h2>
+	      <p>
+            Dans cet exercice on a fait de la cryptanalyse en exploitant les faiblesses du chiffrement par substitution. Différentes propriétés sont préservées par ce chiffrement, comme la longueur des mots, les lettres doubles et lettres les plus fréquentes.
+         </p>
+         <p>
+            Si une méthode de chiffrement laisse apparente des propriétés du message d'origine, cela constitue une faiblesse que les cryptanalistes vont chercher à exploiter pour retrouver le message d'origine.
+         </p>
+         <p>
+            <strong>Exemple :</strong> En 2009 Karsten Nohl a découvert une <a href="http://www.lefigaro.fr/web/2009/12/31/01022-20091231ARTFIG00321-un-hacker-casse-la-protection-des-appels-sur-mobiles-.php">faille de sécurité</a>
+            dans la technologie de téléphonie mobile GSM 2G, où la conversation est numérisée et transformée dans un message qui a une structure particulière, avant
+            d'être chiffrée. Nohl a prouvé que certaines structures du message étaient encore détectables après le chiffrement et permettaient d'écouter des
+            conversations privées. Cette faiblesse n'est plus présente depuis la technologies 3G, mais les téléphones passent automatiquement en mode 2G quand
+            ils n'arrivent pas à se connecter à un réseau plus récent.
+         </p>
+      </div>
+   </body>
+</html>

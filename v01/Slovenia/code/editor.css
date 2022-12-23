@@ -1,0 +1,81 @@
+/* Tabs */
+#tabRow>td {
+  border: 1px solid #ccc;
+  border-bottom: none;
+}
+td.tabon {
+  border-bottom-color: #ddd !important;
+  background-color: #ddd;
+  padding: 5px 19px;
+}
+td.taboff {
+  cursor: pointer;
+  padding: 5px 19px;
+  background-color: #fff;
+}
+td.taboff:hover {
+  background-color: #eee;
+}
+td.tabmin {
+  border-top-style: none !important;
+  border-left-style: none !important;
+  border-right-style: none !important;
+}
+td.tabmax {
+  border-top-style: none !important;
+  border-left-style: none !important;
+  border-right-style: none !important;
+  width: 99%;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: right;
+  padding-bottom: 4px;
+}
+html[dir=rtl] td.tabmax {
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+td {
+  padding: 0;
+  vertical-align: top;
+}
+#content_area,
+#content1_area,
+#content2_area,
+#content3_area,
+#content4_area,
+#content5_area {
+  width: 99% !important;
+}
+.content {
+  visibility: hidden;
+  margin: 0;
+  padding: 1ex;
+  position: absolute;
+  direction: ltr;
+  width: 100% !important;
+  height: 100% !important;
+}
+pre.content {
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  overflow: scroll;
+  background-color: #fff !important;
+}
+#content_blocks,
+#content1_blocks,
+#content2_blocks,
+#content3_blocks,
+#content4_blocks,
+#content5_blocks {
+  padding: 0;
+}
+.blocklySvg {
+  border-top: none !important;
+}

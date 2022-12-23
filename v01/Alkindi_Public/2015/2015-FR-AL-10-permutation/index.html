@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2015-FR-AL-10-block-permutation</title>
+      <link class="module" rel="stylesheet" type="text/css" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://castor-informatique.fr/tasks/modules/styles.css">
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+      <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+      <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib-2.0.js"></script>
+
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2015/2015-FR-AL-10-block-permutation/",
+          "language": "fr",
+          "version": "",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "license": "CC BY-SA 3.0",
+          "translators": [
+          ],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [
+          ],
+          "acceptedAnswers": [
+          ],
+          "difficulty": {"1": "medium", "2": "medium", "3": "easy", "4": "easy"},
+          "categories": {},
+          "answerType": "Interactive, drag and drop",
+          "fullFeedback": true,
+          "status": "test"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #inputText, #outputText {
+            border: solid black 1px;
+            padding: 5px;
+            background-color: #F0F0F0;
+            font-family: monospace;
+            white-space: pre;
+         }
+
+         .selected {
+            background-color: blue;
+            color: white;
+         }
+      </style>
+ 
+  </head>
+  <body>
+      <div id="task">
+          <h1>Permutation</h1>
+          <div id="tabsContainer"></div>
+          <div id="taskContent">
+             <p>
+                <b>Mettez les colonnes dans le bon ordre</b> pour retrouver le message secret. 
+			</p>
+			<p>	
+				Le texte se lit horizontalement. Attention, certains mots seront à cheval sur plusieurs lignes<span class="medium hard"> et les lettres sont toutes en minuscules et sans les accents</span>.
+            
+             <div id="anim" class="touch" style="text-align:center"></div>
+<!--
+                Le texte ci-dessous à gauche a été chiffré en le découpant en lignes de <span class="blockLength"></span> lettres consécutives. L'ordre des colonnes a ensuite été modifié, c'est à dire qu'on a effectué une <b>permutation</b> de ces colonnes.
+             </p>
+             <p>
+                Pour retrouver le texte d'origine, modifiez à votre tour l'ordre des colonnes, pour obtenir le texte déchiffré en français sur la droite.
+             </p>
+             <p>
+                Cliquez sur une ligne du texte de droite pour présenter la permutation en utilisant les lettres de ce bloc.
+             </p>
+
+            <table style="margin:auto">
+                <tr style="text-align:center;font-weight:bold">
+                  <td>Texte<br/>chiffré</td>
+                  <td>Permutation</td>
+                  <td>Résultat</td>
+                </tr>
+                <tr>
+                   <td>
+                      <div id="inputText"></div>
+                   </td>
+                   <td>
+                      <div id="anim" class="touch" style="text-align:center"></div>
+                   </td>
+                   <td>
+                      <div id="outputText"></div>
+                   </td>
+                </tr>
+             </table>
+             -->
+          </div>
+          <img src="icon.png" style="display:none">
+      </div>
+      
+      <div id="solution">
+         <h2>Solution</h2>
+         <div class="easy">
+            <p>
+               On repère la majuscule 'V' et on la met au début. Comme en français aucun mot ne commence par 'Vn', 'Vg' ou 'Vt', la lettre suivante est nécessairement le 'i'. On peut aussi repérer que sur la dernière ligne, le point doit être collé au mot. Donc la colonne suivante est celle du 'n'. Cela suffit pour reconnaître "Vingt".
+            </p>
+            <p style="text-align:center"><img src="2etoiles.png" style="width:200px" /></p>
+         </div>
+         <div class="medium">
+            <p>
+               On peut commencer par la dernière ligne : elle doit nécessairement commencer par le "s", suivi du point. On peut alors chercher un mot qui commence par "Vo" sur la première ligne. On reconnaît le mot "Voici". On peut aussi reconnaître le mot "maintenant" sans sa première lettre, sur la seconde ligne. La suite est facile.
+            </p>
+            <p style="text-align:center"><img src="3etoilesB.png" style="width:200px" /></p>
+         </div>
+         <div class="hard">
+            <p>
+               Dans cette version, on ne dispose pas de majuscule ou de point pour s'aider. Il faut donc essayer de former des mots avec les lettres disponibles, un peu comme au Scrabble.
+            </p>
+            <p>
+               On se concentre sur le premier mot, le seul dont on peut placer le début avec certitude. On cherche les mots qui peuvent être formés avec les lettres disponibles.
+               On peut supposer qu'il y a deux mots, et penser à "le", "ce" ou "il" comme mots possibles pour commencer une phrase avec les lettres disponibles.
+            </p>
+            <p>
+               Il nous reste respectivement "icel", "iell" et "ecel" pour former soit un deuxième mot soit début d'un deuxième mot. On peut alors trouver que le mot "ciel" peut être formé, donnant "le ciel" comme première ligne.
+            </p>
+            <p>
+               Les lignes suivantes ne semblent cependant pas lisibles, à moins d'avoir de la chance. Il y a en effet plusieurs manières d'écrire "le ciel" car on a deux 'e' et deux 'l'. On peut donc essayer d'échanger les deux 'e', les deux 'l', ou bien les deux à la fois On finit par obtenir :
+            </p>
+            <p style="text-align:center"><img src="4etoilesD.png" style="width:200px" /></p>
+		   </div>
+         <h2> C'est de la crypto ! </h2>
+
+         <p> Cette méthode de chiffrement, appelée <a href="http://fr.wikipedia.org/wiki/Chiffrement_par_transposition">chiffrement par transposition</a>, consiste à changer l'ordre des lettres dans le message. On peut l'utiliser seule ou combinée avec d'autres techniques de chiffrement. </p>
+         <p>
+         <strong>Exemple :</strong> Lors de la Première guerre mondiale, les Allemands ont chiffré leurs transmissions par la méthode <a href="https://fr.wikipedia.org/wiki/Chiffre_ADFGVX">ADFGVX</a> qui utilise, entre autres, le chiffrement par transposition.  
+         </p>
+      </div>
+  </body>
+</html>

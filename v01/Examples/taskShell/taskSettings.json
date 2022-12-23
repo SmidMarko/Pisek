@@ -1,0 +1,25 @@
+{
+"checker": "tests/gen/checker.sh",
+"correctSolutions": [
+    {
+    "path": "$TASK_PATH/tests/gen/sol-ok-sh.sh",
+    "language": "shell",
+    "grade": 100
+    },
+    {
+    "path": "$TASK_PATH/tests/gen/sol-bad-sh.sh",
+    "language": "shell",
+    "grade": 0
+    }],
+"defaultEvaluationSolutions": [{
+    "id": "@solutionId",
+    "compilationDescr": {
+        "language": "shell",
+        "files": [{"name": "runner.sh",
+                   "path": "$TASK_PATH/tests/gen/runner.sh"}],
+        "dependencies": [{"name": "solution.sh",
+                          "path": "@solutionPath",
+                          "content": "@solutionContent"}]
+        },
+    "compilationExecution": "@defaultSolutionCompParams"}]
+}

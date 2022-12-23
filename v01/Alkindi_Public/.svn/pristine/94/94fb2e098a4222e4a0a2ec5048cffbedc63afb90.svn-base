@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>2015-FR-AL-05-black-boxes</title>
+   <link class="module" rel="stylesheet" type="text/css" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://castor-informatique.fr/tasks/modules/styles.css">
+   <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-1.0.js"></script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+   <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+   <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+   <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+   <script class="remove" type="text/javascript">
+      var json = {
+         "id": "http://castor-informatique.fr/tasks/2015/2015-FR-AL-05-black-boxes/",
+         "language": "fr",
+         "version": "",
+         "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+         "license": "CC BY-SA 3.0",
+         "translators": [],
+         "taskPathPrefix": "",
+         "modulesPathPrefix": "",
+         "browserSupport": [],
+         "acceptedAnswers": [],
+         "difficulty": {
+            "1": "medium",
+            "2": "medium",
+            "3": "easy",
+            "4": "easy"
+         },
+         "categories": {},
+         "answerType": "Interactive, drag and drop",
+         "fullFeedback": true,
+         "status": "test"
+      };
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      #feedback {
+         text-align: center;
+         margin-top: 20px;
+         color: red;
+         font-weight: bold;
+      }
+   </style>
+
+</head>
+
+<body>
+   <div id="task">
+      <h1>Machines de chiffrement</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <p>
+           <b>Transmettez le message à Bernard, sans qu'il soit compréhensible lorsqu'il passe par la zone publique.</b>
+         </p>
+         <p>
+           Vous pouvez faire passer le message autant de fois que vous le voulez dans les machines, dans un sens ou dans l'autre, pour lui ajouter ou retirer des étiquettes. Chaque étiquette correspond à une opération de chiffrement.
+         </p>
+         <p>
+            <b>Glissez le message d'un côté d'une machine et cliquez sur la machine pour le faire passer de l'autre côté.</b>
+         </p>
+         <div id="anim"></div>
+         <div id="feedback">
+            
+         </div>
+      </div>
+      <img src="icon.png" style="display:none">
+   </div>
+   
+   <div id="solution">
+      <h2>Solution</h2>
+         <div class="easy">
+            <p>
+               On passe en avant par la machine d'Alice, ce qui ajoute les opérations représentées par un rond et un carré, puis on traverse la zone publique, et retire les deux opérations en passant en arrière par chacune des deux machines.
+            </p>
+            <p style="text-align:center"><img src="2etoiles.png" style="width:500px"/></p>
+         </div>
+         <div class="medium">
+            <p>
+               Une possibilité est de passer à l'envers par la première machine d'Alice, puis à l'endroit par la deuxième, pour se débarrasser de l'opération triangle en ne laissant que le rond (en négatif) et le losange. On traverse alors la zone publique et passe par les deux machines pour annuler chacune des deux opérations correspondantes.
+            </p>
+            <p style="text-align:center"><img src="3etoiles.png" style="width:500px"/></p>
+         </div>
+         <div class="hard">
+            <p>
+               Dans cette version, il n'est pas possible de simplement chiffrer d'un côté, traverser la zone publique, puis déchiffrer de l'autre.
+            </p>
+            <p>
+               La solution nécessite de traverser trois fois la zone publique. Elle n'utilise qu'une machine de chaque côté.
+            </p>
+            <p>
+               On commence par chiffrer chez Alice, traverser, chiffrer chez Bernard, et traverser de nouveau, pour se retrouver avec un message chiffré à la fois par la machine d'Alice et celle de Bernard :
+            </p>
+            <p style="text-align:center"><img src="4etoilesA.png" style="width:500px"/></p>
+            <p>
+               Il reste alors à annuler le chiffrage d'Alice, traverser de nouveau, puis annuler le chiffrage de Bernard.
+            </p>
+            <p style="text-align:center"><img src="4etoilesB.png" style="width:500px"/></p>
+         </div>
+
+      <h2>C'est de la crypto !</h2>
+      <p>
+         Cet exercice fait découvrir une notion essentielle de la cryptographie moderne. On voit dans la solution proposée de la version 4 étoiles qu'il est possible qu'Alice et Bernard échangent un message avec des machines complètement différentes.
+      </p>
+      <p>
+         Cette idée a été <a href = "https://fr.wikipedia.org/wiki/Échange_de_clés_Diffie-Hellman">inventée en 1976 par Withfield Diffie et Martin Hellman</a> et a donné naissance à la cryptographie moderne, à clé publique.
+      </p>
+      <p>
+         Avant cette invention, les cryptologues pensaient tous qu'il était impossible de se transmettre un message chiffré sans s'être mis d'accord à l'avance sur une clé commune. Une personne devait faire le trajet pour transporter la clé. C'était notamment le cas pour le <a href="https://fr.wikipedia.org/wiki/T%C3%A9l%C3%A9phone_rouge">téléphone rouge</a> pendant la guerre froide.
+      </p>
+
+      <p>
+         <strong> Exemple :</strong> Quand on se connecte à un site internet dont l'adresse commence par «https» les communications sont confidentielles alors que notre ordinateur, le client, et celui du site internet, le serveur, ont chacun une clé de chiffrement différente (ce qui correspond aux "machines" de l'exercice).
+      </p>
+      <p>
+         La communication commence par un échange de messages similaire à celui de l'exercice, où on dit que le client et le serveur « se serrent la main ». Cet échange leur permet de choisir une clé commune pour le reste de la conversation.
+      </p>
+
+   </div>
+</body>
+
+</html>

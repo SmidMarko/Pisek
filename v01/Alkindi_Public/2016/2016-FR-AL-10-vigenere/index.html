@@ -1,0 +1,337 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-AL-10</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/randomGenerator-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/randomGenerator-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simpleKeyboard-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simpleKeyboard-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script>
+         var stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/alkindi_2016/2016-AL-10-vigenere/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "license": "CC BY-SA 3.0",
+          "translators": [],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+        var taskStrings = {
+           success: "Bravo, vous avez réussi !",
+           errorText: "Some of the letters are not decrypted correctly.", // TODO translate
+           errorWord: "The highlighted word is not decrypted correctly" // TODO translate
+        };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #keyDiv {
+             margin-left: 30px;
+             text-align: left;
+             border: solid black 1px;
+             width: auto;
+             display: inline-block;
+             padding: 5px;
+         }
+         .keyCell {
+            text-align: center;
+         }
+         .keyCell input {
+            font-size: 20px;
+            width: 32px;
+            height: 32px;
+         }
+         .bigRow {
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 15px;
+         }
+         .letterCell, .wordSpaceCell {
+            font-size: 24px;
+            font-family: Courier New, Courier, monospace;
+            width: 32px;
+            text-align: center;
+         }
+         .numCell {
+            text-align: center;
+            font-size: 12px;
+         }
+         .keyHighlightLeft {
+            border-left: 3px solid #440;
+         }
+         .keyHighlightRight {
+            border-right: 3px solid #440;
+         }
+         .keyHighlight {
+            border-top: 1px solid #440;
+            border-bottom: 1px solid #440;
+            background-color: #F4F400;
+         }
+         .selectionLeft {
+            border-left: 2px solid blue;
+         }
+         .selectionRight {
+            border-right: 2px solid blue;
+         }
+         .selection {
+            border-top: 2px solid blue;
+            border-bottom: 2px solid blue;
+            background-color: cyan;
+         }
+         .letter {
+         }
+         .keyNumber {
+            border: 1px solid black;
+            background-color: #F4F400;
+         }
+         .lockedLetter {
+            background-color: lightblue;
+         }
+         #keyLengthContainer {
+            padding-left: 30px;
+         }
+         .keyLock {
+            width:22px;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Vigenère</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+      	    <table style="margin: auto;">
+	      <tr>
+		<td>
+		  Un message se déchiffre de la manière suivante :
+		  <ul>
+		    <li>La clé est une suite de nombres <i>(par exemple 2, 1, 5)</i></li>
+		    <li>À la première lettre on rajoute le premier nombre <i>(A + 2 = C)</i></li>
+		    <li>À la deuxième lettre on rajoute le deuxième nombre <i>(Q + 1 = R)</i></li>
+		    <li>Et ainsi de suite.
+		    <li>Quand on arrive au bout de la suite, on recommence avec le premier nombre.</li>
+		  </ul>
+		</td>
+		<td>
+		<center>
+		  <img width=150 src="exemple.png">
+		</center>
+		</td>
+	      </tr>
+	    </table>
+            </p>
+            <p>
+              <b>Saurez-vous déchiffrer <span class="easy medium">le message</span><span class="hard">le mot encadré</span> ?</b> <span class="medium hard">C'est à vous de fixer la longueur de la clé.</span>            
+            </p>
+	    <p class="easy" style="background-color:#F6CED8; padding:3pt">
+	      <u>Indication :</u> Le message commence par "LES".
+	    </p>
+	    <p class="medium" style="background-color:#F6CED8; padding:3pt">
+	      <u>Indication :</u> Le message commence par "LA".
+	    </p>
+	    <p class="hard" style="background-color:#F6CED8; padding:3pt">
+	      <u>Indication :</u> La 9ème lettre (dernière lettre du 2ème mot) du texte déchiffré est un "E".
+	    </p>
+
+	         <div id="mainContainer" unselectable="on">
+               <div id="keyDiv">
+                  <table>
+                     <tr>
+                        <td>
+                           Clé :
+                        </td>
+                        <td id="keyLengthContainer" class="medium hard">
+                           Longueur : 
+                           <input type='button' id='keySub' class="keyLengthButton" value='-'/>
+                           <span id="keyLength">2</span>
+                           <input type='button' id='keyAdd' class="keyLengthButton" value='+'/>
+                        </td>
+                     </tr>
+                  </table>
+                  <table id="keyTable">
+                     <tr>
+                        <td class="keyCell keyOperator">
+                           <input type="button" value="-">
+                        </td>
+                        <td class="keyCell keyOperator">
+                           <input type="button" value="-">
+                        </td>
+                        <td></td><td></td>
+                     </tr>
+                     <tr>
+                        <td class="keyCell keyNumber">
+                           3
+                        </td>
+                        <td class="keyCell keyNumber">
+                           5
+                        </td>
+                        <td class="keyLeft">
+                           [L]
+                        </td>
+                        <td class="keyRight">
+                           [R]
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="keyCell keyOperator">
+                           <input type="button" value="+">
+                        </td>
+                        <td class="keyCell keyOperator">
+                           <input type="button" value="+">
+                        </td>
+                        <td></td><td></td>
+                     </tr>
+                     <tr>
+                        <td class="keyCell keyLock">
+                           [L]
+                        </td>
+                        <td class="keyCell keyLock">
+                           [U]
+                        </td>
+                        <td></td><td></td>
+                     </tr>
+                  </table>
+               </div>
+               <div id="cipherDiv">
+                  <table id="bigRowContainer">
+                     <tr>
+                        <td>
+                           <table id="bigRow_0" class="bigRow">
+                              <tr>
+                                 <td class="letterCell">
+                                    <div id="cipher_0" class="letter">X</div>
+                                 </td>
+                                 <td class="letterCell selectionLeft selection">
+                                    <div id="cipher_1" class="letter">X</div>
+                                 </td>
+                                 <td class="letterCell selectionMiddle selection">
+                                    <div id="cipher_2" class="letter">X</div>
+                                 </td>
+                                 <td class="letterCell selectionRight selection">
+                                    <div id="cipher_3" class="letter">X</div>
+                                 </td>
+                                 <td class="letterCell">
+                                    <div id="cipher_4" class="letter">T</div>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td class="numCell">
+                                    <div id="cipherNum_0" class="cipherNum">+5</div>
+                                 </td>
+                                 <td class="numCell">
+                                    <div id="cipherNum_1" class="cipherNum">+5</div>
+                                 </td>
+                                 <td class="numCell">
+                                    <div id="cipherNum_2" class="cipherNum">+5</div>
+                                 </td>
+                                 <td class="numCell">
+                                    <div id="cipherNum_3" class="cipherNum">+5</div>
+                                 </td>
+                                 <td class="numCell">
+                                    <div id="cipherNum_4" class="cipherNum">+17</div>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td class="letterCell">
+                                    <div id="cipher_0" class="letter">X</div>
+                                 </td>
+                                 <td class="letterCell selectionLeft selection">
+                                    <div id="cipher_1" class="letter">X</div>
+                                 </td>
+                                 <td class="letterCell selectionMiddle selection">
+                                    <div id="cipher_2" class="letter">X</div>
+                                 </td>
+                                 <td class="letterCell selectionRight selection">
+                                    <div id="cipher_3" class="letter">X</div>
+                                 </td>
+                                 <td class="letterCell">
+                                    <div id="cipher_4" class="letter">T</div>
+                                 </td>
+                              </tr>
+                           </table>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+            <img src="unlock.png" id="unlock_img" style="display:none">
+            <img src="_lock.png" id="lock_img" style="display:none">
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+         <h2>Solution</h2>
+<span class="easy">
+<p>  En modifiant la clé on voit que le texte déchiffré change. Comme on a l'indication que le texte à trouver commence par "LES" on règle la clé pour commencer par (+3,+1,+6). On lit alors </p>
+<center><img src="lesnoded.png" width=600></center>
+<p>Le deuxième mot est un pluriel donc il faut qu'il finisse par "s", donc on règle la clè à (+3,+1,+6,+15) et on trouve : 
+<center> <img src='solution_easy.png' width=600> </center>
+</p>
+</span>
+<span class="medium">
+<p>  On règle les deux premiers nombres de la clé à (+1,+3) pour que le texte commence par "LA". On bloque ces deux positions dont nous sommes certains, ce qui rend bleues les lettres sures. Ensuite on essaie une à une les différentes longueurs de la clé : 
+<ul>
+<li> longueur = 3 : le 4e mot commence par "RG", ce qui est impossible ;
+<li> longueur = 4 : le 3e mot est "B", ce qui n'est pas un mot ;
+<li> longueur = 5 : le 3e mot est "Z", impossible ;
+<li> longueur = 6 : le 4e mot commence par "RG", impossible ;
+<li> longueur = 7 : semble possible ;
+<li> longueur = 8 : le 4e mot contient le groupe de lettres "QT" qui est impossible ;
+<li> longueur = 9 : semblre possible ; 
+<li> longueur = 10 : le 4e mot contient le groupe "KX".
+</ul>
+On fixe donc la longueur à 7, quitte à essayer ensuite d'autres valeurs possibles. Le texte actuel est :
+<center><img src="cle7.png" width=600>  </center>
+Le reste de l'exercice consiste à reconnaître des mots :
+<ul>
+<li> le 5e mot est de la forme "U_" donc "UN" et on règle et on bloque la 3e position de la clé à +24;
+<li> le 7e et 8e mots deviennet "A L_" donc on règle et on bloque la 4e position de la clé à +8;
+<li> le 1er et 2e mots sont "LA CL_" donc on règle et on bloque la 5e position de la clé à +18 pour obtenir "LA CLÉ";
+<li> le 4e mot est "_ESORM__S" et la seule possibilité est "DÉSORMAIS" donc on règle la 6e et 7e positions de la clé : (+2,+13);
+</ul>
+ On lit alors le message :<BR>
+<center> <img src="solution_medium.png" width=600>  </center>
+</p>
+</span>
+<span class="hard">
+<p>
+A priori il y a un grand nombre de possibilité et on a peu d'informations. Mais on remarque que le mot "QRYCZ" apparaît deux fois dans le message chiffré :</p>
+<center><img src="double_word.png" width=400> </center>
+<p>Une telle situation est peu probable, sauf si le message clair contient deux fois le même mot, et que la clé est positionnée de la même façon pour ces deux mots : si QRYCZ a été chiffré avec les 5e, 6e, 7e et 8e nombres de la clé alors son occurence sur la deuxième ligne a aussi été chiffrée avec les 5e, 6e, 7e et 8e nombres. Il faut donc que la distance entre les deux occurences du mot soit un multiple de la longueur de la clé, sinon il y aura un décalage. Entre les deux occurences de QRYCZ, on compte 34 positions, donc la longueur de la clé est un diviseur de 34=2&middot;17 (décompositions en facteurs premiers). La longueur 2 ne permet pas d'avoir "E" à la 9e lettre, donc la longueur est 17 ou 34, mais 34 est trop grand.</p>
+<p>
+La longueur est donc 17. On règle la clé pour que la 9e lettre soit "E" et on la bloque. Le 3e mot a 2 lettres et commence par "D", donc c'est "DE". Le 4e mot à 2 lettres et suit le mot "DE" dont il est très probablement "LA". On règle la clé pour cela et on bloque les lettres. Le mot encadré devient "PREUV__" ce qui est sûrement "PREUVE" :
+<center> <img src='solution_hard.png' width=500> </center>
+</p>
+</span>
+<h3>C'est de la crypto</h3>
+Nous venons d'apprendre le chiffre de <a href="http://www.nymphomath.ch/crypto/vigenere/index.html">Vigenère</a>. Il a été utilisé entre le XVIe et le XIXe siècle mais est resté obsolète après que Kasiski a publié une méthode de cryptanalyse. 
+	  </div> <!-- task-solution -->
+   </body>
+</html>

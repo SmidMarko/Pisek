@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Avto</title>
+     <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyAvto_lib.js" id="blocklyAvto_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-marble/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+	  
+   </head>
+   <style>
+       #program {
+           font-family: 'Roboto Mono';
+           font-size: 13pt;
+           font-weight: normal
+       }
+       #loop {
+           background-color:  #f4b083;
+           width: 20em;
+           padding-left: 2em;
+       }
+       #condition {
+           background-color: #a8d08d;
+           width: 20em;
+           padding-left: 2em;
+       }
+   </style>
+   <script>
+       function checkAnwser(num) {
+           var exampleA = {blockly:
+                   '<xml id="workspace2" style="display: none">\n' +
+                   '  <block type="variables_set" id="101">\n' +
+                   '    <field name="VAR">stPolj</field>\n' +
+                   '    <value name="VALUE">\n' +
+                   '      <block type="math_number" id="102">\n' +
+                   '        <field name="NUM">0</field>\n' +
+                   '      </block>\n' +
+                   '    </value>\n' +
+                   '    <next>\n' +
+                   '      <block type="controls_whileUntil" id="103">\n' +
+                   '        <field name="MODE">UNTIL</field>\n' +
+                   '        <value name="BOOL">\n' +
+                   '          <block type="logic_compare" id="104">\n' +
+                   '            <field name="OP">EQ</field>\n' +
+                   '            <value name="A">\n' +
+                   '              <block type="row" id="105"></block>\n' +
+                   '            </value>\n' +
+                   '            <value name="B">\n' +
+                   '              <block type="text" id="106">\n' +
+                   '                <field name="TEXT">E</field>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '          </block>\n' +
+                   '        </value>\n' +
+                   '        <statement name="DO">\n' +
+                   '          <block type="forwardAmount" id="107">\n' +
+                   '            <value name="PARAM_0">\n' +
+                   '              <block type="variables_get" id="108">\n' +
+                   '                <field name="VAR">stPolj</field>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '            <next>\n' +
+                   '              <block type="math_change" id="109">\n' +
+                   '                <field name="VAR">stPolj</field>\n' +
+                   '                <value name="DELTA">\n' +
+                   '                  <shadow type="math_number" id="110">\n' +
+                   '                    <field name="NUM">1</field>\n' +
+                   '                  </shadow>\n' +
+                   '                </value>\n' +
+                   '              </block>\n' +
+                   '            </next>\n' +
+                   '          </block>\n' +
+                   '        </statement>\n' +
+                   '        <next>\n' +
+                   '          <block type="writeToScreen" id="111">\n' +
+                   '            <value name="PARAM_0">\n' +
+                   '              <block type="currentPosition" id="112"></block>\n' +
+                   '            </value>\n' +
+                   '          </block>\n' +
+                   '        </next>\n' +
+                   '      </block>\n' +
+                   '    </next>\n' +
+                   '  </block>\n' +
+                   '</xml>\n'};
+           var exampleB = {blockly:
+                   '<xml id="workspace2" style="display: none">\n' +
+                   '  <block type="variables_set" id="101">\n' +
+                   '    <field name="VAR">stPolj</field>\n' +
+                   '    <value name="VALUE">\n' +
+                   '      <block type="math_number" id="102">\n' +
+                   '        <field name="NUM">0</field>\n' +
+                   '      </block>\n' +
+                   '    </value>\n' +
+                   '    <next>\n' +
+                   '      <block type="controls_whileUntil" id="103">\n' +
+                   '        <field name="MODE">UNTIL</field>\n' +
+                   '        <statement name="DO">\n' +
+                   '          <block type="controls_if" id="104">\n' +
+                   '            <value name="IF0">\n' +
+                   '              <block type="logic_compare" id="105">\n' +
+                   '                <field name="OP">EQ</field>\n' +
+                   '                <value name="A">\n' +
+                   '                  <block type="row" id="106"></block>\n' +
+                   '                </value>\n' +
+                   '                <value name="B">\n' +
+                   '                  <block type="text" id="107">\n' +
+                   '                    <field name="TEXT">E</field>\n' +
+                   '                  </block>\n' +
+                   '                </value>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '            <statement name="DO0">\n' +
+                   '              <block type="controls_flow_statements" id="108">\n' +
+                   '                <field name="FLOW">BREAK</field>\n' +
+                   '              </block>\n' +
+                   '            </statement>\n' +
+                   '            <next>\n' +
+                   '              <block type="forwardAmount" id="109">\n' +
+                   '                <value name="PARAM_0">\n' +
+                   '                  <block type="math_number" id="110">\n' +
+                   '                    <field name="NUM">1</field>\n' +
+                   '                  </block>\n' +
+                   '                </value>\n' +
+                   '                <next>\n' +
+                   '                  <block type="variables_set" id="111">\n' +
+                   '                    <field name="VAR">stPolj</field>\n' +
+                   '                    <value name="VALUE">\n' +
+                   '                      <block type="math_arithmetic" id="112">\n' +
+                   '                        <field name="OP">ADD</field>\n' +
+                   '                        <value name="A">\n' +
+                   '                          <shadow type="math_number" id="113">\n' +
+                   '                            <field name="NUM">1</field>\n' +
+                   '                          </shadow>\n' +
+                   '                          <block type="variables_get" id="114">\n' +
+                   '                            <field name="VAR">stPolj</field>\n' +
+                   '                          </block>\n' +
+                   '                        </value>\n' +
+                   '                        <value name="B">\n' +
+                   '                          <shadow type="math_number" id="115">\n' +
+                   '                            <field name="NUM">1</field>\n' +
+                   '                          </shadow>\n' +
+                   '                        </value>\n' +
+                   '                      </block>\n' +
+                   '                    </value>\n' +
+                   '                  </block>\n' +
+                   '                </next>\n' +
+                   '              </block>\n' +
+                   '            </next>\n' +
+                   '          </block>\n' +
+                   '        </statement>\n' +
+                   '        <next>\n' +
+                   '          <block type="writeToScreen" id="116">\n' +
+                   '            <value name="PARAM_0">\n' +
+                   '              <block type="currentPosition" id="117">\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '          </block>\n' +
+                   '        </next>\n' +
+                   '      </block>\n' +
+                   '    </next>\n' +
+                   '  </block>\n' +
+                   '</xml>\n'};
+           if (num==0)
+               task.displayedSubTask.loadExample(exampleA);
+           if (num==1)
+               task.displayedSubTask.loadExample(exampleB);
+       }
+   </script>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Poraba energije</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+                <p class="easy">
+                    Podan je končni položaj avta. Dopolni program tako, da bo avto peljal po izrisani poti. Ob vsakem zavoju avto porabi določeno količino električne energije. Porabljena količina energije je enaka številki stolpca v položaju zavoja. Program mora na prepotovani poti šteti število prepotovanih polj (<b><i>štPrepotovanihPolj</i></b>) in sešteti količino porabljene električne energije (<b><i>vsotaPorabaEnergije</i></b>). Program naj na zaslon izpiše vrednosti spremenljivk <b><i>štPrepotovanihPolj</i></b>, <b><i>vsotaPorabaEnergije</i></b>.
+                <pre class="easy" id="program">program prepotovanaPot
+    <b><i>štPrepotovanihPolj</i></b> = 0
+    <b><i>vsotaPorabaEnergije</i></b> = 0<div id="loop" style="width: 22em; left: 1em; position: relative;">ponavljaj za vsako polje na izrisani poti<div id="condition" style="width: 20em;">če se nahajaš na lokaciji ‘<i>R8</i>’<div style="background-color: #ffffff"><br><br></div><br></div><div id="condition" style="width: 20em;">če se nahajaš na lokaciji ‘<i>R5</i>’<div style="background-color: #ffffff"><br><br></div><br></div><div id="condition" style="width: 20em;">če se nahajaš na lokaciji ‘<i>N5</i>’<div style="background-color: #ffffff"><br><br></div><br></div><div id="condition" style="width: 20em;">če se nahajaš na lokaciji ‘<i>R11</i>’<div style="background-color: #ffffff"><br><br></div><br></div><div style="background-color: #ffffff"><br><br></div><br></div></pre>
+                </p>
+                <p class="medium">
+                    Podan je končni položaj avta. Izberi (obkroži črko) učinkovitejši/preprostejši program, ki pripelje avto po izrisani poti do končnega položaja.
+                    <br>Izberi:
+                    <br>
+                    <table class="medium">
+                        <tr>
+                <p class="medium">
+                    <button class="btn btn-info" onclick="checkAnwser(0)" style="margin: 15px; text-align: center;">A</button></p>
+                <pre class="medium" id="program">program prepotovanaPot
+    <b><i>štPolj</i></b>=0<div id="loop" style="width: 20em; left: 1em; position: relative">ponavljaj, dokler se ne nahajaš v vrstici E<div style="background-color: #ffffff">pojdi naprej za <b><i>štPolj</i></b> polj<br><b><i>štPolj</i></b> += 1</div><br></div>    izpiši <i>trenutniPoložaj</i>
+                </pre>
+                </tr>
+                <tr><p class="medium">
+                    <button class="btn btn-info" onclick="checkAnwser(1)" style="margin: 15px; text-align: center;">B</button></p>
+                    <pre class="medium" id="program">program prepotovanaPot
+    <b><i>štPolj</i></b>=0<div id="loop" style="width: 22em; left: 1em; position: relative;">ponavljaj<div id="condition" style="width: 20em;">če se nahajaš v vrstici E<div style="background-color: #ffffff">ustavi potovanje</div><br></div><div style="background-color: #ffffff">pojdi naprej za 1 polje<br><b><i>štPolj</i></b> = <b><i>štPolj</i></b> + 1</div><br></div>    izpiši <i>trenutniPoložaj</i></pre>
+                </tr>
+                </table>
+                </p>
+                <p class="hard">
+                    Podan je končni položaj avta. Popravi program tako, da bo avto peljal po izrisani poti.
+                <pre class="hard" id="program">program prepotovanaPot
+    pojdi naprej za 2 polji<div id="loop" style="width: 20em; left: 1em; position: relative;">ponovi 7-krat<div style="background-color: #ffffff">pojdi naprej za 1 polje<br>obrni se levo<br>pojdi naprej za 1 polje<br>obrni se desno</div><br></div>    pojdi naprej za 2 polji
+    obrni se desno
+    pojdi naprej za 2 polji
+    obrni se desno<div id="loop" style="width: 20em; left: 1em; position: relative;">ponovi 7-krat<div style="background-color: #ffffff">pojdi naprej za 1 polje<br>obrni se desno<br>pojdi naprej za 1 polje<br>obrni se levo</div><br></div>    pojdi naprej za 4 polja</pre>
+              </p>
+			  </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

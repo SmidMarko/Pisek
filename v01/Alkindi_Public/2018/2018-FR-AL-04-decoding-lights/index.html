@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>2018-FR-AL-04</title>
+   <script>
+      window.stringsLanguage = 'fr';
+   </script>   
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'randomGenerator-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1' ]);
+   </script>
+   <script class="remove" type="text/javascript">
+        var json = {
+           "id": "",
+           "language": "fr",
+           "version": "fr.01",
+           "authors": "Animath, France-ioi, Arnaud Le Grand, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+           "license": "CC BY-SA 3.0",
+           "translators": [],
+           "taskPathPrefix": "",
+           "modulesPathPrefix": "",
+           "browserSupport": [],
+           "fullFeedback": true,
+           "acceptedAnswers": [],
+           "usesRandomSeed": false
+        };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Bravo, vous avez réussi !",
+         partial: "Vous avez réussi en activant 4 interrupteurs. Essayez avec seulement 3 interrupteurs.",
+         error: "Ce n'est pas le bon résultat.",
+         limitReached: "Vous avez déjà 4 interrupteurs allumés",
+         lightNumber: "Nombre d'ampoules allumées:"
+      };
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      body * {
+         box-sizing: border-box;
+      }
+
+      #grid {
+         margin: 20px 0;
+      }
+      #grid table {
+         border-collapse: collapse;
+         text-align: center;
+         margin: auto;
+      }
+      #grid th {
+         font-size: 0.9em;
+      }
+      #grid td {
+         border: 1px solid black;
+         width: 60px;
+         height: 60px;
+      }
+      #grid td:last-child {
+         border: none;
+         font-size: 2em;
+         font-weight: bold;
+      }
+      #grid .switch {
+         width: 40px;
+         cursor: pointer;
+      }
+      #grid .lock {
+         width: 20px;
+         cursor: pointer;
+      }
+      #grid .hardMode td {
+         width: 40px;
+         height: 30px;
+      }
+      #grid .hardMode td img {
+          width: 30px;
+       }
+      #grid .hardMode .switch {
+         width: 35px;
+      }
+      #grid .hardMode td:last-child {
+         font-size: 1.5em;
+      }
+      #grid .red {
+         color: red;
+      }
+      #grid .green {
+         color: green;
+      }
+
+      #feedback {
+         text-align: center;
+         color: red;
+         font-weight: bold;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Interrupteurs</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <div id="zone_1">
+            <div class="consigne">
+               <p><b>Modifiez la position des interrupteurs</b> afin qu'il y ait un nombre pair d'ampoules allumées sur chaque ligne.</p>
+               <div class="hard">
+                  <p>4 interrupteurs au maximum peuvent être en position <b>on</b> en même temps.</p>
+                  <p>Pour avoir tous les points, réussissez avec seulement 3 interrupteurs en position <b>on</b>.</p>
+               </div>
+            </div>
+            <div id="feedback"></div>
+         </div>
+         
+         <div id="zone_2">
+            <div id="grid"></div>
+         </div>
+         
+         <div id="feedback"></div>
+         <img src="icon.png" style="display:none">
+         <img src="off.png" id="switchOff" style="display:none">
+         <img src="on.png" id="switchOn" style="display:none">
+         <img src="lightOn.png" id="lightOn" style="display:none">
+         <img src="lightOff.png" id="lightOff" style="display:none">
+         <img src="lock.png" id="lock" style="display:none">
+         <img src="unlock.png" id="unlock" style="display:none">
+      </div>
+   </div>
+   <div id="solution">
+      <h2>Solution</h2>
+   </div>
+</body>
+</html>

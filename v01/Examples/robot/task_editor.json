@@ -1,0 +1,95 @@
+{
+  "type": "algorea-training",
+  "version": "1",
+  "data": {
+    "title": "",
+    "icon": "",
+    "taskIntro": "",
+    "AlgoreaTrainingTaskMetaData": {
+      "LanguageModules": "blockly"
+    },
+    "PEMTaskMetaData": {
+      "id": "",
+      "authors": [],
+      "language": "fr"
+    },
+    "gridInfos": {
+      "contextType": "chticode_abs",
+      "maxInstructions": {
+        "shared_value": 10
+      },
+      "blocks": {
+        "groupByCategory": false,
+        "generatedBlocks": {
+          "shared": []
+        },
+        "standardBlocks": {
+          "includeAll": false,
+          "wholeCategories": [],
+          "singleBlocks": {
+            "shared": []
+          }
+        }
+      },
+      "conceptViewer": false,
+      "checkEndCondition": "checkReachExit",
+      "variables": {
+        "shared_value": []
+      }
+    },
+    "difficulties": {
+      "basic": {
+        "scenes": [
+          {
+            "tiles": [
+              [
+                2,
+                2,
+                2,
+                2
+              ],
+              [
+                2,
+                1,
+                3,
+                2
+              ],
+              [
+                2,
+                2,
+                2,
+                2
+              ]
+            ],
+            "initItems": [
+              {
+                "col": 1,
+                "row": 1,
+                "type": "red_robot"
+              }
+            ],
+            "images": [
+              "chticode_abs/obstacle.png",
+              "chticode_abs/red_robot.png"
+            ]
+          }
+        ]
+      },
+      "easy": {
+        "scenes": []
+      },
+      "medium": {
+        "scenes": []
+      },
+      "hard": {
+        "scenes": []
+      }
+    },
+    "displayHelper": {
+      "thresholdEasy": 5000,
+      "thresholdMedium": 10000
+    }
+  },
+  "translations": {},
+  "files": []
+}

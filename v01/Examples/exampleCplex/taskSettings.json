@@ -1,0 +1,34 @@
+{"checker": "tests/gen/checker.py",
+"defaultEvaluationSolutions": [{
+    "id": "solution",
+    "compilationDescr": {
+        "language": "@solutionLanguage",
+        "files": [{"name": "@solutionFilename",
+                   "path": "@solutionPath",
+                   "content": "@solutionContent"}],
+        "dependencies": "@solutionDependencies"
+        },
+    "compilationExecution": {
+        "commandLine": "%s -O0 -m64 -fPIC -fno-strict-aliasing -fexceptions -DNDEBUG -DIL_STD -I$ROOT_PATH/_common/cplex/cplex/include -I$ROOT_PATH/_common/cplex/concert/include -L$ROOT_PATH/_common/cplex/cplex/lib/x86-64_linux/static_pic -L$ROOT_PATH/_common/cplex/concert/lib/x86-64_linux/static_pic -o %s.exe %s -lconcert -lilocplex -lcplex -lm -lpthread",
+        "forceStatic": false,
+        "timeLimitMs": 5000,
+        "memoryLimitKb": 64000,
+        "useCache": true,
+        "stdoutTruncateKb": -1,
+        "stderrTruncateKb": -1,
+        "getFiles": []}
+    }],
+"defaultEvaluationExecutions": [{
+    "id": "@solutionExecId",
+    "idSolution": "solution",
+    "filterTests": "@solutionFilterTests",
+    "runExecution": {
+        "timeLimitMs": 10000,
+        "memoryLimitKb": 131072,
+        "useCache": true,
+        "stdoutTruncateKb": -1,
+        "stderrTruncateKb": -1,
+        "addFiles": [{"name": "etsp.dat", "path": "$ROOT_PATH/_common/cplex/cplex/examples/data/etsp.dat"}],
+        "getFiles": []}
+    }]
+}

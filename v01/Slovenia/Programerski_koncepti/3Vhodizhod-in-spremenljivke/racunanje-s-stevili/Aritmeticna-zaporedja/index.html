@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Računanje s števili</title>
+      <script>
+        window.stringsLanguage = 'sl';
+      </script>
+       <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+       <script class="remove" type="text/javascript">
+           var modulesPath = '../../../../../_common/modules/';
+           importModules([
+               'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+               'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+               'taskStyles-0.1', 'jwinf_css']);
+           // set Blockly as default language when none is specified through ?language=
+           importLanguageModules('blockly');
+       </script>
+       <script class="remove" type="text/javascript" src="blocklyPrinter_lib.js" id="blocklyPrinter_lib"></script>
+       <script class="remove" type="text/javascript">
+       var json = {
+          "id": "test-printer-copy",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Ziga Flajs",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+
+      window.stringsLanguage = 'sl';
+      var strings = {
+         moreThan100Moves: "Naredil/-a si več kot 100 potez.",
+         notAllCellsPainted: "Vsa polja nisi pobarval/-a pravilno. Poskusi še enkrat!",
+         allCellsPainted: "Čestitamo! Vsa polja si pravilno pobarval/-a!"
+      };
+      </script>
+      <script type="text/javascript" src="printer_task.js"></script>
+      
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+        <h1>Aritmetična zaporedja</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+               <p>
+                   V programskem delu je sestavljen program, ki prebere števili na vhodu, ju predela in izpiše zaporedje števil na izhod.
+                <p class="easy">
+                Na vhodu se nahajata dve števili v dveh vrsticah. V prvi vrstici je napisan začetni člen zaporedja <var>a<sub>1</sub></var> in v drugi razlika med zaporednima členoma <var>r</var>.
+               </p>
+               <p class="medium">
+                   Na vhodu se nahajajo tri števila v treh vrsticah. V prvi je napisan začetni člen zaporedja <var>a<sub>1</sub></var>, v drugi razlika med zaporednima členoma <var>r</var> in v tretji vrstici število <var>i</var>.
+               </p>
+               <p class="hard">
+                   Na vhodu se nahajajo tri cela števila, v treh vrsticah. V prvi je napisan začetni člen zaporedja <var>a<sub>1</sub></var>, v drugi razlika med zaporednima členoma <var>r</var> in v tretji vrstici število členov <var>i</var>.               </p>
+               <p class="easy">
+                   Na voljo imaš spremenljivke 'začetniČlen', 'razlika' in 'desetiČlen', kamor lahko shraniš začetni člen zaporedja a1, razliko zaporednih členov zaporedja r in izračunani deseti člen zaporedja v <var>a<sub>10</sub></var>.
+               </p>
+                <p class="easy">
+                    Drugi člen zaporedja <var>a<sub>2</sub></var> se izračuna z enačbo <var>a<sub>2</sub></var> = <var>a<sub>1</sub></var> + <var>r</var>.
+                </p>
+               <p>
+                   Vsak naslednji člen, to je <var>a<sub>N</sub></var>, se izračuna iz prejšnjega člena, to je <var>a<sub>N-1</sub></var>, z enačbo <var>a<sub>N</sub> = a<sub>N-1</sub> + r</var>.
+               </p>
+               <p class="easy">
+                 Deseti člen zaporedja <var>a<sub>10</sub></var> izračunamo z enačbo <var>a<sub>10</sub> = a<sub>1</sub> + 9*r</var>.
+               </p>
+               <p class="easy">
+                 Popravi sestavljen program tako, da na izhod napiše 10. člen zaporedja.
+                 Primer pravilnega izpisa na izhodu:
+               </p>
+<table class="easy"><tr><td style="padding: 0px 30px;vertical-align: top;">
+Vhod:
+<pre>
+3
+6
+</pre>
+</td><td style="padding: 0px 30px;vertical-align: top;">Izhod:
+<pre>
+57
+</pre>
+</td></tr></table>
+               <p class="medium">
+                   Na voljo imaš spremenljivke 'začetniČlen', 'razlika' in 'i', kamor lahko shraniš začetni člen zaporedja <var>a<sub>1</sub></var>, razliko zaporednih členov zaporedja <var>r</var> in število člena zaporedja <var>i</var>.
+               </p>
+               <p class="medium">
+                   Dopolni program tako, da bo izračunal člen zaporedja, ki je na mestu označenim s številom <var>i</var>, to je <var>a<sub>i</sub></var>. Člen zaporedja <var>a<sub>i</sub></var> se izračuna z enačbo: <var>a<sub>i</sub> = a<sub>1</sub> + (i-1)*r</var>. Člen <var>a<sub>i</sub></var> izpiši na izhod.
+                   Primer pravilnega izpisa na izhodu:
+               </p>
+<table class="medium"><tr><td style="padding: 0px 30px;vertical-align: top;">
+Vhod:
+<pre>
+8
+2
+5
+</pre>
+</td><td style="padding: 0px 30px;vertical-align: top;">Izhod:
+<pre>
+16
+</pre>
+</td></tr></table>
+               <p class="hard">
+                   Na voljo imaš spremenljivke 'začetniČlen', 'razlika' in 'številoČlena', kamor lahko shraniš začetni člen zaporedja <var>a<sub>1</sub></var>, razliko zaporednih členov zaporedja <var>r</var> in število člena zaporedja <var>i</var>.
+               </p>
+               <p class="hard">
+                   Dopoli program tako, da bo izračunal vse člene od drugega do tistega na mestu <var>i</var>. Izpiši vse člene zaporedja od prvega do tistega na mestu <var>i</var> na izhod. Vsak člen zaporedja moraš izpisati v svojo vrstico v pravilnem vrstnem redu s prvim členom na prvem mestu.
+               </p>
+               <p class="hard">
+                   Pomoč: v program vključi zanko 'ponavljaj', ki prišteje začetnemu členu <var>a<sub>1</sub></var> razliko zaporednih členov <var>r</var>.
+               </p>
+                <p class="hard">
+                Primer pravilnega izpisa na izhodu:
+                </p>
+<table class="hard"><tr><td style="padding: 0px 30px;vertical-align: top;">
+Vhod:
+<pre>
+2
+1
+6
+</pre>
+</td><td style="padding: 0px 30px;vertical-align: top;">Izhod:
+<pre>
+2
+3
+4
+5
+6
+7
+</pre>
+</td></tr></table>
+               <p></p>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+      </div><!-- task -->
+   </body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+   <head>
+		<meta charset="utf-8">	<!-- določimo način kodiranja znakov v besedilu naloge -->
+		<title>pisek_rise</title> <!-- pod naslov zapišemo ime mape v kateri se nahajo datoteke za posamezno nalogo -->
+		<script>
+			window.stringsLanguage = 'sl'; //izberemo jezik za besedila ukazov in sporočil
+		</script>
+			
+		<!-- Tukaj kličemo knjižnice potrebne za delovanje spletne strani -->
+		<script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script> 
+		<!--  <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script> -->
+		<script class="remove" type="text/javascript">
+			var modulesPath = '../../../../../_common/modules/'
+			importModules([
+				'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+				'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+				'taskStyles-mobileFirst'/*'taskStyles-0.1'*/ ]);
+			importLanguageModules('blockly'); //nastavimo programski jezik Blockly
+		</script>
+			
+		<!-- Tukaj vodimo evidenco o nalogi -->
+		<script class="remove" type="text/javascript">
+			var json = {
+				"id": "",						//url naloge
+				"language": "sl",
+				"version": "sl.01",
+				"authors": "",				//avtor
+				"translators": [],
+				"license": "",
+				"taskPathPrefix": "",
+				"modulesPathPrefix": "",
+				"browserSupport": [],
+				"fullFeedback": true,
+				"minWidth": "auto"
+			};
+		</script>
+			
+		<!-- Tukaj povozimo knjižnico, ki hrani prevode ukazov in sporočil -->
+		<script class="remove" type="text/javascript" src="blocklyTurtle_lib.js" id="blocklyRobot_lib"></script>
+		<!-- Tukaj kličemo datoteko, kjer definiramo problem naloge -->			
+		<script type="text/javascript" src="turtle_task.js"></script>
+    </head>
+    
+	<body onresize="task.displayedSubTask.updateScale()">
+		<div id="task">
+            <h1>Pišek riše</h1>  <!-- Naslov naloge -->
+			<div id="tabsContainer"></div>
+			<div id="taskContent">
+				<div id="taskIntro"> <!-- Besedilo naloge -->
+					<div class="easy">
+						<p>
+							Pišek je ves navdušen nad ustvarjanjem geometričnih umetnin. Za pas si je pritrdil plastenko z obarvano vodo, naredil luknjico in zdaj za sabo pušča sled. 
+						</p>
+						<p>
+							Pišek se je naučil s premikanjem narisati kvadrat. To so njegova navodila za risanje enega kvadrata: 
+						</p>
+						<p>
+							Program spremeni tako, da bo Pišek narisal 5 kvadratov, ki bodo skupaj tvorili zvezdo. Pozor, po vsakem narisanem kvadratu naj se pišek obrne za 72 stopinj. 
+						</p>
+					</div>
+					
+					<div class="hard">
+							<p>
+							Pišek se je naučil s premikanjem narisati kvadrat, ki je zamaknjen za 45°. Program dopolni tako, da bo kvadratu narisal še obe diagonali. 
+							Pazi, da nobene stranice ne narišeš dvakrat (uporabi delček dvigni/spusti pisalo). 
+						</p>
+						<button type="button" onclick="funkcija(this.id)"  id="1">Namig1</button>
+						<p id="button1" style="display:none">
+							Dolžino diagonale izračunaj s pomočjo Pitagorovega izreka, če veš, da je dolžina stranice a 100 enot.
+							Diagonalo zaokroži na eno decimalno mesto natančno.
+						</p>
+					</div>
+					
+					<script>
+					function funkcija(n) {
+						var x = document.getElementById(("button").concat(n));
+						if (x.style.display === "none") x.style.display = "block";
+						else x.style.display = "none";
+						}
+					</script>
+					
+				</div>
+				<div id="gridContainer"></div>
+				<div id="blocklyLibContent"></div>
+			</div>
+		</div>
+    </body>
+</html>

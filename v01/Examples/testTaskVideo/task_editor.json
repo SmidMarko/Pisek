@@ -1,0 +1,38 @@
+{
+  "type": "video",
+  "data": {
+    "taskMetaData": {
+      "id": "Examples/testTaskVideo",
+      "authors": [],
+      "language": "en"
+    },
+    "title": "Test Task Video",
+    "taskpre": "<p>This is the statement <strong>before the video</strong>.</p>",
+    "taskpost": "<p>This is the statement&nbsp;<strong>after the video</strong>.</p>",
+    "videoData": {
+      "video_id": "o5AFnEgm_kM",
+      "show_viewed": true,
+      "sections": [
+        {
+          "title": "Section 1",
+          "description": "This first section, from 0:00 to 0:10, has 4 parts.",
+          "start": 0,
+          "end": 10,
+          "parts": 4
+        },
+        {
+          "title": "Section 2",
+          "description": "This second section, from 0:10 to 0:20, has only 1 part.",
+          "start": 10,
+          "end": 20,
+          "parts": 1
+        }
+      ],
+      "youtube": {
+        "rel": 0,
+        "autoplay": 0
+      }
+    }
+  },
+  "files": []
+}

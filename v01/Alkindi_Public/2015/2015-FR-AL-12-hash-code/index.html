@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2015-FR-AL-12-hash-code</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2015/2015-AL-12-hash-code/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "license": "CC BY-SA 3.0",
+          "translators": [],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": true
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Code de hachage</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+               Pour ne pas que les mots de passe soient visibles sur les serveurs, on en stocke une version transformée.
+            </p>
+            <p>
+               Ici la transformation a été mal choisie. <b>Découvrez sa logique et hackez le système.</b>
+            </p>
+            <p class="hard">
+               Plus le mot de passe que vous trouvez est court, plus vous obtenez de points.
+            </p>
+            <table>
+               <tr>
+                  <td>Mot de passe :</td>
+                  <td>
+                     <input id="userText" type="text" maxlength=20 style="width:150px;font-family:monospace" onkeyup="task.textChanged()" oninput="task.textChanged()" onkeydown="task.textChanged()" onchange="task.textChanged()"></input>
+                  </td>
+               </tr>
+               <tr>
+                  <td>Version transformée de ce mot de passe :</td>
+                  <td>
+                     <span id="userHash" style="font-family:monospace"></span>
+                  </td>
+               </tr>
+               <tr>
+                  <td>Version transformée à obtenir :</td>
+                  <td>
+                     <span id="refHash" style="font-family:monospace"></span>
+                  </td>
+               </tr>
+            </table>
+         </div>
+         <img src="icon.png" style="display:none">
+      </div><!-- task -->
+      <div id="solution">
+
+         <h2>Solution</h2>
+		 
+
+         <div class="easy">
+           <p style="text-align:center"><img src="2etoiles.png" style="width:400px" /></p>
+           <p>
+               On remarque que chaque nouvelle lettre augmente la valeur de la version transformée. En regardant de plus près, on voit que 'A' augmente de 1, 'B' augmente de 2, 'C' augmente de 3, etc. On s'arrange alors pour trouver 368.
+           </p>
+         </div>
+         <div class="medium">
+            <p style="text-align:center"><img src="3etoiles.png" style="width:400px" /></p>
+            <p>
+               On peut commencer par écrire des lettres au hasard. On remarque qu'un changement de lettre à un endroit précis du mot de passe change uniquement un endroit précis de la transformation.
+            </p>
+            <p>
+               Plus exactement, pour une paire de deux lettres consécutives dans le mot de passe on a une lettre dans la transformation. En fait, la transformée est la lettre dont le rang est égal à la somme des rangs des deux lettres (dont on soustrait 26 si la somme dépasse 26).
+            <p>
+               Par exemple le rang de 'A' est 1 donc 'AA' donne la lettre de rang 1+1 = 2, c'est-à-dire 'B'. Il suffit donc de chercher des combinaisons de deux lettres pour chaque lettre du code de hachage. On a plusieurs solutions, mais la plus simple est de voir que si on met un Z et une deuxième lettre, on obtient toujours la deuxième lettre dans le code de hachage, car le rang de 'Z' est 26.
+            </p>
+         </div>
+         <div class="hard">
+            <p>
+               On remarque que chaque lettre ajoute 1 aux chiffres du code de hachage situés à certaines positions. Par exemple 'a' ajoute 1 à la cinquième position alors que 'b' ajoute 1 à la quatrième position, 'c' ajoute 1 aux deux dernières positions, etc. On parcourt l'alphabet pour chercher les lettres qui ajoutent 1 à chacune des positions :
+               <ul>
+                  <li>p : 10000</li>
+                  <li>h : 01000</li>
+                  <li>d : 00100</li>
+                  <li>b : 00010</li>
+                  <li>a : 00001</li>
+               </ul>
+            </p>
+            <p>
+               Ces lettres permettent d'obtenir n'importe quel nombre à 5 chiffres, en particulier 'phhdddbbbbaaaaa' donne '12345'. 
+            </p>
+            <p style="text-align:center"><img src="4etoilesA.png"<frameset rows="," cols=",">
+               <frame src="" name="">
+               <frame src="" name="">
+            </frameset> /></p>
+            <p>
+               Pour obtenir un meilleur score, il faut comprendre que chaque lettre ajoute en fait la représentation de son rang en binaire au nombre obtenu. Il faut donc trouver un moyen de former '12345' par une somme de nombres ne contenant que des 0 et 1.
+            </p>
+            <p>
+               On peut par exemple faire la somme suivante :  11111 + 01111 + 00111 + 00011 + 00001 = 12345
+            </p>
+            <p>
+               La première de ces valeurs vaut 31, donc ne correspond pas au rang d'une lettre. On modifie donc légèrement notre somme pour obtenir :
+            </p>
+            <p>
+               01111 + 01111 + 00111 + 00011 + 10001 = 12345
+            </p>
+            <p>
+               On détermine lettre correspondant à chaque valeur : o, o, g, c, q, ce qui donne 'oogcq'.
+            </p>
+            <p style="text-align:center"><img src="4etoilesB.png" /></p>
+          </div>
+         <h2>C'est de la crypto !</h2>
+         <p>
+            Les transformations décrites dans ce sujet s'appellent des "<a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage">fonctions de hachage"</a>. La version transformée est appelé "code de hachage" du mot de passe.
+         </p>
+         <p>
+            Le hachage est un outil utilisé dans plusieurs contextes en cryptographie. Les sites internet qui demandent une authentification stockent les versions hachées des mots de passe, au lieu des mots de passe proprement dits.
+         </p>
+         <p>
+             Ainsi, si des hackers arrivent à accéder au site, ils ne trouvent pas les mots de passe en clair dans la base de données, mais les versions hachées. Ils ne pourront pas utiliser les mots de passe pour tromper le système d'autentification, sauf si la fonction de hachage est trop simple (comme dans l'exercice) et qu'ils trouvent un mot de passe qui a la bonne version hachée.
+         </p> 
+         <p>
+             <strong>Exemple :</strong> Si vous oubliez votre mot de passe, les sites bien sécurisés ne peuvent pas vous renvoyer votre mot de passe car ils ne l'ont pas stocké directement ! C'est pourquoi on vous demande de créer un nouveau mot de passe.
+         </p>
+	   </div> <!-- task-solution -->
+   </body>
+</html>

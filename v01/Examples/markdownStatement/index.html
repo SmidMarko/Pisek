@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Markdown Statement</title>
+    <link class="task" type="text/css" rel="stylesheet" href="../../_common/modules/pemFioi/progTask.css">
+    <link class="task" type="text/css" rel="stylesheet" href="../../_common/modules/ext/bootstrap/css/bootstrap.min.css">
+    <script class="remove" src="../../_common/modules/ext/requirejs/require.js"></script>
+    <script type="text/javascript">
+      var modulesPath ='../../_common/modules';
+      var taskPlatformPath ='../../_common/task-platform';
+    </script>
+    <script type="text/javascript" src="../../_common/modules/pemFioi/progTaskConfig-1.0.js"></script>
+    <script type="text/javascript" class="remove">
+      // general metadata conforming the PEM API Documentation for getMetaData
+      var PEMTaskMetaData = {
+        // title is automatically fetched from the <title> markup
+        id : 'Examples/markdownStatement',
+        license : 'MIT',
+        authors : ["France IOI"],
+        language : "en",
+        version: "0.1",
+        baseUrl : "",
+        supportedLanguages: ['c', 'cpp', 'java', 'python', 'ocaml'],
+        hasUserTests: false,
+        testMode: false,
+        limits : {
+          "*": {time: 60000, memory: 128000}
+        }
+      }
+
+      // Metadata specific to the FranceIOI tasks
+      var FIOITaskMetaData = {
+        evalOutputScript: '',
+        solutionSources : {
+          "firstSource" : []
+        },
+        taskSamples : [],
+        graderSamples: []
+      }
+    </script>
+  </head>
+<body ng-controller="taskController">
+
+    <h1>Test Markdown</h1>
+
+    <div id="task">
+
+      <!-- Limits specified in metadata.js will be automatically inserted here -->
+      <h3 id="statement">Sujet</h3>
+      <div class="markdown">
+Ceci est un exemple de sujet avec du **Markdown**. Il utilise [Showdown](https://github.com/showdownjs/showdown) pour transformer le Markdown en HTML. Le code Markdown original est toujours présent, mais n'est pas affiché.
+
+Il s'agit aussi d'un sujet factice, permettant de voir facilement le code source de la solution envoyée à des fins de test.
+
+## Limites
+
+Les limites sont élevées (60s, 128MB).
+
+## Exemple
+
+Exemple de réponse du checker (si la solution compile) :
+
+<pre>
+Sortie de la solution :
+0
+test
+
+Code source de la solution :
+print(0)
+print("test")
+</pre>
+
+      </div>
+    </div>
+</div>
+</body>
+</html>

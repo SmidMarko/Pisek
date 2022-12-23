@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2015-FR-AL-04-spots</title>
+      <link class="module" rel="stylesheet" type="text/css" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://castor-informatique.fr/tasks/modules/styles.css">
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+      <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+      <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib-2.0.js"></script>
+
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2015/2015-FR-AL-04-spots/",
+          "language": "fr",
+          "version": "",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "license": "CC BY-SA 3.0",
+          "translators": [
+          ],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [
+          ],
+          "acceptedAnswers": [
+          ],
+          "difficulty": {"1": "medium", "2": "medium", "3": "easy", "4": "easy"},
+          "categories": {},
+          "answerType": "Interactive, drag and drop",
+          "fullFeedback": true,
+          "status": "test"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         @font-face {
+             font-family: alien;
+             src: url('alien.eot');
+             src: url('alien.eot?#iefix') format('embedded-opentype'),
+                  url('alien.woff') format('woff'),
+                  url('alien.ttf') format('truetype');
+         }
+         .digit, .alien {
+            color: blue;
+            font-weight: bold;
+         }
+         .alien {
+            font-family: 'alien';
+            font-size: 25;
+         }
+         #alienText, #newText {
+            border: solid black 1px;
+            padding: 5px;
+            background-color: #FCFCFC;
+         }
+      </style>
+ 
+  </head>
+  <body>
+      <div id="task">
+          <h1>Chasse aux indices</h1>
+          <div id="tabsContainer"></div>
+          <div id="taskContent">
+            <p>
+               Alice a écrit le texte suivant en remplaçant les chiffres par des symboles. Bob a essayé de décoder le message, mais sans succès, aidez-le.
+            </p>
+            <div id="alienText"></div>
+            <p>
+               <b>Faites glisser chaque symbole au dessus du chiffre qu'il représente :</b>
+            </p>
+            <div id="anim" class="touch" style="text-align:center"></div>
+          </div>
+          <div style="display:none">"alien.eot" "alien.ttf" "alien.woff"</div>
+          <img src="icon.png" style="display:none">
+      </div>
+      
+      <div id="solution">
+          <h2>Solution</h2>
+          On résout l'exercice en déterminant les chiffres un par un :
+          <div class="easy">
+             <ul>
+                <li>on compte le nombre de copines : 3</li>
+                <li>on compte le nombre de copains : 2</li>
+                <li>on en déduit le nombre total d'amis : 5</li>
+                <li>on rajoute Alice : 6</li>
+                <li>on soustrait Chloé du nombre d'amis : 4</li>
+                <li>on remarque que le mot « fille » est au singulier : 1</li>
+             </ul>
+             <p style="text-align:center"><img src="2etoiles.png" /></p>
+          </div>
+          <div class="medium">
+             <ul>
+                <li>le mot « minute » est au singulier : 1</li>
+                <li>on compte les jours du long week-end : 3</li>
+                <li>les dates ne peuvent commencent que par 1 ou 2, mais le 1 est déjà utilsé : 2</li>
+                <li>les dates sont consécutives et 23 est fixé, on en déduit 24 et 25 : 4 et 5</li>
+                <li>les heures possibles sont 20, 21, 22 et 23 mais 1, 2 et 3 sont pris : 0</li>
+                <li>il y a une fille de plus que de garçons, et il ne nous reste que les chiffres 6 à 9, donc on peut avoir : 6 garçons et 7 filles, 7 garçons et 8 filles ou 8 garçons et 9 filles; la seule possibilité pour que la somme soit 16, 17, 18 ou 19 est 8 garçons et 9 filles : 7, 8 et 9</li>
+                <li>on soustrait 1 de 17 : 6 </li>
+             </ul>
+             <p style="text-align:center"><img src="3etoiles.png" /></p>
+          </div>
+          <div class="hard">
+             <ul>
+                <li>le mot « bougie » est au singulier : 1</li>
+                <li>l'heure a deux chiffres donc commence par 1 ou 2, mais 1 est déjà pris : 2</li>
+                <li>l'année commence par 2, donc l'histoire se déroule dans les années 2000 : 0</li>
+                <li>l'heure peut être 20, 21, 22 ou 23 mais 0, 1 et 2 sont pris : 3</li>
+                <li>l'anniversaire était hier le 13 décembre, donc nous sommes le 14 décembre : 4</li>
+                <li>le premier chiffre des minutes est entre 0 et 5, mais les chiffres de 0 à 4 sont pris : 5</li>
+                <li>le nombre d'amis est de 4 filles plus 3 garçons : 7</li>
+                <li>on a 7 bougies mais il en manque une ; on déduit l'âge de Martin : 8</li>
+                <li>né en 2001, Martin a 8 ans donc nous sommes en 2009 : 9</li>
+                <li>un seul chiffre n'est pas utilisé dans le texte : 6</li>
+             </ul>
+             <p style="text-align:center"><img src="4etoiles.png" /></p>
+          </div>
+
+         <h2>C'est de la crypto !</h2>
+         <p>
+            Beaucoup de méthodes de cryptanalyse consistent à tester toutes les possibilités. Pour réduire le temps de calcul, il est très important de trouver des indices pour réduire le nombre de possibilités. Ici on se sert du contenu du texte pour en déduire la valeur de chaque symbole.
+         </p>
+         <p>
+            On se sert souvent du contexte d'un message pour trouver des indices : qui l'a envoyé, dans quelle langue, d'où, etc. Ces indices permettent de déduire des propriétés du message ou des mots qu'il contient probablement.
+         </p>
+         <p>
+            <strong>Exemple : </strong>Pendant la Seconde guerre mondiale, l'équipe d'Alan Turing a pu casser la machine allemande Enigma après avoir remarqué que les Allemands commençaient leurs rapports par l'annonce de la météo !
+         </p>
+      </div>
+  </body>
+</html>

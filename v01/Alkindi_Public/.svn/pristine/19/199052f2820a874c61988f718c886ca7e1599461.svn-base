@@ -1,0 +1,6 @@
+<p>
+Les sites internet qui demandent un mot de passe stockent une liste d'utilisateurs et de mots de passes associés. Pour éviter le risque que quelqu'un récupère cette liste, on applique aux mots de passe une transformation appelée hachage, qui les rendent méconnaîssables (ils sont hachés). Quand l'utilisateur d'un compte écrit le bon mot de passe, on lui applique le hachage et on compare le résultat au texte stocké dans la liste.
+<br><br>
+
+On se met ici à la place des hackers qui ont récupéré la liste des mots de passe hachés. Pour les utiliser, ils doivent trouver des mots de passes, pas forcément ceux des utilisateurs, qui ont le même haché que celui stocké dans la liste. 
+</p>

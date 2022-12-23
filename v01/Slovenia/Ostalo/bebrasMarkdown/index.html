@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>2015-FR-24-variables-game</title>
+	  <script>
+        window.stringsLanguage = 'sl';
+      </script> 
+	<!-- Navedena skripta ne vizualno ne upošteva znakov kot so ` in * ter skokov v novo vrstico. -->
+      <script class="module" type="text/javascript" src="../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script class="module" type="text/javascript" src="../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+      <script class="module" type="text/javascript" src="../../_common/modules/ext/raphael/2.1/raphael-min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+      <script class="module" type="text/javascript" src="../../_common/modules/pemFioi/beaver-task.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task.js"></script>
+      <script class="remove" type="text/javascript" src="../../_common/modules/ext/jschannel/jschannel.js"></script>
+      <script class="proxy module" type="text/javascript" src="../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+      <script class="stdButtonsAndMessages module" type="text/javascript" src="../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+      <script class="module" type="text/javascript" src="../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+      <script class="remove" type="text/javascript" src="../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+      <script class="remove" type="text/javascript" src="../../_common/modules/integrationAPI.01/official/miniPlatform.js"></script>
+
+      <script type="text/javascript" src="../../_common/modules/ext/showdown/showdown.min.js"></script>
+      <script type="text/javascript" src="../../_common/modules/pemFioi/showdownConvert.js"></script>
+
+      <link class="module" rel="stylesheet" type="text/css" href="../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+      <script type="text/javascript" src="task.js"></script>
+      <script class="remove" type="text/javascript">
+         var json = {
+            "id": "Examples/bebrasMarkdown",
+            "language": "sl",
+            "version": "sl.01",
+            "authors": "Ziga Flajs",
+            "translators": [],
+            "license": "",
+            "taskPathPrefix": "",
+            "modulesPathPrefix": "",
+            "browserSupport": [],
+            "acceptedAnswers": [""],
+            "fullFeedback": true
+         };
+      </script>
+      <style>
+         #drawing {
+            margin-left: 1em;
+         }
+         .columns td {
+            vertical-align: top;
+            padding-right: 1em;
+         }
+         .column_head {
+            font-weight: bold;
+         }
+         #message {
+            text-align: center;
+            font-weight: bold;
+            color: red;
+            padding: 0.5em;
+            height: 1em;
+         }
+         .buttons input {
+            margin-bottom: 5px;
+         }
+         #textSolution li {
+            margin-top: 0.2em;
+         }
+         .valigntop td {
+            vertical-align: top;
+         }
+         .examples  {
+            border-collapse: collapse;
+         }
+         .examples td {
+            border: 1px solid black;
+            padding: 0.5em;
+         }
+         .instructions {
+            border-collapse: collapse;
+         }
+         .instructions tr {
+         }
+         .instructions td {
+            border: solid black 1px;
+            padding: 8px;
+            text-align: center;
+            width: 200px;
+         }
+         .result {
+            border-collapse: collapse;
+            text-align: center;
+         }
+         .result td {
+            border: none;
+            padding: 3px;
+         }
+         .result input {
+            text-align: center;
+         }
+         #questions {
+            margin-bottom: 1em;
+         }
+      </style>
+   </head>
+
+   <body>
+      <div id="task">
+         <h1>Igra s spremenljivkami</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+			Opozorilo: skladnja, prirejanja vrednosti
+			<!-- Sintaksa=skladnja -->
+			</p>
+            <div class="markdown">
+Prireditveni stavek `x=e` je navodilo računalniku, ki mu naroči naj:<br>
+<br>
+* ovrednoti vrednost izraza: `e` (to je aritmetični izraz, ki seveda lahko vključuje tudi druge spremenljivke),<br>
+* shrani te izračunane vrednosti na mesto v pomnilniku,<br>
+* pomni, da spremenljivka `x` kaže na tisto mesto v pomnilniku, kjer je shranjena vrednost.<br>
+<br>
+Tako bo prireditveni stavek `x=2+1` izračunal vrednost desne strani (v tem primeru `2+1`), jo (v tem primeru 3) shranil v pomnilnik 
+in si zapomnil, da spremenljivka `x` kaže na mesto v pomnilniku, kjer je  
+shranjena `3`. Temu pravimo, da spremenljivki `x` *priredimo* vrednost 3. Za zdaj si lahko spremenljivko predstavljamo kot ime mesta, na katerem shranjujemo števila.<br> 
+ <br>
+Na primer, navodilo `a=a+1` najprej izračuna vrednost na desni od `=` tako, da prišteje 1 številu, ki se skladišči v spremenljivki `a`,
+nato shrani rezultat v isto spremenljivko `a`. 
+To je enako, kot če bi povečali vrednost v spremenljivki `a` za 1. 
+Začnite z učenjem naslednjih primerov, da preverite vaše razumevanje.<br>
+<br>
+Pri stopnji: "težka stopnja" boste videli, na kakšen način Python lahko spremeni mnogo spremenljivk naenkrat
+(temu pravimo <i>večkratno prirejanje</i>): najprej izračuna vse vrednost na desni strani od `=` potem jih 
+shrani (v istem vrstnem redu) v spremenljivke na levi strani od `=`.<br>
+			</div>
+            <table id="samples" class="instructions"></table>
+            <p>
+               <b>Poskusite sami! Dopolnite okvirčke v desni koloni:</b>
+            </p>
+            <table id="questions" class="instructions"></table>
+         </div>
+         <img src="icon.png" style="display: none;"/>
+      </div><!-- task -->
+
+      <!-- div id="solution">
+         <h2>Solution</h2> 
+            <ul><li>Version facile :
+               <ul>
+                  <li>Question 1 : a vaut 3</li>
+                  <li>Question 2 : a vaut 2</li>
+                  <li>Question 3 : a vaut 7</li>
+               </ul>
+            </li>
+            <li>Version normale :
+               <ul>
+                  <li>Question 1 : a vaut 3, b vaut 5</li>
+                  <li>Question 2 : a vaut 5, b vaut 5</li>
+                  <li>Question 3 : a vaut 4, b vaut 2</li>
+               </ul>
+            </li>
+            <li>Version difficile :
+               <ul>
+                  <li>Question 1 : a vaut 3, b vaut 1, c vaut 4</li>
+                  <li>Question 2 : a vaut 5, b vaut 2, c vaut 3</li>
+                  <li>Question 3 : a vaut 2, b vaut 1, c vaut 1</li>
+               </ul>
+            </li>
+      </div><!-- task-solution -->
+   </body>
+</html>
+<html><head></head><body></body></html>

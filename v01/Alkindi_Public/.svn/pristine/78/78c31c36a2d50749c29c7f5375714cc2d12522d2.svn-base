@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-AL-04</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/randomGenerator-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/randomGenerator-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simpleKeyboard-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simpleKeyboard-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script>
+         var stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/alkindi_2016/2016-FR-AL-04-marbles/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "license": "CC BY-SA 3.0",
+          "translators": [],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+        var taskStrings = {
+           success: "Bravo, vous avez réussi !",
+           yellowRow: "Boules avant le changement :", 
+           totalRow: "Boules après le changement :",
+           resultText: "Résultat :", 
+           constraintText: "Contrainte :",
+           backspace: "effacer",
+           empty: "Vous devez entrer une formule pour la contrainte.",
+           tooLong: "La contrainte est trop longue.", 
+           syntaxError: "Erreur de syntaxe.",  // Interface is not supposed to allow this.
+           endWithOperator: "La formule n'est pas valide.",
+           aliceWinsWithBlack: "Perdu : Bob a réussi à modifier le nombre de boules en respectant la contrainte.", 
+           aliceWinsWithoutBlack: "Les contraintes ne peuvent pas être vérifiées pour les boules jaunes.",
+           multipleBuckets: "Vous n'avez pas le droit d'utiliser plusieurs fois la même lettre."
+        };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #bucketTable {
+            margin: 0px auto;
+            text-align: center;
+            font-size: 18px;
+            border-collapse: collapse;
+         }
+         .numberRow td {
+            height: 40px;
+            border-top: solid black 1px;
+            border-bottom: solid black 1px;
+         }
+         .rowDescription, .resultDescription {
+            width: 160px;
+            font-size: 14px;
+         }
+         #constraintTable {
+            padding-top: 30px;
+            margin: 0px auto;
+            text-align: center;
+         }
+         .constraintContainer {
+            border: solid black 1px;
+            background-color: lightgray;
+            padding: 10px;
+            vertical-align: middle;
+            height: 44px;
+         }
+         .constraint {
+            width: 200px;
+            display: inline-block;
+            text-align: left;
+            border: solid black 1px;
+            background-color: white;
+            padding: 4px;
+            margin: 4px;
+            vertical-align: middle;
+         }
+         .containerSelected {
+            border: solid blue 3px;
+         }
+         .constraintPrefix {
+            margin-left: 10px;
+         }
+         .constraint {
+            height: 20px;
+         }
+         .result {
+            text-align: left;
+            line-height: 28px;
+            padding-left: 10px;
+            padding-right: 10px;
+         }
+         .resultText {
+            width: 100px;
+         }
+         .resultNumber {
+            width: 100px;
+         }
+         .keyboardContainer, .resultDescription {
+            width: 238px;
+         }
+         .keyboard_button {
+            margin: 3px;
+            min-width: 32px;
+            height: 26px;
+         }
+         .ticks, .crosses {
+            vertical-align: middle;
+         }
+         #feedback {
+            height: 1em;
+            margin-top: 0.3em;
+            margin-bottom: 0.3em;
+            text-align: center;
+            font-weight: bold;
+            color: #CC8844;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Boules</h1> 
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+	   <p>
+        Vous souhaitez définir
+	<b>
+	<span class="easy">une contrainte</span>
+	<span class="medium hard">trois contraintes</span>
+        sur les nombres de boules</b> que l'on peut mettre dans les boîtes ci-dessous, pour détecter quand quelqu'un change le contenu <span class="easy">d'une boîte</span><span class="medium hard">d'une ou deux boîtes</span>.
+	   </p>
+	   <p>
+             Vous lancez le défi suivant à Bob :
+	   </p>
+	   <p>
+	     <i>
+               Trouve une manière de mettre des boules jaunes dans les boîtes en vérifiant <span class="easy">la contrainte</span><span class="medium hard">les contraintes</span>, puis ajoute ou retire une boule <span class="medium hard"><b>dans une ou deux boîtes </b></span>sans contredire <span class="easy">la contrainte</span><span class="medium hard">les contraintes</span>.
+	     </i>
+	   </p>
+	   <div style="background-color:#dddddd; padding:3pt">
+	     <u>Exemple</u>
+	     <span class="easy">si la contrainte est <i>d = a+1</i> : (voir dessin ci-dessous)</span>
+	     <ul class="easy">
+	       <li>Cela signifie que la boîte d doit toujours contenir 1 boule de plus que la boîte a.</li>
+	       <li>Bob peut décider de mettre des boules jaunes ainsi : 2 en a, 2 en b, 2 en c, 3 en d.<br/>Cela respecte la contrainte.</li>
+	       <li>Bob peut ajouter une boule en b (représentée en noir), cela respecte toujours la contrainte.</li>
+	       <li>Bob a donc gagné.</li>
+	     </ul>
+	     <span class="medium hard">si les contraintes sont <span class="medium"><i>d = a</i>, <i>e = b</i>, <i>f = c</i></span><span class="hard"><i>e = a</i>, <i>f = b</i>, <i>g = c</i></span> : (voir dessin ci-dessous)</span>
+	     <ul class="medium hard">
+	       <li>Bob peut décider de mettre 2 boules jaunes dans chaque boîte.<br/>Cela respecte la contrainte.</li>
+	       <li>Bob peut ajouter une boule en a et une autre en <span class="medium">d</span><span class="hard">e</span> (représentées en noir), cela respecte toujours la contrainte.</li>
+	       <li>Bob a donc gagné.</li>
+	     </ul>
+	   </div>
+
+	   
+	   <p>
+	     <b>Choissez
+	       <span class="easy">la bonne contrainte</span>
+	       <span class="medium hard">les bonnes contraintes</span>
+	       pour que Bob ne puisse pas gagner le défi.</b>
+	   </p>
+<!--      <p>Les changements de Bob sont représentés en noir.</p>-->
+            <br>
+            <table id="bucketTable">
+               <tr id="bucketPapers">
+                  <td></td>
+                  <td class="bucket"></td>
+                  <td class="bucket"></td>
+                  <td class="bucket"></td>
+                  <td class="bucket"></td>
+               </tr>
+               <tr id="bucketNames">
+                  <td></td>
+                  <td class="bucketName">a</td>
+                  <td class="bucketName">b</td>
+                  <td class="bucketName">c</td>
+                  <td class="bucketName">d</td>
+               </tr>
+               <tr id="yellowRow" class="numberRow">
+                  <td class="rowDescription">Avant le changement :</td>
+                  <td class="yellowNumber"></td>
+                  <td class="yellowNumber"></td>
+                  <td class="yellowNumber"></td>
+                  <td class="yellowNumber"></td>
+               </tr>
+               <tr id="totalRow" class="numberRow">
+                  <td class="rowDescription">Après Bob :</td>
+                  <td class="totalNumber"></td>
+                  <td class="totalNumber"></td>
+                  <td class="totalNumber"></td>
+                  <td class="totalNumber"></td>
+               </tr>
+            </table>
+            <table id="constraintTable">
+               <tr>
+                  <td></td>
+                  <td id="resultText" class="resultDescription" colspan="2">Result:</td>
+               </tr>
+               <tr>
+                  <td class="constraintContainer">
+                     Constraint: <span id="constraintPrefix0" class="constraintPrefix">d = </span> <div id="constraint0" class="constraint">a</div>
+                  </td>
+                  <td class="keyboardContainer" id="keyboardContainer0"></td>
+                  <td class="result resultText" id="result0Text">
+                     Avant le changement :
+                     <br>
+                     Après le changement :
+                  </td>
+                  <td class="result resultNumber" id="result0">
+                     3 = 3
+                     <br>
+                     4 = 4
+                  </td>
+            </table>
+            <div id="feedback"></div>
+            <br>
+            <center><input type="button" id="execute" value="Essayer"></center>
+            <img src="cross.png" id="red_cross_img" style="display:none">
+            <img src="tick.png" id="green_tick_img" style="display:none">
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+         <h2>Solution</h2>
+       <span class="easy">
+      Soyons créatifs ! On considère plusieurs idées une à une : <BR>
+  <ul>
+  <li> d=1+1 (ou une autre formule qui n'utilise pas a, b et c). Dans ce cas Bob peut mettre 2 boules dans chacune des boîtes jaune a, b, et d. Puis il peut rajouter une boule noire à la boîte a sans rien changer à la vérité de l'égalité d=1+1.
+ <center><img src="d=1+1.png" width=400></center>
+ <li> d=a+b (ou a+b+b+1, ou une autre contrainte où c n'apparaît pas). Dans ce cas Bob peut satisfaire la contrainte en mettant 2 boules jaunes dans les boîtes a, b et c et en mettant 4 boules dans la boîte d. Ensuite Bob peut rajouter une boule noire à la boîte c car cela n'a pas d'effet sur la contrainte. Comme les variables a, b et c jouent le même rôle, on obtiendra la même chose pour une formule qui ne contient pas a ou une formule qui ne contient pas b.
+ <center><img src="d=a+b.png" width=400></center>
+<li> d=a+b+c (ou autre contrainte qui fait apparaître toutes les lettres a,b et c). C'est une stratégie gagnate car, quel que soit le nombre de boules jaunes que Bob met au début, si Bob rajoute une boule noire à une des boîtes, cela ne respecte plus la contrainte.  
+ </ul>
+      </span>
+<span class="medium">
+Distinguons deux cas :
+<ul>
+<li> Si la lettre a n'apparait que dans une seule contrainte, par exemple, on choisit "d=a, e=b et f=c". Dans ce cas Bob peut satisfaire d'abord toutes les contraintes à l'aide de boules jaunes. Ensuite il rajoute une boule noire à a modifie d pour vérifier la contrainte (ici il ajoute une boule noire à d). Il a bien réussi à satisfaire toutes les contraintes en ne modifiant que deux boîtes. Comme a, b et c ont des rôles symériques, c'est également le cas si b ou c n'apparaît que dans une contrainte.
+<center><img src="d=a.png" width=450> </center>
+<li> Chaque lettre apparaît dans au moins 2 contraintes, par exemple d=a+b, e=a+c et f=b+c. C'est une stratégie gagnante. En effet, quel que soit le nombre de boules jaunes déposées par Bob dans un premier temps, il ne pourra pas modifier à la foit la boîte a et les deux contraintes qui font intervenir a. Le même raisonnement s'applique à b et c. 
+</ul>
+</span>
+
+<span class="hard">
+  <p>
+    <ul>
+      <li> Si la lettre a n'apparait que dans une seule contrainte, par exemple, on choisit "e=a, f=b, g=c". Dans ce cas Bob peut satisfaire d'abord toutes les contraintes à l'aide de boules jaunes. Ensuite il rajoute une boule noire à a modifie d pour vérifier la contrainte (ici il ajoute une boule noire à e). Il a bien réussi à satisfaire toutes les contraintes en ne modifiant que deux boîtes. Comme a, b, c et d ont des rôles symériques, c'est également le cas si b ou c n'apparaît que dans une contrainte.
+	<center><img src="hard_abc.png" width=450> </center>
+	<li> On sait donc que toutes les lettres doivent apparaître dans deux contraintes différentes. Mais cela ne suffit pas. Par exemple si on essaie "e=a+b, f=b+c+d, g=a+c+d", on a bien deux occurences de chaque lettre, mais Bob peut gagner en ajoutant une boule en c et en enlevant une boule en d. En effet, on voit que c et d apparaissent toujours ensemble, on n'a jamais l'une sans l'autre.</p>
+    <center><img src="hard_c+d.png" width=450> </center>
+<p> Il faut donc rompre cette symétrie dont Bob tire partie. Par exemple on peut ajouter une autre occurence de d en l'ajoutan à e. Le choix de contraintes "e = a+b+d, f=b+c+d, g=a+c+d" fonctionne. 
+    </ul>
+  </p>
+</span>
+
+          <h3>C'est de la crypto </h3>
+    <p>
+   Les donnés stockées sur le disque dur sont des chiffres 0 et 1. Tous les 7 chiffres on rajoute un 8e chiffre égal à 0 ou 1 pour que la somme totale soit paire. Cela permet de récupérer les données au cas où le disque est rayé. Il existe plusieurs telles formules possibles, que l'on appelle codes correcteurs. 
+    </p>
+<p>
+Il ne faut surtout pas rajouter la somme de controle si on veut chiffrer ulterieurement. En effet cela donne un indice aux attaquants et a été utilisé pour casser le système de chiffrement A5/1, utilisé sur les téléphones portables. 
+</p>
+
+	  </div> <!-- task-solution -->
+   </body>
+</html>

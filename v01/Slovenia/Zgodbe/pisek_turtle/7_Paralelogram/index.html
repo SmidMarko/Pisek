@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+   <head>
+		<meta charset="utf-8">	<!-- določimo način kodiranja znakov v besedilu naloge -->
+		<title>7_Paralelogram</title> <!-- pod naslov zapišemo ime mape v kateri se nahajo datoteke za posamezno nalogo -->
+		<script>
+			window.stringsLanguage = 'sl'; //izberemo jezik za besedila ukazov in sporočil
+		</script>
+			
+		<!-- Tukaj kličemo knjižnice potrebne za delovanje spletne strani -->
+		<script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script> 
+		<!--  <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script> -->
+		<script class="remove" type="text/javascript">
+			var modulesPath = '../../../../_common/modules/'
+			importModules([
+				'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+				'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+				'taskStyles-mobileFirst'/*'taskStyles-0.1'*/ ]);
+			importLanguageModules('blockly'); //nastavimo programski jezik Blockly
+		</script>
+			
+		<!-- Tukaj vodimo evidenco o nalogi -->
+		<script class="remove" type="text/javascript">
+			var json = {
+				"id": "",						//url naloge
+				"language": "sl",
+				"version": "sl.01",
+				"authors": "Aleš Poklukar",				//avtor
+				"translators": [],
+				"license": "",
+				"taskPathPrefix": "",
+				"modulesPathPrefix": "",
+				"browserSupport": [],
+				"fullFeedback": true,
+				"minWidth": "auto"
+			};
+		</script>
+			
+		<!-- Tukaj povozimo knjižnico, ki hrani prevode ukazov in sporočil -->
+		<script class="remove" type="text/javascript" src="blocklyTurtle_lib.js" id="blocklyTurtle_lib"></script>
+		<!-- Tukaj kličemo datoteko, kjer definiramo problem naloge -->			
+		<script type="text/javascript" src="turtle_task.js"></script>
+    </head>
+    
+	<body onresize="task.displayedSubTask.updateScale()">
+		<div id="task">
+            <h1>Paralelogram</h1>  <!-- Naslov naloge -->
+			<div id="tabsContainer"></div>
+			<div id="taskContent">
+				<div id="taskIntro"> <!-- Besedilo naloge -->
+					<p>
+						Pišek v šoli ni najbolje poslušal svoje učiteljice, zato ne zna narisati paralelograma. 
+					</p>
+					<p class="easy">
+						Zajec mu je dal navodila, ki jih vidiš na desni. A kaj, ko se sicer nariše nekaj podobnega paralelogramu, a na napačnem mestu. Pomagaj Pišku in kodo popravi tako, da se bo paralelogram narisal na označenem mestu.   
+					</p>
+					
+					
+					<p class = "hard">
+							Pišek takoj opazi, da gre za enak lik, ki ga je narisal prej. A kaj, ko tista rešitev potrebuje 17 ukazov, sedaj pa jih ima na voljo le 10!	
+					</p>
+					
+
+				</div>	
+						
+				
+					
+				<div id="gridContainer"></div>
+				<div id="blocklyLibContent"></div>
+			</div>
+		</div>
+    </body>
+</html>

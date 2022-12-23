@@ -1,0 +1,25 @@
+{
+"correctSolutions": [
+    {"path": "$TASK_PATH/tests/gen/sol-ok-c.c",
+     "grade": 100,
+     "language": "c"},
+    {"path": "$TASK_PATH/tests/gen/sol-bad-c.c",
+     "grade": 0,
+     "language": "c"}
+    ],
+"checker": "tests/gen/checker.py",
+"defaultEvaluationSolutions": [{
+    "id": "@solutionId",
+    "compilationDescr": {
+        "language": "c",
+        "files": [{"name": "post.c",
+                   "path": "$TASK_PATH/tests/gen/post.c"}],
+        "dependencies": [
+            {"name": "pre.c",
+             "path": "$TASK_PATH/tests/gen/pre.c"},
+            {"name": "solution.c",
+             "path": "@solutionPath",
+             "content": "@solutionContent"}
+        ]},
+    "compilationExecution": "@defaultSolutionCompParams"}]
+}

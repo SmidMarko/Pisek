@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>2016-FR-AL-02</title>
+    <link class="module" rel="stylesheet" href="../../../_common/modules/pemFioi/taskStyles-0.1.css" id="http://www.france-ioi.org/modules/pemFioi/taskStyles-0.1.css">
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery/1.7/jquery.min.js" id="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/jquery-ui/jquery.ui.touch-punch.min.js" id="jquery.ui.touch-punch.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/raphael/2.2.1/raphael.min.js" id="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.min.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/ext/json/json2.min.js" id="https://github.com/douglascrockford/JSON-js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beav-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/beav-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/drag_lib-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/drag_lib.js"></script>
+
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/beaver-task-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/beaver-task-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulation-2.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulation-2.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/raphaelFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/raphaelFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/delayFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/delayFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/simulationFactory-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/simulationFactory-1.0.js"></script>
+    <script class="module" type="text/javascript" src="../../../_common/modules/pemFioi/randomGenerator-1.0.js" id="http://www.france-ioi.org/modules/pemFioi/randomGenerator-1.0.js"></script>
+
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js" id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/installation.js"></script>
+    <script class="proxy module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/platform-pr.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/platform-pr.js"></script>
+    <script class="stdButtonsAndMessages module" type="text/javascript" src="../../../_common/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"  id="http://www.france-ioi.org/modules/integrationAPI.01/installationAPI.01/pemFioi/buttonsAndMessages.js"></script>
+    <script class="remove" type="text/javascript" src="../../../_common/modules/integrationAPI.01/official/miniPlatform.js" id="http://www.france-ioi.org/modules/integrationAPI.01/official/miniPlatform.js"></script>
+      <script>
+         var stringsLanguage = 'fr';
+      </script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/alkindi_2016/2016-FR-AL-02-machine/",
+          "language": "fr",
+          "version": "fr.01",
+          "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+          "license": "CC BY-SA 3.0",
+          "translators": [],
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "acceptedAnswers": [],
+          "usesRandomSeed": false
+      };
+      </script>
+      <script type="text/javascript">
+        var taskStrings = {
+           success: "Bravo, vous avez réussi !",
+           wrong: "Au moins un des chiffres ne correspond pas.",
+           userMachine: "Votre machine",
+           targetMachine: "Machine à imiter"
+        };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+      <style>
+         #anim_container {
+            text-align: center;
+         }
+         #anim {
+            display: inline-block;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Par quatre chemins</h1>
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <p>
+              Vous avez trouvé une machine qui transforme les chiffres. Vous savez qu'elle est constituée de
+	      <span class="easy">2</span>
+	      <span class="medium">3</span>
+	      <span class="hard">5</span>
+	      blocs, mais vous ne savez pas lesquels. <b>Construisez une machine qui permet d'obtenir les mêmes résultats</b>.
+            </p>
+	    
+            <p>
+              Placez un bloc à la fois dans votre machine pour voir son effet, et comparez avec la machine à imiter.
+	    </p>
+
+	    
+	    <table style="margin: auto;">
+	      <tr>
+		<td><img src="red.png" width=30></td>
+		<td> change le chiffre de haut et laisse celui de bas inchangé.</td>
+	      </tr>
+	      <tr>
+		<td><img src="yellow.png" width=30></td>
+		<td> échange le chiffre du haut avec celui du bas.</td>
+	      </tr>
+	      <tr class="medium">
+	      	<td><img src="blue.png" width=30></td>
+		<td> remplace le chiffre du haut par le produit des deux et laisse celui de bas inchangé.</td>
+	      </tr>
+	      <tr class="hard">
+	      	<td><img src="blue.png" width=30></td>
+		<td> remplace le chiffre du haut par le produit des deux et laisse celui de bas inchangé.</td>
+	      </tr>
+	    </table>
+	    
+            <div id="anim_container">
+               <div id="anim"></div>
+            </div>
+            <center><input type="button" id="execute" value="Valider"/></center>
+            <img src="icon.png" style="display:none">
+         </div>
+      </div><!-- task -->
+      <div id="solution">
+         <h2>Solution</h2>
+      <span class="easy">
+    <p> <img src="imitate_easy.png" align=left width=120> On démarre la machine à imiter et on étudie son comportement : le bloc de gauche laisse le chiffre de bas inchangé. Le seul bloc qui a cet effet est <img src="red1.png" width=25>, que nous plaçons dans la partie gauche de notre machine. Le bloc de droite échange entre eux les chiffres de haut et de bas, donc il faut placer un bloc <img src="yellow.png" width=22>. Et voilà nous avons reconstitué la machine : 
+<center> <img src="solution_easy.png" width="100"> </center>
+   </p>
+      </span>
+      <span class="medium">
+    <p> <img src="imitate_medium.png" align=left width=120> On démarre la machine à imiter et on voit le comportement du premier bloc : il garde le chiffre de bas inchangé. Les seuls blocs qui correspondent sont <img src="red1.png" width=25> et <img src="blue.png" width=19>. On essaie les deux et le seul qui convient est <img src="blue.png" width=19>. On regarde ensuite l'effet des deux blocs suivants : ils transforment au même temps le chiffre de haut et celui de bas dans leurs opposés (1 devient 0 et 0 devient 1). Pour cela on place   <img src="red1.png" width=25> et <img src="red2.png" width=25> dans le deuxième et troisième bloc (l'ordre ne compte pas). La solution est donc :
+<center> <img src="solution_medium.png" width="150"> </center>
+   </p>
+      </span>
+      <span class="hard">
+    <p> <img src="imitate_hard.png" align=left width=200> On démarre la machine à imiter et on voit une partie du comportement du premier bloc : le chiffre de bas est copié et placé en haut. Le seul bloc qui correspond à ce comportement est <img src="yellow.png" width=22>. Les troisième et cinquième blocs copient eux aussi les chiffres en diagonale donc ils correspondent eux aussi à <img src="yellow.png" width=22>. Le deuxième bloc garde le chiffre de haut inchangé donc il est soit le bloc identité (qui ne change rien, on ne place aucun bloc dans la machine) soit un des blocs <img src="red2.png" width=30> ou <img src="blue2.png" width=25>. Le même raisonnement s'applique au quatrième bloc : il garde le chiffre de bas inchangé donc il est soit le bloc identité soit un des blocs <img src="red.png" width=22> ou <img src="blue.png" width=22>. En essayant ces possibilités on trouve la solution :     
+<center> <img src="solution_hard.png" width="250"> </center>
+   </p>
+      </span>
+<BR>
+<BR>
+<BR>
+<BR>
+<h2> C'est de la crypto </h2>
+Les ordinateurs stockent les données sous la forme de <a href="https://www.youtube.com/watch?v=lZQqr6Lwjhg">suites de 0s et de 1s</a> qui sont processés par des circuits intégrés :
+<center> <img src="circuits.jpg" width="200">  </center>
+Certains systèmes de chiffrement sont mis en oeuvre directement par des circuits intégrés, comme dans les cartes bancaires ou disques durs chiffrés. Pour casser ces protections, on peut décaper le circuit en enlevant les couches une par une pour ensuite faire des mesures et deviner ses composantes. Ce processus est appelé <a href="https://fr.wikipedia.org/wiki/R%C3%A9tro-ing%C3%A9nierie_en_informatique#Cartes_.C3.A0_puce">rétro-ingénierie</a>.	  </div> <!-- task-solution -->
+   </body>
+</html>

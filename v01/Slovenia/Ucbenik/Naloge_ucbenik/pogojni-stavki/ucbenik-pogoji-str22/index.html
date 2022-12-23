@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Naloge-ucbenik-22</title>
+      <script>
+        window.stringsLanguage = 'sl';
+      </script>
+       <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/';
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1', 'jwinf_css']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPrinter_lib.js" id="blocklyPrinter_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "naloge-ucbenik-stran22",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Ziga Flajs",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+
+      window.stringsLanguage = 'sl';
+      var strings = {
+         moreThan100Moves: "Naredil/-a si več kot 100 potez.",
+         notAllCellsPainted: "Vsa polja nisi pobarval/-a pravilno. Poskusi še enkrat!",
+         allCellsPainted: "Čestitamo! Vsa polja si pravilno pobarval/-a!"
+      };
+      </script>
+      <script type="text/javascript" src="printer_task.js"></script>
+       <script>
+           function hint(id){
+               var hint = document.getElementById(id);
+               if (hint.style.display == "none") {
+                   hint.style.display = "block";
+               }
+               else {
+                   hint.style.display = "none";
+               }
+           };
+       </script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+        <h1>Naloge učbenik: Pogojni stavek</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+               <p class="easy">
+                 Napiši program, ki prebere celo število in izpiše besedilo <code>DA</code>, če je število večje od 42, sicer pa naj ne izpiše ničesar. Sledita dva primera:
+               </p>
+<table class="easy"><tr><td style="padding: 0px 30px;vertical-align: top;">
+Vhod:
+<pre>
+50
+</pre>
+</td><td style="padding: 0px 30px;vertical-align: top;">Izhod:
+<pre>
+  DA
+</pre>
+</td></tr></table>
+<table class="easy"><tr><td style="padding: 0px 30px;vertical-align: top;">
+Vhod:
+<pre>
+42
+</pre>
+</td><td style="padding: 0px 30px;vertical-align: top;">Izhod:
+<pre>
+</pre>
+</td></tr></table>
+                <p class="easy">
+                    V uvodnem delu programa nastavi spremenljivko <i>stevilo</i> na 50.
+                </p>
+                <p class="easy">
+                    <button type="button" class="btn btn-info" onclick="hint('hint1')">Namig</button>
+                    <div id="hint1" class="modal-content" style="display: none;" align="justify">
+                        <p>
+                            Preberi število v spremenljivko, nato pa ga v pogojnem stavku primerjaj s številom 42. Ali blok <code>sicer</code> sploh potrebuješ?
+                        </p>
+                    </div>
+                </p>
+
+               <p class="medium">
+                 Napiši program, ki prebere celo število in izpiše besedilo <code>večje</code>, če je število večje od 42, <code>manjše</code>, če je manjše od 42, in <code>enako</code>, če je vnešeno število enako 42. Na primer:
+               </p>
+<table class="medium"><tr><td style="padding: 0px 30px;vertical-align: top;">
+Vhod:
+<pre>
+30
+</pre>
+</td><td style="padding: 0px 30px;vertical-align: top;">Izhod:
+<pre>
+manjše
+</pre>
+</td></tr></table>
+             <p class="medium">
+                 V uvodnem delu programa nastavi spremenljivko <i>stevilo</i> na 30.
+             </p>
+             <p class="medium">
+                 <button type="button" class="btn btn-info" onclick="hint('hint2')">Namig</button>
+                 <div id="hint2" class="modal-content" style="display: none;" align="justify">
+                    <p>
+                        Uporabi stavek <code>če-sicer če-sicer</code>. V pogoju pri stavku <code>če</code> preveri, ali je prebrano število večje od 42, v pogoju pri stavku <code>sicer če</code> pa preveri, ali je prebrano število manjše od 42. Če ni niti večje niti manjše, pa je lahko samo še enako (blok <code>sicer</code>).
+                    </p>
+                 </div>
+             </p>
+               <p class="hard">
+                 Napiši program, ki prebere dve celi števili in izpiše besedilo <code>prvo</code>, če je prvo število večje od drugega, <code>drugo</code>, če je drugo število večje od prvega, in <code>enaki</code>, če sta vnešeni števili enaki. Na primer:
+               </p>
+<table class="hard"><tr><td style="padding: 0px 30px;vertical-align: top;">
+Vhod:
+<pre>
+30
+20
+</pre>
+</td><td style="padding: 0px 30px;vertical-align: top;">Izhod:
+<pre>
+drugo
+</pre>
+</td></tr></table>
+<table class="hard"><tr><td style="padding: 0px 30px;vertical-align: top;">
+Vhod:
+<pre>
+6
+6
+</pre>
+</td><td style="padding: 0px 30px;vertical-align: top;">Izhod:
+<pre>
+enaki
+</pre>
+</td></tr></table>
+          <p class="hard">
+              V uvodnem delu programa nastavi spremenljivko <i>prvo</i> na 30 in <i>drugo</i> na 20.
+          </p>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+      </div><!-- task -->
+   </body>
+</html>

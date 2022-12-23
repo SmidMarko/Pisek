@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>2017-AL-03</title>
+   <script>
+      window.stringsLanguage = 'fr';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.1', 'JSON-js',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'grid-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1', 'jschannel', 'randomGenerator-1.0']);
+   </script>
+   <script class="remove" type="text/javascript">
+        var json = {
+           "id": "http://castor-informatique.fr/tasks/alkindi_2017/2017-FR-AL-03-lattice/",
+           "language": "fr",
+           "version": "fr.01",
+           "authors": "Matthieu Lequesne, Razvan Barbaud, Mathias Hiron, Nir Lavee",
+           "translators": [],
+           "license": "",
+           "taskPathPrefix": "",
+           "modulesPathPrefix": "",
+           "browserSupport": [],
+           "fullFeedback": true,
+           "acceptedAnswers": [],
+           "usesRandomSeed": false
+        };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Bravo, vous avez réussi !",
+         whiteClick: "Cliquez sur les flèches pour vous déplacer.",
+         missing: "Il faut sélectionner une case dans chaque zone."
+       };
+       var is2D = false;
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      #feedback {
+         color: red;
+      }
+      #passwordDiv {
+         text-align: center;
+      }
+      #passwordTable {
+         border-collapse: collapse;
+         margin: auto;
+      }
+      .letterCell {
+         border: 1px solid gray;
+         width: 24px;
+         height: 24px;
+      }
+      #animContainer {
+         text-align: center;
+      }
+      #nextRegion {
+         font-weight: bold;
+      }
+      #messageArrow {
+         font-weight: bold;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Réseau</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <p>
+         Dans la grille ci-dessous, on peut déplacer le point noir pour atteindre certaines des cases.
+         </p>
+         <p>
+         <b>Votre objectif est d'atteindre une case de chacune des régions carrées.</b> Vous pouvez changer d'échelle pour voir toutes les régions.
+         </p>
+         <p>
+            Les pointillés vous indiquent la direction de la prochaine zone. Notez que vous n'êtes pas obligé d'atteindre les zones dans l'ordre suggéré.
+         </p>
+         <p>
+         Sélectionnez une flèche à droite, puis déplacez le point noir en cliquant sur les flèches qui en partent.
+         </p>
+         <p>
+         Vous pouvez enregistrer de nouvelles flèches pour vous aider à vous déplacer plus efficacement.
+         </p>
+         <table>
+            <tr>
+               <td style="text-align:center;width:220px"">Échelle&nbsp;:&nbsp;1/<span id="strScale">1</span></td>
+               <td rowspan=2 style="width:140px"><button id="center">Centrer la grille</button></td>
+               <td style="width:0px"></td>
+            </tr>
+            <tr>
+               <td><input id="scale" type="range" min="0" max="12" step="1" value="0" style="width:200px">&nbsp;</td>
+            </tr>
+         </table>
+         <table><tr>
+         <td>
+            <div id="animContainer">
+               <div id="anim"></div>
+               <table>
+                  <tr>
+                     <td>
+                        <button id="startRecording">Créer une flèche</button>
+                        <button id="stopRecording">Terminer l'enregistrement</button>
+                     </td>
+                     <td style="text-align:center"><button id="deleteArrow">Supprimer la flèche sélectionée</button></td>
+                     <td style="width:350px"><span id="messageArrow"></span></td>
+                  </tr>
+               </table>
+               <div id="anim2"></div>
+            </div>
+         </td>
+         </tr></table>
+         <p id="nextRegionMessage">Il vous reste <span id="nbRemaining">X</span> zones à atteindre, sur <span id="nbTotal">X</span>. Position relative de la prochaine zone : <span id="nextRegion">0,0</span></p>
+         <p id="allRegionsMessage">Vous avez atteint toutes les zones.</p>
+         <div id="feedback"></div>
+         <img src="icon.png" style="display:none">
+      </div>
+   </div>
+  <!-- task -->
+<div id="solution">
+<h2>Solution</h2>
+</div>
+</body>
+</html>

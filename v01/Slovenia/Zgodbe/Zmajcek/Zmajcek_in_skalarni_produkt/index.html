@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Zmajcek:skalarni_produkt</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-while-marbles -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyZmajcek_lib.js" id="blocklyZmajcek_lib"></script>
+      <script class="remove" type="text/javascript">
+            var json = {
+                "id": "http://castor-informatique.fr/questions/algorea_training/training-while-marbles/",
+				"language": "sl",
+				"version": "sl.01",
+				"authors": "KSpenko",
+				"translators": [],
+				"license": "",
+				"taskPathPrefix": "",
+				"modulesPathPrefix": "",
+				"browserSupport": [],
+				"fullFeedback": true,
+				"minWidth": "auto"
+			};
+        </script>
+	  
+        <img src="green_robot.png" style="display:none" />
+		
+        <img src="obstacle.png" style="display:none" />
+        <img src="green.png" style="display:none" />
+		
+        <img src="marble.png" style="display:none" />
+        <img src="hole.png" style="display:none" />
+        <img src="pill.png" style="display:none" />
+		<img src="marker.png" style="display:none" />
+		
+		<img src="paint.png" style="display:none" />
+		<img src="paint2.png" style="display:none" />
+		
+		
+		<!-- manjkajo se Pill in Platform -->
+		 
+        <script type="text/javascript" src="task.js"></script>
+    </head>
+   
+    <body onresize="task.displayedSubTask.updateScale()">
+        <div id="taskIntro" style="width: 100%">
+            <h1>Zmajček in skalarni produkt</h1>
+
+            <div id="tabsContainer"></div>
+            <div id="taskContent">
+                <div id="taskIntro">
+				<div class="easy">
+						<p>
+							Zmajček v tej nalogi mora izračunati skalarni produkt dveh vrstic in ga zapisati v polje, označeno z 0. Zmajček se ne more premikati navzgor, zato si mora števila na poljih zapisati v seznam. Seznam ustvariš podobno kot spremenljivko. 
+						</p>
+					</div>
+					<div class="medium">
+						<p>
+							Zmajček v tej nalogi mora izračunati skalarni produkt dveh vrstic, ki mu pove, koliko kovančkov se nahaja v sponji vrstici. Pomagaj zmajčku pobrati vse kovančke.
+						</p>
+						<p>
+						    Zmajček se ne more premikati navzgor, zato si mora števila na poljih zapisati v seznam. Seznam ustvariš podobno kot spremenljivko. 
+						</p>
+					</div>
+					<div class="hard">
+						<p>
+							Zmajček v tej nalogi mora izračunati skalarni produkt dveh vrstic, ki zmajčku pove, koliko kovančkov se nahaja v spodnji vrstici. Pomagaj zmajčku pobrati vse kovančke.
+						</p>
+						<p>
+						Zmajček se ne more premikati navzgor, zato si mora števila na poljih zapisati v seznam. Seznam ustvariš podobno kot spremenljivko. 
+						</p>
+					</div>
+                   
+					<p>
+						<img data-lang="blockly" src="createarray.png" style="height:40px"/>
+					</p>
+					
+					<p>
+						Pri tej nalogi potrebuješ način, kako slediti zaporedju elementov v seznamu, saj se jih bo zmajček moral spomniti iz seznama. Za računanje skalarnega produkta potrebuješ tudi novo spremenljivko, ki je naprej enaka 0, nato pa se za vsak par števil ustrezno povečuje.
+					</p>
+					
+					
+					</div>
+                <div id="gridContainer"></div>
+                <div id="blocklyLibContent"></div>
+            </div>
+
+        </div><!-- task -->
+    </body>
+</html>
+ 

@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Sadovnjak</title>
+     <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-marble/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Aleš Poklukar",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Sadovnjak</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+               <p class="easy">
+                  Po napornem dnevu v šoli se Eva z novo pridobljenim znanjem odpravi v eno izmed svojih skrivališč, ki so na drugi 
+				  strani obširnega vrta, na strani kjer se nahaja sadovnjak. Eva ve, da mora še veliko pojesti preden se bo lahko 
+				  zabubila, zato je izbira sadovnjaka zelo modra odločitev. Ob prihodu do svojega skrivališča ugotovi, da je povsem
+				  prazno! Brž se odpravi pogledati še druga in na svojo grozo ugotovi, da so vsa čisto izpraznjena. Eva se odloči, 
+				  da bo skrivališča napolnila s sadeži. </p>   
+               <p class="easy">
+                 Pomagaj Evi napolniti skrivališča s sadeži – kot vidiš so skrivališča prilagojena posamezni vrsti sadeža, 
+				 kar pomeni, da vsak sadež spada v svoje skrivališče. Ne pozabi, da lahko Eva nosi samo en sadež naenkrat. 
+				 </p>   
+               
+			   <p class = "easy"> 
+                  Poleg že poznanih programskih blokov imaš na voljo nov programski blok, ki izraža pogojnost če izvedi. To pomeni, 
+				 da lahko Evi na primer zapoveš: če prideš do skrivališča, izpusti sadež.</p>
+               <p class="medium">
+                     Po tem ko je napolnila prva 3 skrivališča, se gosenica nekoliko odpočije na trati in si privošči kos slive. Nato hitro nadaljuje s polnjenjem skrivališč. Pomagaj Evi s sadeži napolniti še 4 skrivališča. Tako kot v prvi nalogi bo potrebno uporabiti blok za izražanje pogojnosti. Eva mora namreč preveriti ali se na polju nahaja sadež ali skrivališče in temu primerno ukrepati. </p>
+               <p class="medium">
+                     Tako kot prej, bo v nalogi potrebno uporabiti blok za pogojni stavek. Eva mora namreč preveriti, ali se na danem polju nahaja sadež ali skrivališče. 
+               </p>
+               
+               
+               <p class="hard">
+                  Eva je uspešno napolnila 7 skrivališč, ostalo ji je še 5 skrivališč. Po obilni malici je nadaljevala z delom. Pomagaj Evi s sadeži napolnit še zadnjih 5 skrivališč. Tako kot v privi nalogi bo potrebno uporabiti blok za izražanje pogojnosti. Eva mora namreč preveriti ali se na polju nahaja sadež ali skrivališče in temu primerno ukrepati. </p>
+               <p class="hard">
+                     Tako kot prej, bo v nalogi potrebno uporabiti blok za pogojni stavek. Eva mora namreč preveriti, ali se na danem polju nahaja sadež ali skrivališče. Pazi, saj pogojni stavek za odlaganje sadeža velja samo takrat, ko Eva že ima zrno. 
+               </p>
+               
+               
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

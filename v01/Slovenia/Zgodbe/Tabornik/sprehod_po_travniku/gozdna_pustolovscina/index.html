@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Gozdna pustolovščina</title>
+	    <!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-while-marbles -->
+        <script>
+            window.stringsLanguage = 'sl';
+        </script>
+        <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+        <script class="remove" type="text/javascript">
+            var modulesPath = '../../../../../_common/modules/';
+            importModules([
+                'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+                'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+                'taskStyles-0.1']);
+            // set Blockly as default language when none is specified through ?language=
+            importLanguageModules('blockly');
+        </script>
+		<script class="remove" type="text/javascript" src="blocklyTabornik_lib.js" id="blocklyTabornik_lib"></script>
+        <script class="remove" type="text/javascript">
+            var json = {
+                "id": "http://castor-informatique.fr/questions/algorea_training/training-while-marbles/",
+				"language": "sl",
+				"version": "sl.01",
+				"authors": "KSpenko",
+				"translators": [],
+				"license": "",
+				"taskPathPrefix": "",
+				"modulesPathPrefix": "",
+				"browserSupport": [],
+				"fullFeedback": true,
+				"minWidth": "auto"
+			};
+        </script>
+	
+		
+        <img src="green_robot.png" style="display:none" />
+		
+        <img src="obstacle.png" style="display:none" />
+        <img src="green.png" style="display:none" />
+		
+        <img src="marble.png" style="display:none" />
+        <img src="hole.png" style="display:none" />
+		
+		<!-- manjkajo se Pill in Platform -->
+		 
+        <script type="text/javascript" src="task.js"></script>
+    </head>
+   
+    <body onresize="task.displayedSubTask.updateScale()">
+        <div id="taskIntro" style="width: 100%">
+            <h1>Gozdna pustolovščina</h1>
+
+            <div id="tabsContainer"></div>
+            <div id="taskContent">
+                <div id="taskIntro">
+                    <p class = "easy">
+					Tabornik Tine mora svojo drugo pohodniško preizkušnjo opraviti v gozdu, po katerem so nastavljeni kamni, označeni z zvezdico. Tine mora prehoditi vse označene kamne, a na nobenega ne sme stopiti ponovno. Med hojo mora biti vedno obrnjen v smer premika. Pomagaj mu nalogo uspešno opraviti.
+					</p>
+					<p class = "medium">
+					Po dobri uri hoje je Tine ponovno naletel na označene kamne. Pomagaj mu jih prehoditi.
+					</p>
+					<p class = "hard">
+					Čestitke, Tine je prišel še do zadnjih označenih kamnov v gozdu, ki ga bodo vodili naravnost do tabora, kjer se nahajo drugi taborniki. Pomagaj mu uspešno opraviti še zadnji del gozdne pustolovščine.
+					</p>
+			   </div>
+                <div id="gridContainer"></div>
+                <div id="blocklyLibContent"></div>
+            </div>
+
+        </div><!-- task -->
+    </body>
+</html>
+ 

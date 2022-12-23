@@ -1,0 +1,43 @@
+{
+"checker": "tests/gen/checker.py",
+"correctSolutions": [
+    {
+    "path": "$TASK_PATH/tests/gen/sol-ok-c.c",
+    "language": "c",
+    "grade": 100
+    },
+    {
+    "path": "$TASK_PATH/tests/gen/sol-forb-c.c",
+    "language": "c",
+    "grade": 0
+    },
+    {
+    "path": "$TASK_PATH/tests/gen/sol-bad-c.c",
+    "language": "c",
+    "grade": 0
+    }],
+"defaultChecker": {
+    "compilationDescr": {
+        "language": "shell",
+        "files": [{
+            "name": "checker.sh",
+            "path": "$TASK_PATH/tests/gen/checker.sh"
+            }],
+        "dependencies": [{            
+            "name": "defaultChecker.py",
+            "path": "$ROOT_PATH/_common/taskgrader/tools/genJson/scripts/defaultChecker.py"
+            }]},
+    "compilationExecution": "@defaultToolCompParams",
+    "runExecution": {
+        "memoryLimitKb": 131072,
+        "timeLimitMs": 60000,
+        "useCache": true,
+        "stdoutTruncateKb": -1,
+        "stderrTruncateKb": -1,
+        "addFiles": [{
+            "name": "solution",
+            "path": "@solutionPath",
+            "content": "@solutionContent"
+            }],
+        "getFiles": []}}
+}

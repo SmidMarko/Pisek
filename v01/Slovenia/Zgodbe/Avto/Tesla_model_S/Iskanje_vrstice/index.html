@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Avto</title>
+     <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyAvto_lib.js" id="blocklyAvto_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-marble/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+	  
+   </head>
+   <style>
+       #program {
+           font-family: 'Roboto Mono';
+           font-size: 13pt;
+           font-weight: normal
+       }
+       #loop {
+           background-color:  #f4b083;
+           padding-left: 2em;
+           width: 20em;
+       }
+       #condition {
+           background-color: #a8d08d;
+           padding-left: 2em;
+           width: 20em;
+       }
+   </style>
+   <script>
+       function checkAnwser(num) {
+           var exampleA = {blockly: '<xml id="workspace2" style="display: none">\n' +
+                   '  <block type="controls_repeat_ext" id="101" x="20" y="10">\n' +
+                   '    <value name="TIMES">\n' +
+                   '      <block type="math_number" id="102">\n' +
+                   '        <field name="NUM">5</field>\n' +
+                   '      </block>\n' +
+                   '    </value>\n' +
+                   '    <statement name="DO">\n' +
+                   '      <block type="controls_if" id="103">\n' +
+                   '        <value name="IF0">\n' +
+                   '          <block type="logic_compare" id="104">\n' +
+                   '            <field name="OP">EQ</field>\n' +
+                   '            <value name="A">\n' +
+                   '              <block type="row" id="105"></block>\n' +
+                   '            </value>\n' +
+                   '            <value name="B">\n' +
+                   '              <block type="text" id="106">\n' +
+                   '                <field name="TEXT">P</field>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '          </block>\n' +
+                   '        </value>\n' +
+                   '        <mutation else="1"></mutation>\n' +
+                   '        <statement name="DO0">\n' +
+                   '          <block type="writeToScreen" id="107">\n' +
+                   '            <value name="PARAM_0">\n' +
+                   '              <block type="text" id="108">\n' +
+                   '                <field name="TEXT">P</field>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '          </block>\n' +
+                   '        </statement>\n' +
+                   '        <statement name="ELSE">\n' +
+                   '          <block type="writeToScreen" id="109">\n' +
+                   '            <value name="PARAM_0">\n' +
+                   '              <block type="text" id="110">\n' +
+                   '                <field name="TEXT">Nisem v vrstici P</field>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '          </block>\n' +
+                   '        </statement>\n' +
+                   '        <next>\n' +
+                   '          <block type="forwardAmount" id="110">\n' +
+                   '            <value name="PARAM_0">\n' +
+                   '              <block type="math_number" id="111">\n' +
+                   '                <field name="NUM">1</field>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '          </block>\n' +
+                   '        </next>\n' +
+                   '      </block>\n' +
+                   '    </statement>\n' +
+                   '  </block>\n' +
+                   '</xml>\n'};
+           var exampleB = {blockly: '<xml id="workspace3" style="display: none">\n' +
+                   '  <block type="controls_repeat_ext" id="101" x="20" y="10">\n' +
+                   '    <value name="TIMES">\n' +
+                   '      <block type="math_number" id="102">\n' +
+                   '        <field name="NUM">5</field>\n' +
+                   '      </block>\n' +
+                   '    </value>\n' +
+                   '    <statement name="DO">\n' +
+                   '      <block type="controls_if" id="103">\n' +
+                   '        <value name="IF0">\n' +
+                   '          <block type="logic_compare" id="104">\n' +
+                   '            <field name="OP">EQ</field>\n' +
+                   '            <value name="A">\n' +
+                   '              <block type="row" id="105"></block>\n' +
+                   '            </value>\n' +
+                   '            <value name="B">\n' +
+                   '              <block type="text" id="106">\n' +
+                   '                <field name="TEXT">P</field>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '          </block>\n' +
+                   '        </value>\n' +
+                   '        <statement name="DO0">\n' +
+                   '          <block type="writeToScreen" id="107">\n' +
+                   '            <value name="PARAM_0">\n' +
+                   '              <block type="text" id="108">\n' +
+                   '                <field name="TEXT">P</field>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '          </block>\n' +
+                   '        </statement>\n' +
+                   '        <next>\n' +
+                   '          <block type="writeToScreen" id="109">\n' +
+                   '            <value name="PARAM_0">\n' +
+                   '              <block type="text" id="110">\n' +
+                   '                <field name="TEXT">Nisem v vrstici P</field>\n' +
+                   '              </block>\n' +
+                   '            </value>\n' +
+                   '            <next>\n' +
+                   '              <block type="forwardAmount" id="110">\n' +
+                   '                <value name="PARAM_0">\n' +
+                   '                  <block type="math_number" id="111">\n' +
+                   '                    <field name="NUM">1</field>\n' +
+                   '                  </block>\n' +
+                   '                </value>\n' +
+                   '              </block>\n' +
+                   '            </next>\n' +
+                   '          </block>\n' +
+                   '        </next>\n' +
+                   '      </block>\n' +
+                   '    </statement>\n' +
+                   '  </block>\n' +
+                   '</xml>\n'};
+           if (num==0)
+               task.displayedSubTask.loadExample(exampleA);
+           if (num==1 || num==2)
+               task.displayedSubTask.loadExample(exampleB);
+       }
+   </script>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Iskanje vrstice</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+                <p class="easy">
+                    Izriši pot in izpiši obvestila na zaslon.
+                <pre class="easy" id="program">program prepotovanaPot
+    pojdi naprej za 4 polja<div id="condition" style="width: 20em; left: 1em; position: relative;">če se nahajaš v vrstici P<div style="background-color: #ffffff">obrni se desno<br>pojdi naprej za 3 polja</div>sicer<div style="background-color: #ffffff">pojdi naprej za 1 polje<br>obrni se levo<br>pojdi naprej za 5 polj</div><br></div></pre>
+                </p>
+                <p class="medium">
+                    Izrisana je pot avtomobila. Izberi program (obkroži črko), ki pravilno opisuje prepotovano pot. Smiselno izpisuj obvestila o trenutnem položaju. Možni odgovori so: A; B; A in B.
+                    <br>Izberi:
+                    <br>
+                    <table class="medium">
+                        <tr>
+                <p class="medium">
+                    <button class="btn btn-info" onclick="checkAnwser(0)" style="margin: 15px; text-align: center;">A</button></p>
+                <pre class="medium" id="program">program prepotovanaPot    <div id="loop" style="width: 22em; left: 1em; position: relative;">ponovi 5-krat<div id="condition" style="width: 20em;">če se nahajaš v vrstici P<div style="background-color: #ffffff">izpiši '<i>P</i>'</div>sicer<div style="background-color: #ffffff">izpiši '<i>Nisem v vrstici P</i>'</div><br></div><div style="background-color: #ffffff; padding-left: 1em;">pojdi naprej za 1 polje</div><br></div></pre>
+                </tr>
+                <tr><p class="medium">
+                    <button class="btn btn-info" onclick="checkAnwser(1)" style="margin: 15px; text-align: center;">B</button></p>
+                <pre class="medium" id="program">program prepotovanaPot    <div id="loop" style="width: 22em; left: 1em; position: relative;">ponovi 5-krat<div id="condition" style="width: 20em;">če se nahajaš v vrstici P<div style="background-color: #ffffff">izpiši '<i>P</i>'</div><br></div><div style="background-color: #ffffff; padding-left: 1em;">izpiši '<i>Nisem v vrstici P</i>'<br>pojdi naprej za 1 polje</div><br></div></pre>
+                </tr>
+                <tr><p class="medium">
+                    <button class="btn btn-info" onclick="checkAnwser(2)" style="margin: 15px; text-align: center;">A in B</button></p>
+                </tr>
+                </table>
+                </p>
+                <p class="hard">
+                    Izriši pot in izpiši obvestila na zaslon.
+                <pre class="hard" id="program">program prepotovanaPot
+    izpiši ‘<i>Sem na začetku poti</i>’
+    pojdi naprej za 3 polja<div id="condition" style="left: 1em; position: relative;">če se nahajaš v vrstici D<div style="background-color: #ffffff">pojdi naprej za 5 polj</div><br></div>    izpiši <i>trenutniPoložaj</i></pre>
+                </p>
+			  </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Slastne maline</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-sequence-marble -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+	  <!-- Location of language script is important!-->
+      <script class="remove" type="text/javascript" src="../../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-sequence-marble/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Ziga Flajs, Ales Poklukar",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+	     <img src="hole.png" style="display:none" />
+         <img src="marble.png" style="display:none" />
+         <img src="green_robot.png" style="display:none" />
+         <img src="icon.png" style="display:none" />
+		 
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Slastne maline</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+               <p class="easy">
+                  Eva je med plezanjem po grmovju zagledala sveže rdečo malino, odločila se je, da jo bo pobrala in odnesla v skrivališče. Pomagaj gosenici pobrati malino in jo odnesti v skrivališče. To narediš s programskimi bloki, ki jih imaš na razpolago. Sestaviti jih moraš tako, da boš Evo vodil/a do maline, malino pobral/a, vodil/a Evo do skrivališča in tam malino odložil/a. Malino pobereš s programskim blokom poberi, odložiš pa s programskim blokom odloži.<p class="medium">
+                </p>
+			   <p class="medium">
+			   Med vračanjem v gnezdo je Eva na poti zagledala še eno malino! Tudi to bo prenesla v skrivališče, potrebuje namreč veliko energije, da bo nekoč lahko postala metulj. Pomagaj Evi pobrati še drugo malino in jo odnesti v skrivališče – tako kot prej moraš pri tem uporabiti programske bloke.
+               </p>
+			   <p class="hard">
+                  Zdi se, da ima Eva srečen dan! Odkrila je še dve malini. Ker pa je v prvem skrivališče dovolj prostora za eno malino, bo drugo malino, ki sicer deluje še nekoliko nezrelo, odnesla v sosednje skrivališče, ki ga uporablja za shranjevanje hrane. Pomagaj Evi pobrati malini in ju odnesti v skrivališči – pri tem uporabi programske bloke. Zapomni si, da lahko v vsako skrivališče odložiš le eno malino. Eva namreč noče tvegati, da ostane v primeru ropa brez celotne zaloge hrane. </p>
+           </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>

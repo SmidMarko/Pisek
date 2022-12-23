@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+   <head>
+		<meta charset="utf-8">	<!-- določimo način kodiranja znakov v besedilu naloge -->
+		<title>16_Pisek_narise_pravokotnik</title> <!-- pod naslov zapišemo ime mape v kateri se nahajo datoteke za posamezno nalogo -->
+		<script>
+			window.stringsLanguage = 'sl'; //izberemo jezik za besedila ukazov in sporočil
+		</script>
+			
+		<!-- Tukaj kličemo knjižnice potrebne za delovanje spletne strani -->
+		<script class="remove" type="text/javascript" src="../../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script> 
+		<!--  <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script> -->
+		<script class="remove" type="text/javascript">
+			var modulesPath = '../../../../_common/modules/'
+			importModules([
+				'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+				'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+				'taskStyles-mobileFirst'/*'taskStyles-0.1'*/ ]);
+			importLanguageModules('blockly'); //nastavimo programski jezik Blockly
+		</script>
+			
+		<!-- Tukaj vodimo evidenco o nalogi -->
+		<script class="remove" type="text/javascript">
+			var json = {
+				"id": "",						//url naloge
+				"language": "sl",
+				"version": "sl.01",
+				"authors": "Aleš Poklukar",				//avtor
+				"translators": [],
+				"license": "",
+				"taskPathPrefix": "",
+				"modulesPathPrefix": "",
+				"browserSupport": [],
+				"fullFeedback": true,
+				"minWidth": "auto"
+			};
+		</script>
+			
+		<!-- Tukaj povozimo knjižnico, ki hrani prevode ukazov in sporočil -->
+		<script class="remove" type="text/javascript" src="blocklyTurtle_lib.js" id="blocklyTurtle_lib"></script>
+		<!-- Tukaj kličemo datoteko, kjer definiramo problem naloge -->			
+		<script type="text/javascript" src="turtle_task.js"></script>
+    </head>
+    
+	<body onresize="task.displayedSubTask.updateScale()">
+		<div id="task">
+            <h1>Pišek nariše pravokotnik</h1>  <!-- Naslov naloge -->
+			<div id="tabsContainer"></div>
+			<div id="taskContent">
+				<div id="taskIntro"> <!-- Besedilo naloge -->
+					<p>
+						Pišek je danes pri matematiki spoznaval različne like. Ta snov mu je bila tako zanimiva, da se je odločil, da bo za vajo like narisal še enkrat doma. Spisal je kodo za pravokotnik, vendar mu to ni najbolje uspelo. Pomagaj Pišku priti do pravilne rešitve. 
+					</p>
+					
+					<button type="button" onclick="funkcija(this.id)"  id="1">Namig</button>
+					
+					<p id="button1" style="display:none">
+						Stranici pravokotnika sta dolgi 100 in 200 enot.
+					</p>
+					
+					
+					
+					
+					
+					<!--<div class="easy">   gumb
+							<button type="button" onclick="funkcija(this.id)"  id="1">Namig1</button>
+							<p id="button1" style="display:none">
+								Ta namig lahko vidimo samo pri srednji ali težki težavnosti.
+							</p>
+					</div>
+					-->
+					<button class="hard" onclick="checkAnwser(this.id)" id="3" style="margin: 15px; text-align: center;">Prikaži kodo</button>
+					
+					 <script>
+					function funkcija(n) {
+						var x = document.getElementById(("button").concat(n));
+						if (x.style.display === "none") x.style.display = "block";
+						else x.style.display = "none";
+					}
+					</script>
+					<script>
+					function checkAnwser(num) {
+					var exampleA = {
+					blockly:  '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="robot_start" id=")Jy|80wi6;#y)p#T|RX6" deletable="false" movable="false" editable="false" x="0" y="0"></block><block type="moveamount" id="GE*nX|8CfVwm0Xn`j0(J"><value name="PARAM_0"><block type="math_number" id="gt.Es:MZ2O{`)CuuBn{b"><field name="NUM">100</field></block></value><next><block type="turnleftamountvalue" id="vmDM63qF*U9?~8}U?z{e"><value name="PARAM_0"><block type="math_number" id="7md}B!-x_?k!I0:dX6Y?"><field name="NUM">80</field></block></value></block></next></block></statement></block></xml>'
+					 };
+					 if (num==3)   task.displayedSubTask.loadExample(exampleA);
+					}
+					</script>
+
+				</div>	
+						
+				
+					
+				<div id="gridContainer"></div>
+				<div id="blocklyLibContent"></div>
+			</div>
+		</div>
+    </body>
+</html>

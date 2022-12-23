@@ -1,0 +1,24 @@
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta http-equiv="Content-Language" content="fr" />
+ <meta name="author" content="Marc Glisse" />
+ <title>
+  Alkindi 2018 - Tour 1
+ </title>
+</head>
+<body>
+  <h1>Alkindi 2018 - Tour 1 - Version alpha</h1>
+<ul>
+  <li><a href="2018-FR-AL-01-multi-caesar/index.html">César multiple</li>
+  <li><a href="2018-FR-AL-04-decoding-lights/index.html">Interrupteurs</li>
+  <li><a href="2018-FR-AL-06-hash-table/index.html">Table de hachage</li>
+  <li><a href="2018-FR-AL-03-client-data/index.html">Données clients</li>
+  <li><a href="2018-FR-AL-02-feistel-network/index.html">Feistel</li>
+  <li><a href="2018-FR-AL-05-marbles-vault/index.html">Coffre-fort</li>
+  <li><a href="2018-FR-AL-08-shuffle/index.html">Permutations</li>
+  <li><a href="2018-FR-AL-07-butterflies/index.html">Papillons</li>
+</ul>
+<hr />
+</body>
+</html>

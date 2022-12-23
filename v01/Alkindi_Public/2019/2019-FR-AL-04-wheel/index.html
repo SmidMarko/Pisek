@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>2019-FR-AL-04-wheel</title>
+   <script>
+      window.stringsLanguage = 'fr';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'randomGenerator-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1', 'raphaelButton-1.0', 'shape-paths']);
+   </script>
+   <script class="remove" type="text/javascript">
+         var json = {
+            "id": "",
+            "language": "fr",
+            "version": "fr.01",
+            "authors": "",
+            "translators": [],
+            "license": "",
+            "taskPathPrefix": "",
+            "modulesPathPrefix": "",
+            "browserSupport": [],
+            "fullFeedback": true,
+            "acceptedAnswers": [],
+            "usesRandomSeed": false
+         };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Bravo, vous avez réussi!",
+         error: "Ce n'est pas la bonne réponse.",
+         encryptionWheel: "ROUE DE CHIFFREMENT",
+         clickOnTheArrows: "Cliquez sur les flèches pour faire tourner la ligne du bas.",
+         selectABox: "SÉLECTIONNEZ UNE CASE ET TAPEZ UNE LETTRE",
+         encrypted: "Chiffré",
+         decrypted: "Déchiffré",
+         noCellSelected: "Sélectionnez la case que vous souhaitez éditer.",
+         partialScoreMessage: "Les deux premiers mots donnent déjà des points.",
+         partialScore: "Vous avez déchiffré deux mots et obtenez des points. Continuez."
+      }
+   </script>
+
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      .consigne {
+         background: #F5F5F5;
+         border-radius: 5px;
+         font-size: 14px;
+         color: #30242B;
+         padding: 0;
+         margin: 20px;
+      }
+      .consigne h3 {
+         display: block;
+         background: #88BB88;
+         font-size: 14px;
+         color: white;
+         border-radius: 5px 5px 0 0;
+         text-align: center;
+         margin: 0;
+         padding: 13px;
+      }
+      .consigne #text {
+         padding: 20px;
+         padding-bottom: 10px;
+      }
+      .consigne p {
+         margin-top: 0;
+      }
+
+      #paper {
+         margin: 20px auto;
+         width: 730px;
+      }
+      #error {
+         text-align: center;
+      }
+      #displayHelper_validate > input, #displayHelper_cancel > input {
+         border: none;
+         background-color: #88BB88;
+         color: white;
+         font-weight: bold;
+         font-size: 12px;
+         padding: 8px;
+         min-width: 180px;
+         margin: 0px 8px;
+      }
+      #displayHelper_cancel > input {
+         background-color: #30242B;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Roue de chiffrement</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <div id="zone_1">
+            <div class="consigne">
+               <h3><i class="far fa-sticky-note"></i>VOTRE MISSION</h3>
+               <div id="text">
+                  <p>Alice a chiffré une phrase avec la roue ci-contre.</p>
+                  <p><b>Déchiffrez le message en vous aidant de la roue.</b></p>
+               </div>
+            </div>
+         </div>
+         
+         <div id="zone_2">
+            <div id="paper"></div>
+         </div>
+ 
+         <div id="error"></div>
+         <img src="icon.png" style="display:none">
+      </div>
+   </div>
+   <div id="solution">
+      <h2>Solution</h2>
+   </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+	<img src="hole.png" style="display:none" />
+	<img src="marble.png" style="display:none" />
+    <img src="pisek.png" style="display:none" />
+		 
+   <head>
+    <meta charset="utf-8">
+    <title>Pospravi nered</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-repeat-marble -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-marble/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Kristof Spenko, Aleš Poklukar",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Pospravi nered</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+			
+			  
+               <p class="easy">
+                  Čez noč je veter razdejal gnezda in odnesel zrna po celem vrtu. Pomagaj Pišku pospraviti ta nered tako, da bo zrno nazaj v gnezdu.
+               </p>
+			   
+               <p class="medium">
+                 Potem, ko je pospravil svoje gnezdo, Pišek še pomaga racam, goskam in srakam z njihovimi gnezdi. Prinesi zrna nazaj v gnezda. Pišek lahko nosi samo eno zrno naenkrat in vsako zrno spada v svoje gnezdo.
+               </p>
+			   
+               <p class="hard">
+                 Potem, ko je pospravil svoje gnezdo, Pišek še pomaga racam, goskam in srakam z njihovimi gnezdi. Prinesi zrna nazaj v gnezda. Pišek lahko nosi samo eno zrno naenkrat in vsako zrno spada v svoje gnezdo.
+               </p>
+			   
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+			<div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+      </div><!-- task -->
+   </body>
+</html>
+ 

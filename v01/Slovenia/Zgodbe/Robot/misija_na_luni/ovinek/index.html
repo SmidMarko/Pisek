@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Luna: ovinek</title>
+       <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyRobot_lib.js" id="blocklyRobot_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-nested-marbles/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "KSpenko",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+	  
+    </head>
+	
+    <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Ovinek</h1>
+		 
+         <div id="tabsContainer"></div>
+         <div id="taskContent" style="text-align:left;position:relative">
+            <div id="taskIntro" style="width: 100%">
+				
+				<p class="easy">
+                    Sprogramiraj robota, da pride do cilja. Manj kock lako porabiš tako, da uporabiš zanko. V to kocko lahko vstaviš druge kocke, ki se bodo ponovile tolikokrat kot naročiš.
+				</p>
+				
+				<p class = "medium">
+				    Vseh kock ne moreš vedno združiti v isto zanko. V tej nalogi potrebuješ vsaj dve zanki. Možnii sta dve rešitvi.
+				</p>
+				
+				<p class = "hard">
+				Tudi pri tej nalogi potrebuješ vsaj dve zanki. Vendar moraš v zanko vstaviti različne kocke za premikanje.
+				</p>
+					
+                </div>
+                <div id="gridContainer"></div>
+                <div id="blocklyLibContent"></div>
+            </div>
+
+        </div><!-- task -->
+    </body>
+</html>

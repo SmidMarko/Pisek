@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Raziskovalni robotek: 1. stopnja</title>
+     <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'taskStyles-0.1']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="../blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/questions/algorea_training/training-repeat-marble/",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "Ziga Flajs",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+	  
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>1. stopnja</h1>
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent">
+            <div id="taskIntro">
+				<p class="easy">
+					Robot se je prižgal na neznanem planetu. Okrog njega so temne kamnine, ki jih robotek takoj začne preučevati. Ugotovi, da so vulkanskega izvora, zato se, zadovoljen s svojim odkritjem, spet ozre okrog sebe. V daljavi zagleda skrivnostno modrikasto svetlobo, ki vznemiri njegove senzorje. Le kaj bi to lahko bilo?
+				</p>
+				<p class="medium">
+					Robot začudeno opazuje modrikasto kamnino; česa takšnega še nikoli ni videl. Pri nadaljnjem preučevanju ugotovi, da kamnima vsebuje električno energijo. Robotu se posveti, da ne gre za kamnino, ampak za energetsko jedro! Nekje v bližini se potemtakem nahaja tudi generator?
+				</p>
+				<p class="medium">
+					Ne pozabi s seboj vzeti jedra. Generator brez jedra namreč ne deluje.
+				</p>
+				<p class="medium">
+					Namig: za združenje jedra in generatorja uporabi dvigni/izpusti (predmet)
+				</p>
+				<p class="hard">
+					Odlično! Jedro je začelo napajati generator. Slišati je glasno brnenje, nakar se na ekranu izpišejo koordinate in zemljevid, ki vodi do neznanega, kot kaže zadnjega objekta. Robotek najprej preuči in nato izračuna smer, v katero se mora premakniti. Na njegovo začudenje pot vodi v temno jamo, a sedaj nima izbire, prišel je že predaleč, da bi odnehal z iskanjem.
+				</p>
+				<p class="hard">
+					Namig: uporabiti boš moral tako blok za uporabo senzorja, kot blok za počep. Skozi prvi del jame bo robotek moral počepniti, s senzorjem pa bo lahko zaznal pravilno pot. Če na poti naletiš na oviro, se spomni na uporabo bloka dvigni/izpusti predmet.
+				</p>
+			  </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>2017-AL-07</title>
+   <script>
+      window.stringsLanguage = 'fr';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.1', 'JSON-js',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'simpleKeyboard-1.0', 'randomGenerator-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1']);
+   </script>
+   <script class="remove" type="text/javascript">
+        var json = {
+           "id": "http://castor-informatique.fr/tasks/alkindi_2017/2017-FR-AL-07-password-generator/",
+           "language": "fr",
+           "version": "fr.01",
+           "authors": "Animath, France-ioi, Nir Lavee, Matthieu Lequesne, Razvan Barbaud, Mathias Hiron",
+           "license": "CC BY-SA 3.0",
+           "translators": [],
+           "taskPathPrefix": "",
+           "modulesPathPrefix": "",
+           "browserSupport": [],
+           "fullFeedback": true,
+           "acceptedAnswers": [],
+           "usesRandomSeed": true
+        };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Bravo, vous avez réussi !",
+         error: "Mot de passe incorrect.",
+         backspace: "Effacer"
+       };
+   </script>
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      #feedback {
+         height: 2em;
+         margin-top: 0.5em;
+         margin-bottom: 0.1em;
+         text-align: center;
+         font-weight: bold;
+         color: red; 
+      }
+      #animContainer {
+         position: relative;
+      }
+      #mainDiv {
+         margin: auto;
+         text-align: center;
+      }
+      #keysDiv {
+         position: absolute;
+         top: 30px;
+         left: 10px;
+         width: 100px;
+         height: 100px;
+         background: #99d9ea;
+         border: 1px solid black;
+      }
+      .password {
+         font-family: Courier New, Ubuntu Mono;
+         letter-spacing: 4px;
+      }
+      .passwordBox {
+         background: white;
+         border: 1px solid black;
+         padding-top: 2px;
+         padding-bottom: 2px;
+         padding-left: 8px;
+         padding-right: 8px;
+         display: inline-block;
+      }
+      #userPassword {
+         margin: 2px;
+         margin-top: 6px;
+      }
+      .keyboard_row {
+         margin-top: 2px;
+      }
+      .keyboard_button {
+         margin-left: 4px;
+         margin-right: 3px;
+         margin-bottom: 2px;
+         padding: 0px;
+         width: 26px;
+         height: 24px;
+      }
+      input.keyboard_button {
+         -moz-appearance: none;
+      }
+      /* Backspace */
+      .keyboard_button_8 {
+         margin-left: 0px !important;
+         width: 64px !important;
+      }
+      .fullKeyboardPart {
+         display: inline-block;
+         *zoom: 1; /*IE6/7*/
+         *display: inline; /*IE6/7*/
+      }
+      #fullKeyboard1 {
+         margin-right: 10px;
+      }
+      #generatorContainer {
+         text-align: center;
+      }
+      #generatorContainer div {
+         display: inline-block;
+         *zoom: 1; /*IE6/7*/
+         *display: inline; /*IE6/7*/
+      }
+      #generatorDiv {
+         width: 200px;
+         height: 60px;
+         padding: 10px;
+         background: #f9b4fe;
+         border: 1px solid black;
+      }
+      #generatedPassword {
+         margin-top: 8px;
+      }
+      #lastGenerated {
+         width: 160px;
+         height: 190px;
+         padding: 10px;
+         border: 1px solid black;
+      }
+      #validation {
+         margin-top: 1em;
+         text-align: center;
+      }
+      #validation input {
+         padding: 2px 10px 2px 10px;
+         width: 150px;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Générateur de mots de passe</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <p>Bob a caché son trésor dans son coffre fort et a mis Alice au défi de trouver la combinaison.</p>
+
+         <p>Bob a utilisé un générateur pour choisir son mot de passe, mais Alice a remarqué que ce générateur est défectueux.</p>
+
+	 <p><b>Générez des mots de passe pour comprendre le défaut et retrouvez le mot de passe de Bob.</b></p>
+	 
+         <div id="generatorContainer">
+            <div style="position:relative;top:-70px">
+               <div id="generatorDiv">
+                  <input type="button" value="Générer un code" id="generatePassword" />
+                  <br>
+                  <span class="passwordBox password" id="generatedPassword">ABC__</span>
+               </div>
+            </div>
+            <div id="generatedDiv">
+               <p>
+                  Derniers codes générés :
+               </p>
+               <div id="lastGenerated">
+               </div>
+            </div>
+         </div>
+         <p>
+
+	   Bob a laissé un indice : <i>"Le code commence par <span class="password" id="passwordPrefix">ABC__</span>"</i>.
+         </p>
+         <div id="mainDiv">
+            <div id="animContainer">
+               <div id="anim"></div>
+               <div id="keysDiv">
+                  <span class="passwordBox password" id="userPassword">ABC__</span>
+                  <br>
+                  <div id="keyboards">
+                     <div class="keyboard" id="keyboardDigitsOnly"></div>
+                     <div id="fullKeyboardContainer">
+                        <div class="keyboard fullKeyboardPart" id="fullKeyboard1"></div>
+                        <div class="keyboard fullKeyboardPart" id="fullKeyboard2"></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div id="feedback"></div>
+         <div id="validation"><input type="button" value="Valider" id="execute" /></div>
+         <img src="icon.png" style="display:none">
+      </div>
+   </div>
+   <!-- task -->
+<div id="solution">
+<h2>Solution</h2>
+<div class="easy">
+Avant de retrouver le code on doit comprendre comment fonctionne le générateur. Pour cela on engeindre plusieurs codes.
+<center>
+<img src="easy.png" width="400">
+</center>
+On remarque plusieurs motifs :
+<ul>
+<li>le premier et le dernier chiffre sont identiques,
+<li>le 2e et le 4e chiffres sont égaux,
+<li>le 3e et le 5e chiffres sont les mêmes.
+</ul>
+Comme le code commence par 283---, la solution est <b>283832</b>.
+</div>
+<div class="medium">
+Avant de chercher le code on engeindre plusieurs codes pour comprendre la logique du générateur. 
+<center>
+<img src="medium.png" width="400">
+</center>
+Il y a plusieurs motifs qui ressortent :
+<ul>
+<li>Les deux codes qui commencent par L sont de la forme L**12* alors que les deux codes qui commencent par Y sont de la forme Y**25*. On conjecture les positions 4 et 5 sont les mêmes pour tous les codes qui commencent par la même lettre. 
+<li>Les trois codes qui ont le chiffre 2 sur la 2e position sont de la forme *2***8, les deux qui ont 6 sur la 2e position sont de la forme *6***4, alors que les deux qui ont 8 sur la 2e position sont de la forme *8***2. On conjecture que le dernier chiffre ne dépend que du chiffre de la 2e position. 
+</ul>
+On copie alors les positions 4 et 5 du code visible qui commence par R (les chiffres <b>1</b> et <b>8</b>). Ensuite on copie la 6e position du code qui a 3 en 2e position (le chiffre <b>7</b>). On trouve <b> R3Y187</b>.
+</div>
+<div class="hard">
+<center>
+<img src="hard.png" width="400">
+</center>
+Avant de chercher le code on engeindre plusieurs codes pour comprendre la logique du générateur. On remarque plusieurs motifs :
+<ul>
+<li> le chiffre sur la 5e position ne dépend que du chiffre sur la 2e position. 
+Une analyse plus détaillée montre que le chifre sur la 5e position est le dernier chiffre du triple du chiffre sur la 2e position.
+<li> la lettre sur la 6e position ne dépend que de la lettre sur la 3e position. Une analyse plus détaillée montre qu'il faut décaler la lettre sur la position 3 de 7 pour obtenir la lettre sur la 6e position.
+<li> la lettre sur la 4e position est la lettre de la première position décalée d'autant de crans que le chiffre sur la 2e position.
+</ul>
+La solution est donc <b>F5KK5R</b>.
+</div>
+<h2>C'est de la crypto</h2>
+<p>En plus des mots de passe utilisés pour les comptes email, facebook, vente en ligne, banque, Alkindi, on utilise des mots de passe pour chaque connexion à un nouveau site internet sécurisé. Ces mots de passe de session sont choisis par votre ordinateur, ce qui rend la navigation sur internet plus facile.</p>
+<p>
+Les programmes qui engeindrent des mots de passe peuvent avoir des bugs et alors cela pose un problème de sécurité. Par exemple un <a href="http://linuxfr.org/news/d%C3%A9couverte-dune-faille-de-s%C3%A9curit%C3%A9-critique-dans-openssl-de-deb">bug survenu en 2008 dans le système d'opération Linux</a> faisait qu'on pouvait deviner le mot de passe en quelques secondes (250 milles essais) au lieu dei mille ans (2<sup>64</sup> soit environ un millard de millards). 
+</p>
+</div>
+</body>
+</html>

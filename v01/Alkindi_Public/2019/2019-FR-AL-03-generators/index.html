@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>2019-FR-AL-03-generators</title>
+   <script>
+      window.stringsLanguage = 'fr';
+   </script>
+   <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+   <script class="remove" type="text/javascript">
+      var modulesPath = '../../../_common/modules';
+      importModules([
+         'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+         'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+         'delayFactory-1.0', 'simulationFactory-1.0', 'randomGenerator-1.0',
+         'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'miniPlatform',
+         'taskStyles-0.1', 'raphaelButton-1.0', 'shape-paths', 'fonts-loader-1.0' ]);
+   </script>
+   <script class="remove" type="text/javascript">
+         var json = {
+            "id": "",
+            "language": "fr",
+            "version": "fr.01",
+            "authors": "",
+            "translators": [],
+            "license": "",
+            "taskPathPrefix": "",
+            "modulesPathPrefix": "",
+            "browserSupport": [],
+            "fullFeedback": true,
+            "acceptedAnswers": [],
+            "usesRandomSeed": false
+         };
+   </script>
+   <script type="text/javascript">
+      var taskStrings = {
+         success: "Bravo, vous avez réussi !",
+         error: "Au moins un interrupteur n'est pas dans la bonne position. Recommencez !",
+         passwordGenerator: "GÉNÉRATEURS",
+         onlyDigits: "6 chiffres",
+         onlyLetters: "seulement des lettres",
+         onlyAlphanum: "des lettres et des chiffres",
+         random: "aucune",
+         constraint: "Contrainte :",
+         validate: "Valider",
+         tryAgain: "Recommencer"
+      }
+   </script>
+
+   <script type="text/javascript" src="task.js"></script>
+   <style>
+      .consigne {
+         background: #F5F5F5;
+         border-radius: 5px;
+         font-size: 14px;
+         color: #30242B;
+         padding: 0;
+         margin: 20px;
+      }
+      .consigne h3 {
+         display: block;
+         background: #88BB88;
+         font-size: 14px;
+         color: white;
+         border-radius: 5px 5px 0 0;
+         text-align: center;
+         margin: 0;
+         padding: 13px;
+      }
+      .consigne #text {
+         padding: 20px;
+         padding-bottom: 10px;
+      }
+      .consigne p {
+         margin-top: 0;
+      }
+      .example {
+         display: block;
+         margin: 0 auto 1em auto;
+      }
+
+      #paper {
+         margin: 20px auto;
+         width: 730px;
+      }
+      #error {
+         text-align: center;
+      }
+      #displayHelper_validate > input, #displayHelper_cancel > input {
+         border: none;
+         background-color: #88BB88;
+         color: white;
+         font-weight: bold;
+         font-size: 12px;
+         padding: 8px;
+         min-width: 180px;
+         margin: 0px 8px;
+      }
+      #displayHelper_cancel > input {
+         background-color: #30242B;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="task">
+      <h1>Générateurs</h1>
+      <div id="tabsContainer"></div>
+      <div id="taskContent">
+         <div id="zone_1">
+            <div class="consigne">
+               <h3>VOTRE MISSION</h3>
+               <div id="text">
+                  <p>On a des générateurs de mots de passe. Certains sont choisis par des humains, d'autres sont générés au hasard par des ordinateurs.</p>
+                  <p><b>Séparez les mots de passe des humains et ceux générés par des ordinateurs</b>, à l'aide de l'interrupteur suivant  </p>
+                  <center class='example'><table><tr><td style='font-weight:bold'>Humain</td><td><img src="example.png"></td><td style='color:#508855;font-weight:bold'>Ordinateur</td></tr></table></center>
+                  <p>Vous pouvez demander trois nouveaux mots de passe à un générateur en appuyant sur le bouton <img src="button.png" style="width:30px;vertical-align:bottom; display:inline;">.</p>
+               </div>
+            </div>
+         </div>
+         
+         <div id="zone_2">
+            <div id="paper"></div>
+         </div>
+ 
+         <div id="error"></div>
+         <img src="icon.png" style="display:none">
+      </div>
+   </div>
+   <div id="solution">
+      <h2>Solution</h2>
+   </div>
+</body>
+</html>

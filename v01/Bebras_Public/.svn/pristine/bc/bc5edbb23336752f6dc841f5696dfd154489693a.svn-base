@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>FR-2019-07-two-connect</title>
+      <script>
+         window.stringsLanguage = 'sv';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.1_M.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+         var modulesPath = '../../../_common/modules';
+         importModules([
+            'jquery-1.7.1', 'jquery-ui.touch-punch', 'raphael-2.2.1', 'JSON-js',
+            'beav-1.0', 'beaver-task-2.0', 'simulation-2.0', 'raphaelFactory-1.0',
+            'delayFactory-1.0', 'simulationFactory-1.0', 'raphaelButton-1.0', 'drag_lib-2.0',
+            'platform-pr', 'buttonsAndMessages', 'installationAPI.01', 'randomGenerator-1.0',
+            'miniPlatform', 'taskStyles-0.1','graph-1.0', 'visual-graph-1.1', 'graph-mouse-1.1']);
+      </script>
+
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "http://castor-informatique.fr/tasks/2019/FR-2019-07-two-connect/",
+          "language": "sv",
+          "version": "sv.01",
+          "authors": "Arthur Charguéraud",
+          "translators": [],
+          "license": "CC BY-SA 3.0",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""]
+      };
+      </script>
+      <script>
+         var taskStrings = {
+            success: "Bravo, du klarade det!",
+            alreadyExist: "Det finns redan en slang här.",
+            isolatedHouse: "En slang är trasig och den rödmarkerade blomman får inte längre vatten.",
+            max: function(max) {
+              return "Du har redan lagt till "+max+"&nbsp;slangar.";
+            }
+         };
+      </script>
+      <style class="">
+         #paper { /* IE8 */
+            text-align: center;
+            margin: 1em auto 0 auto;
+            touch-action: none;
+         }
+         #message {
+            margin-bottom: 1em;
+         }
+         .paper-instr td {
+            vertical-align: top;
+         }
+      </style>
+      <script src="task.js"></script>
+   </head>
+   <body>
+      <div id="task">
+         <h1>Vattna blommor</h1>
+         <div id="tabsContainer"></div>   <!-- will contain the versions tabs -->
+         <div id="taskContent">        <!-- will contain the content of the task --> 
+            <div id="zone_1">
+               <div class="consigne">
+                  <p>Castor har installerat slangar från kranen för att vattna sina blommor.</p>
+                  <p>Din uppgift är att se till att alla blommorna får vatten även om en av slangarna går sönder.</p>
+                  <p>Det går att göra genom att lägga till <strong><span id="minEdges"></span> slangar</strong>.</p>
+                  <p>
+                  Klicka på två av blommorna för att lägga en slang mellan dem.
+                  Klicka på en ditlagd slang för att ta bort den.
+                  </p>
+
+               </div>
+            </div>
+            <div id="zone_2">
+               <center>
+                  <table class="paper-instr">
+                     <tr>
+                     <td>
+                        <div id="paper" style="text-align:right"></div>
+                     </td>
+                     <td style="width:220px;padding-left:15px">
+                        <br/>
+                        <p class="hard" style="margin-top:1em; min-height:3em" id="instructions">
+                        <strong>Du kan flytta runt blommorna för att göra figuren tydligare.</strong>
+                        </p>
+                        <div id="error"></div>
+                     </td>
+                     </tr>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <img src="flower.png" style="display:none" id="flower">
+         <img src="faucet.png" style="display:none" id="faucet">
+         <img src="icon.png" style="display:none">
+
+      </div><!-- task -->
+      <div id="solution">
+         <h2>Lösning</h2>
+
+          <div class="easy">
+           <p>Man måste förbinda <i>isolerade</i> blommor, dvs sådana som får vatten genom bara en slang. Det finns 4 sådana isolerade blommor, dvs 2 slangar räcker för att förbinda dem, så att de kan få vatten från mer än en slang. Exempel :</p>
+           <img src="sol_easy.png">
+          </div>
+
+         <div class="medium">
+           <p>Man måste förbinda isolerade blommor, dvs sådana som får vatten genom bara en slang. Det finns 6 isolerade blommor, dvs 3 slangar borde räcka. Men av de möjliga slangkopplingarna finns det vissa som ändå inte skyddar mot ett slangbrott, t.ex. denna :</p>
+           <img src="sol_medium_bad.png">
+           <p>Å andra sidan finns det flera kopplingar som fungerar, t.ex. dessa två :</p>
+           <img src="sol_medium_1.png">
+           <img src="sol_medium_2.png">
+         </div>
+
+         <div class="hard">
+           <p>Ett första steg är att flytta runt blommorna så att slangarna inte korsas så trassligt. Med lite pyssel kan man t.ex. få fram följande mycket tydligare bild.</p>
+           <img src="sol_hard_1.png">
+           <p>Det andra steget består i att hitta "kritiska" blommor. För det första gäller det de isolerade blommor som nås av bara en slang. Men man kan också hitta kritiska grupper av blommor, där hela gruppen försörjs av bara en slang. Man måste då förbinda varje kritisk grupp med en ny slang, vilken kan förbinda en valfri blomma i gruppen med en annan kritisk blomma eller grupp. Totalt kan man hitta 6 "kritiska" blommor, rödfärgade på bilden.</p>
+           <img src="sol_hard_2.png">
+           <p>A priori borde det nu med 3 extra slangar gå att förbinda de sex kritiska blommorna. Man måste dock undvika följande två kopplingar, eftersom man då fortfarande har grupper av blommor som försörjs av bara en slang.</p>
+           <img src="sol_hard_3.png">
+           <p>Om man undviker dessa två kopplingar ger alla andra en giltig lösning, t.ex. denna :</p>
+           <img src="sol_hard.png">
+         </div>
+         <h2>Det är datavetenskap !</h2>
+         <p>Liksom ofta inom datavetenskapen kan problemet beskrivas med en <b>graf</b>, där objekt representeras av <b>noder</b> och deras relationer till varandra av <b>bågar</b> mellan noderna. Blommorna och kranen utgör här noder, och slangarna grafens bågar.
+         </p>
+
+         <p>Lösningen illustrerar bl.a. begreppet <a href="https://en.wikipedia.org/wiki/Bridge_(graph_theory)" target="_blank"><b>bro (bridge)</b></a>, ett viktigt begrepp inom <b>grafteorin</b>. En bro är en båge som om man tar bort den delar upp grafen i två delar. Att lägga till bågar så att grafen inte innehåller någon bro kallas att göra grafen sammanhängande <a href="https://en.wikipedia.org/wiki/K-edge-connected_graph" target="_blank"><b>(2-edge-conncted)</b></span>.</p> 
+      </div> 
+   </body>
+</html>

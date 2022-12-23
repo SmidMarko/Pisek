@@ -1,0 +1,51 @@
+{
+  "type": "quiz",
+  "version": "2",
+  "data": {
+    "taskMetaData": {
+      "id": "",
+      "authors": [],
+      "language": "fr"
+    },
+    "quiz_settings": {
+      "graderUrl": ""
+    },
+    "title": "",
+    "intro": {
+      "__type": "html",
+      "__value": ""
+    },
+    "questions": [
+      {
+        "text": "<p>q1</p>",
+        "answers": [
+          {
+            "text": "<p>a0</p>",
+            "correct": false
+          },
+          {
+            "text": "<p>a1</p>",
+            "correct": false
+          },
+          {
+            "text": "<p>a2</p>",
+            "correct": false
+          }
+        ],
+        "type": "multiple"
+      },
+      {
+        "text": "<p>q2</p>",
+        "format": "string",
+        "validator": "",
+        "correct_answer": {
+          "type": "value",
+          "value": "1"
+        },
+        "type": "input"
+      }
+    ]
+  },
+  "translations": {},
+  "files": []
+}

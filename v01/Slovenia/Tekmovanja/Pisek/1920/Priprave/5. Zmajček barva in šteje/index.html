@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+   <head>
+    <meta charset="utf-8">
+    <title>Zmajček barva in šteje</title>
+	<!-- source: https://github.com/France-ioi/bebras-tasks/tree/master/algorea_training/training-var -->
+      <script>
+      window.stringsLanguage = 'sl';
+      </script>
+      <script class="remove" type="text/javascript" src="../../../../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js" id="import-modules"></script>
+      <script class="remove" type="text/javascript">
+        var modulesPath = '../../../../../../_common/modules/'
+        importModules([
+            'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+            'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform',
+            'conceptDisplay-1.0', 'conceptViewer-1.0', 'conceptViewer_css-1.0',
+            'taskStyles-mobileFirst']);
+        // set Blockly as default language when none is specified through ?language=
+        importLanguageModules('blockly');
+      </script>
+      <script class="remove" type="text/javascript" src="blocklyPisek_lib.js" id="blocklyPisek_lib"></script>
+      <script class="remove" type="text/javascript">
+       var json = {
+          "id": "pisek-var",
+          "language": "sl",
+          "version": "sl.01",
+          "authors": "KSpenko",
+          "translators": [],
+          "license": "",
+          "taskPathPrefix": "",
+          "modulesPathPrefix": "",
+          "browserSupport": [],
+          "acceptedAnswers": [""],
+          "fullFeedback": true,
+          "minWidth": "auto"
+      };
+      </script>
+      <script type="text/javascript" src="task.js"></script>
+   </head>
+   <body onresize="task.displayedSubTask.updateScale()">
+      <div id="task">
+         <h1>Pobarvaj s številko</h1>
+         <img src="green_dragon.png" style="display:none" />
+         <img src="paint2.png" style="display:none" />
+         <img src="marker.png" style="display:none" />
+
+         <div id="tabsContainer"></div>
+         <div id="taskContent" style="text-align:left;position:relative">
+            <div id="taskIntro">
+               <p class="short">
+                    <p>
+                    Napiši program, kjer boš pomagal zmajčku pobarvati označena polja. Zmajček si pomaga s številkama pred sabo.  Prvo število zmajčku pove, koliko vrstic mora pobarvati. Drugo število pa pove, koliko je stolpcev. 
+                    </p>
+                    <p>
+                    Število vrstic in število stolpcev si shrani v dve novi spremenljivki, ki ti bodo v pomoč pri reševanju zmajčkovega problema. 
+                    </p>
+                    <img data-lang="blockly" src="use_variable_blockly.png" style="height:200px" />
+                    <img data-lang="scratch" src="use_variable_scratch.png" style="height:250px" />
+                    <p>
+                        Namig: Naloga ima dva testa. Program mora delovati na obeh testih.
+                    </p>
+               </p>
+            </div>
+            <div id="gridContainer"></div>
+            <div id="blocklyLibContent"></div>
+         </div>
+
+      </div><!-- task -->
+   </body>
+</html>
+ 

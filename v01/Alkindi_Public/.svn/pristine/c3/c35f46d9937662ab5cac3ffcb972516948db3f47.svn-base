@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[francais]{babel}
+
+\usepackage{amsmath,amsthm,commath,amssymb}
+\newtheorem{lemme}{Lemme}
+
+
+\begin{document}
+On appelle permutation d'ordre $n$ toute façon de réarranger les nombres $1$,
+$\ldots$, $n$ ou de manière équivalente une liste $\sigma(1)$, $\ldots$,
+$\sigma(n)$ qui contient chaque nombre entre $1$ et $n$ une seule fois. 
+On note $\textbf{id}$ la permutation identité, qui liste les nombres en ordre
+croissant : $1$,$\ldots$, $n$.
+
+\begin{lemme}(de réarrangement)
+Soient $a_1$,$\ldots$,$a_n$ et une suites
+de nombres réels en ordre croissant et $b_1$, $\ldots$, $b_n$ une suite de
+nombres en order décroissant. À toute permutation $\sigma$ on associe la
+somme 
+\begin{equation*}
+S(\sigma)=a_1b_{\sigma(1)}+\cdots+a_nb_{\sigma(n)}.
+\end{equation*}
+Alors $S(\textbf{id})$ est la plus petite valeur de 
+$\{S(\sigma)\mid \sigma \text{ permutation d'ordre }n\}$. 
+\end{lemme}
+\begin{proof}
+ Prenons $\sigma$ la permutation avec la plus
+petite somme $S(\sigma)$.
+Supposons par l'absurde qu'il existe $i$ entre $1$ et $n$ tel que
+$\sigma(i)\neq i$ et on considère le plus petit tel $i$. On pose $j=\sigma(i)$ 
+et on remarque que $\sigma(j)\neq j$ car sinon $\sigma(i)$ serait égal à
+$\sigma(j)$ et la liste qui définit $\sigma$ contiendrait deux fois la même valeur. Comme $i$ est le plus petit indice tel que $\sigma(i)\neq i$
+on déduit que $i<j$. On définit ensuite la permutation $\tau$ qui coïncide
+avec $\sigma$ partout sauf dans la $i$-ième et $j$-ième position : 
+\begin{equation*}
+\tau : \sigma(1),
+\ldots,\sigma(i-1),i,\sigma(i+1),\ldots,\sigma(j-1),j,\sigma(j+1),\ldots,\sigma(n).
+\end{equation*}
+On a alors
+\begin{eqnarray*}
+S(\sigma)-S(\tau)&=&a_ib_\sigma(i)-a_ib_\tau(i)+a_jb_\sigma(j)-a_jb_\tau(j)\\
+                 &=&a_ib_j-a_ib_i+a_jb_j-a_jb_i\\
+                 &=&(a_j-a_i)(b_i-b_j).
+\end{eqnarray*}
+Comme la suite $a_1$, $\ldots$, $a_n$ est croissante et $i<j$ on a
+$a_j-a_i>0$. De la même manière, puisque $b_1$, $\ldots$, $b_n$ est
+décroissante et $i<j$ on a $b_i-b_j>0$. Donc le produit
+$(a_j-a_i)(b_i-b_j)$ est positif et $S(\sigma)>S(\tau)$. Cela contredit la
+supposition faite, donc il n'existe pas de permutation $\sigma$ avec une
+somme $S(\sigma)$ inférieure à celle de l'identité
+$S(\textbf{id})=a_1b_1+\cdots+a_nb_n$
+\end{proof}
+\end{document}
