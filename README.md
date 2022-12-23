@@ -1,2 +1,2 @@
 # Pisek
-Content za Piška
+Content for Pišek
