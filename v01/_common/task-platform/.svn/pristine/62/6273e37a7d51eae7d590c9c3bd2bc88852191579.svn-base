@@ -1,2 +1,0 @@
-ALTER TABLE `tm_tasks` ADD `bEditorInStatement` TINYINT(1) NOT NULL DEFAULT '0' AFTER `bShowLimits`;
-ALTER TABLE `history_tm_tasks` ADD `bEditorInStatement` TINYINT(1) NOT NULL DEFAULT '0' AFTER `bShowLimits`;

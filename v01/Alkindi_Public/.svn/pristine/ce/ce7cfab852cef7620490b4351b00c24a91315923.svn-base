@@ -1,8 +1,0 @@
-@font-face {
-    font-family: alien;
-    src: url('alien.eot');
-    src: url('alien.eot?#iefix') format('embedded-opentype'),
-         url('alien.woff') format('woff'),
-         url('alien.ttf') format('truetype');
-}
-

@@ -1,7 +1,0 @@
-def isLetter(c):
-   t = ord(c)
-   return (ord('a') <= t and t <= ord('z')) or (ord('A') <= t and t <= ord('Z'))
-def rankInAlphabet(c):
-   return ord(c) - ord('a')
-def letterFromRank(r):
-   return chr(r + ord('a'))

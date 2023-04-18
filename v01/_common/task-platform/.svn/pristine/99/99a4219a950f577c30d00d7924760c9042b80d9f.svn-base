@@ -1,2 +1,0 @@
-ALTER TABLE `tm_tasks` ADD `bTestMode` TINYINT(1) NOT NULL DEFAULT '0' AFTER `sEvalResultOutputScript`;
-ALTER TABLE `history_tm_tasks` ADD `bTestMode` TINYINT(1) NOT NULL DEFAULT '0' AFTER `sEvalResultOutputScript`;

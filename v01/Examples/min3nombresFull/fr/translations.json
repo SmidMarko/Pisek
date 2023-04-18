@@ -1,4 +1,0 @@
-{
-    "not_an_int": "La solution a répondu `%s` alors qu'un entier était attendu.",
-    "wrong_answer": "La solution a répondu `%d`, alors que la réponse attendue était `%d`."
-}

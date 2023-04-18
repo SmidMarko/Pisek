@@ -1,8 +1,0 @@
-from robot import *
-
-haut()
-for loop in range(8):
-    droite()
-for loop in range(8):
-    bas()
-gauche()

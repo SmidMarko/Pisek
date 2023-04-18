@@ -1,2 +1,0 @@
-ALTER TABLE `tm_tasks` ADD `sEvalResultOutputScript` VARCHAR(50) NULL DEFAULT NULL AFTER `sScriptAnimation`;
-ALTER TABLE `history_tm_tasks` ADD `sEvalResultOutputScript` VARCHAR(50) NULL DEFAULT NULL AFTER `sScriptAnimation`;
