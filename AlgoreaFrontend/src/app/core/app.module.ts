@@ -14,7 +14,7 @@ import { LeftHeaderComponent } from './components/left-header/left-header.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { WithCredentialsInterceptor } from '../shared/interceptors/with_credentials.interceptor';
 import { TimeoutInterceptor } from '../shared/interceptors/timeout.interceptor';
@@ -42,6 +42,14 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { ContentTopBarComponent } from './components/content-top-bar/content-top-bar.component';
 import * as Sentry from '@sentry/angular';
 import { AuthenticationInterceptor } from '../shared/interceptors/authentication.interceptor';
+
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/locale/', '.json');
+}
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: false,
@@ -81,6 +89,13 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MenuModule,
     FormsModule,
     ConfirmPopupModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     ConfirmationService,

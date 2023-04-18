@@ -14,6 +14,7 @@ import { GroupWatchingService } from './services/group-watching.service';
 import { version } from 'src/version';
 import { CrashReportingService } from './services/crash-reporting.service';
 import { Location } from '@angular/common';
+//import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'alg-root',
@@ -55,8 +56,12 @@ export class AppComponent implements OnInit, OnDestroy {
     private titleService: Title,
     private ngZone: NgZone,
     private renderer: Renderer2,
-    private el: ElementRef,
+    private el: ElementRef/*,
+    private translate: TranslateService*/
   ) {
+    //this.translate.setDefaultLang('en');
+    //this.translate.use('en');
+
     const title = appConfig.languageSpecificTitles && this.localeService.currentLang ?
       appConfig.languageSpecificTitles[this.localeService.currentLang.tag] : undefined;
     this.titleService.setTitle(title ?? appConfig.defaultTitle);
