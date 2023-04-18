@@ -1,0 +1,13 @@
+@import "src/colors.scss";
+@import "src/geometry.scss";
+
+:host {
+  position: relative;
+  display: block;
+
+  padding-top: 2rem;
+
+  .header-refresh {
+    justify-content: flex-end;
+  }
+}

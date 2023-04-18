@@ -1,0 +1,12 @@
+@import "src/colors.scss";
+@import "src/geometry.scss";
+
+:host {
+  position: relative;
+  display: block;
+}
+
+.error {
+  display: block;
+  margin-bottom: 2rem;
+}

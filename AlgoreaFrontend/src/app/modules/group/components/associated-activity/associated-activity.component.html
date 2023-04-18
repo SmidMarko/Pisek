@@ -1,0 +1,55 @@
+<ng-container *ngIf="state$ | async as state">
+  <alg-section i18n-label label="Associated Activity" icon="fa fa-book" styleClass="associated-activity">
+
+    <alg-loading size="medium" *ngIf="state.isFetching"></alg-loading>
+
+    <alg-error
+      *ngIf="state.isError"
+      class="dark"
+      icon="fa fa-exclamation-triangle"
+      i18n-message message="Error while loading the root activity"
+      [showRefreshButton]="true"
+      refreshButtonType="refresh"
+      (refresh)="refresh()"
+    ></alg-error>
+
+    <ng-container *ngIf="state.isReady">
+      <ng-container [ngSwitch]="state.data.tag">
+
+        <ng-container *ngSwitchCase="'no-activity'">
+          <p>There are currently no activities associated with this group.</p>
+          <alg-add-content
+            [allowedTypesForNewContent]="allowedNewItemTypes"
+            [searchFunction]="searchFunction"
+            (contentAdded)="setRootActivity($event)"
+            i18n-selectExistingText selectExistingText="Select"
+          ></alg-add-content>
+        </ng-container>
+
+        <div class="activity" *ngSwitchCase="'new-activity'">
+          <span class="activity-name">
+            {{state.data.name}}
+          </span>
+          <span class="remove" (click)="onRemove()">
+            <span i18n>Remove</span>
+            <i class="fa fa-trash-alt"></i>
+          </span>
+        </div>
+
+        <div class="activity" *ngSwitchCase="'existing-activity'">
+          <!--When rootActivity is an existing activity, rootActivityData is not null-->
+          <i class="fa fa-lock" *ngIf="!state.data.path"></i>
+          <span class="activity-name"
+            [routerLink]="state.data.path"
+            [ngClass]="{clickable: !!state.data.path}"
+          >{{state.data.name}}</span>
+          <span class="remove" (click)="onRemove()">
+            <span i18n>Remove</span>
+            <i class="fa fa-trash-alt"></i>
+          </span>
+        </div>
+
+      </ng-container>
+    </ng-container>
+  </alg-section>
+</ng-container>

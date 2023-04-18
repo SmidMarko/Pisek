@@ -1,0 +1,321 @@
+version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@2.1.0
+jobs:
+  deps:
+    docker:
+      - image: circleci/golang:1.13
+    steps:
+      - checkout
+      - restore_cache: &CACHEKEYMOD
+          key: go-deps-modules-@{{ checksum "go.sum" }}
+      - run: make
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - "*"
+      - save_cache:
+          <<: *CACHEKEYMOD
+          paths:
+          - /go/pkg/mod
+          - ~/.cache/go-build/
+  tests:
+    docker:
+      - image: circleci/golang:1.13
+      - image: circleci/mysql:8.0.20
+        command: --default-authentication-plugin=mysql_native_password --max-allowed-packet=10485760
+        environment:
+          MYSQL_USER: root
+          MYSQL_PASSWORD: root
+          MYSQL_DATABASE: ci_db
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_HOST: "%"
+    environment:
+      ALGOREA_ENV: test
+      ALGOREA_DATABASE__ADDR: 127.0.0.1
+      ALGOREA_DATABASE__USER: root
+      ALGOREA_DATABASE__PASSWD: root
+      ALGOREA_DATABASE__DBNAME: ci_db
+      ALGOREA_LOGGING__FORMAT: json
+      ALGOREA_LOGGING__OUTPUT: file
+      ALGOREA_LOGGING__LOGSQLQUERIES: 1
+      ALGOREA_LOGGING__LEVEL: debug
+    steps:
+      - attach_workspace:
+          at: ./
+      - restore_cache: *CACHEKEYMOD
+      - run: sudo apt-get --allow-releaseinfo-change update
+      - run: sudo apt-get install default-mysql-client             # required for db-restore
+      - run: cp conf/config.sample.yaml conf/config.yaml           # as env var are not loaded for entries not in config file (bug)
+      - run: cp conf/config.test.sample.yaml conf/config.test.yaml # the dbname is specified in conf/config.test.yaml
+      - run: make gen-keys
+      - run:
+          name: Wait for MySQL
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 30s
+      - run:
+          name: Seed database
+          environment:
+            ALGOREA_DATABASE__USER: root
+            ALGOREA_DATABASE__PASSWD: root
+          command: |
+            make db-restore
+            make db-migrate
+      - run:
+          name: Prepare for report
+          command: |
+            mkdir -p test-results
+            go get -u github.com/jstemmer/go-junit-report
+      - run:
+          name: Run tests (make verbosity disabled)
+          command: NOECHO=1 make test 2>&1 | go-junit-report > test-results/junit.xml
+      - run:
+          name: Upload test coverage results to Codecov
+          command: bash <(curl -s https://codecov.io/bash)
+      - store_test_results: &TESTPATH
+          path: test-results
+      - store_artifacts: *TESTPATH
+      - store_artifacts:
+          path: log
+      - run:
+          when: on_fail
+          name: On failure, run BDD tests with details
+          command: make test-bdd
+  migration-tests:
+    docker:
+      - image: circleci/golang:1.13
+      - image: circleci/mysql:8.0.20
+        command: --default-authentication-plugin=mysql_native_password --max-allowed-packet=10485760
+        environment:
+          MYSQL_USER: franceioi
+          MYSQL_PASSWORD: dummy_password
+          MYSQL_DATABASE: algorea_example
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_HOST: "%"
+    environment:
+      ALGOREA_ENV: test
+      ALGOREA_DATABASE__ADDR: 127.0.0.1
+      ALGOREA_DATABASE__USER: root
+      ALGOREA_DATABASE__PASSWD: root
+      ALGOREA_DATABASE__DBNAME: algorea_example
+    steps:
+      - attach_workspace:
+          at: ./
+      - restore_cache: *CACHEKEYMOD
+      - run:
+          name: Skip if no new migrations added
+          command: |
+            EARLIEST_CHANGED_MIGRATION=$( \
+              git diff --name-only `if [ "<<pipeline.git.branch>>" = "master" ]; then echo "<<pipeline.git.base_revision>>"; else echo "origin/master"; fi`..<<pipeline.git.revision>> | \
+                (grep "db/migrations/" || true) | sort | head -n 1 | sed "s/db\/migrations\///" \
+            )
+            [ -z "$EARLIEST_CHANGED_MIGRATION" ] && circleci-agent step halt && exit 0
+            MIGRATIONS_TO_UNDO=$( \
+              ls -Ar db/migrations/*.sql | sed "s/db\/migrations\///" | \
+                awk "{cnt+=1} \$0==\"$EARLIEST_CHANGED_MIGRATION\" {print cnt; exit} \$0<\"$EARLIEST_CHANGED_MIGRATION\"{print cnt-1; exit}" \
+            )
+            [ -z "$MIGRATIONS_TO_UNDO" ] && MIGRATIONS_TO_UNDO=0
+            echo "export MIGRATIONS_TO_UNDO=\"$MIGRATIONS_TO_UNDO\"" >> $BASH_ENV
+      - run: sudo apt-get --allow-releaseinfo-change update
+      - run: sudo apt-get install default-mysql-client             # required for db-restore
+      - run: cp conf/config.sample.yaml conf/config.yaml           # as env var are not loaded for entries not in config file (bug)
+      - run: cp conf/config.test.sample.yaml conf/config.test.yaml # the dbname is specified in conf/config.test.yaml
+      - run:
+          name: Wait for MySQL
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 30s
+      - run:
+          name: Download a large dump of data
+          command: curl -o - $LARGE_DUMP_URL | gunzip > dump.sql
+      - run:
+          name: Seed database
+          command: mysql -h 127.0.0.1 -u root -proot --protocol=TCP algorea_example < dump.sql
+      - run:
+          name: Apply all migrations
+          command: make db-migrate
+          no_output_timeout: 10m
+      - run:
+          name: Undo all migrations
+          command: for ((i=0; i<$MIGRATIONS_TO_UNDO; i++)); do if ! make db-migrate-undo; then exit 1; fi; done
+          no_output_timeout: 10m
+      - run:
+          name: Re-apply all migrations
+          command: make db-migrate
+          no_output_timeout: 1h
+  lint:
+    docker:
+      - image: circleci/golang:1.13
+    steps:
+      - attach_workspace:
+          at: ./
+      - restore_cache: *CACHEKEYMOD
+      - run: make lint
+  build:
+    docker:
+      - image: circleci/golang:1.13
+    steps:
+      - attach_workspace:
+          at: ./
+      - restore_cache: *CACHEKEYMOD
+      - run: make linux-build
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - bin/AlgoreaBackend-linux
+  github-release:
+    docker:
+    - image: cibuilds/github:0.10
+    steps:
+      - attach_workspace:
+          at: ./
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "`awk '/##.*/{n++;next};n==1;n==2{exit}' CHANGELOG.md`" -delete ${CIRCLE_TAG} ./bin/AlgoreaBackend-linux
+  swagger-gen:
+    docker:
+      - image: quay.io/goswagger/swagger:v0.22.0
+    steps:
+      - checkout
+      - run: go build -v # do not use 'make' as the image does not support '-race' arg
+      - run: swagger generate spec --scan-models -o ./swagger.yaml
+      - run: swagger validate ./swagger.yaml
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - swagger.yaml
+  swagger-deploy:
+    docker:
+      - image: 'circleci/python:2.7'
+    environment:
+      AWS_REGION: eu-west-3
+    steps:
+      - attach_workspace:
+          at: ./
+      - run: echo "<html><body><redoc spec-url='//franceioi-algorea.s3.eu-west-3.amazonaws.com/spec/swagger-${CIRCLE_TAG}.yaml'></redoc><script src="//cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"> </script></body></html>" > "spec.html"
+      - aws-cli/setup
+      - run: |
+          aws s3 cp ./swagger.yaml s3://franceioi-algorea/spec/swagger-${CIRCLE_TAG}.yaml --acl public-read
+          aws s3 cp ./spec.html s3://franceioi-algorea/spec/${CIRCLE_TAG}.html --acl public-read
+          for f in $(aws s3 ls s3://franceioi-algorea/spec/ | awk '{print $4}' | grep '.html' | grep -v 'index'); do echo "<li><a href=\"./$f\">${f::-5}</a></li>" >> list.html; done;
+          echo "<html><body><ul>`tac list.html`</ul></body></html>" > index.html
+          aws s3 cp ./index.html s3://franceioi-algorea/spec/index.html --acl public-read
+  dbdoc-gen:
+    docker:
+      - image: circleci/golang:1.13-browsers
+      - image: circleci/mysql:8.0.20
+        command: --default-authentication-plugin=mysql_native_password --max-allowed-packet=10485760
+        environment:
+          MYSQL_USER: algorea
+          MYSQL_PASSWORD: dummy_password
+          MYSQL_DATABASE: ci_db
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_HOST: "%"
+    environment:
+      ALGOREA_ENV: test
+      ALGOREA_DATABASE__ADDR: 127.0.0.1
+      ALGOREA_DATABASE__USER: algorea
+      ALGOREA_DATABASE__PASSWD: root
+      ALGOREA_DATABASE__DBNAME: ci_db
+      DBUSER: algorea
+      DBPASS: dummy_password
+      DBNAME: ci_db
+      DBHOST: 127.0.0.1
+    steps:
+      - attach_workspace:
+          at: ./
+      - restore_cache: *CACHEKEYMOD
+      - run: sudo apt-get --allow-releaseinfo-change update
+      - run: sudo apt-get install default-mysql-client             # required for db-restore
+      - run: cp conf/config.sample.yaml conf/config.yaml           # as env var are not loaded for entries not in config file (bug)
+      - run: cp conf/config.test.sample.yaml conf/config.test.yaml # the dbname is specified in conf/config.test.yaml
+      - run: make gen-keys
+      - run:
+          name: Wait for MySQL
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 30s
+      - run:
+          name: Seed database
+          environment:
+            ALGOREA_DATABASE__USER: root
+            ALGOREA_DATABASE__PASSWD: root
+          command: |
+            make db-restore
+            make db-migrate
+      - run: sudo apt-get install graphviz # dependency for schemaspy
+      - run: make dbdoc
+      - store_test_results: &TESTPATH
+          path: db/doc
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - db/doc
+  dbdoc-deploy:
+    docker:
+      - image: 'circleci/python:2.7'
+    environment:
+      AWS_REGION: eu-west-3
+    steps:
+      - attach_workspace:
+          at: ./
+      - aws-cli/setup
+      - run: aws s3 cp db/doc s3://franceioi-algorea/dbdoc/ --acl public-read --recursive
+
+workflows:
+  version: 2
+  testing:
+    jobs:
+      - deps
+      - tests:
+          requires:
+          - deps
+      - lint:
+          requires:
+          - deps
+  db-migration-check:
+    jobs:
+      - deps
+      - migration-tests:
+          requires:
+          - deps
+  release:
+    jobs:
+      - deps:
+          filters:
+            tags:
+              only: /^v\d+\.\d+\..*/
+            branches:
+              ignore: /.*/
+      - build:
+          filters:
+            tags:
+              only: /^v\d+\.\d+\..*/
+          requires:
+          - deps
+      - github-release:
+          filters:
+            tags:
+              only: /^v\d+\.\d+\..*/
+          requires:
+          - build
+      - swagger-gen:
+          filters:
+            tags:
+              only: /^v\d+\.\d+\..*/
+            branches:
+              ignore: /.*/
+      - swagger-deploy:
+          filters:
+            tags:
+              only: /^v\d+\.\d+\..*/
+          requires:
+          - swagger-gen
+      - dbdoc-gen:
+          filters:
+            tags:
+              only: /^v\d+\.\d+\..*/
+          requires:
+          - deps
+      - dbdoc-deploy:
+          filters:
+            tags:
+              only: /^v\d+\.\d+\..*/
+          requires:
+          - dbdoc-gen

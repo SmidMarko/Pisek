@@ -1,0 +1,78 @@
+@import 'src/colors';
+
+:host {
+  &.light {
+    .message {
+      color: var(--base-bk-color);
+    }
+
+    .retry {
+      color: var(--base-bk-color);
+    }
+
+    .icon {
+      color: var(--base-bk-color);
+    }
+  }
+
+  &.dark {
+    .message {
+      color: var(--base-text-color);
+    }
+
+    .retry {
+      color: var(--base-text-color);
+    }
+
+    .icon {
+      color: var(--base-text-color);
+    }
+  }
+
+  &.warning {
+    .message {
+      color: var(--notify-error-color);
+    }
+
+    .icon {
+      color: var(--notify-error-color);
+    }
+  }
+
+  &.small {
+    .message {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.wrapper {
+  margin: 0;
+  padding: 1rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 0.25rem;
+  font-size: 1.6rem;
+  color: var(--base-color);
+}
+
+.message {
+  color: var(--base-color);
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.refresh-button {
+  margin-left: 0.5rem;
+}

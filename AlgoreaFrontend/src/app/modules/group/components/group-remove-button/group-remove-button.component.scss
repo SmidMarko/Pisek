@@ -1,0 +1,12 @@
+@import 'src/colors.scss';
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.has-children {
+  margin-left: 1rem;
+  color: var(--notify-error-color);
+}

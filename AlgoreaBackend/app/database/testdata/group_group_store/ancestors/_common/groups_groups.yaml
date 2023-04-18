@@ -1,0 +1,8 @@
+- {parent_group_id: 1, child_group_id: 2}
+- {parent_group_id: 1, child_group_id: 3}
+- {parent_group_id: 1, child_group_id: 4}
+
+- {parent_group_id: 2, child_group_id: 3}
+- {parent_group_id: 2, child_group_id: 4}
+
+- {parent_group_id: 3, child_group_id: 4}

@@ -1,0 +1,8 @@
+@import 'src/colors.scss';
+@import 'src/geometry.scss';
+
+.invite-users {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}

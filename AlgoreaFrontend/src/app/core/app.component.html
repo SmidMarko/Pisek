@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="left" *ngIf="fullFrame$ | async as fullFrame" [ngClass]="{ collapsed: fullFrame.active, animated: fullFrame.animated }">
+    <alg-left-menu></alg-left-menu>
+  </div>
+  <ng-container *ngIf="currentMode$ | async as currentMode">
+    <alg-top-bar
+      class="top-bar"
+      *ngIf="fullFrame$ | async as fullFrame"
+      [ngClass]="{ 'with-mode-bar': currentMode !== 'normal' || (isWatching$ | async), collapsed: fullFrame.active, animated: fullFrame.animated }"
+      [scrolled]="scrolled"
+      [modeBarDisplayed]="currentMode !== 'normal' || !!(isWatching$ | async)"
+      [fullFrameContent]="fullFrame"
+      [showTopRightControls]="!!(showTopRightControls$ | async)"
+    ></alg-top-bar>
+    <div
+      class="right"
+      *ngIf="fullFrame$ | async as fullFrame"
+      [ngClass]="{ collapsed: fullFrame.active, animated: fullFrame.animated, 'with-mode-bar': currentMode !== 'normal' || (isWatching$ | async) }"
+      >
+      <div class="main-content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+<p-confirmPopup key="commonPopup" styleClass="common-confirm-popup"></p-confirmPopup>
+<p-dialog
+  *ngrxLet="fatalError$"
+  i18n-header="@@auth-error-modal-title" header="Error"
+  [visible]="true"
+  [style]="{width: '50vw'}"
+  [modal]="true"
+  [closeOnEscape]="false"
+  [closable]="false"
+>
+  <p i18n="@@auth-error-modal-context">Oops, we are unable to make the site work properly. Are you connected to the Internet?</p>
+  <p>
+    <ng-container i18n="@@auth-error-modal-todo">Try to refresh the page.</ng-container>&nbsp;
+    <ng-container i18n="@@contactUs">If the problem persists, please contact us.</ng-container>
+  </p>
+</p-dialog>
+<alg-language-mismatch></alg-language-mismatch>
+<p-dialog
+  *ngIf="watchedGroupError$ | async as watchedGroupError"
+  i18n-header header="Error"
+  [visible]="showWatchedGroupErrorDialog"
+  [modal]="true"
+>
+  <ng-container *ngIf="watchedGroupError.status === 403; else defaultErrorMessage" i18n>You are not allowed to watch the group for which you have requested watching.</ng-container>
+  <ng-template #defaultErrorMessage>
+    <ng-container i18n>Something went wrong while enabling group watching. If the problem persists, please contact us.</ng-container>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      i18n-label label="Close"
+      (click)="closeWatchGroupErrorDialog()"
+    ></p-button>
+  </ng-template>
+</p-dialog>

@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  rootPath: "/" # the path at which the router is mounted
+  compress: false # whether compression is enabled by default
+  # domainOverride: dev.algorea.org # use this domain name for cookies and per-domain configuration choosing
+auth:
+  loginModuleURL: "http://login-module-webserver:80"
+  clientID: "22"
+  clientSecret: "1AtKfSc7KbgIo8GDCI31pA9laP7pFoBqSg3RtVHq"
+token:
+  platformName: algrorea_backend
+  publicKeyFile: public_key.pem # one of (publicKeyFile, publicKey) is required
+  #publicKey: |
+  #  -----BEGIN PUBLIC KEY-----
+  #  MIIBIjAN...
+  #  -----END PUBLIC KEY-----
+  privateKeyFile: private_key.pem # one of (privateKeyFile, privateKey) is required
+database:
+  user: root
+  passwd: root
+  addr: host.docker.internal
+  #addr: localhost
+  net: tcp
+  dbname: algorea_db
+  allownativepasswords: true
+logging:
+  format: text # text, json
+  output: stdout # stdout, stderr, file
+  level: debug # debug, info, warning, error, fatal, panic
+  logSQLQueries: true
+  logRawSQLQueries: false
+domains:
+  -
+    domains: [default] # of a list of domains
+    allUsersGroup: 3
+    tempUsersGroup: 2

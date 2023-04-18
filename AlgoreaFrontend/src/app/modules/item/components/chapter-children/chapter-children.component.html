@@ -1,0 +1,49 @@
+<ng-container *ngIf="state$ | async as state">
+  <alg-loading *ngIf="state.isFetching"></alg-loading>
+
+  <alg-error
+    *ngIf="state.isError"
+    i18n-message message="Error while loading this chapter's children"
+    [showRefreshButton]="true"
+    (refresh)="refresh()"
+  ></alg-error>
+
+  <ng-container *ngIf="state.isReady && state.data as data">
+    <p class="validation-text" *ngIf="data.missingValidation" i18n>
+      To validate this chapter, solve at least all tasks with Validation type
+    </p>
+    <p class="validation-text" *ngIf="data.children.length === 0" i18n>
+      This chapter has no content visible to you, so you can't validate it for now.
+    </p>
+
+    <ul class="data-list-container activity" *ngIf="data.children.length > 0">
+      <li *ngFor="let item of data.children; index as ln">
+      <span class="activity-progress">
+        <alg-score-ring
+          *ngIf="!item.isLocked && item.result"
+          [diameter]="30"
+          [currentScore]="item.result.score"
+          [isValidated]="item.result.validated"
+          [bestScore]="item.bestScore"
+        ></alg-score-ring>
+      </span>
+      <span
+        class="activity-content"
+        (click)="click(item)"
+        [ngClass]="{ locked: item.isLocked }"
+      >
+        <a class="activity-title alg-link">
+          {{ ln + 1 }}. {{ item.string.title }}
+        </a>
+        <span *ngIf="item.isLocked" class="activity-status">
+          <i *ngIf="item.isLocked" class="fa fa-lock"></i>
+        </span>
+        <alg-state-widget
+          [type]="item.category"
+        ></alg-state-widget>
+      </span>
+      </li>
+    </ul>
+
+  </ng-container>
+</ng-container>

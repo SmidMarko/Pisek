@@ -1,0 +1,244 @@
+version: 2.1
+
+orbs:
+  aws-s3: circleci/aws-s3@1.0.15
+
+commands:
+  deploy-to-s3:
+    parameters:
+      # from current dir, with trailing slash
+      from:
+        type: string
+      bucket:
+        type: string
+      # starting with a slash, no trailing slash
+      path:
+        type: string
+    steps:
+      - aws-s3/sync:
+          from: << parameters.from >>
+          to: s3://<< parameters.bucket >><< parameters.path >>
+          overwrite: false
+          arguments: >-
+            --acl public-read
+            --exclude "*/index.html"
+            --cache-control 'max-age=31536000'
+      - aws-s3/copy:
+          from:  << parameters.from >>index.html
+          to: s3://<< parameters.bucket >><< parameters.path >>/index.html
+          arguments: >-
+            --acl public-read
+            --cache-control 'max-age=300'
+      - aws-s3/copy:
+          from:  << parameters.from >>en/index.html
+          to: s3://<< parameters.bucket >><< parameters.path >>/en/index.html
+          arguments: >-
+            --acl public-read
+            --cache-control 'max-age=10'
+      - aws-s3/copy:
+          from:  << parameters.from >>fr/index.html
+          to: s3://<< parameters.bucket >><< parameters.path >>/fr/index.html
+          arguments: >-
+            --acl public-read
+            --cache-control 'max-age=10'
+
+  build:
+    parameters:
+      # the 2 letters deployment language
+      lang:
+        type: string
+      # path (from the root of the domain) where it will be deployed (with heading and trailing slash)
+      path:
+        type: string
+    steps:
+      - run: echo "export const version = '`git describe --always`';" > ./src/version.ts
+      - run: npm run injectDeployUrlForAssets --url='//assets.algorea.org<< parameters.path >><< parameters.lang >>/'
+      - run: npx ng build --configuration production-<< parameters.lang >> --base-href << parameters.path >> --deploy-url //assets.algorea.org<< parameters.path >><< parameters.lang >>/ --progress=false
+
+jobs:
+  # deps has to be run before the other jobs and basically run "npm install" and cache it
+  deps:
+    docker: &node_image
+      - image: circleci/node:14.15
+    steps:
+      - checkout
+      # cache is used between builds, we use the cache if the lock file has not changed
+      - restore_cache: &CACHEKEY
+          key: deps-{{ checksum "package-lock.json" }}
+      - run: npm install
+      # workspace persistence is used between jobs of the same builds (here includes the code and node modules)
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - "*"
+      - save_cache:
+          <<: *CACHEKEY
+          paths:
+            - ./node_modules
+            - ./.angular
+
+  lint:
+    docker: *node_image
+    steps:
+      - attach_workspace:
+          at: ./
+      - run: npm run lint
+
+  build-branch-en:
+    docker: *node_image
+    steps:
+      - attach_workspace:
+          at: ./
+      - build:
+          lang: en
+          path: /branch/<< pipeline.git.branch >>/
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - dist/algorea/en
+
+  build-branch-fr:
+    docker: *node_image
+    steps:
+      - attach_workspace:
+          at: ./
+      - build:
+          lang: fr
+          path: /branch/<< pipeline.git.branch >>/
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - dist/algorea/fr
+
+  build-master-en:
+    docker: *node_image
+    steps:
+      - attach_workspace:
+          at: ./
+      - build:
+          lang: en
+          path: /
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - dist/algorea/en
+
+  build-master-fr:
+    docker: *node_image
+    steps:
+      - attach_workspace:
+          at: ./
+      - build:
+          lang: fr
+          path: /
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - dist/algorea/fr
+
+  tests:
+    docker: &node_browsers_image
+      - image: circleci/node:14.15-browsers
+    steps:
+      - attach_workspace:
+          at: ./
+      - run: npx ng test --code-coverage --karma-config .circleci/karma.conf.js --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run:
+          name: CodeCov (tool sending coverage reports (lcov.info) to Codecov.io)
+          command: bash <(curl -s https://codecov.io/bash)
+
+  e2e:
+    docker: *node_browsers_image
+    steps:
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Install the same version of webdriver as the local one
+          command: |
+            npx webdriver-manager clean
+            npx webdriver-manager update --versions.chrome=$(google-chrome --version | cut -d ' ' -f 3)
+      - run: npx ng e2e --protractor-config=e2e/protractor-ci.conf.js --webdriver-update=false
+
+
+  deploy-branch:
+    docker:
+      - image: 'circleci/python:2.7'
+    environment:
+      AWS_REGION: eu-central-1
+    steps:
+      - attach_workspace:
+          at: ./
+      - run: echo '<html><head><script>window.location.replace("en/");</script></head></html>' > dist/algorea/index.html
+      - deploy-to-s3:
+          from: ./dist/algorea/
+          bucket: $DEPLOYMENT_BUCKET
+          path: /branch/<< pipeline.git.branch >>
+
+  deploy-master:
+    docker:
+      - image: 'circleci/python:2.7'
+    environment:
+      AWS_REGION: eu-central-1
+    steps:
+      - attach_workspace:
+          at: ./
+      - run: echo '<html><head><script>window.location.replace("en/");</script></head></html>' > dist/algorea/index.html
+      - deploy-to-s3:
+          from: ./dist/algorea/
+          bucket: $DEPLOYMENT_BUCKET
+          path: ""
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - deps
+      - lint:
+          requires:
+          - deps
+      - build-branch-en:
+          requires:
+            - deps
+          filters:
+            branches:
+              ignore: master
+      - build-branch-fr:
+          requires:
+            - deps
+          filters:
+            branches:
+              ignore: master
+      - tests:
+          requires:
+            - deps
+      - e2e:
+          requires:
+            - deps
+      - deploy-branch:
+          requires:
+            - build-branch-en
+            - build-branch-fr
+          filters:
+            branches:
+              ignore: master
+      - build-master-en:
+          requires:
+            - deps
+          filters:
+            branches:
+              only: master
+      - build-master-fr:
+          requires:
+            - deps
+          filters:
+            branches:
+              only: master
+      - deploy-master:
+          requires:
+            - build-master-en
+            - build-master-fr
+            - tests
+            - e2e
+          filters:
+            branches:
+              only: master

@@ -1,0 +1,62 @@
+@import 'src/colors.scss';
+@import 'src/geometry.scss';
+
+:host {
+  .item-display {
+    background-color: var(--base-bk-color);
+  }
+
+  .errors {
+    background-color: white;
+  }
+
+  .iframe-container {
+    position: relative;
+    min-height: 12rem;
+    background-color: white;
+    iframe {
+      display: block;
+      min-height: 100%;
+    }
+  }
+
+  .saving-answer {
+    background-color: rgba(74,74,74,.7);
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+  }
+  .saving-answer-message {
+    margin: 0;
+    margin-top: 5rem;
+    padding: 0.5rem 2rem;
+    background: var(--base-bk-color);
+    border-radius: $border-radius;
+    font-size: 1.25em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  iframe {
+    height: 0;
+    width: 100%;
+    border: none;
+  }
+
+  .error-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .error-button {
+    &:first-child {
+      margin-right: 1rem;
+    }
+  }
+}

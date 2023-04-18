@@ -1,0 +1,32 @@
+<ng-container *ngIf="item">
+  <div class="container" *ngIf="state$ | async as state">
+    <alg-loading size="small" *ngIf="state.isFetching || deletionInProgress"></alg-loading>
+    <ng-container *ngIf="item.permissions.isOwner; else notOwner">
+      <span class="message" *ngIf="state.isReady && state.data && ['Chapter', 'Skill'].includes(item.type)" i18n>
+        {{ item.type | i18nSelect : {
+          Chapter: 'Only empty chapters can be deleted.',
+          other: 'Only empty skills can be deleted.'
+        } }}
+      </span>
+    </ng-container>
+    <ng-template #notOwner>
+      <span class="message" i18n>Only owner can delete items</span>
+    </ng-template>
+    <alg-error
+      *ngIf="state.isError"
+      class="warning small"
+      i18n-message message="Error while loading the item info"
+      [showRefreshButton]="true"
+      refreshButtonType="refresh"
+      (refresh)="refresh()"
+    ></alg-error>
+    <button
+        pButton
+        type="button"
+        class="p-button-rounded p-button-danger"
+        i18n-label label="Delete this item"
+        (click)="onDeleteItem()"
+        [disabled]="(state.isReady && state.data && ['Chapter', 'Skill'].includes(item.type)) || state.isFetching || state.isError || deletionInProgress || !item.permissions.isOwner"
+    ></button>
+  </div>
+</ng-container>

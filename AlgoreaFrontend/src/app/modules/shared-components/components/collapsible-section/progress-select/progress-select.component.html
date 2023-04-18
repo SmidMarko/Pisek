@@ -1,0 +1,42 @@
+<div *ngIf="collapsed" class="header-content">
+  <alg-progress-level [maximum]="values.length" [value]="selected + 1" theme="revert" [colorTheme]="theme"></alg-progress-level>
+  <span class="selected-progress-level">{{ values[selected]?.label }}</span>
+</div>
+
+<div *ngIf="!collapsed" class="progress-select-body">
+  <div class="progress-select-item">
+    <div class="progress-control">
+      <span *ngIf="values.length > 0" class="progress-branch" [ngClass]="{active: selected >= 0}"></span>
+    </div>
+    <div class="progress-desc header-comment">
+      <ng-container *ngIf="descriptionTemplate" [ngTemplateOutlet]="descriptionTemplate" [ngTemplateOutletContext]="{ $implicit: value }"></ng-container>
+    </div>
+  </div>
+  <div *ngFor="let item of values; let idx = index;" class="progress-select-item">
+    <div class="progress-control">
+      <span
+        class="progress-point"
+        [ngClass]="{active: idx < selected + 1, last: idx + 1 == selected + 1, 'active-light': item.selected}"
+        (click)="onSet(item.value)"
+        [pTooltip]="item.tooltip?.join('\n') || ''"
+        tooltipPosition="right"
+        tooltipStyleClass="permissions-dialog"
+        [escape]="false"
+      >
+        <i *ngIf="idx < selected || item.selected" class="fa fa-check"></i>
+        <i *ngIf="idx === selected" class="fa fa-check"></i>
+      </span>
+      <span *ngIf="idx + 1 < values.length" class="progress-branch" [ngClass]="{active: idx < selected, disabled: values[idx + 1]?.disabled}"></span>
+    </div>
+    <div class="progress-desc">
+      <div class="progress-desc-name" [ngClass]="{active: idx < selected + 1}" (click)="onSet(item.value)">{{ item.label }}</div>
+      <div class="progress-desc-comment">{{ item.comment }}</div>
+    </div>
+    <div *ngIf="item.disabled" class="gray-overlay tool"
+      [pTooltip]="item.tooltip?.join('\n') || ''"
+      tooltipPosition="top"
+      tooltipStyleClass="permissions-dialog"
+      [escape]="false"
+    ></div>
+  </div>
+</div>

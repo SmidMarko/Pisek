@@ -1,0 +1,100 @@
+
+// Body
+$body-bg: #f1f2f7;
+$container-base: 661px;
+$container-tablet: $container-base;
+$container-sm: $container-base;
+$container-md: $container-base;
+$container-lg: $container-base;
+$container-desktop: $container-base;
+$container-large-desktop : $container-base;
+
+// Typography
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+//$font-family-sans-serif: "Raleway", sans-serif;
+$font-size-base: 16px;
+$icon-small: $font-size-base * 0.75;
+$icon-medium: $font-size-base * 1.125;
+$icon-big: $font-size-base * 2;
+$line-height-base: 1.6;
+$text-color: #787878;
+$text-color-secondary: #9b9b9b;
+$text-color-light: #fff;
+$font-family-sans-serif: "Titillium Web", sans-serif;
+
+// Borders
+$laravel-border-color: darken($body-bg, 10%);
+$list-group-border: $laravel-border-color;
+$navbar-default-border: $laravel-border-color;
+$panel-default-border: $laravel-border-color;
+$panel-inner-border: $laravel-border-color;
+$border-radius-base: 5px;
+$default-border-color: lighten($text-color, 41%);
+
+// Brands
+$brand-primary: #4A90E2;
+$brand-info: #8eb4cb;
+$brand-success: #2ab27b;
+$brand-warning: #f5a623;
+$brand-danger: #FF001F;
+
+
+// Navbar
+$navbar-default-bg: #fff;
+
+// Buttons
+$btn-default-color: $text-color;
+
+// Forms
+$input-background: lighten($text-color, 50%);
+$input-border: $default-border-color;
+$input-border-focus: lighten($brand-primary, 25%);
+$input-color-placeholder: lighten($text-color, 30%);
+$input-icon: lighten($text-color, 30%);
+$input-border-radius: $border-radius-base;
+$input-group-addon-bg: $input-background;
+$legend-border-color: transparent;
+
+// Panels
+$panel-border-radius: 0 0 $border-radius-base $border-radius-base;
+$panel-default-heading-bg: #f5f5f5;
+$panel-default-border: none;
+$panel-body-padding: 20px;
+
+// Modals
+$modal-backdrop-bg: $body-bg;
+$modal-backdrop-opacity: 0.9;
+$modal-content-fallback-border-color: $body-bg;
+$modal-inner-padding: 30px;
+$modal-title-padding: 20px 20px 0;
+
+// Tables
+$table-border-color: $default-border-color;
+
+// Alerts
+$alert-padding: 2px 30px 2px 4px;
+$alert-border-radius: 50px;
+$alert-success-bg: lighten($brand-success, 46%);
+$alert-success-text: $brand-success;
+$alert-success-border: transparent;
+$alert-info-bg: lighten($brand-info, 46%);
+$alert-info-text: $brand-info;
+$alert-info-border: transparent;
+$alert-warning-bg: lighten($brand-warning, 46%);
+$alert-warning-text: $brand-warning;
+$alert-warning-border: transparent;
+$alert-danger-bg: lighten($brand-danger, 46%);
+$alert-danger-text: $brand-danger;
+$alert-danger-border: transparent;
+
+// Labels
+$label-default-bg: transparent;
+$label-primary-bg: $label-default-bg;
+$label-success-bg: $label-default-bg;
+$label-info-bg: $label-default-bg;
+$label-warning-bg: $label-default-bg;
+$label-danger-bg: $label-default-bg;
+$label-color: $text-color;
+
+// Navs
+$nav-link-padding: 3px 10px;

@@ -1,0 +1,5 @@
+- {group_id: 20, item_id: 11, can_view_generated: info}
+- {group_id: 20, item_id: 12, can_view_generated: content}
+- {group_id: 20, item_id: 13, can_view_generated: content}
+- {group_id: 20, item_id: 14, can_view_generated: content}
+- {group_id: 20, item_id: 114, can_view_generated: content_with_descendants}

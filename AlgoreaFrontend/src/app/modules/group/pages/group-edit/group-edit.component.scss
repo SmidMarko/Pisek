@@ -1,0 +1,31 @@
+.group-edition {
+  background-color: white;
+
+  .field {
+    display: flex;
+
+    .field-name {
+      float: left;
+      width: 20%;
+      margin-top: 6px;
+
+      label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+      }
+    }
+
+    .field-value {
+      float: left;
+      width: 80%;
+      margin-top: 6px;
+    }
+  }
+}
+
+.remove-button-section {
+  padding: 1rem 1rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}

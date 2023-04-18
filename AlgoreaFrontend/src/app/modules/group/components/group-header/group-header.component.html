@@ -1,0 +1,36 @@
+<div class="group-header-container">
+  <div class="group-header unfolded">
+    <div class="user-info">
+      <div class="user-name">
+        <span>{{ groupData?.group?.name }}</span>
+      </div>
+    </div>
+    <ng-container *ngIf="navigationNeighbors$ | async as navigationNeighbors">
+      <alg-page-navigator
+        *ngIf="!!groupWithManagement"
+        [allowWatching]="!!groupWithManagement.currentUserCanWatchMembers"
+        [isWatched]="!!(isCurrentGroupWatched$ | async)"
+        [allowFullScreen]="false"
+        [navigationMode]="{
+          parent: !!navigationNeighbors?.isReady && !!navigationNeighbors?.data?.parent,
+          left: !!navigationNeighbors?.isReady && !!navigationNeighbors?.data?.previous,
+          right: !!navigationNeighbors?.isReady && !!navigationNeighbors?.data?.next
+        }"
+        (parent)="navigationNeighbors?.data?.parent?.navigateTo()"
+        (left)="navigationNeighbors?.data?.previous?.navigateTo()"
+        (right)="navigationNeighbors?.data?.next?.navigateTo()"
+        (edit)="onEditButtonClicked()"
+        (watch)="onStartWatchButtonClicked($event)"
+        (stopWatch)="onStopWatchButtonClicked()"
+      ></alg-page-navigator>
+    </ng-container>
+  </div>
+</div>
+
+<p-overlayPanel
+    #op
+    [style]="{ width: '450px' }"
+    appendTo="body"
+>
+  <alg-suggestion-of-activities *ngIf="op.overlayVisible"></alg-suggestion-of-activities>
+</p-overlayPanel>

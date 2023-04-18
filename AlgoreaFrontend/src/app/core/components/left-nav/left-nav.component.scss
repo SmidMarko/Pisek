@@ -1,0 +1,13 @@
+@import 'src/colors';
+
+$border-radius: .5rem;
+
+:host {
+  display: block;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}

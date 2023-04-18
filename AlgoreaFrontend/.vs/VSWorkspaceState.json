@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\core",
+    "\\src\\app\\core\\components",
+    "\\src\\app\\core\\http-services",
+    "\\src\\app\\modules",
+    "\\src\\app\\modules\\group",
+    "\\src\\app\\modules\\group\\components",
+    "\\src\\app\\modules\\item"
+  ],
+  "SelectedNode": "\\e2e\\src\\app.e2e-spec.ts",
+  "PreviewInSolutionExplorer": false
+}

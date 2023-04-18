@@ -1,0 +1,26 @@
+@import 'src/colors';
+@import 'src/geometry';
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--base-text-color);
+  background-color: var(--section-color);
+  border-radius: $border-radius;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  padding: .5rem 1rem;
+}
+
+.links, .score {
+  margin: 0 .4rem;
+  color: var(--base-color);
+  &:hover {
+    color: var(--base-color-hover);
+  }
+}

@@ -1,0 +1,42 @@
+@import 'src/colors.scss';
+@import 'src/geometry.scss';
+
+:host {
+  display: block;
+  position: relative;
+}
+
+textarea {
+  width: 100%;
+  background-color: var(--input-transparency-color);
+  box-shadow: .1rem .1rem #00000019 inset;
+  border-radius: $border-radius;
+  border: none;
+  font-size: 1.2rem;
+  padding-left: 2.5rem;
+  padding-top: 0.5rem;
+
+  color: var(--nav-bk-color);
+
+  &::placeholder {
+    font-style: italic;
+    color: #C6C2C2;
+  }
+
+  &.no-icon {
+    padding-left: 1rem;
+    padding-top: 1rem;
+  }
+}
+
+.placeholder-icon {
+  position: absolute;
+  left: 0.6667rem;
+  top: 0.6667rem;
+  color: var(--base-text-color);
+  font-size: 1.2rem;
+}
+
+.p-inputtext:enabled:focus:not(.p-error) {
+  box-shadow: .1rem .1rem #C9CFD7 inset;
+}

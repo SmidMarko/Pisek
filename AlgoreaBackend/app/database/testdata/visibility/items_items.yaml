@@ -1,0 +1,12 @@
+# 2nd gen
+- { child_item_id: 1900, parent_item_id: 190, child_order: 0 }
+- { child_item_id: 1901, parent_item_id: 190, child_order: 1 }
+- { child_item_id: 1902, parent_item_id: 190, child_order: 2 }
+- { child_item_id: 1903, parent_item_id: 190, child_order: 3 }
+- { child_item_id: 1904, parent_item_id: 190, child_order: 4 }
+# 3rd gen
+- { child_item_id: 19000, parent_item_id: 1900, child_order: 0 }
+- { child_item_id: 19001, parent_item_id: 1900, child_order: 1 }
+- { child_item_id: 19002, parent_item_id: 1900, child_order: 2 }
+- { child_item_id: 19003, parent_item_id: 1900, child_order: 3 }
+- { child_item_id: 19004, parent_item_id: 1900, child_order: 4 }

@@ -1,0 +1,7 @@
+<p-dropdown
+  *ngIf="current"
+  [options]="languages"
+  [ngModel]="current"
+  [styleClass]="styleClass || 'alg-language-picker-dropdown'"
+  (onChange)="languageChanged($event)"
+></p-dropdown>

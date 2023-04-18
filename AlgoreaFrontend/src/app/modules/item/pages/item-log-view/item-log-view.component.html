@@ -1,0 +1,83 @@
+<ng-container *ngIf="state$ | async as state">
+  <alg-loading size="medium" *ngIf="state.isFetching && !state.data"></alg-loading>
+
+  <alg-error
+    *ngIf="state.isError"
+    class="dark"
+    icon="fa fa-exclamation-triangle"
+    i18n-message message="Unable to load the recent activity"
+    [showRefreshButton]="true"
+    (refresh)="refresh()"
+  ></alg-error>
+
+  <ng-container *ngIf="state.data">
+    <p-table class="alg-table" [columns]="state.data.columns" [value]="state.data.rowData" [loading]="state.isFetching">
+      <ng-template pTemplate="header" let-rowData let-columns>
+        <tr>
+          <th [colSpan]="columns.length">
+            <div class="header-container header-refresh">
+              <p-button icon="pi pi-refresh" (click)="refresh()"></p-button>
+            </div>
+          </th>
+        </tr>
+        <tr *ngIf="rowData.length > 0">
+          <ng-container *ngFor="let col of columns">
+            <th>
+              <div class="header-container">
+                {{ col.header }}
+              </div>
+            </th>
+          </ng-container>
+        </tr>
+      </ng-template>
+
+      <ng-template
+          pTemplate="body"
+          let-rowData
+          let-columns="columns"
+      >
+        <tr>
+          <td *ngFor="let col of columns">
+            <ng-container [ngSwitch]="col.field">
+              <ng-container *ngSwitchCase="'activityType'">
+                {{ rowData.activityType | logActionDisplay : rowData.score }}
+                <ng-container *ngIf="rowData.displayLoadButton">
+                  &nbsp;(
+                  <a
+                    class="alg-link"
+                    [routerLink]="rowData.item | rawItemLink:'details':rowData.answerId"
+                    i18n="text on button to load a submission"
+                  >
+                    Load
+                  </a>
+                  )
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'item.string.title'">
+                <a class="alg-link" [ngClass]="{'disabled': !rowData.item}" [routerLink]="rowData.item | rawItemLink">
+                  {{ rowData.item.string.title }}
+                </a>
+              </ng-container>
+              <ng-container *ngSwitchCase="'item.user'">
+                <a class="alg-link" [routerLink]="{ id: rowData.user.id, isUser: true } | groupLink">{{ rowData.user | userCaption }}</a>
+              </ng-container>
+              <ng-container *ngSwitchCase="'at'">
+                {{ rowData.at | date:'short' }}
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                {{ rowData[col.field] }}
+              </ng-container>
+            </ng-container>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage" let-columns>
+        <tr>
+          <td [attr.colspan]="columns.length">
+            <span i18n>There is no progress to report for this item.</span>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </ng-container>
+</ng-container>

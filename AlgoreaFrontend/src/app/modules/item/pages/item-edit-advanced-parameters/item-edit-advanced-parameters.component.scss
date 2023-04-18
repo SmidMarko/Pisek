@@ -1,0 +1,57 @@
+@import 'src/colors.scss';
+
+.form-item-view {
+  display: flex;
+  align-items: center;
+  margin: 1.25rem;
+
+  .form-item-label {
+    display: block;
+    font-size: 1.2rem;
+    width: 21rem;
+    color: var(--dark-text-color);
+    font-weight: bold;
+  }
+
+  .form-item-control {
+    flex: 1;
+
+    &.another-input {
+      display: flex;
+      align-items: center;
+
+      .first-child {
+        margin-right: 2rem;
+
+        &.stretch {
+          flex: 1;
+        }
+      }
+
+      .date-pickers {
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+
+        .date-label {
+          margin-left: 1rem;
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.form-item-duration {
+  margin: .25rem 1.25rem;
+  height: 6rem;
+}
+
+.form-item-datepicker {
+  margin: .25rem 1.25rem;
+  height: 3rem;
+}
+
+.delete-button {
+  padding: 1rem;
+}

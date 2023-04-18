@@ -1,0 +1,107 @@
+<ng-container *ngIf="userCaption">
+  <p-dialog
+      [(visible)]="visible"
+      [modal]="true"
+      [draggable]="false"
+      [closable]="false"
+      styleClass="alg-permissions-edit-dialog">
+
+    <p-header>
+      <div class="dialog-header">
+      <span class="dialog-handler">
+        <i class="fa fa-lock"></i>
+      </span>
+        <span class="dialog-title" i18n>
+        {{ group?.name }}: manager access given to {{ userCaption }}
+      </span>
+        <span class="dialog-close" (click)="onClose()">
+        <img src="assets/images/close.svg" alt="close">
+      </span>
+      </div>
+    </p-header>
+
+    <div class="dialog-container">
+      <div class="dialog-content">
+        <p i18n>
+          This panel lets you select what you allow the selected user or group of users to do on the current group and its descendants.
+        </p>
+
+      <form [formGroup]="form">
+        <alg-collapsible-section
+          [collapsible]="false"
+          i18n-header header="Management level"
+          icon="fa fa-users-cog"
+        >
+          <ng-template #content let-collapsed>
+            <alg-progress-select
+              formControlName="canManage"
+              [values]="managementLevelValues"
+              [collapsed]="collapsed"
+            >
+              <ng-template #description>
+                <span i18n>The permissions that the user(s) has on this group</span>
+              </ng-template>
+            </alg-progress-select>
+          </ng-template>
+        </alg-collapsible-section>
+
+        <alg-collapsible-section
+          [collapsible]="false"
+          i18n-header header="Can grant access"
+          icon="fa fa-key"
+        >
+          <ng-template #content let-collapsed>
+            <alg-switch-field [collapsed]="collapsed" formControlName="canGrantGroupAccess">
+              <ng-template #label>
+                <span label i18n>
+                  User(s) can give and revoke members access to some content
+                </span>
+                </ng-template>
+              </alg-switch-field>
+            </ng-template>
+          </alg-collapsible-section>
+
+        <alg-collapsible-section
+          [collapsible]="false"
+          i18n-header header="Can watch members"
+          icon="fa fa-binoculars"
+        >
+          <ng-template #content let-collapsed>
+            <alg-switch-field [collapsed]="collapsed" formControlName="canWatchMembers">
+              <ng-template #label>
+                <span i18n>
+                  User(s) can watch the members' activity on some content
+                </span>
+                </ng-template>
+              </alg-switch-field>
+            </ng-template>
+          </alg-collapsible-section>
+        </form>
+      </div>
+    </div>
+
+    <p-footer>
+      <div class="footer">
+        <ng-container *ngIf="isUpdating; else buttons">
+          <alg-loading size="medium"></alg-loading>
+        </ng-container>
+
+        <ng-template #buttons>
+          <p-button
+            icon="fa fa-times"
+            i18n-label label="Cancel"
+            styleClass="alg-button p-button-rounded p-button-danger"
+            (onClick)="onClose()"
+          ></p-button>
+          <p-button
+            icon="fa fa-check"
+            i18n-label label="Save"
+            styleClass="alg-button p-button-rounded"
+            (onClick)="onAccept()"
+            [disabled]="!form.dirty"
+          ></p-button>
+        </ng-template>
+      </div>
+    </p-footer>
+  </p-dialog>
+</ng-container>
