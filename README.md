@@ -1,2 +1,3 @@
-# Pisek
-Content for Pišek
+# Pišek
+
+Nova platforma za Pišek tekmovanje
