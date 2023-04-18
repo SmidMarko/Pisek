@@ -60,6 +60,36 @@
             "fr": {
               "localize": [ "fr" ]
             },
+            "sl": {
+              "localize": [ "sl" ]
+            },
+            "production": {
+              "localize": [ "en", "fr", "sl"],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ]
+            },
             "production-en": {
               "localize": [ "en"],
               "fileReplacements": [
@@ -142,6 +172,9 @@
             },
             "en": {
               "browserTarget": "algorea:build:en"
+            },
+            "sl": {
+              "browserTarget": "algorea:build:sl"
             }
           }
         },
@@ -205,6 +238,10 @@
           "fr": {
             "translation": "src/locale/messages.fr.xlf",
             "baseHref": "/fr/"
+          },
+          "sl": {
+            "translation": "src/locale/messages.sl.xlf",
+            "baseHref": "/sl/"
           }
         }
       }

@@ -21,7 +21,7 @@
     "genDir": "src/locale",
     "defaultLanguage": "en",
     "languages": [
-      "fr"
+      "en", "fr", "sl"
     ],
     "removeUnusedIds": true
   },
