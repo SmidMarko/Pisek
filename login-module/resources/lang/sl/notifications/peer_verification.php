@@ -1,5 +1,5 @@
 <?php
 return [
-    'subject' => ":app_name user verification request",
-    'body' => "Verification code: :code"
+    'subject' => ":app_name prošnja za verifikacijo uporabnika",
+    'body' => "Koda za verifikacijo: :code"
 ];

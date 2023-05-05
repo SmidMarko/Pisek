@@ -1,5 +1,5 @@
 <?php
 return [
-    'subject' => ":app_name email verification",
-    'body' => "You are receiving this message because a email verification required for your account.\nVerification code: :code"
+    'subject' => ":app_name potrditev e-poštnega naslova",
+    'body' => "To sporočilo ste prejeli, ker je za vaš račun potrebno preverjanje e-pošte.\nKoda za preverjanje: :code"
 ];

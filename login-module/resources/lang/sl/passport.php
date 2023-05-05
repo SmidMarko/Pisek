@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'authorization_header' => 'Authorization Request',
-    'intoduction' => 'is requesting permission to access your account.',
-    'scopes_title' => 'This application will be able to access:',
+    'authorization_header' => 'Zahteva za avtorizacijo',
+    'intoduction' => 'zahteva dovoljenje za dostop do vašega računa.',
+    'scopes_title' => 'Ta aplikacija bo lahko dostopala do:',
     'scopes' => [
-        'account' => 'Account details'
+        'account' => 'Podrobnosti računa',
     ],
-    'btn_authorize' => 'Authorize'
+    'btn_authorize' => 'Pooblasti',
 ];

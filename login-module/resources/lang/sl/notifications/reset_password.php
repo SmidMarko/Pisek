@@ -1,5 +1,5 @@
 <?php
 return [
-    'subject' => ":app_name password reset request",
-    'body' => "Your password reset token: \n:token"
+    'subject' => ":app_name zahteva za ponastavitev gesla",
+    'body' => "Vaš ključ za ponastavitev gesla: \n:token"
 ];

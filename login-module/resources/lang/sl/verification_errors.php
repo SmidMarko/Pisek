@@ -2,8 +2,8 @@
 
 return [
 
-    'primary_email_verified' => 'Primary email verification required.',
-    'secondary_email_verified' => 'Secondary email verification required.',
-    'teacher_domain_verified' => 'Teacher email domain is not valid.',
+    'primary_email_verified' => 'Zahtevana potrditev primarnega e-poštnega naslova.',
+    'secondary_email_verified' => 'Zahtevana potrditev sekundarnega e-poštnega naslova.',
+    'teacher_domain_verified' => 'E-poštna domena učitelja ni veljavna.',
 
 ];

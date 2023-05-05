@@ -1,29 +1,29 @@
 <?php
 return [
-    'header' => 'Collected data',
-    'title' => 'Right to data access, portability, and right to be forgotten',
-    'p1' => 'In compliance with the GDPR regulations, this tool makes it easy for you to control what data this authentication module stores about you, as well as the data any platform connected to it stores about you.',
-    'p2' => 'You may choose to view or export all of the data we store about you. This authentication module doesn’t have access to the data stored about you in each platform that you use it for, but can automatically load pages from each platform.',
-    'p3' => 'You may choose to delete some or all of the data this authentication module stores about you, or that any of the connected platform stores about you.',
+    'header' => 'Zbrani podatki',
+    'title' => 'Pravica do dostopa do podatkov, prenosljivost in pravica do pozabe',
+    'p1' => 'V skladu s predpisi GDPR vam to orodje olajša nadzor nad tem, katere podatke o vas shranjuje ta modul za preverjanje pristnosti, kot tudi podatke, ki jih o vas shranjuje katera koli platforma, povezana z njim.',
+    'p2' => 'Lahko se odločite za ogled ali izvoz vseh podatkov, ki jih hranimo o vas. Ta modul za preverjanje pristnosti nima dostopa do podatkov shranjenih o vas na vsaki platformi, za katero ga uporabljate, vendar lahko samodejno naloži strani z vsake platforme.',
+    'p3' => 'Izberete lahko, da izbrišete nekatere ali vse podatke, ki jih o vas shranjuje ta modul preverjanja pristnosti ali katerekoli povezana platforma.',
 
 
-    'item_client' => 'Data stored about me by',
-    'item_self' => 'Data stored by this <span class="em">authentication module</span>',
-    'summary' => 'View',
-    'export' => 'Export',
-    'delete' => 'Delete',
-    'manage' => 'Manage',
-    'api_not_available' => 'actions not available',
+    'item_client' => 'Podatki o meni od',
+    'item_self' => 'Podatki shranjeni od <span class="em">modul za preverjanje</span>',
+    'summary' => 'Ogled',
+    'export' => 'Izvozi',
+    'delete' => 'Izbriši',
+    'manage' => 'Upravlja',
+    'api_not_available' => 'možnosti niso na voljo',
 
     'confirmation' => [
-        'header' => 'Delete my collected data',
-        'cb1' => 'I confirm that I request for all the data stored about me on the authentication module to be deleted.',
-        'cb2' => 'I understand that this operation can’t be cancelled, and that everything I did on this platform will be deleted without any way for me to recover it.',
-        'submit' => 'Confirm'
+        'header' => 'Izbriši moje zbrane podatke',
+        'cb1' => 'Potrjujem, da zahtevam izbris vseh podatkov, shranjenih o meni v modulu za preverjanje pristnosti.',
+        'cb2' => 'Zavedam se, da tega postopka ni mogoče preklicati in da bo vse, kar sem naredil na tej platformi, izbrisano, brez možnosti obnovitve.',
+        'submit' => 'Potrdi'
     ],
 
     'alert' => [
-        'p1' => 'There still may be data attached to your account on some platforms. If deletion of data on these platforms doesn\'t work, contact the email listed:',
-        'p2' => 'If you don\'t receive any answer, you may contact :email'
+        'p1' => 'Na nekaterih platformah so lahko vašemu računu še vedno priloženi podatki. Če brisanje podatkov na teh platformah ne deluje, se obrnite na navedeni e-poštni naslov:',
+        'p2' => 'Če ne prejmete nobenega odgovora, se obrnite na :email'
     ]
 ];

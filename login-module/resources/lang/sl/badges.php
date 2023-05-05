@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'header' => 'Badges',
-    'nothing_to_add' => 'There are no badges available.',
-    'select_badge_api' => 'Select badge',
-    'code' => 'Code',
+    'header' => 'Značke',
+    'nothing_to_add' => 'Značke niso na voljo',
+    'select_badge_api' => 'Izberi značko',
+    'code' => 'Koda',
     'errors' => [
-        'code_used' => 'Code already used.',
-        'code_invalid' => 'Invalid code.',
+        'code_used' => 'Koda že uporabljena.',
+        'code_invalid' => 'Neveljavna koda.',
     ],
-    'success' => 'Badge :name successfully added.'
+    'success' => 'Značka :name uspešno dodana.'
 ];
