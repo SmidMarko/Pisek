@@ -1,0 +1,81 @@
+@import 'src/colors.scss';
+@import 'src/geometry.scss';
+
+.alg-button {
+  &.p-button {
+    padding: 0 1.5rem;
+    height: 3rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    background-color: var(--base-color);
+    border-color: var(--base-color);
+
+    &:enabled:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    // Custom
+    &.p-button-rounded-full {
+      border-radius: 3rem;
+    }
+
+    // PrimeNG
+    &.p-button-rounded {
+      border-radius: 1rem;
+    }
+
+    &.p-small-button {
+      height: 2rem;
+      font-size: 1rem;
+    }
+
+    .p-button-label {
+      text-transform: uppercase;
+    }
+
+    &.p-button-warning {
+      background-color: var(--warning-color);
+      border-color: var(--warning-color);
+
+      .p-button-icon, .p-button-label {
+        color: white;
+      }
+
+      &:enabled:hover {
+        color: white;
+      }
+
+      &:enabled:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    &.p-button-danger {
+      background-color: var(--danger-color);
+      border-color: var(--danger-color);
+
+      &:enabled:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      &.p-button-outlined {
+        background-color: unset;
+
+        .p-button-label {
+          color: var(--danger-color);
+        }
+
+        &:hover {
+          background-color: var(--danger-color);
+
+          .p-button-label {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

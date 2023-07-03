@@ -1,0 +1,10 @@
+.p-tooltip {
+
+  &.permissions-dialog {
+    max-width: none;
+
+    &.p-tooltip-right {
+      margin-left: .5rem;
+    }
+  }
+}

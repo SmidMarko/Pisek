@@ -252,4 +252,6 @@ return [
         'Saml2' => Slides\Saml2\Facades\Auth::class
     ],
 
+    'url' => env('APP_URL', 'https://pisek-novi.acm.si/login_module'),
+	'asset_url' => env('ASSET_URL', 'https://pisek-novi.acm.si/login_module'),
 ];

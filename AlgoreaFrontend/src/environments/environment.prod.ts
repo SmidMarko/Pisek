@@ -2,8 +2,8 @@ import { Environment, PartialDeep } from 'src/app/shared/helpers/config';
 
 export const environment: Environment = {
   production: true,
-  apiUrl: 'http://pisek-novi.acm.si/api', //'http://pisek-novi.acm.si:8080', //'http://localhost:8080', //'https://dev.algorea.org/api', // 'http://localhost:3000/api',
-  oauthServerUrl: 'http://pisek-novi.acm.si/login_module' , //'http://localhost:8282',//'https://login.france-ioi.org', //TODO change
+  apiUrl: 'https://pisek-novi.acm.si/api', //'http://pisek-novi.acm.si:8080', //'http://localhost:8080', //'https://dev.algorea.org/api', // 'http://localhost:3000/api',
+  oauthServerUrl: 'https://pisek-novi.acm.si/login_module' , //'http://localhost:8282',//'https://login.france-ioi.org', //TODO change
   forumServerUrl: null,
   forumApiUrl: null,
   oauthClientId: '22',
@@ -13,7 +13,7 @@ export const environment: Environment = {
 
   languages: [
     { tag: 'fr', path: '/fr/' },
-    { tag: 'en', path: '/' },
+    { tag: 'en', path: '/en/' },
     { tag: 'sl', path: '/sl/' },
   ],
   defaultTitle: 'Algorea Platform',

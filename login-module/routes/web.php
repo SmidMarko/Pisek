@@ -1,6 +1,9 @@
 <?php
 
 Route::redirect('/', '/auth');
+if (env('APP_ENV') != 'local') {
+    URL::forceRootUrl('http://pisek-novi.acm.si/login_module/');
+}
 
 // Auth
 Route::get('/password/reset/new', ['uses' => 'Auth\ResetPasswordController@showNewPasswordForm', 'as' => 'password.reset.new']);

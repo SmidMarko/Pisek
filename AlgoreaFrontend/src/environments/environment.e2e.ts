@@ -16,7 +16,7 @@ export const environment: Environment = {
 
   languages: [
     { tag: 'fr', path: '/fr/' },
-    { tag: 'en', path: '/' },
+    { tag: 'en', path: '/en/' },
     { tag: 'sl', path: '/sl/' },
   ],
   defaultTitle: 'Algorea Platform',

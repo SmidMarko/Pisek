@@ -24,6 +24,9 @@ class AutoAuthorization
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        if(str_contains($request->fullUrl(), 'http://pisek-novi.acm.si/oauth/authorize')){
+            str_replace('http://pisek-novi.acm.si/oauth/authorize', 'http://pisek-novi.acm.si/login_module/oauth/authorize', $request->fullUrl());
+        }
         if($client = $this->context->client()) {
             $pms_active = (bool) Auth::guard($guard)->user()->authConnections()->where('provider', 'pms')->where('active', '1')->first();
             $generated_account = Auth::guard($guard)->user()->creator_client_id == $client->id;

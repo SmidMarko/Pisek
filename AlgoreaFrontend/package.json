@@ -19,7 +19,7 @@
   "xliffmergeOptions": {
     "srcDir": "src/locale",
     "genDir": "src/locale",
-    "defaultLanguage": "en",
+    "defaultLanguage": "sl",
     "languages": [
       "en",
       "fr",
