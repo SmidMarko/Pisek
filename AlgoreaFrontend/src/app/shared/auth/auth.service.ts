@@ -49,6 +49,7 @@ export class AuthService implements OnDestroy {
     oauthService.tryCompletingCodeFlowLogin().pipe(
       catchError(_e => {
         // (2) use the ongoing authentication if any
+        console.log("tokenAuthFromStorage");
         if (appConfig.allowForcedToken && hasForcedToken()) return of(forcedTokenAuthFromStorage());
         else if (appConfig.authType === 'tokens') return of(tokenAuthFromStorage());
         else return this.authHttp.refreshAuth(); // will fail if the browser has no cookie

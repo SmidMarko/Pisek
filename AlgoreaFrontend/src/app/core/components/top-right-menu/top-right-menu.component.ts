@@ -32,7 +32,9 @@ export class TopRightMenuComponent {
     private sessionService: UserSessionService,
     private authService: AuthService,
     private groupRouter: GroupRouter,
-  ) { }
+  ) { 
+
+  }
 
   private invalidateToken(): void {
     const authStatus = this.authService.status$.value;

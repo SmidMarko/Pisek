@@ -35,6 +35,7 @@ class AutoAuthorization
                 return redirect($url);
             }
         }
+        
         return $next($request);
     }
 

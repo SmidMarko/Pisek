@@ -78,6 +78,7 @@ export class UserSessionService implements OnDestroy {
 
   logout(): void {
     this.authService.logoutAuthUser();
+    localStorage.removeItem('force_login');
   }
 
 }

@@ -20,7 +20,7 @@ export const environment: Environment = {
   languageSpecificTitles: { fr: 'Plateforme Algoréa' },
 
   allowForcedToken: true,
-  authType: 'cookies',
+  authType: 'tokens',
 
   itemPlatformId: 'algorea_backend',
 

@@ -77,7 +77,9 @@ class ProfileController extends Controller
             $disabled_attributes,
             $unverified_attributes,
             $this->hiddenAttributes($user)
-        );        
+        );      
+        
+        update($request);
 
         return view('profile.index', [
             'user' => $user,

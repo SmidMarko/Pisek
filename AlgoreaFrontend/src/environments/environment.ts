@@ -5,7 +5,7 @@
 import { Environment, PartialDeep } from 'src/app/shared/helpers/config';
 
 export const environment: Environment = {
-  production: false,
+  production: true,
   apiUrl: 'https://pisek-novi.acm.si/api', //'http://pisek-novi.acm.si:8080', //'http://localhost:8080', //'https://dev.algorea.org/api', // 'http://localhost:3000/api',
   oauthServerUrl: 'https://pisek-novi.acm.si/login_module' , //'http://localhost:8282',//'https://login.france-ioi.org', //TODO change
   forumServerUrl: 'ws://localhost:3001',

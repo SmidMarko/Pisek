@@ -41,6 +41,7 @@ export function tokenAuthFromStorage(): TokenAuthenticated {
     clearTokenFromStorage();
     throw new Error('unable to load the stored token: invalid/expired creation or expiration date');
   }
+  console.log("tokenAuthFromStorage ", token);
   return tokenAuthenticated(token, new Date(expMs), new Date(createMs));
 }
 

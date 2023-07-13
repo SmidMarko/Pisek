@@ -17,4 +17,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY . .
 RUN go install -v ./...
 
-CMD "AlgoreaBackend serve"
+CMD ["AlgoreaBackend", "serve"]
