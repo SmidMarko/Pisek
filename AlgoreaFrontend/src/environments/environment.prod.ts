@@ -16,8 +16,8 @@ export const environment: Environment = {
     { tag: 'en', path: '/en/' },
     { tag: 'sl', path: '/sl/' },
   ],
-  defaultTitle: 'Algorea Platform',
-  languageSpecificTitles: { fr: 'Plateforme Algoréa' },
+  defaultTitle: 'NOVI PIŠEK',
+  languageSpecificTitles: { fr: 'NOVI PIŠEK' },
 
   allowForcedToken: true,
   authType: 'tokens',
